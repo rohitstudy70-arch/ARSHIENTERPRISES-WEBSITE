@@ -5,8 +5,8 @@
  */
 
 // Global constant to switch between live backend and client-side simulation.
-// Set to true to run fully client-side without any Express server.
-const PURE_FRONTEND = true;
+// Set to false to use the live Express server + MongoDB database on Render.
+const PURE_FRONTEND = false;
 
 import axios from 'axios';
 import { API_BASE_URL } from '../config/environment';
