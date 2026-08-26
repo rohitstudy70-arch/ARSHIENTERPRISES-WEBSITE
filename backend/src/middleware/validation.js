@@ -124,7 +124,24 @@ const schemas = {
     createInquiry: Joi.object({
         name: Joi.string().required().min(2).max(100),
         email: Joi.string().required().email(),
-        phone: Joi.string().required().pattern(/^[0-9]{10,}$/),
+        category: Joi.string().required(),
+        shortDescription: Joi.string().required().max(500),
+        fullDescription: Joi.string().required(),
+        price: Joi.number().required().positive(),
+        image: Joi.string().optional(),
+        images: Joi.array().items(Joi.string()).optional(),
+        specifications: Joi.array().items(Joi.string()).optional(),
+        features: Joi.array().items(Joi.string()).optional(),
+        seoTitle: Joi.string().optional().max(60),
+        seoDescription: Joi.string().optional().max(160),
+        seoKeywords: Joi.array().items(Joi.string()).optional(),
+    }),
+
+    // Inquiry Schema
+    createInquiry: Joi.object({
+        name: Joi.string().required().min(2).max(100),
+        email: Joi.string().required().email(),
+        phone: Joi.string().required().pattern(/^\+?[0-9\s-]{10,20}$/),
         message: Joi.string().required().min(10).max(1000),
         productId: Joi.string().optional(),
         inquiryType: Joi.string().valid('general', 'product', 'support').optional(),
@@ -134,7 +151,12 @@ const schemas = {
     contactForm: Joi.object({
         name: Joi.string().required().min(2).max(100),
         email: Joi.string().required().email(),
-        phone: Joi.string().required().pattern(/^[0-9]{10,}$/),
+        phone: Joi.string()
+            .required()
+            .pattern(/^\+?[0-9\s-]{10,20}$/)
+            .messages({
+                'string.pattern.base': 'Phone number must be a valid 10-digit number (e.g. +91 9709846929 or 9709846929)',
+            }),
         subject: Joi.string().required().min(5).max(100),
         message: Joi.string().required().min(10).max(2000),
     }),
