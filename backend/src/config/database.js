@@ -20,7 +20,9 @@ const connectDB = async () => {
 
         console.log(`[DB] Connected: ${conn.connection.host}/${conn.connection.name}`);
 
-        // Indexes are defined in model files and built automatically.
+        // Ensure default admin exists in MongoDB Atlas
+        await seedAdminUser();
+
         setupIndexes();
 
         return conn;
@@ -28,6 +30,37 @@ const connectDB = async () => {
         console.error(`[DB] Connection error: ${error.message}`);
         console.error('[DB] Check Atlas IP allowlist, credentials, and database name.');
         process.exit(1);
+    }
+};
+
+/**
+ * Seed initial Admin User if not present
+ */
+const seedAdminUser = async () => {
+    try {
+        const User = require('../models/User');
+        const adminEmail = process.env.ADMIN_EMAIL || 'admin@arshigps.com';
+        const adminPassword = process.env.ADMIN_PASSWORD || 'ChangeMe@123';
+
+        let admin = await User.findOne({ email: adminEmail });
+
+        if (!admin) {
+            admin = await User.create({
+                name: 'Arshi Admin',
+                email: adminEmail,
+                password: adminPassword,
+                phone: '+91 77828 08063',
+                role: 'admin',
+                isActive: true,
+            });
+            console.log(`[DB] ✅ Initial Admin user seeded: ${adminEmail}`);
+        } else if (admin.role !== 'admin') {
+            admin.role = 'admin';
+            await admin.save();
+            console.log(`[DB] ✅ Admin role restored for: ${adminEmail}`);
+        }
+    } catch (err) {
+        console.error(`[DB] Admin seeding warning: ${err.message}`);
     }
 };
 
