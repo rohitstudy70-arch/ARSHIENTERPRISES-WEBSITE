@@ -7,15 +7,6 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const environment = require('../config/environment');
-/**
- * Security Middleware
- * CORS, rate limiting, helmet, and other security configurations
- */
-
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
-const cors = require('cors');
-const environment = require('../config/environment');
 
 /**
  * CORS Configuration
