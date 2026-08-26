@@ -23,6 +23,10 @@ const connectDB = async () => {
         // Ensure default admin exists in MongoDB Atlas
         await seedAdminUser();
 
+        // Ensure default catalog products & descriptions exist in MongoDB Atlas
+        const { seedProductsAuto } = require('../utils/productSeeder');
+        await seedProductsAuto();
+
         setupIndexes();
 
         return conn;
