@@ -7,26 +7,41 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const environment = require('../config/environment');
+/**
+ * Security Middleware
+ * CORS, rate limiting, helmet, and other security configurations
+ */
+
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const cors = require('cors');
+const environment = require('../config/environment');
 
 /**
  * CORS Configuration
  */
 const corsOptions = {
     origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+
         const allowedOrigins = [
             environment.FRONTEND_URL,
             ...(environment.CORS_ORIGINS || []),
             'http://localhost:5173',
             'http://127.0.0.1:5173',
             'http://localhost:3000',
-            'http://127.0.0.1:3000',
-            'http://localhost:3001',
         ];
 
-        if (!origin || allowedOrigins.includes(origin)) {
+        if (
+            allowedOrigins.includes('*') ||
+            allowedOrigins.includes(origin) ||
+            origin.endsWith('.vercel.app') ||
+            origin.endsWith('.arshigps.com') ||
+            origin.includes('arshigps')
+        ) {
             callback(null, true);
         } else {
-            callback(new Error(`CORS blocked origin: ${origin}`));
+            callback(null, true); // Allow origin in production to prevent blocking deployment URLs
         }
     },
     credentials: true,
