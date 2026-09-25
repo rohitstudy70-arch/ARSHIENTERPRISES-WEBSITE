@@ -115,7 +115,7 @@ export const Navbar = () => {
                 )}
               </button>
 
-              {isAuthenticated ? (
+              {isAuthenticated && (
                 <div className="flex items-center gap-4">
                   {isAdmin && (
                     <Link
@@ -138,13 +138,6 @@ export const Navbar = () => {
                     <FaSignOutAlt size={16} />
                   </button>
                 </div>
-              ) : (
-                <Link
-                  to="/login"
-                  className="px-5 py-2 text-sm font-bold text-white bg-primary rounded-full hover:bg-primary-dark shadow-sm hover:shadow transition-all duration-200"
-                >
-                  Login
-                </Link>
               )}
             </div>
 
@@ -201,7 +194,7 @@ export const Navbar = () => {
                 <span>{BUSINESS.PHONE}</span>
               </a>
 
-              {isAuthenticated ? (
+              {isAuthenticated && (
                 <div className="flex items-center justify-between gap-4 py-1">
                   <span className="text-sm text-slate-700 font-bold truncate flex items-center gap-1.5">
                     <FaUser size={12} className="text-slate-500" />
@@ -217,14 +210,6 @@ export const Navbar = () => {
                     Logout
                   </button>
                 </div>
-              ) : (
-                <Link
-                  to="/login"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-center py-2.5 text-white bg-primary font-bold rounded-lg hover:bg-primary-dark transition-all duration-200 text-sm"
-                >
-                  Login
-                </Link>
               )}
             </div>
           </div>

@@ -99,6 +99,7 @@ export const Footer = () => {
             <Link to="/privacy-policy" className="hover:text-sky-200 hover:underline transition-all">Privacy Policy</Link>
             <Link to="/terms-of-service" className="hover:text-sky-200 hover:underline transition-all">Terms of Service</Link>
             <Link to="/sitemap" className="hover:text-sky-200 hover:underline transition-all">Sitemap</Link>
+            <Link to="/admin/login" className="hover:text-sky-200 hover:underline transition-all opacity-80 hover:opacity-100">Admin Login</Link>
           </div>
         </div>
       </div>
