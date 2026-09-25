@@ -299,7 +299,7 @@ export default function AdminLayout({ children }) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto p-4 lg:p-6 admin-main-scroll">
+        <main className="flex-1 overflow-y-auto p-4 lg:p-6 admin-main-scroll overscroll-y-contain" data-lenis-prevent="true">
           <div className="animate-slideIn">
             {children}
           </div>
