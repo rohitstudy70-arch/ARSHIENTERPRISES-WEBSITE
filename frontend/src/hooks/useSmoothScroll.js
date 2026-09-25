@@ -1,13 +1,10 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 
 export const useSmoothScroll = () => {
-  const location = useLocation();
-
   useEffect(() => {
     // Disable smooth scroll interception on admin dashboard and forms
-    if (location.pathname.startsWith('/admin')) {
+    if (typeof window !== 'undefined' && window.location.pathname.startsWith('/admin')) {
       return;
     }
 
@@ -34,5 +31,5 @@ export const useSmoothScroll = () => {
       if (frameId) cancelAnimationFrame(frameId);
       lenis.destroy();
     };
-  }, [location.pathname]);
+  }, []);
 };
