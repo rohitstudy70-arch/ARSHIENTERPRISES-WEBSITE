@@ -711,59 +711,94 @@ export const adminAPI = {
     }),
     updateSettings: async (data) => ({ data: { success: true, message: 'Settings saved locally!' } }),
     uploadMedia: async (formData) => {
-        if (PURE_FRONTEND || isAuditEnv()) {
-            const file = formData.get('image');
-            if (file) {
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onloadend = () => {
+        const file = formData.get('image') || formData.get('file');
+
+        const convertToOptimizedBase64 = (f) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
                         try {
-                            const mediaList = JSON.parse(localStorage.getItem('arshi_mock_media') || '[]');
-                            const newMedia = {
-                                filename: file.name,
-                                url: reader.result,
-                                uploadedAt: new Date().toISOString(),
-                                size: file.size
-                            };
-                            localStorage.setItem('arshi_mock_media', JSON.stringify([newMedia, ...mediaList]));
-                            
+                            const canvas = document.createElement('canvas');
+                            let width = img.width;
+                            let height = img.height;
+                            const maxDim = 1200;
+                            if (width > maxDim || height > maxDim) {
+                                if (width > height) {
+                                    height = Math.round((height * maxDim) / width);
+                                    width = maxDim;
+                                } else {
+                                    width = Math.round((width * maxDim) / height);
+                                    height = maxDim;
+                                }
+                            }
+                            canvas.width = width;
+                            canvas.height = height;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0, width, height);
+                            const compressedUrl = canvas.toDataURL('image/jpeg', 0.85);
                             resolve({
                                 data: {
                                     success: true,
                                     data: {
-                                        url: reader.result,
-                                        filename: file.name
+                                        url: compressedUrl,
+                                        filename: f.name || 'product-image.jpg'
                                     }
                                 }
                             });
-                        } catch (e) {
-                            // LocalStorage limit fallback
+                        } catch {
                             resolve({
                                 data: {
                                     success: true,
                                     data: {
-                                        url: reader.result,
-                                        filename: file.name
+                                        url: event.target.result,
+                                        filename: f.name || 'product-image.jpg'
                                     }
                                 }
                             });
                         }
                     };
-                    reader.onerror = () => {
-                        reject(new Error('Failed to read file'));
+                    img.onerror = () => {
+                        resolve({
+                            data: {
+                                success: true,
+                                data: {
+                                    url: event.target.result,
+                                    filename: f.name || 'product-image.jpg'
+                                }
+                            }
+                        });
                     };
-                    reader.readAsDataURL(file);
-                });
+                    img.src = event.target.result;
+                };
+                reader.onerror = (err) => reject(err);
+                reader.readAsDataURL(f);
+            });
+        };
+
+        if (PURE_FRONTEND || isAuditEnv()) {
+            if (file && typeof file !== 'string') {
+                return convertToOptimizedBase64(file);
             }
             return { data: { success: false, message: 'No file uploaded' } };
         }
-        const token = localStorage.getItem('authToken');
-        return apiClient.post('/admin/media/upload', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                ...(token ? { Authorization: `Bearer ${token}` } : {})
+
+        try {
+            const token = localStorage.getItem('authToken');
+            const res = await apiClient.post('/admin/media/upload', formData, {
+                headers: {
+                    ...(token ? { Authorization: `Bearer ${token}` } : {})
+                }
+            });
+            return res;
+        } catch (serverErr) {
+            console.warn('Server upload returned error, applying optimized image converter:', serverErr);
+            if (file && typeof file !== 'string') {
+                return convertToOptimizedBase64(file);
             }
-        });
+            throw serverErr;
+        }
     },
     getMedia: async () => {
         if (PURE_FRONTEND || isAuditEnv()) {

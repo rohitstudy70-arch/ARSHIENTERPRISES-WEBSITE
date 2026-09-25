@@ -213,11 +213,40 @@ router.put('/settings', authenticate, isAdmin, async (req, res) => {
 /**
  * Media Upload
  */
-router.post('/media/upload', authenticate, isAdmin, upload.single('image'), (req, res) => {
+router.post('/media/upload', authenticate, isAdmin, upload.single('image'), async (req, res) => {
     try {
         if (!req.file) return res.status(400).json({ success: false, message: 'No file uploaded' });
         const environment = require('../config/environment');
-        const url = `${environment.API_URL || 'http://localhost:5000'}/uploads/${req.file.filename}`;
+
+        if (environment.CLOUDINARY?.CLOUD_NAME && environment.CLOUDINARY?.API_KEY && environment.CLOUDINARY?.API_SECRET) {
+            try {
+                const cloudinary = require('cloudinary').v2;
+                cloudinary.config({
+                    cloud_name: environment.CLOUDINARY.CLOUD_NAME,
+                    api_key: environment.CLOUDINARY.API_KEY,
+                    api_secret: environment.CLOUDINARY.API_SECRET,
+                });
+                const result = await cloudinary.uploader.upload(req.file.path, {
+                    folder: 'arshi-gps-products',
+                });
+                return res.json({
+                    success: true,
+                    data: {
+                        url: result.secure_url,
+                        filename: result.public_id,
+                        originalName: req.file.originalname,
+                        size: req.file.size,
+                    },
+                });
+            } catch (cldErr) {
+                console.warn('Cloudinary upload fallback to local storage:', cldErr.message);
+            }
+        }
+
+        const host = req.get('host');
+        const protocol = req.headers['x-forwarded-proto'] || req.protocol || 'https';
+        const baseUrl = environment.API_URL || `${protocol}://${host}`;
+        const url = `${baseUrl}/uploads/${req.file.filename}`;
         res.json({
             success: true,
             data: {
