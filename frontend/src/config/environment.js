@@ -20,7 +20,7 @@ const SITE_CONFIG = {
     DESCRIPTION: 'Professional GPS tracking, real-time vehicle tracking, and fleet management solutions for businesses',
     KEYWORDS: 'GPS tracking, vehicle tracking, fleet management, real-time tracking, AIS140 GPS',
     AUTHOR: 'Arshi Enterprises',
-    URL: 'https://arshigps.com',
+    URL: 'https://arshient.com',
 };
 
 export { API_BASE_URL, BUSINESS, SITE_CONFIG };
