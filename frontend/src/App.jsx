@@ -1,336 +1,213 @@
-/**
- * Main App Component
- * React Router configuration and global setup
- */
-
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { CartProvider } from './context/CartContext';
-import MainLayout from './layouts/MainLayout';
-import AdminLayout from './layouts/AdminLayout';
-import { SITE_CONFIG } from './config/environment';
-import { useSmoothScroll } from './hooks/useSmoothScroll';
+import Navbar from './components/Navbar';
+import NeonCity3D from './components/NeonCity3D';
+import FeaturesSection from './components/FeaturesSection';
+import HardwareCatalog from './components/HardwareCatalog';
+import ContactSection from './components/ContactSection';
+import Footer from './components/Footer';
+import { 
+  ShieldCheck, 
+  Zap, 
+  MessageSquare, 
+  Phone, 
+  ArrowRight, 
+  CheckCircle2, 
+  Radio, 
+  Navigation,
+  Fuel,
+  Cpu
+} from 'lucide-react';
 
-// Public Pages
-import HomePage from './pages/HomePage';
-import ProductsPage from './pages/ProductsPage';
-import ProductDetailsPage from './pages/ProductDetailsPage';
-import ServicesPage from './pages/ServicesPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import LoginPage from './pages/LoginPage';
+export default function App() {
+  const phone = "+91 77828 08063";
+  const whatsappUrl = "https://wa.me/917782808063?text=Namaste%20Arshi%20GPS%2C%20mujhe%20GPS%20tracking%20ka%20demo%20aur%20quote%20chahiye.";
 
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import TermsOfServicePage from './pages/TermsOfServicePage';
-import SitemapPage from './pages/SitemapPage';
-
-// Admin Pages
-import AdminOverview from './pages/admin/AdminOverview';
-import AdminProducts from './pages/admin/AdminProducts';
-import AdminProductForm from './pages/admin/AdminProductForm';
-import AdminInquiries from './pages/admin/AdminInquiries';
-import AdminLeads from './pages/admin/AdminLeads';
-import AdminTestimonials from './pages/admin/AdminTestimonials';
-import AdminCategories from './pages/admin/AdminCategories';
-import AdminAnalytics from './pages/admin/AdminAnalytics';
-import AdminMedia from './pages/admin/AdminMedia';
-import AdminSettings from './pages/admin/AdminSettings';
-import AdminNotifications from './pages/admin/AdminNotifications';
-import AdminLogin from './pages/admin/AdminLogin';
-
-/**
- * Protected Route Component
- */
-const ProtectedRoute = ({ element, requireAdmin = false }) => {
-  const { isAuthenticated, isAdmin, loading } = useAuth();
-
-  if (loading) {
-    return (
-      <MainLayout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-12 h-12 border-4 border-gray-200 border-t-primary rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading...</p>
-          </div>
-        </div>
-      </MainLayout>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
-
-  if (requireAdmin && !isAdmin) {
-    return <Navigate to="/" />;
-  }
-
-  return element;
-};
-
-/**
- * Admin Protected Route - uses AdminLayout
- */
-const AdminRoute = ({ element }) => {
-  const { isAuthenticated, isAdmin, loading } = useAuth();
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) return <Navigate to="/admin/login" />;
-  if (!isAdmin) return <Navigate to="/" />;
-
-  return <AdminLayout>{element}</AdminLayout>;
-};
-
-/**
- * App Routes
- */
-const SeoManager = () => {
-  const location = useLocation();
-
-  React.useEffect(() => {
-    const upsertMeta = (selector, createAttrs, valueAttr, value) => {
-      let el = document.querySelector(selector);
-      if (!el) {
-        el = document.createElement('meta');
-        Object.entries(createAttrs).forEach(([k, v]) => el.setAttribute(k, v));
-        document.head.appendChild(el);
-      }
-      el.setAttribute(valueAttr, value);
-    };
-
-    const pageMeta = {
-      '/': {
-        title: 'Arshi GPS – Vehicle & Fleet Tracking Solutions Purnia Bihar',
-        description: 'Buy AIS 140 certified GPS trackers, AGT365N, PRO-365N, Magnet GPS & anti-theft systems in Purnia, Bihar. Real-time live tracking, fuel monitoring & RTO approval.',
-        keywords: 'GPS tracker Purnia, AIS 140 GPS Bihar, AGT365N tracker, PRO-365N GPS, vehicle tracking system Purnia, car GPS tracker Bihar, tractor GPS tracker, fleet management Bihar',
-      },
-      '/products': {
-        title: 'GPS Tracking Products & Devices | AGT365N, PRO-365N, AIS 140',
-        description: 'Explore Arshi GPS trackers including AGT365N, PRO-365N, Portable Magnet GPS, and AIS 140 RTO approved devices in Bihar. Best prices with free pan-India support.',
-        keywords: 'GPS tracker price, AGT365N GPS, PRO-365N tracker, Magnet GPS tracker, AIS 140 tracker price Bihar, vehicle tracker Purnia, bike GPS tracker',
-      },
-      '/services': {
-        title: 'GPS Vehicle Tracking Services & Installation | Arshi GPS',
-        description: 'Professional GPS installation, anti-theft immobilization, real-time fleet analytics, fuel tracking & 24/7 technical support services across Bihar & India.',
-        keywords: 'GPS installation Bihar, fleet tracking service Purnia, anti theft GPS system, fuel monitoring GPS, vehicle tracking services India',
-      },
-      '/about': {
-        title: 'About Arshi Enterprises – Leading GPS Supplier Purnia Bihar',
-        description: 'Established in 2013 by Mr Ranjeet Kumar in Purnia, Bihar. Arshi Enterprises is a trusted supplier & trader of certified AIS 140 GPS trackers & fleet solutions.',
-        keywords: 'Arshi Enterprises Purnia, Ranjeet Kumar GPS, GPS supplier Bihar, AIS 140 company Bihar, fleet management provider Purnia',
-      },
-      '/contact': {
-        title: 'Contact Arshi GPS – Support, Price Quotes & Installation Purnia',
-        description: 'Contact Arshi Enterprises for GPS tracker price quotes, installation, RTO AIS 140 support & bulk inquiries. Call +91 77828 08063 or visit us in Purnia, Bihar.',
-        keywords: 'Contact Arshi GPS, GPS support Purnia, GPS tracker quote Bihar, GPS helpline number Bihar, Arshi Enterprises address',
-      },
-      '/privacy-policy': {
-        title: 'Privacy Policy | Arshi GPS',
-        description: 'Arshi GPS Privacy Policy - How we collect, use, and protect your personal information when you use our GPS tracking products and services.',
-        keywords: 'Arshi GPS privacy policy, data protection, GPS tracking privacy',
-      },
-      '/terms-of-service': {
-        title: 'Terms of Service | Arshi GPS',
-        description: 'Terms and conditions for purchasing, using, and installing Arshi GPS tracking products and services.',
-        keywords: 'Arshi GPS terms, GPS purchase terms, service conditions',
-      },
-      '/sitemap': {
-        title: 'Sitemap | Arshi GPS',
-        description: 'Complete sitemap of Arshi GPS website — all products, services, and company pages in one place.',
-        keywords: 'Arshi GPS sitemap, website pages, GPS products list',
-      },
-    };
-
-    const meta = pageMeta[location.pathname] || {
-      title: SITE_CONFIG.TITLE,
-      description: SITE_CONFIG.DESCRIPTION,
-      keywords: SITE_CONFIG.KEYWORDS,
-    };
-
-    document.title = meta.title;
-
-    upsertMeta('meta[name="description"]', { name: 'description' }, 'content', meta.description);
-    upsertMeta('meta[name="keywords"]', { name: 'keywords' }, 'content', meta.keywords);
-    upsertMeta('meta[property="og:title"]', { property: 'og:title' }, 'content', meta.title);
-    upsertMeta('meta[property="og:description"]', { property: 'og:description' }, 'content', meta.description);
-    upsertMeta('meta[property="og:url"]', { property: 'og:url' }, 'content', `${SITE_CONFIG.URL}${location.pathname}`);
-    upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title' }, 'content', meta.title);
-    upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description' }, 'content', meta.description);
-
-    const canonicalTag = document.querySelector('link[rel="canonical"]');
-    if (canonicalTag) canonicalTag.setAttribute('href', `${SITE_CONFIG.URL}${location.pathname}`);
-  }, [location.pathname]);
-
-  return null;
-};
-
-function AppRoutes() {
   return (
-    <>
-      <SeoManager />
-      <Routes>
-        {/* Public Routes */}
-        <Route
-          path="/"
-          element={
-            <MainLayout>
-              <HomePage />
-            </MainLayout>
-          }
-        />
+    <div className="min-h-screen bg-[#0a0630] text-white selection:bg-[#e3ab84] selection:text-[#1a0f40] relative">
+      
+      {/* Top Navigation */}
+      <Navbar />
 
-        <Route
-          path="/products"
-          element={
-            <MainLayout>
-              <ProductsPage />
-            </MainLayout>
-          }
-        />
+      {/* Floating WhatsApp Action Button */}
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp Us"
+        className="fixed right-6 bottom-6 z-50 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-2xl shadow-[#25d366]/40 hover:scale-110 active:scale-95 transition-all group"
+      >
+        <MessageSquare className="w-7 h-7 fill-current" />
+        <span className="absolute right-16 px-3 py-1.5 rounded-xl bg-[#0a0630] border border-[#3a2f9a] text-xs font-bold text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+          Chat on WhatsApp
+        </span>
+      </a>
 
-        <Route
-          path="/products/:slug"
-          element={
-            <MainLayout>
-              <ProductDetailsPage />
-            </MainLayout>
-          }
-        />
+      {/* =========================================================================
+          HERO & 3D NEON CITY SECTION
+          ========================================================================= */}
+      <section id="hero" className="pt-32 pb-20 relative overflow-hidden">
+        {/* Background glow orb */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#3f6bff]/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/3 left-10 w-[400px] h-[400px] bg-[#e3ab84]/10 rounded-full blur-[120px] pointer-events-none" />
 
-        <Route
-          path="/services"
-          element={
-            <MainLayout>
-              <ServicesPage />
-            </MainLayout>
-          }
-        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Column: Headlines & Call to Action */}
+            <div className="lg:col-span-6 space-y-6">
+              
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#140d5c] border border-[#3a2f9a] text-xs font-bold text-[#e3ab84] uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-[#e3ab84] animate-pulse" />
+                <span>24/7 Smart Telematics & Fleet Control</span>
+              </div>
 
-        <Route
-          path="/about"
-          element={
-            <MainLayout>
-              <AboutPage />
-            </MainLayout>
-          }
-        />
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+                Track every <span className="text-[#e3ab84]">vehicle.</span><br />
+                Save every <span className="text-[#4bc0ff]">rupee.</span>
+              </h1>
 
-        <Route
-          path="/contact"
-          element={
-            <MainLayout>
-              <ContactPage />
-            </MainLayout>
-          }
-        />
+              <p className="text-base sm:text-lg text-[#b3aee0] max-w-xl leading-relaxed">
+                Bihar aur poore Bharat ke truck, bus, taxi aur school-van fleet owners ka bharosemand GPS partner. Diesel chori roko, live location dekho aur gaadi ka kharcha bachao.
+              </p>
 
-        <Route
-          path="/login"
-          element={
-            <MainLayout>
-              <LoginPage />
-            </MainLayout>
-          }
-        />
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-7 py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-[#f3c39a] to-[#d98f5e] text-[#1a0f40] hover:shadow-neonAmber hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2.5"
+                >
+                  <MessageSquare className="w-4 h-4 fill-current" />
+                  <span>Get Free Demo on WhatsApp</span>
+                </a>
 
+                <a
+                  href="tel:+917782808063"
+                  className="px-6 py-4 rounded-xl font-bold text-sm border border-[#3a2f9a] text-white hover:border-[#e3ab84] hover:bg-[#140d5c] transition-all flex items-center gap-2"
+                >
+                  <Phone className="w-4 h-4 text-[#e3ab84]" />
+                  <span>Call Direct: {phone}</span>
+                </a>
+              </div>
 
-
-        <Route
-          path="/privacy-policy"
-          element={
-            <MainLayout>
-              <PrivacyPolicyPage />
-            </MainLayout>
-          }
-        />
-
-        <Route
-          path="/terms-of-service"
-          element={
-            <MainLayout>
-              <TermsOfServicePage />
-            </MainLayout>
-          }
-        />
-
-        <Route
-          path="/sitemap"
-          element={
-            <MainLayout>
-              <SitemapPage />
-            </MainLayout>
-          }
-        />
-
-
-        {/* Admin Login - dedicated page, no MainLayout */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-
-        {/* Admin Routes */}
-        <Route path="/admin" element={<AdminRoute element={<AdminOverview />} />} />
-        <Route path="/admin/products" element={<AdminRoute element={<AdminProducts />} />} />
-        <Route path="/admin/products/new" element={<AdminRoute element={<AdminProductForm />} />} />
-        <Route path="/admin/products/edit/:id" element={<AdminRoute element={<AdminProductForm />} />} />
-        <Route path="/admin/inquiries" element={<AdminRoute element={<AdminInquiries />} />} />
-        <Route path="/admin/leads" element={<AdminRoute element={<AdminLeads />} />} />
-        <Route path="/admin/testimonials" element={<AdminRoute element={<AdminTestimonials />} />} />
-        <Route path="/admin/categories" element={<AdminRoute element={<AdminCategories />} />} />
-        <Route path="/admin/analytics" element={<AdminRoute element={<AdminAnalytics />} />} />
-        <Route path="/admin/media" element={<AdminRoute element={<AdminMedia />} />} />
-        <Route path="/admin/settings" element={<AdminRoute element={<AdminSettings />} />} />
-        <Route path="/admin/notifications" element={<AdminRoute element={<AdminNotifications />} />} />
-
-        {/* 404 Route */}
-        <Route
-          path="*"
-          element={
-            <MainLayout>
-              <div className="min-h-screen flex items-center justify-center">
-                <div className="text-center">
-                  <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
-                  <p className="text-2xl text-gray-600 mb-8">Page Not Found</p>
-                  <a
-                    href="/"
-                    className="inline-block bg-primary text-white px-8 py-3 rounded-lg hover:bg-opacity-90 transition-colors"
-                  >
-                    Go Home
-                  </a>
+              {/* Trust Indicators */}
+              <div className="grid grid-cols-3 gap-3 pt-6 border-t border-[#3a2f9a]/60">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-[#e3ab84] shrink-0" />
+                  <span className="text-xs text-[#b3aee0] font-medium">ARAI & CDAC Approved</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-[#4bc0ff] shrink-0" />
+                  <span className="text-xs text-[#b3aee0] font-medium">10-Sec Live Refresh</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Navigation className="w-5 h-5 text-[#ff79e0] shrink-0" />
+                  <span className="text-xs text-[#b3aee0] font-medium">Pan-India Roaming</span>
                 </div>
               </div>
-            </MainLayout>
-          }
-        />
-      </Routes>
-    </>
+
+            </div>
+
+            {/* Right Column: 3D Isometric Neon City Viewport */}
+            <div id="telematics" className="lg:col-span-6">
+              <NeonCity3D />
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          CAPABILITIES / WHAT WE DO
+          ========================================================================= */}
+      <FeaturesSection />
+
+      {/* =========================================================================
+          HARDWARE & PRODUCTS CATALOG
+          ========================================================================= */}
+      <HardwareCatalog />
+
+      {/* =========================================================================
+          HOW IT WORKS (3 SIMPLE STEPS)
+          ========================================================================= */}
+      <section className="py-20 bg-[#140d5c]/20 border-t border-[#3a2f9a]/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl font-black text-white">
+              Kaise Kaam <span className="text-[#e3ab84]">Karta Hai?</span>
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-[#b3aee0]">
+              Sirf 3 aasan steps me aapki poori gaadi aur fleet online track ho jayegi.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="glass-panel p-8 rounded-2xl border border-[#3a2f9a] text-center relative group hover:border-[#e3ab84] transition">
+              <div className="w-14 h-14 rounded-2xl bg-[#e3ab84] text-[#1a0f40] font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#e3ab84]/20">
+                1
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Device Lagwayein</h3>
+              <p className="text-xs sm:text-sm text-[#b3aee0]">
+                Hamari certified technical team aapke location par aakar gaadi me GPS device install karti hai.
+              </p>
+            </div>
+
+            <div className="glass-panel p-8 rounded-2xl border border-[#3a2f9a] text-center relative group hover:border-[#4bc0ff] transition">
+              <div className="w-14 h-14 rounded-2xl bg-[#4bc0ff] text-[#1a0f40] font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#4bc0ff]/20">
+                2
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">App Se Jodein</h3>
+              <p className="text-xs sm:text-sm text-[#b3aee0]">
+                Aapke Android / iPhone par secure mobile application aur login credentials milte hain.
+              </p>
+            </div>
+
+            <div className="glass-panel p-8 rounded-2xl border border-[#3a2f9a] text-center relative group hover:border-[#ff79e0] transition">
+              <div className="w-14 h-14 rounded-2xl bg-[#ff79e0] text-[#1a0f40] font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#ff79e0]/20">
+                3
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">24/7 Live Dekhein</h3>
+              <p className="text-xs sm:text-sm text-[#b3aee0]">
+                Har gaadi ki live speed, exact location, diesel mileage aur trip reports kabhi bhi check karein.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          TECHNOLOGY PARTNERS
+          ========================================================================= */}
+      <section id="partners" className="py-16 bg-[#0a0630] border-t border-[#3a2f9a]/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#a9a4d6] mb-8">
+            Trusted Platform & Hardware Partners
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-70 hover:opacity-100 transition-opacity">
+            {['iTriangle', 'Accolade Telematics', 'MARKON Tech', 'ACUTE Solutions', 'RDM Controls', 'Teltonika'].map((partner, i) => (
+              <div key={i} className="px-6 py-3 rounded-xl bg-[#140d5c]/60 border border-[#3a2f9a] text-sm font-bold text-[#b3aee0]">
+                {partner}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          CONTACT & LEAD FORM
+          ========================================================================= */}
+      <ContactSection />
+
+      {/* =========================================================================
+          FOOTER
+          ========================================================================= */}
+      <Footer />
+
+    </div>
   );
 }
-
-/**
- * Main App Component
- */
-function App() {
-  useSmoothScroll();
-
-  return (
-    <Router>
-      <AuthProvider>
-        <CartProvider>
-          <AppRoutes />
-          <Toaster position="top-right" reverseOrder={false} />
-        </CartProvider>
-      </AuthProvider>
-    </Router>
-  );
-}
-
-export default App;

@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /admin/
-Disallow: /login/
-Disallow: /api/
-Disallow: /*?*
-
-Sitemap: https://arshigps.com/sitemap.xml
