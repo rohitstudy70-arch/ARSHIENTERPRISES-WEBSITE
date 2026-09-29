@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>About Us | Arshi Enterprises - Leading IoT GPS Telematics Provider</title>
+  <meta name="description" content="Learn about Arshi Enterprises, Bihar's leading IoT GPS tracking and fleet intelligence telematics company headquartered in Purnea, Bihar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0d122b;
+      --bg-card: rgba(26, 34, 74, 0.75);
+      --bg-card-hover: rgba(36, 48, 105, 0.95);
+      --border: rgba(90, 105, 200, 0.35);
+      --border-glow: rgba(227, 171, 132, 0.8);
+      --text: #ffffff;
+      --text-muted: #b8c3e8;
+      --amber: #e3ab84;
+      --cyan: #4bc0ff;
+      --magenta: #ff79e0;
+      --green: #2ecc71;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg); color: var(--text); font-family: "Outfit", system-ui, -apple-system, sans-serif; }
+    body { min-height: 100vh; overflow-x: hidden; background: radial-gradient(circle at 50% 0%, #1c2656 0%, var(--bg) 70%); }
+
+    /* ===== NAVBAR ===== */
+    .topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 4vw; height: 64px; background: rgba(13, 18, 43, 0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, #e3ab84, #d98f5e); display: flex; align-items: center; justify-content: center; font-size: 18px; color: #1a0f40; font-weight: 800; }
+    .nav-logo span { font-size: 20px; font-weight: 800; color: #fff; }
+    .nav-logo span i { font-style: normal; color: var(--amber); }
+
+    .nav-menu { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 18px 14px; color: var(--text-muted); font-size: 13px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: .6px; transition: color .2s; }
+    .nav-link:hover, .nav-link.active, .nav-item.open > .nav-link { color: var(--amber) !important; }
+
+    .nav-dropdown { position: absolute; top: 100%; left: 0; min-width: 270px; background: #0f0945 !important; border: 1px solid #4a3cb5; border-radius: 12px; padding: 10px 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(10px); transition: opacity .2s, transform .2s, visibility .2s; box-shadow: 0 20px 50px rgba(0,0,0,.85); z-index: 99999; }
+    .nav-item:hover > .nav-dropdown, .nav-item.open > .nav-dropdown { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; transform: translateY(0) !important; }
+    .nav-dropdown a { display: block !important; padding: 12px 22px !important; color: #f0f3ff !important; font-size: 14px !important; font-weight: 600 !important; text-decoration: none !important; transition: all .15s !important; border-left: 3px solid transparent !important; }
+    .nav-dropdown a:hover { color: #ffffff !important; background: rgba(227,171,132,.2) !important; border-left-color: var(--amber) !important; padding-left: 26px !important; }
+
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .nav-helpline { display: flex; align-items: center; gap: 8px; padding: 7px 16px; border-radius: 10px; background: rgba(75,192,255,.1); border: 1px solid rgba(75,192,255,.3); text-decoration: none; }
+    .nav-helpline .hl-label { font-size: 9px; font-weight: 700; color: var(--cyan); text-transform: uppercase; }
+    .nav-helpline .hl-num { font-size: 13px; font-weight: 700; color: #fff; }
+    .nav-login { display: inline-flex; align-items: center; gap: 5px; padding: 8px 18px; border-radius: 10px; background: linear-gradient(135deg, #f3c39a, #d98f5e); color: #1a0f40; font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; }
+
+    /* ===== HERO SECTION ===== */
+    .about-hero { padding: 130px 4vw 60px; max-width: 1200px; margin: 0 auto; text-align: center; }
+    .badge-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px; border-radius: 999px; background: rgba(227, 171, 132, 0.12); border: 1px solid rgba(227, 171, 132, 0.35); color: var(--amber); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+    .hero-heading { font-size: clamp(34px, 5vw, 64px); font-weight: 900; line-height: 1.12; margin-bottom: 20px; letter-spacing: -0.5px; }
+    .hero-heading span { color: var(--amber); }
+    .hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--text-muted); max-width: 820px; margin: 0 auto 40px; line-height: 1.6; }
+
+    /* Stats Grid */
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto 80px; }
+    .metric-card { padding: 28px 20px; border-radius: 20px; background: var(--bg-card); border: 1px solid var(--border); backdrop-filter: blur(12px); text-align: center; transition: transform .25s, border-color .25s; }
+    .metric-card:hover { transform: translateY(-4px); border-color: var(--amber); }
+    .metric-num { font-size: clamp(36px, 4vw, 48px); font-weight: 900; color: var(--cyan); line-height: 1; margin-bottom: 6px; }
+    .metric-label { font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; }
+
+    /* ===== STORY SECTION ===== */
+    .section-wrap { max-width: 1200px; margin: 0 auto 90px; padding: 0 4vw; }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .story-content h2 { font-size: 36px; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
+    .story-content h2 span { color: var(--amber); }
+    .story-content p { font-size: 16px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+    
+    .story-card { padding: 36px; border-radius: 24px; background: var(--bg-card); border: 1px solid var(--border); backdrop-filter: blur(14px); position: relative; }
+    .story-card::before { content: ""; position: absolute; top: -1px; left: 40px; right: 40px; height: 1px; background: linear-gradient(90deg, transparent, var(--amber), transparent); }
+
+    /* ===== 4 PILLARS ===== */
+    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px; }
+    .pillar-card { padding: 32px 24px; border-radius: 20px; background: var(--bg-card); border: 1px solid var(--border); transition: all .3s; }
+    .pillar-card:hover { background: var(--bg-card-hover); border-color: var(--amber); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+    .pillar-icon { font-size: 32px; margin-bottom: 16px; }
+    .pillar-title { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+    .pillar-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== MISSION VISION ===== */
+    .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 40px; }
+    .mv-card { padding: 36px; border-radius: 24px; background: linear-gradient(145deg, rgba(26, 34, 74, 0.9), rgba(16, 22, 54, 0.9)); border: 1px solid var(--border); }
+    .mv-tag { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--amber); letter-spacing: 1px; margin-bottom: 10px; }
+    .mv-card h3 { font-size: 26px; font-weight: 900; margin-bottom: 14px; }
+    .mv-card p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ===== TIMELINE ===== */
+    .timeline { position: relative; margin: 50px 0; padding-left: 30px; border-left: 2px solid var(--border); }
+    .tl-item { position: relative; margin-bottom: 40px; }
+    .tl-dot { position: absolute; left: -37px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 16px var(--amber); }
+    .tl-year { font-size: 14px; font-weight: 900; color: var(--cyan); text-transform: uppercase; margin-bottom: 4px; }
+    .tl-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .tl-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== FOOTER ===== */
+    footer { padding: 40px 6vw; background: #070a1a; border-top: 1px solid var(--border); color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    footer a { color: var(--amber); text-decoration: none; font-weight: 600; }
+
+    @media (max-width: 860px) {
+      .story-grid, .mv-grid { grid-template-columns: 1fr; }
+      .nav-menu { display: none; }
+      .about-hero { padding-top: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== MEGA NAVBAR ==================== -->
+  <nav class="topnav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">A</div>
+      <span>Arshi <i>Enterprises</i></span>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="about-us.html" class="nav-link active">Company ▾</a>
+        <div class="nav-dropdown">
+          <a href="about-us.html">About Us</a>
+          <a href="about-us.html#leadership">Leadership</a>
+          <a href="about-us.html#timeline">Our Journey</a>
+          <a href="about-us.html#mission">Mission, Vision & Values</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="index.html#" class="nav-link">Product ▾</a>
+        <div class="nav-dropdown">
+          <a href="index.html#kaam">AGT365N Pro GPS Tracker</a>
+          <a href="index.html#kaam">PRO-365N Fleet Master</a>
+          <a href="index.html#kaam">AIS 140 Govt. Certified GPS</a>
+          <a href="index.html#kaam">Portable Magnetic GPS</a>
+          <a href="index.html#kaam">Micro Bike GPS</a>
+          <a href="index.html#kaam">Tractor & Agri GPS</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="approved-states.html" class="nav-link">Approved States</a>
+      </li>
+      <li class="nav-item">
+        <a href="index.html#" class="nav-link">Services ▾</a>
+        <div class="nav-dropdown">
+          <a href="index.html#kaam">Live GPS Tracking</a>
+          <a href="index.html#kaam">Fuel & Diesel Monitoring</a>
+          <a href="index.html#kaam">Remote Engine Cut-Off</a>
+          <a href="index.html#kaam">AIS 140 RTO Compliance</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="index.html#contact" class="nav-link">Contact ▾</a>
+        <div class="nav-dropdown">
+          <a href="index.html#contact">Get Free Demo</a>
+          <a href="tel:+917782808063">Call Helpline</a>
+          <a href="https://wa.me/917782808063" target="_blank">WhatsApp Chat</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="index.html#" class="nav-link">Insight ▾</a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="tel:+917782808063" class="nav-helpline">
+        <span>☎</span>
+        <div>
+          <div class="hl-label">Helpline 24/7</div>
+          <div class="hl-num">+91 77828 08063</div>
+        </div>
+      </a>
+      <a href="index.html#contact" class="nav-login">Login ↗</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="about-hero">
+    <div class="badge-pill">
+      <span>🛡️</span> About Arshi Enterprises (Arshi GPS)
+    </div>
+    <h1 class="hero-heading">
+      Pioneering Smart Telematics & <br /><span>Fleet Intelligence</span> in India
+    </h1>
+    <p class="hero-sub">
+      Headquartered in Purnea, Bihar, Arshi Enterprises is Eastern India's premier IoT vehicle tracking and smart telematics provider, securing 10,000+ commercial and private vehicles with 24/7 live telemetry.
+    </p>
+
+    <!-- Metrics Grid -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-num">10,000+</div>
+        <div class="metric-label">Vehicles Tracked Live</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">500+</div>
+        <div class="metric-label">Active Commercial Fleets</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">28+</div>
+        <div class="metric-label">Approved States & UTs</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">99.9%</div>
+        <div class="metric-label">Cloud Server Uptime</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OUR STORY ==================== -->
+  <section class="section-wrap">
+    <div class="story-grid">
+      <div class="story-content">
+        <h2>From Local Roots in <span>Purnea, Bihar</span> to Pan-India Fleet Leader</h2>
+        <p>
+          Arshi Enterprises was founded with a single mission: to empower transport operators, truck owners, school bus fleets, and taxi owners with affordable, military-grade GPS intelligence that eliminates fuel theft and vehicle insecurity.
+        </p>
+        <p>
+          What began as an on-ground initiative in Purnia has grown into an advanced IoT ecosystem connecting thousands of commercial trucks, mining dumpers, agricultural machinery, and passenger vehicles across Bihar, Jharkhand, Bengal, UP, and 28+ Indian States.
+        </p>
+        <div style="margin-top: 24px;">
+          <a href="https://wa.me/917782808063?text=Namaste%20Arshi%20Enterprises!%20Mujhe%20aapke%20GPS%20solutions%20ke%20baare%20me%20jaankari%20chahiye." target="_blank" style="display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(135deg, #f3c39a, #d98f5e); color: #1a0f40; font-weight: 800; text-decoration: none; font-size: 14px;">
+            Talk to Our Telematics Specialist
+          </a>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <h3 style="font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 16px;">Why Fleet Owners Trust Arshi GPS</h3>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px;">
+          <li style="display: flex; gap: 12px; font-size: 14px; color: var(--text-muted);">
+            <span style="color: var(--green); font-weight: 900;">✓</span>
+            <span><b>Doorstep Installation:</b> Dedicated field technical engineers at your location across Bihar & neighbouring states.</span>
+          </li>
+          <li style="display: flex; gap: 12px; font-size: 14px; color: var(--text-muted);">
+            <span style="color: var(--green); font-weight: 900;">✓</span>
+            <span><b>Direct RTO Passing:</b> MoRTH certified AIS 140 devices with official passing certificate on Vahan portal.</span>
+          </li>
+          <li style="display: flex; gap: 12px; font-size: 14px; color: var(--text-muted);">
+            <span style="color: var(--green); font-weight: 900;">✓</span>
+            <span><b>Zero Battery Drain:</b> Smart micro-circuitry ensuring your vehicle battery never gets discharged while parked.</span>
+          </li>
+          <li style="display: flex; gap: 12px; font-size: 14px; color: var(--text-muted);">
+            <span style="color: var(--green); font-weight: 900;">✓</span>
+            <span><b>1-Year Direct Replacement:</b> 100% warranty coverage with instantaneous device replacement guarantee.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4 PILLARS OF EXCELLENCE ==================== -->
+  <section class="section-wrap">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <h2 style="font-size: 34px; font-weight: 900;">Our 4 Pillars of <span style="color: var(--amber);">Excellence</span></h2>
+      <p style="color: var(--text-muted); font-size: 15px;">How we deliver uncompromised precision and reliability</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">🛰️</div>
+        <h3 class="pillar-title">Military-Grade Hardware</h3>
+        <p class="pillar-desc">IP67 waterproof casings, heavy vibration tolerance, anti-jammer guards, and high-gain GPS antennas for instant satellite lock.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">⚡</div>
+        <h3 class="pillar-title">10-Sec Live Cloud Sync</h3>
+        <p class="pillar-desc">High-throughput telemetry hosted on AWS Mumbai data centers ensuring zero latency and 90-day trip history replay.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🚨</div>
+        <h3 class="pillar-title">112 ERSS Police SOS</h3>
+        <p class="pillar-desc">Integrated emergency panic button transmitting real-time distress alerts directly to the State Police Command Center.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🛡️</div>
+        <h3 class="pillar-title">Remote Engine Cut-Off</h3>
+        <p class="pillar-desc">Immobilize unauthorized vehicle movement or hijack attempts with a single tap directly from your smartphone app.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MISSION & VISION ==================== -->
+  <section class="section-wrap" id="mission">
+    <div class="mv-grid">
+      <div class="mv-card">
+        <div class="mv-tag">Our Mission</div>
+        <h3>Zero Vehicle Theft. Zero Fuel Waste.</h3>
+        <p>
+          To empower commercial fleet and individual vehicle owners with real-time telematics intelligence that maximizes profit margins, eliminates diesel theft, and ensures total passenger safety across every kilometer.
+        </p>
+      </div>
+      <div class="mv-card">
+        <div class="mv-tag">Our Vision</div>
+        <h3>India's Most Trusted Telematics Brand</h3>
+        <p>
+          To build an interconnected smart transportation ecosystem where every commercial vehicle, school bus, and agricultural machine is equipped with seamless IoT diagnostics and rapid emergency response.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TIMELINE ==================== -->
+  <section class="section-wrap" id="timeline">
+    <div style="text-align: center; margin-bottom: 30px;">
+      <h2 style="font-size: 34px; font-weight: 900;">Our <span style="color: var(--amber);">Journey & Milestones</span></h2>
+      <p style="color: var(--text-muted); font-size: 15px;">How Arshi Enterprises grew into a telematics powerhouse</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2018 - Inception</div>
+        <div class="tl-title">Founded in Purnea, Bihar</div>
+        <div class="tl-desc">Started operations delivering commercial GPS tracking and fuel telemetry to local transporters and private vehicle owners.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2020 - Expansion</div>
+        <div class="tl-title">Doorstep Field Engineering Network</div>
+        <div class="tl-desc">Expanded mobile technical teams across North & East Bihar, Jharkhand, and Bengal, crossing 2,500+ active monitored vehicles.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2022 - Govt. Certification</div>
+        <div class="tl-title">AIS 140 & National Vahan Portal Integration</div>
+        <div class="tl-desc">Awarded ARAI & CDAC certified device distributions with complete direct RTO passing integration for commercial transport.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2024 - 2026 - Scale</div>
+        <div class="tl-title">10,000+ Vehicles Tracked across 28 States</div>
+        <div class="tl-desc">Full-scale cloud telematics suite deployed with 112 ERSS Police SOS integration, serving 500+ commercial fleets pan-India.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HEADQUARTERS ==================== -->
+  <section class="section-wrap" id="leadership">
+    <div class="story-card" style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <div style="font-size: 32px; margin-bottom: 12px;">📍</div>
+      <h3 style="font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 8px;">Registered Headquarters & NOC Center</h3>
+      <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">
+        Hanuman Mandir, NH31, Maranga, near Vidya Vihar Institute Of Technology, Purnia - 854303, Bihar, India
+      </p>
+      <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <a href="tel:+917782808063" style="padding: 12px 24px; border-radius: 10px; background: rgba(75, 192, 255, 0.12); border: 1px solid rgba(75, 192, 255, 0.4); color: #fff; font-weight: 700; text-decoration: none; font-size: 13px;">
+          📞 Helpline: +91 77828 08063
+        </a>
+        <a href="mailto:arshiranjeet133@gmail.com" style="padding: 12px 24px; border-radius: 10px; background: rgba(227, 171, 132, 0.12); border: 1px solid rgba(227, 171, 132, 0.4); color: var(--amber); font-weight: 700; text-decoration: none; font-size: 13px;">
+          ✉️ arshiranjeet133@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div>
+      © <span id="year"></span> <b>Arshi Enterprises</b>. All rights reserved. Purnea, Bihar.
+    </div>
+    <div>
+      Helpline: <a href="tel:+917782808063">+91 77828 08063</a> | WhatsApp: <a href="https://wa.me/917782808063" target="_blank">Chat Now</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Dropdown toggle on click
+    document.querySelectorAll('.nav-item').forEach(item => {
+      const link = item.querySelector('.nav-link');
+      const dropdown = item.querySelector('.nav-dropdown');
+      if (link && dropdown) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+          if (!isOpen) item.classList.add('open');
+        });
+      }
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>

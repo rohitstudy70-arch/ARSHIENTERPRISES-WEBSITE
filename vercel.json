@@ -3,6 +3,8 @@
   "rewrites": [
     { "source": "/approved-states.html", "destination": "/approved-states.html" },
     { "source": "/approved-states", "destination": "/approved-states.html" },
+    { "source": "/about-us.html", "destination": "/about-us.html" },
+    { "source": "/about-us", "destination": "/about-us.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

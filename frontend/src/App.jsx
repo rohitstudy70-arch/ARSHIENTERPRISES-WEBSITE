@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ApprovedStatesPage from './pages/ApprovedStatesPage';
+import AboutUsPage from './pages/AboutUsPage';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/approved-states" element={<ApprovedStatesPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
