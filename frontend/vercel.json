@@ -1,5 +1,8 @@
 {
+  "cleanUrls": true,
   "rewrites": [
+    { "source": "/approved-states.html", "destination": "/approved-states.html" },
+    { "source": "/approved-states", "destination": "/approved-states.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
