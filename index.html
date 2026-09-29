@@ -169,30 +169,195 @@
   @media (max-width:900px){ .heroText{ max-width:none; } }
   @media (max-width:760px){ .heroText{ top:132px; left:14px; right:14px; } .heroText .hl{ font-size:clamp(30px,9vw,44px); } .heroText p{ display:none; } }
 #bar, #fleet, #detail, #miniWrap { display: none !important; }
-  .topnav { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 40; display: flex; justify-content: space-between; align-items: center; padding: 16px 6vw; background: linear-gradient(#0a0630cc, #0a063000); }
-  .topnav b { font-size: 19px; color: #fff; }
-  .topnav b i { font-style: normal; color: #e3ab84; }
-  .topnav div a { color: #b3aee0; text-decoration: none; font-size: 14px; margin-left: 26px; }
-  .topnav div a:hover { color: #fff; }
+  /* ===== MEGA NAVBAR ===== */
+  .topnav { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 40; display: flex; justify-content: space-between; align-items: center; padding: 0 4vw; height: 64px; background: linear-gradient(#0a0630ee, #0a0630cc); transition: background .3s, backdrop-filter .3s; }
+  .topnav.solidnav { background: rgba(10,6,48,.95); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .topnav .prog { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: linear-gradient(90deg,#e3ab84,#ff79e0,#4bc0ff); transform-origin: 0 50%; transform: scaleX(0); }
+
+  /* Logo */
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+  .nav-logo-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, #e3ab84, #d98f5e); display: flex; align-items: center; justify-content: center; font-size: 18px; color: #1a0f40; font-weight: 800; box-shadow: 0 4px 16px rgba(227,171,132,.25); }
+  .nav-logo span { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: .3px; }
+  .nav-logo span i { font-style: normal; color: #e3ab84; }
+
+  /* Center Menu */
+  .nav-menu { display: flex; align-items: center; gap: 4px; margin: 0; padding: 0; list-style: none; }
+  .nav-item { position: relative; }
+  .nav-link { display: flex; align-items: center; gap: 5px; padding: 18px 14px; color: #b3aee0; font-size: 13px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: .6px; transition: color .2s; white-space: nowrap; cursor: pointer; border: none; background: none; font-family: inherit; }
+  .nav-link:hover, .nav-item:hover > .nav-link, .nav-item.open > .nav-link, .nav-link.on { color: #e3ab84 !important; }
+  .nav-link .arrow { font-size: 10px; margin-left: 2px; transition: transform .25s ease; }
+  .nav-item:hover > .nav-link .arrow, .nav-item.open > .nav-link .arrow { transform: rotate(180deg); }
+
+  /* Dropdown Menu (Click + Hover Support) */
+  .nav-dropdown { position: absolute; top: 100%; left: 0; min-width: 260px; background: #0f0945 !important; border: 1px solid #4a3cb5; border-radius: 12px; padding: 10px 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(10px); transition: opacity .2s ease, transform .2s ease, visibility .2s; box-shadow: 0 20px 50px rgba(0,0,0,.85), 0 0 25px rgba(227,171,132,.15); z-index: 9999; }
+  .nav-item:hover > .nav-dropdown, .nav-item.open > .nav-dropdown { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; transform: translateY(0) !important; display: block !important; }
+  .nav-dropdown a { display: block; padding: 12px 22px; color: #e9eefb !important; font-size: 13.5px; font-weight: 600; text-decoration: none; transition: all .15s; border-left: 3px solid transparent; }
+  .nav-dropdown a:hover { color: #ffffff !important; background: rgba(227,171,132,.18) !important; border-left-color: #e3ab84; padding-left: 26px; }
+  .nav-dropdown .dd-divider { height: 1px; background: #3a2f9a; margin: 6px 14px; }
+
+  /* Right Actions */
+  .nav-actions { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .nav-helpline { display: flex; align-items: center; gap: 8px; padding: 7px 16px; border-radius: 10px; background: rgba(75,192,255,.08); border: 1px solid rgba(75,192,255,.25); text-decoration: none; transition: all .25s; }
+  .nav-helpline:hover { background: rgba(75,192,255,.15); border-color: #4bc0ff; }
+  .nav-helpline .hl-icon { font-size: 15px; }
+  .nav-helpline .hl-label { font-size: 9px; font-weight: 700; color: #4bc0ff; text-transform: uppercase; letter-spacing: .8px; line-height: 1.2; }
+  .nav-helpline .hl-num { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .nav-login { display: inline-flex; align-items: center; gap: 5px; padding: 8px 18px; border-radius: 10px; background: linear-gradient(135deg, #f3c39a, #d98f5e); color: #1a0f40; font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: .5px; transition: all .25s; box-shadow: 0 4px 16px rgba(227,171,132,.2); }
+  .nav-login:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(227,171,132,.4); }
+  .nav-login .arrow-up { font-size: 13px; }
+
+  /* Mobile Toggle */
+  .nav-toggle { display: none; background: none; border: 1px solid #3a2f9a; border-radius: 8px; padding: 8px 10px; color: #fff; font-size: 20px; cursor: pointer; }
+
+  /* Hero Buttons (keep existing) */
   .heroBtns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; pointer-events: auto; }
   .hb { display: inline-flex; align-items: center; padding: 13px 26px; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none; color: #fff; border: 1px solid #e3ab84; transition: box-shadow .25s, transform .25s; }
   .hb:hover { box-shadow: 0 0 24px rgba(227,171,132,.45); }
   .hb.p { background: linear-gradient(135deg,#f3c39a,#d98f5e); color: #1a0f40; border-color: transparent; }
-  .topnav div a:focus-visible, .hb:focus-visible { outline: 2px solid #e3ab84; outline-offset: 2px; }
-  @media (max-width: 760px) { .topnav div a { display: none; } .topnav div a.cta { display: inline; } .heroText { top: 110px !important; } }
-  .topnav { transition: backdrop-filter .3s; }
-  .topnav.solidnav { background: rgba(10,6,48,.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-  .topnav .prog { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: linear-gradient(90deg,#e3ab84,#ff79e0,#4bc0ff); transform-origin: 0 50%; transform: scaleX(0); }
-  .topnav div a { position: relative; transition: color .25s; }
-  .topnav div a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: #e3ab84; transform: scaleX(0); transform-origin: 0 50%; transition: transform .3s; }
-  .topnav div a.on { color: #e3ab84; }
-  .topnav div a.on::after { transform: scaleX(1); }
+  .hb:focus-visible { outline: 2px solid #e3ab84; outline-offset: 2px; }
   .heroText .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
   .heroText .wi { display: inline-block; }
+
+  /* Mobile Responsive */
+  @media (max-width: 960px) {
+    .nav-menu { display: none; }
+    .nav-helpline .hl-label { display: none; }
+    .nav-toggle { display: block; }
+    .heroText { top: 110px !important; }
+  }
+  @media (max-width: 600px) {
+    .topnav { padding: 0 14px; height: 56px; }
+    .nav-helpline { padding: 6px 10px; }
+    .nav-helpline .hl-num { font-size: 11px; }
+    .nav-login { padding: 7px 12px; font-size: 11px; }
+  }
+
+  /* Mobile Menu Drawer */
+  .mobile-drawer { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: rgba(10,6,48,.98); backdrop-filter: blur(14px); z-index: 39; padding: 20px 24px; overflow-y: auto; }
+  .mobile-drawer.open { display: block; }
+  .mobile-drawer a, .mobile-drawer summary { display: block; padding: 14px 0; color: #b3aee0; font-size: 16px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #3a2f9a30; }
+  .mobile-drawer a:hover { color: #e3ab84; }
+  .mobile-drawer details { border-bottom: 1px solid #3a2f9a30; }
+  .mobile-drawer details summary { cursor: pointer; list-style: none; }
+  .mobile-drawer details summary::marker, .mobile-drawer details summary::-webkit-details-marker { display: none; }
+  .mobile-drawer details a { padding: 10px 0 10px 16px; font-size: 14px; font-weight: 500; border: none; }
 </style>
 </head>
 <body>
-<nav class="topnav"><b>Arshi <i>Enterprises</i></b><i class="prog"></i><div><a href="#kaam">Services</a><a href="#kaise">How it works</a><a href="#partners">Partners</a><a href="#contact" class="cta">Contact us</a></div></nav>
+<nav class="topnav">
+  <!-- Logo -->
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">A</div>
+    <span>Arshi <i>Enterprises</i></span>
+  </a>
+
+  <i class="prog"></i>
+
+  <!-- Center Menu -->
+  <ul class="nav-menu">
+    <li class="nav-item">
+      <a href="#" class="nav-link">Company <span class="arrow">▾</span></a>
+      <div class="nav-dropdown">
+        <a href="#">About Us</a>
+        <a href="#">Leadership</a>
+        <a href="#">Events</a>
+        <a href="#">Awards & Recognitions</a>
+        <a href="#">Mission, Vision & Values</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Product <span class="arrow">▾</span></a>
+      <div class="nav-dropdown">
+        <a href="#kaam">AGT365N Pro GPS Tracker</a>
+        <a href="#kaam">PRO-365N Fleet Master</a>
+        <a href="#kaam">AIS 140 Govt. Certified GPS</a>
+        <div class="dd-divider"></div>
+        <a href="#kaam">Portable Magnetic GPS</a>
+        <a href="#kaam">Micro Bike GPS</a>
+        <a href="#kaam">Tractor & Agri GPS</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#partners" class="nav-link">Approved States</a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Services <span class="arrow">▾</span></a>
+      <div class="nav-dropdown">
+        <a href="#kaam">Live GPS Tracking</a>
+        <a href="#kaam">Fuel & Diesel Monitoring</a>
+        <a href="#kaam">Remote Engine Cut-Off</a>
+        <a href="#kaam">Geofence & Alerts</a>
+        <div class="dd-divider"></div>
+        <a href="#kaam">AIS 140 RTO Compliance</a>
+        <a href="#kaam">Fleet Management Reports</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Contact <span class="arrow">▾</span></a>
+      <div class="nav-dropdown">
+        <a href="#contact">Get Free Demo</a>
+        <a href="tel:+917782808063">Call Helpline</a>
+        <a href="https://wa.me/917782808063" target="_blank">WhatsApp Chat</a>
+        <div class="dd-divider"></div>
+        <a href="mailto:arshiranjeet133@gmail.com">Email Support</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Insight <span class="arrow">▾</span></a>
+      <div class="nav-dropdown">
+        <a href="#">Blog & Articles</a>
+        <a href="#">GPS Industry News</a>
+        <a href="#">Case Studies</a>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Right Actions -->
+  <div class="nav-actions">
+    <a href="tel:+917782808063" class="nav-helpline">
+      <span class="hl-icon">☎</span>
+      <div>
+        <div class="hl-label">Helpline 24/7</div>
+        <div class="hl-num">+91 77828 08063</div>
+      </div>
+    </a>
+    <a href="#" class="nav-login">Login <span class="arrow-up">↗</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <details><summary>Company ▾</summary>
+    <a href="#">About Us</a>
+    <a href="#">Leadership</a>
+    <a href="#">Events</a>
+    <a href="#">Awards & Recognitions</a>
+    <a href="#">Mission, Vision & Values</a>
+  </details>
+  <details><summary>Product ▾</summary>
+    <a href="#kaam">AGT365N Pro GPS Tracker</a>
+    <a href="#kaam">PRO-365N Fleet Master</a>
+    <a href="#kaam">AIS 140 Govt. Certified GPS</a>
+    <a href="#kaam">Portable Magnetic GPS</a>
+  </details>
+  <a href="#partners">Approved States</a>
+  <details><summary>Services ▾</summary>
+    <a href="#kaam">Live GPS Tracking</a>
+    <a href="#kaam">Fuel & Diesel Monitoring</a>
+    <a href="#kaam">Remote Engine Cut-Off</a>
+    <a href="#kaam">AIS 140 RTO Compliance</a>
+  </details>
+  <details><summary>Contact ▾</summary>
+    <a href="#contact">Get Free Demo</a>
+    <a href="tel:+917782808063">Call Helpline</a>
+    <a href="https://wa.me/917782808063" target="_blank">WhatsApp Chat</a>
+  </details>
+  <details><summary>Insight ▾</summary>
+    <a href="#">Blog & Articles</a>
+    <a href="#">GPS Industry News</a>
+  </details>
+</div>
 <div id="app">
   <div id="stage"></div>
   <div id="ui">
@@ -290,6 +455,36 @@ document.getElementById("y").textContent=new Date().getFullYear();
 document.getElementById("f").addEventListener("submit",e=>{e.preventDefault();const d=new FormData(e.target);
 window.open(wa("Namaste, main "+d.get("n")+" bol raha hoon. Phone: "+d.get("p")+". Fleet: "+d.get("v")+". Mujhe GPS tracking ka demo chahiye."),"_blank")});
 new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].isIntersecting?"none":"grid"},{threshold:.6}).observe(document.getElementById("app"));
+
+// Dropdown Menu Click Toggle & Outside Click Listener
+(function(){
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    const link = item.querySelector('.nav-link');
+    const dropdown = item.querySelector('.nav-dropdown');
+    if (link && dropdown) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = item.classList.contains('open');
+        navItems.forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    }
+  });
+
+  document.addEventListener('click', () => {
+    navItems.forEach(i => i.classList.remove('open'));
+  });
+})();
+
+// Mobile drawer toggle
+(function(){
+  const btn=document.getElementById("navToggle"), drawer=document.getElementById("mobileDrawer");
+  if(!btn||!drawer) return;
+  btn.addEventListener("click",()=>{ const open=drawer.classList.toggle("open"); btn.textContent=open?"✕":"☰"; });
+  drawer.querySelectorAll("a[href^='#']").forEach(a=>a.addEventListener("click",()=>{ drawer.classList.remove("open"); btn.textContent="☰"; }));
+})();
 </script>
 
 
