@@ -337,10 +337,10 @@ export default function NeonCity3D() {
         az += dt * (selected ? 0.025 : 0.04);
       }
 
-      // 20-Second Auto-Touring Cycle
-      if (now - lastAutoTour >= 20000) {
+      // 5-Second Auto-Touring Cycle
+      if (now - lastAutoTour >= 5000) {
         lastAutoTour = now;
-        if (now - lastUserTouch > 6000) {
+        if (now - lastUserTouch > 3000) {
           triggerAutoSwitch();
         }
       }
@@ -441,7 +441,7 @@ export default function NeonCity3D() {
             <span className="text-[10px] font-black uppercase tracking-wider text-[#e3ab84] bg-[#e3ab84]/20 px-2 py-0.5 rounded">
               🎯 {selectedVehicle.type === 'truck' ? 'Heavy Truck' : 'Commercial Car'}
             </span>
-            <span className="text-[10px] text-emerald-400 font-bold">● Active 20s Tour</span>
+            <span className="text-[10px] text-emerald-400 font-bold">● Active 5s Tour</span>
           </div>
           <div className="text-lg font-black tracking-tight">{selectedVehicle.id}</div>
           <div className="text-xs text-slate-300 mt-0.5">{selectedVehicle.route?.name}</div>
@@ -464,7 +464,7 @@ export default function NeonCity3D() {
 
       {/* Interactive Drag Notice */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 px-4 py-1.5 rounded-full bg-[#0a0630]/80 backdrop-blur-md border border-[#3a2f9a] text-[11px] text-[#a9a4d6] flex items-center gap-2 pointer-events-none">
-        <span>🔄 Auto-Touring Vehicles Every 20s • Click Vehicle or Drag to Orbit</span>
+        <span>🔄 Auto-Touring Vehicles Every 5s • Click Vehicle or Drag to Orbit</span>
       </div>
     </div>
   );
