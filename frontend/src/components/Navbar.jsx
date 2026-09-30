@@ -45,6 +45,18 @@ export default function Navbar() {
 
         {/* Center Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-1">
+          {/* Home */}
+          <Link 
+            to="/"
+            className={`px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition ${
+              location.pathname === '/'
+                ? 'text-[#e3ab84] bg-[#e3ab84]/15 border border-[#e3ab84]/40 shadow-sm'
+                : 'text-[#b3aee0] hover:text-[#e3ab84]'
+            }`}
+          >
+            Home
+          </Link>
+
           {/* Company */}
           <div className="relative group" onMouseLeave={() => setActiveDropdown(null)}>
             <button 
