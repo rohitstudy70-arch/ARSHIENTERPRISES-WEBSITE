@@ -113,35 +113,12 @@ export default function AboutUsPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Leader 1: Archana Jha (Managing Director) */}
-          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col sm:flex-row group hover:-translate-y-1">
-            <div className="sm:w-5/12 min-h-[280px] bg-slate-100 relative overflow-hidden shrink-0">
-              <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
-                alt="Archana Jha - Managing Director"
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-            </div>
-            <div className="p-7 sm:p-8 flex flex-col justify-center">
-              <h3 className="text-2xl font-black text-blue-900 mb-1">
-                Archana Jha
-              </h3>
-              <div className="text-xs font-black uppercase tracking-wider text-amber-600 mb-4">
-                Managing Director
-              </div>
-              <blockquote className="text-sm italic text-slate-600 leading-relaxed border-l-2 border-amber-500 pl-4 my-0">
-                "Behind every moving vehicle is our relentless 24/7 support. At Arshi Enterprises, we ensure that no fleet owner ever feels alone on the road — delivering instant backend assistance, unwavering care, and absolute trust across India."
-              </blockquote>
-            </div>
-          </div>
-
-          {/* Leader 2: Ranjeet Kumar (Operational Director) */}
+          {/* Leader 1: Ranjeet Kumar (Managing Director) */}
           <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col sm:flex-row group hover:-translate-y-1">
             <div className="sm:w-5/12 min-h-[280px] bg-slate-100 relative overflow-hidden shrink-0">
               <img
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop"
-                alt="Ranjeet Kumar - Operational Director"
+                alt="Ranjeet Kumar - Managing Director"
                 className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
@@ -151,10 +128,33 @@ export default function AboutUsPage() {
                 Ranjeet Kumar
               </h3>
               <div className="text-xs font-black uppercase tracking-wider text-amber-600 mb-4">
+                Managing Director
+              </div>
+              <blockquote className="text-sm italic text-slate-600 leading-relaxed border-l-2 border-amber-500 pl-4 my-0">
+                "Operational excellence, strategic vision, and prompt doorstep support are the bridges between our telematics technology and its tangible economic impact on ground for commercial transporters."
+              </blockquote>
+            </div>
+          </div>
+
+          {/* Leader 2: Archana Jha (Operational Director) */}
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col sm:flex-row group hover:-translate-y-1">
+            <div className="sm:w-5/12 min-h-[280px] bg-slate-100 relative overflow-hidden shrink-0">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
+                alt="Archana Jha - Operational Director"
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div className="p-7 sm:p-8 flex flex-col justify-center">
+              <h3 className="text-2xl font-black text-blue-900 mb-1">
+                Archana Jha
+              </h3>
+              <div className="text-xs font-black uppercase tracking-wider text-amber-600 mb-4">
                 Operational Director
               </div>
               <blockquote className="text-sm italic text-slate-600 leading-relaxed border-l-2 border-amber-500 pl-4 my-0">
-                "Operational excellence and prompt doorstep support are the bridges between our telematics technology and its tangible economic impact on ground for transporters."
+                "Behind every moving vehicle is our relentless 24/7 operations and support. At Arshi Enterprises, we ensure that no fleet owner ever feels alone on the road — delivering instant backend assistance, unwavering care, and absolute trust across India."
               </blockquote>
             </div>
           </div>
