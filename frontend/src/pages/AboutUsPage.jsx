@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ShieldCheck, CheckCircle2, Zap, Radio, Phone, Mail, MapPin, Award, ChevronRight } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, Zap, Radio, Phone, Mail, MapPin, Award, Trophy, FileCheck, ChevronRight } from 'lucide-react';
 
 export default function AboutUsPage() {
   useEffect(() => {
@@ -157,6 +157,71 @@ export default function AboutUsPage() {
                 "Operational excellence and prompt doorstep support are the bridges between our telematics technology and its tangible economic impact on ground for transporters."
               </blockquote>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Awards & Recognitions */}
+      <div id="awards" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="text-xs font-black uppercase text-blue-600 tracking-widest block mb-2">
+            Honors & Distinctions
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Awards & <span className="text-amber-600">Recognitions</span>
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+            Celebrating our relentless commitment to telematics innovation, strict government compliance, and 24/7 service trust across India.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Award 1 */}
+          <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group flex flex-col">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-extrabold uppercase tracking-wider mb-4 w-fit">
+              <Trophy className="w-3.5 h-3.5 text-amber-600" />
+              Regional Leader
+            </span>
+            <div className="text-3xl mb-3">🏆</div>
+            <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition">Best Emerging Telematics Brand</h3>
+            <div className="text-xs font-bold text-blue-700 mb-3">Eastern India Transport Forum (2024)</div>
+            <p className="text-xs text-slate-600 leading-relaxed mt-auto">Awarded for fastest commercial fleet deployment, sub-second GPS precision, and rapid expansion across Bihar and Eastern India.</p>
+          </div>
+
+          {/* Award 2 */}
+          <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group flex flex-col">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-extrabold uppercase tracking-wider mb-4 w-fit">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              Govt. Certified
+            </span>
+            <div className="text-3xl mb-3">🛡️</div>
+            <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition">AIS 140 RTO Compliance Excellence</h3>
+            <div className="text-xs font-bold text-blue-700 mb-3">State Transport Telematics Board (2023)</div>
+            <p className="text-xs text-slate-600 leading-relaxed mt-auto">Recognized for flawless 100% passing success on National Vahan Portal and CDAC-certified VLTD integration across 28+ states.</p>
+          </div>
+
+          {/* Award 3 */}
+          <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group flex flex-col">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-800 text-[11px] font-extrabold uppercase tracking-wider mb-4 w-fit">
+              <Award className="w-3.5 h-3.5 text-purple-600" />
+              Service Assurance
+            </span>
+            <div className="text-3xl mb-3">🎖️</div>
+            <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition">Customer Trust & 24/7 Service Leadership</h3>
+            <div className="text-xs font-bold text-blue-700 mb-3">Commercial Transporters Association (2024)</div>
+            <p className="text-xs text-slate-600 leading-relaxed mt-auto">Honored for exceptional customer satisfaction, 99.8% fleet client retention, instant 24/7 backend support, and doorstep device replacement.</p>
+          </div>
+
+          {/* Award 4 */}
+          <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group flex flex-col">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-[11px] font-extrabold uppercase tracking-wider mb-4 w-fit">
+              <FileCheck className="w-3.5 h-3.5 text-blue-600" />
+              Certified Partner
+            </span>
+            <div className="text-3xl mb-3">📜</div>
+            <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition">MoRTH & ARAI Compliant Partner</h3>
+            <div className="text-xs font-bold text-blue-700 mb-3">Automotive Research Association of India</div>
+            <p className="text-xs text-slate-600 leading-relaxed mt-auto">Official recognition for military-grade hardware standards, integrated 112 ERSS Police SOS panic emergency, and fuel theft protection.</p>
           </div>
         </div>
       </div>
