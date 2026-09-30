@@ -5,6 +5,8 @@
     { "source": "/approved-states", "destination": "/approved-states.html" },
     { "source": "/about-us.html", "destination": "/about-us.html" },
     { "source": "/about-us", "destination": "/about-us.html" },
+    { "source": "/events.html", "destination": "/events.html" },
+    { "source": "/events", "destination": "/events.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

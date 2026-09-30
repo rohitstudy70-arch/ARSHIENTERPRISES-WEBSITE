@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ApprovedStatesPage from './pages/ApprovedStatesPage';
 import AboutUsPage from './pages/AboutUsPage';
+import EventsPage from './pages/EventsPage';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/approved-states" element={<ApprovedStatesPage />} />
+            <Route path="/events" element={<EventsPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </main>
