@@ -171,50 +171,50 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
-              <div className="text-4xl mb-4">🚚</div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Logistics & Long-Haul Freight</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 text-center flex flex-col items-center">
+              <div className="text-4xl mb-4 text-center">🚚</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">Logistics & Long-Haul Freight</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-center">
                 Real-time route visibility, predictive delivery ETAs, automated driver trip audits, and instant anti-theft immobilization designed for 10-wheelers, trailers, and multi-axle freight.
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
-              <div className="text-4xl mb-4">⛏️</div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Mining & Heavy Construction</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 text-center flex flex-col items-center">
+              <div className="text-4xl mb-4 text-center">⛏️</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">Mining & Heavy Construction</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-center">
                 High-precision ultrasonic fuel telemetry, engine run-hour logging, and strict geofence perimeter alarms for dumpers, tippers, excavators, and heavy earthmovers.
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
-              <div className="text-4xl mb-4">🚌</div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">School Transit & Passenger Transit</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 text-center flex flex-col items-center">
+              <div className="text-4xl mb-4 text-center">🚌</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">School Transit & Passenger Transit</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-center">
                 MoRTH certified AIS 140 VLTD terminals with integrated 112 ERSS Police SOS panic emergency triggers, automated passenger route auditing, and seamless RTO fitness certification.
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
-              <div className="text-4xl mb-4">❄️</div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Cold Chain & Perishable Logistics</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 text-center flex flex-col items-center">
+              <div className="text-4xl mb-4 text-center">❄️</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">Cold Chain & Perishable Logistics</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-center">
                 Wireless temperature sensors with continuous BLE cloud telemetry, real-time thermal breach alerts, and automated trip compliance logging for pharmaceutical and dairy fleets.
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
-              <div className="text-4xl mb-4">🚜</div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Agricultural Contractors & Harvesters</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 text-center flex flex-col items-center">
+              <div className="text-4xl mb-4 text-center">🚜</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">Agricultural Contractors & Harvesters</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-center">
                 Field acreage and bigha calculation algorithms, PTO engagement telemetry, vibration-proof casing, and battery disconnection alarms for tractors and combine harvesters.
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
-              <div className="text-4xl mb-4">🏢</div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Enterprise Fleets & Car Rentals</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 text-center flex flex-col items-center">
+              <div className="text-4xl mb-4 text-center">🏢</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">Enterprise Fleets & Car Rentals</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed text-center">
                 Comprehensive driver safety scorecards, overspeed detection, automated maintenance work-orders, and REST API connectors for direct integration with ERP & SAP systems.
               </p>
             </div>

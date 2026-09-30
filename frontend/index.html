@@ -144,12 +144,11 @@
   .site { background: #f8fafc; color: #0f172a; position: relative; }
   .site section { padding: 90px 6vw; border-bottom: 1px solid #e2e8f0; }
   .site h2 { font-size: clamp(30px,3.8vw,46px); margin: 0 0 12px; color: #0f172a; font-weight: 800; letter-spacing: -0.5px; }
-  .site p { color: #475569; line-height: 1.65; font-size: 17px; max-width: 38em; margin: 0; }
-  .site .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px; margin-top: 36px; max-width: 1100px; }
-  .site .card { border: 1px solid #e2e8f0; border-radius: 18px; padding: 32px 28px; background: #ffffff; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02); transition: all .3s cubic-bezier(0.16, 1, 0.3, 1); }
+  .site .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 24px; margin: 36px auto 0; max-width: 1200px; width: 100%; justify-content: center; }
+  .site .card { border: 1px solid #e2e8f0; border-radius: 18px; padding: 32px 28px; background: #ffffff; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02); transition: all .3s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
   .site .card:hover { transform: translateY(-6px); border-color: #d97706; box-shadow: 0 20px 35px -8px rgba(217, 119, 6, 0.15), 0 8px 16px -4px rgba(0,0,0,0.06); }
-  .site .card h3 { margin: 0 0 10px; font-size: 22px; font-weight: 800; color: #0f172a; }
-  .site .card p { font-size: 15px; color: #475569; line-height: 1.6; }
+  .site .card h3 { margin: 0 0 10px; font-size: 22px; font-weight: 800; color: #0f172a; text-align: center; }
+  .site .card p { font-size: 15px; color: #475569; line-height: 1.6; text-align: center; margin: 0 auto; }
   .site .card b { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, #fef3c7, #fde68a); color: #b45309; font-size: 22px; font-weight: 900; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2); }
   .site .pills { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
   .site .pills span { padding: 12px 28px; border: 1px solid #e2e8f0; border-radius: 999px; background: #ffffff; color: #1e293b; font-weight: 700; font-size: 15px; box-shadow: 0 4px 14px rgba(0,0,0,0.04); transition: all .2s; }
@@ -457,51 +456,51 @@
       </p>
     </div>
 
-    <div class="grid">
-      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px; background: #ffffff;">
-        <div style="font-size: 36px; margin-bottom: 14px;">🚚</div>
-        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Logistics & Long-Haul Freight</h3>
-        <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1200px; margin: 36px auto 0; justify-content: center;">
+      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; background: #ffffff; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+        <div style="font-size: 38px; margin-bottom: 14px; text-align: center;">🚚</div>
+        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px; text-align: center;">Logistics & Long-Haul Freight</h3>
+        <p style="color: #475569; font-size: 14px; line-height: 1.6; text-align: center; margin: 0 auto;">
           Real-time route visibility, predictive delivery ETAs, automated driver trip audits, and instant anti-theft immobilization designed for 10-wheelers, trailers, and multi-axle freight.
         </p>
       </div>
 
-      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px; background: #ffffff;">
-        <div style="font-size: 36px; margin-bottom: 14px;">⛏️</div>
-        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Mining & Heavy Construction</h3>
-        <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; background: #ffffff; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+        <div style="font-size: 38px; margin-bottom: 14px; text-align: center;">⛏️</div>
+        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px; text-align: center;">Mining & Heavy Construction</h3>
+        <p style="color: #475569; font-size: 14px; line-height: 1.6; text-align: center; margin: 0 auto;">
           High-precision ultrasonic fuel telemetry, engine run-hour logging, and strict geofence perimeter alarms for dumpers, tippers, excavators, and heavy earthmovers.
         </p>
       </div>
 
-      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px; background: #ffffff;">
-        <div style="font-size: 36px; margin-bottom: 14px;">🚌</div>
-        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px;">School Transit & Passenger Transport</h3>
-        <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; background: #ffffff; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+        <div style="font-size: 38px; margin-bottom: 14px; text-align: center;">🚌</div>
+        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px; text-align: center;">School Transit & Passenger Transport</h3>
+        <p style="color: #475569; font-size: 14px; line-height: 1.6; text-align: center; margin: 0 auto;">
           MoRTH certified AIS 140 VLTD terminals with integrated 112 ERSS Police SOS panic emergency triggers, automated passenger route auditing, and seamless RTO fitness certification.
         </p>
       </div>
 
-      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px; background: #ffffff;">
-        <div style="font-size: 36px; margin-bottom: 14px;">❄️</div>
-        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Cold Chain & Perishable Logistics</h3>
-        <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; background: #ffffff; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+        <div style="font-size: 38px; margin-bottom: 14px; text-align: center;">❄️</div>
+        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px; text-align: center;">Cold Chain & Perishable Logistics</h3>
+        <p style="color: #475569; font-size: 14px; line-height: 1.6; text-align: center; margin: 0 auto;">
           Wireless temperature sensors with continuous BLE cloud telemetry, real-time thermal breach alerts, and automated trip compliance logging for pharmaceutical and dairy fleets.
         </p>
       </div>
 
-      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px; background: #ffffff;">
-        <div style="font-size: 36px; margin-bottom: 14px;">🚜</div>
-        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Agricultural Contractors & Machinery</h3>
-        <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; background: #ffffff; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+        <div style="font-size: 38px; margin-bottom: 14px; text-align: center;">🚜</div>
+        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px; text-align: center;">Agricultural Contractors & Machinery</h3>
+        <p style="color: #475569; font-size: 14px; line-height: 1.6; text-align: center; margin: 0 auto;">
           Field acreage and bigha calculation algorithms, PTO engagement telemetry, vibration-proof casing, and battery disconnection alarms for tractors and combine harvesters.
         </p>
       </div>
 
-      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px; background: #ffffff;">
-        <div style="font-size: 36px; margin-bottom: 14px;">🏢</div>
-        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px;">Enterprise Fleets & Corporate Car Rentals</h3>
-        <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+      <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; background: #ffffff; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+        <div style="font-size: 38px; margin-bottom: 14px; text-align: center;">🏢</div>
+        <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px; text-align: center;">Enterprise Fleets & Corporate Car Rentals</h3>
+        <p style="color: #475569; font-size: 14px; line-height: 1.6; text-align: center; margin: 0 auto;">
           Comprehensive driver safety scorecards, overspeed detection, automated maintenance work-orders, and REST API connectors for direct integration with ERP & SAP systems.
         </p>
       </div>
