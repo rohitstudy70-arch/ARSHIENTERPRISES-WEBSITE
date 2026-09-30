@@ -390,7 +390,7 @@
     </header>
 
     <section id="detail" class="panel" hidden aria-live="off">
-      <div class="head"><span class="sw" id="dSw"></span><h2 id="dName">CAR-01</h2><span class="route" id="dRoute"></span></div>
+      <div class="head"><span class="sw" id="dSw"></span><h2 id="dName">VLTD-01</h2><span class="route" id="dRoute"></span></div>
       <div class="big"><span id="dSpeed">0</span><small>km/h</small></div>
       <dl>
         <dt>Heading</dt><dd id="dHead">–</dd>
@@ -1100,22 +1100,41 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
   }
 
   /* ---------- fleet ---------- */
-  const CAR_COL = 0x4bc0ff, TRUCK_COL = 0xe3ab84, SEL_COL = 0xff79e0;
-  const carColors = [0xff79e0, 0xa78bff, 0xffd35c, 0x5fb4ff, 0xffffff, 0xb04bff, 0x4bc0ff, 0xff8a5c];
+  const CAR_COL = 0x4bc0ff, TRUCK_COL = 0xe3ab84, SEL_COL = 0xff79e0, VLTD_CAR_COL = 0xffd35c;
+  const carColors = [0xff79e0, 0xa78bff, 0xffd35c, 0x5fb4ff, 0xffffff, 0xb04bff, 0x4bc0ff, 0xffb020];
   const cabColors = [0xffb020, 0xff79e0, 0x5fb4ff, 0xb04bff];
   const trailerColors = [0x6b4bff, 0x3f6bff, 0xb04bff, 0x2fb8a8, 0x9db4ff];
   const TR = 90;
   const vehicles = [];
-  let carN = 0, truckN = 0;
+  let carN = 0, truckN = 0, vltdN = 0, gpsN = 0;
 
   function spawn(route, off, dir, type, s, cruise) {
     const isTruck = type === 'truck';
-    const n = isTruck ? ++truckN : ++carN;
-    const id = (isTruck ? 'TRK-' : 'CAR-') + String(n).padStart(2, '0');
-    const group = isTruck ? makeTruck(pick(cabColors), pick(trailerColors)) : makeCar(pick(carColors));
+    let id, hex, group;
+
+    if (isTruck) {
+      truckN++;
+      vltdN++;
+      id = 'VLTD-' + String(vltdN).padStart(2, '0');
+      hex = TRUCK_COL;
+      group = makeTruck(pick(cabColors), pick(trailerColors));
+    } else {
+      carN++;
+      const carColor = pick(carColors);
+      const isYellowCar = (carColor === 0xffd35c || carColor === 0xffb020);
+      if (isYellowCar) {
+        vltdN++;
+        id = 'VLTD-' + String(vltdN).padStart(2, '0');
+        hex = VLTD_CAR_COL;
+      } else {
+        gpsN++;
+        id = 'GPS-' + String(gpsN).padStart(2, '0');
+        hex = CAR_COL;
+      }
+      group = makeCar(carColor);
+    }
     const SC = 1.4; group.scale.setScalar(SC);
     const height = group.userData.height, len = group.userData.len * SC;
-    const hex = isTruck ? TRUCK_COL : CAR_COL;
     const cssCol = '#' + hex.toString(16).padStart(6, '0');
 
     // GPS marker group
@@ -1274,7 +1293,7 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
     b.addEventListener('click', () => select(selected === v ? null : v));
     v.row = b; v.spdEl = b.querySelector('.spd'); listEl.appendChild(b);
   });
-  $('sub').textContent = vehicles.length + ' vehicles reporting (' + carN + ' cars, ' + truckN + ' trucks)';
+  $('sub').textContent = vehicles.length + ' vehicles reporting (' + vltdN + ' AIS-140 VLTD, ' + gpsN + ' GPS units)';
 
   function select(v, fromUser = true) {
     if (fromUser) {

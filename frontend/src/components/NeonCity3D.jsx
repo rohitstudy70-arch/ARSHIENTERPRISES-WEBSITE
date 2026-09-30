@@ -148,12 +148,34 @@ export default function NeonCity3D() {
     const vehicles = [];
     const CAR_COL = 0x4bc0ff;
     const TRUCK_COL = 0xe3ab84;
-    let cCount = 0, tCount = 0;
+    const VLTD_YELLOW_COL = 0xffd35c;
+    const carColors = [0x3ddcff, 0xa78bff, 0xffd35c, 0xff79e0, 0x5fb4ff, 0xffb020];
+    let cCount = 0, tCount = 0, vltdCount = 0, gpsCount = 0;
 
     function spawn(route, off, dir, type, s, cruise) {
       const isTruck = type === 'truck';
-      const id = (isTruck ? 'TRK-' : 'CAR-') + String((isTruck ? ++tCount : ++cCount)).padStart(2, '0');
-      const hex = isTruck ? TRUCK_COL : CAR_COL;
+      let id, hex, carColor;
+
+      if (isTruck) {
+        tCount++;
+        vltdCount++;
+        id = 'VLTD-' + String(vltdCount).padStart(2, '0');
+        hex = TRUCK_COL;
+      } else {
+        cCount++;
+        carColor = carColors[Math.floor(Math.random() * carColors.length)];
+        const isYellowCar = (carColor === 0xffd35c || carColor === 0xffb020);
+        if (isYellowCar) {
+          vltdCount++;
+          id = 'VLTD-' + String(vltdCount).padStart(2, '0');
+          hex = VLTD_YELLOW_COL;
+        } else {
+          gpsCount++;
+          id = 'GPS-' + String(gpsCount).padStart(2, '0');
+          hex = CAR_COL;
+        }
+      }
+
       const grp = new THREE.Group();
 
       if (isTruck) {
@@ -162,7 +184,7 @@ export default function NeonCity3D() {
         body.castShadow = true;
         grp.add(body);
       } else {
-        const body = new THREE.Mesh(new THREE.BoxGeometry(2, 1.2, 4.5), new THREE.MeshLambertMaterial({ color: 0x3ddcff }));
+        const body = new THREE.Mesh(new THREE.BoxGeometry(2, 1.2, 4.5), new THREE.MeshLambertMaterial({ color: carColor || 0x3ddcff }));
         body.position.y = 1;
         body.castShadow = true;
         grp.add(body);
