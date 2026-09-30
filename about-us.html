@@ -96,6 +96,26 @@
     .tl-title { font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
     .tl-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
+    /* ===== LEADERSHIP SECTION ===== */
+    .council-tag { display: inline-block; font-size: 11px; font-weight: 900; text-transform: uppercase; color: var(--blue); letter-spacing: 2px; margin-bottom: 8px; }
+    .council-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 32px; margin-top: 36px; }
+    .leader-card { display: flex; background: var(--card-bg); border: 1.5px solid var(--card-border); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05); transition: all .3s ease; }
+    .leader-card:hover { transform: translateY(-6px); border-color: var(--amber); box-shadow: 0 20px 40px -10px rgba(217, 119, 6, 0.15); }
+    .leader-img-box { width: 44%; min-height: 290px; position: relative; overflow: hidden; background: linear-gradient(135deg, #1e293b, #0f172a); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .leader-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .4s ease; }
+    .leader-card:hover .leader-img-box img { transform: scale(1.05); }
+    .leader-info { padding: 36px 28px; display: flex; flex-direction: column; justify-content: center; }
+    .leader-name { font-size: 24px; font-weight: 900; color: #1e3a8a; margin-bottom: 4px; }
+    .leader-role { font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--amber); letter-spacing: 1.2px; margin-bottom: 16px; }
+    .leader-quote { font-size: 14px; font-style: italic; color: var(--text-muted); line-height: 1.65; border-left: 3px solid var(--amber); padding-left: 14px; margin: 0; }
+    
+    @media (max-width: 640px) {
+      .council-grid { grid-template-columns: 1fr; }
+      .leader-card { flex-direction: column; }
+      .leader-img-box { width: 100%; height: 260px; }
+      .leader-info { padding: 24px; }
+    }
+
     /* ===== FOOTER ===== */
     footer { padding: 40px 6vw; background: #0f172a; color: #94a3b8; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 14px; border-top: 1px solid #1e293b; }
     footer a { color: var(--amber); text-decoration: none; font-weight: 600; }
@@ -245,6 +265,49 @@
             <span><b>1-Year Direct Replacement:</b> 100% warranty coverage with instantaneous device replacement guarantee.</span>
           </li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OUR STRATEGIC COUNCIL (LEADERSHIP) ==================== -->
+  <section class="section-wrap" id="leadership">
+    <div>
+      <span class="council-tag">Driving Precision & Trust</span>
+      <h2 style="font-size: clamp(30px, 3.8vw, 44px); font-weight: 900; color: var(--text-main); margin-bottom: 12px;">
+        Our Strategic Council
+      </h2>
+      <p style="color: var(--text-muted); font-size: 16px; max-width: 760px; line-height: 1.65; margin: 0;">
+        Meet the visionaries at Arshi Enterprises. Our leaders combine decades of telematics expertise with a commitment to technological authority, ensuring every fleet operator benefits from precision-engineered compliance.
+      </p>
+    </div>
+
+    <div class="council-grid">
+      <!-- Leader 1: Archana Jha (Managing Director) -->
+      <div class="leader-card">
+        <div class="leader-img-box">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Archana Jha - Managing Director" loading="lazy">
+        </div>
+        <div class="leader-info">
+          <div class="leader-name">Archana Jha</div>
+          <div class="leader-role">Managing Director</div>
+          <blockquote class="leader-quote">
+            "Great leadership creates trust and security. At Arshi Enterprises, we don't just provide GPS devices; we engineer peace of mind for every fleet owner and driver across India."
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- Leader 2: Ranjeet Kumar (Operational Director) -->
+      <div class="leader-card">
+        <div class="leader-img-box">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" alt="Ranjeet Kumar - Operational Director" loading="lazy">
+        </div>
+        <div class="leader-info">
+          <div class="leader-name">Ranjeet Kumar</div>
+          <div class="leader-role">Operational Director</div>
+          <blockquote class="leader-quote">
+            "Operational excellence and prompt doorstep support are the bridges between our telematics technology and its tangible economic impact on ground for transporters."
+          </blockquote>
+        </div>
       </div>
     </div>
   </section>
