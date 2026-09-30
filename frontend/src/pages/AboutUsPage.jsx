@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ShieldCheck, CheckCircle2, Zap, Radio, Phone, Mail, MapPin, Award, Trophy, FileCheck, ChevronRight } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, Zap, Radio, Phone, Mail, MapPin, Award, Trophy, FileCheck, Calendar, Sparkles, ChevronRight } from 'lucide-react';
 
 export default function AboutUsPage() {
   useEffect(() => {
@@ -156,6 +156,119 @@ export default function AboutUsPage() {
               <blockquote className="text-sm italic text-slate-600 leading-relaxed border-l-2 border-amber-500 pl-4 my-0">
                 "Operational excellence and prompt doorstep support are the bridges between our telematics technology and its tangible economic impact on ground for transporters."
               </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Events & Expos */}
+      <div id="events" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="text-xs font-black uppercase text-blue-600 tracking-widest block mb-2">
+            Community & Industry Connect
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Corporate <span className="text-amber-600">Events & Expos</span>
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+            Connecting with fleet owners, transport unions, and industry leaders through live telematics expos, tech workshops, and community summits.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Event 1 */}
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all duration-300 flex flex-col group">
+            <div className="h-52 bg-slate-800 relative overflow-hidden shrink-0">
+              <img
+                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop"
+                alt="Annual Telematics Conclave"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/20">
+                🌟 Annual Summit
+              </span>
+            </div>
+            <div className="p-7 flex flex-col flex-1">
+              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-600 mb-2">
+                <span>📅 Jan 2025</span>
+                <span>•</span>
+                <span>📍 Purnia HQ, Bihar</span>
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition">
+                Annual Telematics Innovation Conclave 2025
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-6 flex-1">
+                Unveiling next-gen 4G IoT telematics hardware, AI-powered dashcam tracking, and felicitating Eastern India's top transport fleet operators.
+              </p>
+              <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs font-bold text-blue-700">
+                <span>Keynote & Product Launch</span>
+                <span className="text-amber-600">Completed ✓</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Event 2 */}
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all duration-300 flex flex-col group">
+            <div className="h-52 bg-slate-800 relative overflow-hidden shrink-0">
+              <img
+                src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop"
+                alt="Bihar Logistics Expo"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/20">
+                🏛️ State Expo
+              </span>
+            </div>
+            <div className="p-7 flex flex-col flex-1">
+              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-600 mb-2">
+                <span>📅 Aug 2024</span>
+                <span>•</span>
+                <span>📍 Gyan Bhawan, Patna</span>
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition">
+                Bihar State Logistics & Telematics Expo
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-6 flex-1">
+                Showcasing MoRTH AIS 140 certified GPS units, emergency 112 ERSS police integration, and smart cold-storage wireless temperature sensors.
+              </p>
+              <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs font-bold text-blue-700">
+                <span>Govt. & Enterprise Expo</span>
+                <span className="text-amber-600">Completed ✓</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Event 3 */}
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all duration-300 flex flex-col group">
+            <div className="h-52 bg-slate-800 relative overflow-hidden shrink-0">
+              <img
+                src="https://images.unsplash.com/photo-1582192732943-e15e5ec18844?q=80&w=800&auto=format&fit=crop"
+                alt="Commercial Fleet Operators Workshop"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/20">
+                🚛 Transporter Meet
+              </span>
+            </div>
+            <div className="p-7 flex flex-col flex-1">
+              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-600 mb-2">
+                <span>📅 Oct 2024</span>
+                <span>•</span>
+                <span>📍 Maranga Hub, Purnea</span>
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition">
+                Transporters Fuel Theft & Safety Meetup
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-6 flex-1">
+                Hands-on live demonstration on diesel anti-theft sensors, fuel calibration tricks, and remote engine shut-off protocols for 100+ fleet owners.
+              </p>
+              <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs font-bold text-blue-700">
+                <span>Hands-on Live Demos</span>
+                <span className="text-amber-600">Completed ✓</span>
+              </div>
             </div>
           </div>
         </div>
