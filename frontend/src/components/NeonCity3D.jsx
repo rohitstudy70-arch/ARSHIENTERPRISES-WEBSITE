@@ -222,14 +222,52 @@ export default function NeonCity3D() {
     let pol = 1.0;
     let dist = 185;
     let target = new THREE.Vector3(0, 0, 0);
+    let selected = null;
+    let lastAutoTour = performance.now();
+    let lastUserTouch = 0;
+
+    const selectVehicle = (v, fromUser = true) => {
+      selected = v;
+      setSelectedVehicle(v ? { ...v } : null);
+      if (fromUser) {
+        lastUserTouch = performance.now();
+        lastAutoTour = performance.now();
+      }
+      if (v) {
+        dist = v.type === 'truck' ? 55 : 42;
+        pol = 1.05;
+      } else {
+        dist = 185;
+        pol = 1.0;
+      }
+    };
+
+    const triggerAutoSwitch = () => {
+      if (!vehicles.length) return;
+      const others = vehicles.filter(v => v !== selected);
+      const next = others.length ? others[Math.floor(Math.random() * others.length)] : vehicles[0];
+      selectVehicle(next, false);
+      az += 0.8 + Math.random() * 0.6;
+    };
+
+    // Initial auto focus after 2.5s
+    setTimeout(() => {
+      if (!selected) triggerAutoSwitch();
+    }, 2500);
 
     let isPointerDown = false;
+    let startX = 0, startY = 0;
     let lastX = 0, lastY = 0;
+    let moved = 0;
 
     const onPointerDown = (e) => {
       isPointerDown = true;
+      startX = e.clientX;
+      startY = e.clientY;
       lastX = e.clientX;
       lastY = e.clientY;
+      moved = 0;
+      lastUserTouch = performance.now();
     };
     const onPointerMove = (e) => {
       if (!isPointerDown) return;
@@ -237,12 +275,48 @@ export default function NeonCity3D() {
       const dy = e.clientY - lastY;
       lastX = e.clientX;
       lastY = e.clientY;
+      moved += Math.abs(dx) + Math.abs(dy);
       az -= dx * 0.005;
       pol = Math.max(0.1, Math.min(1.4, pol - dy * 0.005));
+      lastUserTouch = performance.now();
     };
-    const onPointerUp = () => { isPointerDown = false; };
+    const onPointerUp = (e) => {
+      isPointerDown = false;
+      // If was a click without drag, pick vehicle
+      if (moved < 6) {
+        const rect = container.getBoundingClientRect();
+        const mouse = new THREE.Vector2(
+          ((e.clientX - rect.left) / rect.width) * 2 - 1,
+          -((e.clientY - rect.top) / rect.height) * 2 + 1
+        );
+        const raycaster = new THREE.Raycaster();
+        raycaster.setFromCamera(mouse, camera);
+        
+        let nearestV = null;
+        let minDist = 25;
+        const v3 = new THREE.Vector3();
+
+        vehicles.forEach(v => {
+          v3.set(v.x, 2, v.z).project(camera);
+          if (v3.z < 1) {
+            const sx = (v3.x * 0.5 + 0.5) * rect.width + rect.left;
+            const sy = (-v3.y * 0.5 + 0.5) * rect.height + rect.top;
+            const d = Math.hypot(sx - e.clientX, sy - e.clientY);
+            if (d < minDist) {
+              minDist = d;
+              nearestV = v;
+            }
+          }
+        });
+
+        if (nearestV) {
+          selectVehicle(nearestV === selected ? null : nearestV, true);
+        }
+      }
+    };
     const onWheel = (e) => {
-      dist = Math.max(40, Math.min(450, dist + e.deltaY * 0.2));
+      dist = Math.max(30, Math.min(450, dist + e.deltaY * 0.2));
+      lastUserTouch = performance.now();
     };
 
     container.addEventListener('pointerdown', onPointerDown);
@@ -259,8 +333,16 @@ export default function NeonCity3D() {
       lastTime = now;
 
       // Auto rotation when idle
-      if (!isPointerDown) {
-        az += dt * 0.04;
+      if (!isPointerDown && now - lastUserTouch > 3000) {
+        az += dt * (selected ? 0.025 : 0.04);
+      }
+
+      // 20-Second Auto-Touring Cycle
+      if (now - lastAutoTour >= 20000) {
+        lastAutoTour = now;
+        if (now - lastUserTouch > 6000) {
+          triggerAutoSwitch();
+        }
       }
 
       // Step simulation
@@ -284,13 +366,18 @@ export default function NeonCity3D() {
         v.grp.rotation.y = Math.atan2(v.hx, v.hz);
 
         // Pulse GPS ring
+        const isSel = v === selected;
         const pulse = ((now * 0.001 * 1.5 + v.phase) % 1.5) / 1.5;
-        v.ring.scale.setScalar(1 + pulse * 2.5);
-        v.ring.material.opacity = 0.7 * (1 - pulse);
+        v.ring.scale.setScalar((isSel ? 1.6 : 1) + pulse * (isSel ? 3.0 : 2.2));
+        v.ring.material.opacity = (isSel ? 0.9 : 0.6) * (1 - pulse);
         v.pin.position.y = (v.type === 'truck' ? 5.5 : 3.5) + Math.sin(now * 0.003 + v.phase) * 0.4;
       });
 
-      // Update camera
+      // Smooth Camera Target Lerp
+      const goal = selected ? new THREE.Vector3(selected.x, 1.5, selected.z) : new THREE.Vector3(0, 0, 0);
+      target.lerp(goal, 1 - Math.exp(-dt * (selected ? 5 : 3)));
+
+      // Update camera position
       const sp = Math.sin(pol);
       const cp = Math.cos(pol);
       camera.position.set(
@@ -338,14 +425,32 @@ export default function NeonCity3D() {
 
       {/* Floating HUD Badges */}
       <div className="absolute top-4 left-4 z-10 flex flex-wrap items-center gap-2 pointer-events-none">
-        <div className="px-3.5 py-1.5 rounded-full bg-[#0a0630]/80 backdrop-blur-md border border-[#4bc0ff]/40 text-xs font-semibold text-[#4bc0ff] flex items-center gap-2 shadow-lg">
+        <div className="px-3.5 py-1.5 rounded-full bg-[#0a0630]/85 backdrop-blur-md border border-[#4bc0ff]/40 text-xs font-semibold text-[#4bc0ff] flex items-center gap-2 shadow-lg">
           <span className="w-2 h-2 rounded-full bg-[#4bc0ff] animate-ping" />
           <span>LIVE TELEMETRY STREAM</span>
         </div>
-        <div className="px-3.5 py-1.5 rounded-full bg-[#0a0630]/80 backdrop-blur-md border border-[#e3ab84]/40 text-xs font-medium text-white/90">
+        <div className="px-3.5 py-1.5 rounded-full bg-[#0a0630]/85 backdrop-blur-md border border-[#e3ab84]/40 text-xs font-medium text-white/90">
           📍 Purnea Fleet Zone: <span className="text-[#e3ab84] font-bold">{stats.total} Active Beacons</span>
         </div>
       </div>
+
+      {/* Tracked Vehicle Telemetry Card (When active) */}
+      {selectedVehicle && (
+        <div className="absolute bottom-16 left-4 z-10 p-4 rounded-xl bg-[#0a0630]/90 backdrop-blur-md border border-[#e3ab84]/50 text-white shadow-2xl animate-fadeIn max-w-[240px]">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-[10px] font-black uppercase tracking-wider text-[#e3ab84] bg-[#e3ab84]/20 px-2 py-0.5 rounded">
+              🎯 {selectedVehicle.type === 'truck' ? 'Heavy Truck' : 'Commercial Car'}
+            </span>
+            <span className="text-[10px] text-emerald-400 font-bold">● Active 20s Tour</span>
+          </div>
+          <div className="text-lg font-black tracking-tight">{selectedVehicle.id}</div>
+          <div className="text-xs text-slate-300 mt-0.5">{selectedVehicle.route?.name}</div>
+          <div className="mt-2 pt-2 border-t border-[#3a2f9a]/60 flex items-baseline justify-between">
+            <span className="text-[11px] text-slate-400">Live Speed:</span>
+            <span className="text-sm font-black text-[#4bc0ff]">{Math.round(selectedVehicle.speed * 3.6)} km/h</span>
+          </div>
+        </div>
+      )}
 
       {/* Controls HUD */}
       <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
@@ -359,7 +464,7 @@ export default function NeonCity3D() {
 
       {/* Interactive Drag Notice */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 px-4 py-1.5 rounded-full bg-[#0a0630]/80 backdrop-blur-md border border-[#3a2f9a] text-[11px] text-[#a9a4d6] flex items-center gap-2 pointer-events-none">
-        <span>🖱️ Drag to rotate 3D City • Scroll to Zoom</span>
+        <span>🔄 Auto-Touring Vehicles Every 20s • Click Vehicle or Drag to Orbit</span>
       </div>
     </div>
   );

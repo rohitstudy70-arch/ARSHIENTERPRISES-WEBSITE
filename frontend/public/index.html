@@ -1210,13 +1210,17 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
   });
   $('sub').textContent = vehicles.length + ' vehicles reporting (' + carN + ' cars, ' + truckN + ' trucks)';
 
-  function select(v) {
+  function select(v, fromUser = true) {
+    if (fromUser) {
+      lastAutoTourSwitch = performance.now();
+      cam.lastTouch = performance.now();
+    }
     document.getElementById('app').classList.toggle('sel', !!v);
     if (selected) { selected.pin.material.color.setHex(selected.hex); selected.pin.scale.set(1, 1.5, 1); selected.row.removeAttribute('aria-current'); }
     selected = v;
     if (v) {
       v.pin.material.color.setHex(SEL_COL); v.pin.scale.set(1.5, 2.3, 1.5); v.row.setAttribute('aria-current', 'true');
-      cam.distG = Math.min(cam.distG, 62); cam.polG = Math.min(cam.polG, 1.15);
+      cam.distG = Math.min(cam.distG, v.type === 'truck' ? 58 : 46); cam.polG = Math.min(cam.polG, 1.12);
       detail.hidden = false; $('dName').textContent = v.id; $('dSw').style.background = v.css;
       $('dRoute').textContent = v.route.name;
       const lane = v.route === routes.ring ? (v.off < -1 ? 'Left lane' : v.off > 1 ? 'Right lane' : 'Middle lane') : (v.dir > 0 ? 'Eastbound side' : 'Westbound side');
@@ -1233,6 +1237,28 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
     $('dTrip').textContent = (v.trip / 1000).toFixed(2) + ' km';
   }
   $('dClose').addEventListener('click', () => select(null));
+
+  /* ---------- 20-Second Auto-Cinematic Tour ---------- */
+  const autoTourInterval = 20000; // 20 seconds
+  let lastAutoTourSwitch = performance.now();
+
+  function triggerAutoTourSwitch() {
+    const matched = vehicles.filter(v => filter === 'all' || v.type === filter);
+    if (!matched.length) return;
+    const candidates = matched.filter(v => v !== selected);
+    const nextVehicle = candidates.length ? pick(candidates) : matched[0];
+    if (nextVehicle) {
+      select(nextVehicle, false);
+      cam.azG = cam.az + rand(0.5, 1.3);
+      cam.polG = rand(0.85, 1.12);
+      cam.distG = nextVehicle.type === 'truck' ? rand(50, 64) : rand(38, 52);
+    }
+  }
+
+  // Initial auto-focus after 2.5 seconds
+  setTimeout(() => {
+    if (!selected) triggerAutoTourSwitch();
+  }, 2500);
 
   let isDay = true;
   function setTheme(day) {
@@ -1324,7 +1350,18 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
       const k = ((t * 0.9 + v.phase) % 1.6) / 1.6, sel = v === selected ? 1.6 : 1;
       v.ring.scale.setScalar((1 + k * 2.4) * sel); v.ring.material.opacity = 0.65 * (1 - k);
     }
-    if (!selected && !reduceMotion && now - cam.lastTouch > 4000) cam.azG += rdt * 0.035;
+    
+    // Auto-tour rotation every 20s if user idle
+    if (now - lastAutoTourSwitch >= autoTourInterval) {
+      lastAutoTourSwitch = now;
+      if (now - cam.lastTouch > 6000) {
+        triggerAutoTourSwitch();
+      }
+    }
+
+    if (!reduceMotion && now - cam.lastTouch > 3000) {
+      cam.azG += rdt * (selected ? 0.025 : 0.035);
+    }
     updateCamera(rdt);
     renderer.render(scene, camera);
     hudT += rdt;
