@@ -126,6 +126,36 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
+          4 LIVE METRIC STATS (EASY HINDI/ENGLISH)
+          ========================================================================= */}
+      <section className="py-12 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition">
+              <span className="block text-3xl sm:text-4xl font-black text-blue-600">10,000+</span>
+              <span className="text-xs sm:text-sm font-bold text-slate-900 block mt-1">Gaadiyan Live Track</span>
+              <span className="text-[11px] text-slate-500">Bihar, Bengal & 28+ States</span>
+            </div>
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition">
+              <span className="block text-3xl sm:text-4xl font-black text-amber-600">500+</span>
+              <span className="text-xs sm:text-sm font-bold text-slate-900 block mt-1">Transporters Ka Bharosa</span>
+              <span className="text-[11px] text-slate-500">Trucks, Dumpers, Buses & Taxis</span>
+            </div>
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition">
+              <span className="block text-3xl sm:text-4xl font-black text-emerald-600">100%</span>
+              <span className="text-xs sm:text-sm font-bold text-slate-900 block mt-1">Sarkari RTO Passing</span>
+              <span className="text-[11px] text-slate-500">AIS 140 Vahan Portal Certified</span>
+            </div>
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition">
+              <span className="block text-3xl sm:text-4xl font-black text-purple-600">24/7</span>
+              <span className="text-xs sm:text-sm font-bold text-slate-900 block mt-1">Bina Ruke Live Map</span>
+              <span className="text-[11px] text-slate-500">Har 10 Second Me Update</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
           CAPABILITIES / WHAT WE DO (CLEAN WHITE THEME)
           ========================================================================= */}
       <FeaturesSection />
@@ -154,9 +184,9 @@ export default function HomePage() {
               <div className="w-14 h-14 rounded-2xl bg-amber-500 text-white font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-md shadow-amber-500/20">
                 1
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Device Lagwayein</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Call Ya WhatsApp Karein</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Hamari certified technical team aapke location par aakar gaadi me GPS device install karti hai.
+                Helpline par call karein aur gadi ka model batayein. Instant quotation aur demo mil jayega.
               </p>
             </div>
 
@@ -164,9 +194,9 @@ export default function HomePage() {
               <div className="w-14 h-14 rounded-2xl bg-blue-600 text-white font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-md shadow-blue-600/20">
                 2
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">App Se Jodein</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Mechanic Yard Par Aayega</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Aapke Android / iPhone par secure mobile application aur login credentials milte hain.
+                Hamari certified team aapke ghar ya parking yard par aakar sirf 15 minute me fitting karegi.
               </p>
             </div>
 
@@ -174,10 +204,58 @@ export default function HomePage() {
               <div className="w-14 h-14 rounded-2xl bg-rose-500 text-white font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-md shadow-rose-500/20">
                 3
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">24/7 Live Dekhein</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Mobile Me 24/7 Live Dekhein</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Har gaadi ki live speed, exact location, diesel mileage aur trip reports kabhi bhi check karein.
+                Phone me app open karein aur live speed, location aur diesel chori par 24 ghante nazar rakhein.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          TRANSPORTERS TESTIMONIALS / REVIEWS (CLEAN WHITE THEME)
+          ========================================================================= */}
+      <section className="py-20 bg-white border-t border-slate-200 text-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="text-xs font-black uppercase text-blue-600 tracking-widest block mb-2">
+              Asli Transporters Ka Bharosa
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900">
+              Hamare Customers <span className="text-amber-600">Kya Kehte Hain?</span>
+            </h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Purnea, Patna aur Bihar ke commercial fleet operators ka sachha anubhav
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:shadow-lg transition">
+              <div className="text-amber-500 text-base mb-3">★★★★★</div>
+              <p className="text-xs sm:text-sm text-slate-700 italic leading-relaxed mb-4">
+                "Arshi GPS lagwane ke baad hamare 8 trucks ka diesel chori bilkul band ho gaya. Mahine ka 20,000 rupaye se zyada bachat ho rahi hai."
+              </p>
+              <div className="font-bold text-sm text-slate-900">— Ramesh Yadav</div>
+              <div className="text-xs text-slate-500">Fleet Owner, Purnea Transport Nagar</div>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:shadow-lg transition">
+              <div className="text-amber-500 text-base mb-3">★★★★★</div>
+              <p className="text-xs sm:text-sm text-slate-700 italic leading-relaxed mb-4">
+                "AIS 140 GPS lagwaya tha school buses ke liye, RTO passing certificate turant mil gaya bina kisi jhanjhat ke. Technical team bahut supportive hai."
+              </p>
+              <div className="font-bold text-sm text-slate-900">— Md. Aslam</div>
+              <div className="text-xs text-slate-500">Commercial Bus Operator, Patna</div>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:shadow-lg transition">
+              <div className="text-amber-500 text-base mb-3">★★★★★</div>
+              <p className="text-xs sm:text-sm text-slate-700 italic leading-relaxed mb-4">
+                "Raat me driver ne gadi galat raste par le li, turant phone par overspeed aur geofence alert aaya. Humne phone se engine band karke gadi safe kar li."
+              </p>
+              <div className="font-bold text-sm text-slate-900">— Sunil Sharma</div>
+              <div className="text-xs text-slate-500">Mining Fleet Transporter, Siliguri</div>
             </div>
           </div>
         </div>
