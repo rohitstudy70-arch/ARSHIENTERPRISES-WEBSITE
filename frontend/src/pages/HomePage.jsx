@@ -152,6 +152,73 @@ export default function HomePage() {
               <span className="text-[11px] text-slate-500">10-Second High-Precision Sync</span>
             </div>
           </div>
+      {/* =========================================================================
+          B2B INDUSTRY VERTICALS (SAMSARA-STYLE ENTERPRISE SECTOR GRID)
+          ========================================================================= */}
+      <section className="py-20 bg-slate-50 border-b border-slate-200 text-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 border border-blue-300 text-xs font-extrabold text-blue-900 uppercase tracking-wider mb-4 shadow-sm">
+              <ShieldCheck className="w-3.5 h-3.5 text-blue-700" />
+              <span>Tailored Industry Solutions</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+              Enterprise Telematics for <span className="text-amber-600">Mission-Critical Operations</span>
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+              Purpose-built telematics hardware and intelligent cloud software tailored to the stringent operational demands of major commercial sectors across India.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+              <div className="text-4xl mb-4">🚚</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Logistics & Long-Haul Freight</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Real-time route visibility, predictive delivery ETAs, automated driver trip audits, and instant anti-theft immobilization designed for 10-wheelers, trailers, and multi-axle freight.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+              <div className="text-4xl mb-4">⛏️</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Mining & Heavy Construction</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                High-precision ultrasonic fuel telemetry, engine run-hour logging, and strict geofence perimeter alarms for dumpers, tippers, excavators, and heavy earthmovers.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+              <div className="text-4xl mb-4">🚌</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">School Transit & Passenger Transit</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                MoRTH certified AIS 140 VLTD terminals with integrated 112 ERSS Police SOS panic emergency triggers, automated passenger route auditing, and seamless RTO fitness certification.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+              <div className="text-4xl mb-4">❄️</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Cold Chain & Perishable Logistics</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Wireless temperature sensors with continuous BLE cloud telemetry, real-time thermal breach alerts, and automated trip compliance logging for pharmaceutical and dairy fleets.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+              <div className="text-4xl mb-4">🚜</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Agricultural Contractors & Harvesters</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Field acreage and bigha calculation algorithms, PTO engagement telemetry, vibration-proof casing, and battery disconnection alarms for tractors and combine harvesters.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300">
+              <div className="text-4xl mb-4">🏢</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Enterprise Fleets & Car Rentals</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Comprehensive driver safety scorecards, overspeed detection, automated maintenance work-orders, and REST API connectors for direct integration with ERP & SAP systems.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
