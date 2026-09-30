@@ -6,49 +6,49 @@ export default function FeaturesSection() {
     {
       icon: MapPin,
       title: "Real-Time Live Tracking",
-      hindiDesc: "Har 10 second me live location dekhein",
-      desc: "Instant live GPS tracking with 90-day route history playback, precise speed metrics, and stop-time reports on Google Maps.",
+      highlight: "Continuous 10-Second Satellite Telemetry",
+      desc: "Sub-second GPS tracking with 90-day route history playback, high-precision speed metrics, and automated stop-duration diagnostics on Google Maps.",
       badge: "10-Sec Refresh",
       color: "text-blue-600 bg-blue-50 border-blue-200"
     },
     {
       icon: Fuel,
-      title: "Diesel Theft & Fuel Monitoring",
-      hindiDesc: "Fuel chori aur extra mileage rokein",
-      desc: "Smart fuel telemetry sensors detect instant fuel drops, calculate accurate km/litre mileage, and alert you against pilferage.",
-      badge: "Anti-Theft",
+      title: "Fuel Telemetry & Anti-Theft",
+      highlight: "Instant Drop & Siphon Protection",
+      desc: "Ultrasonic fuel level sensors detect immediate fuel drops, calculate precise km/litre economy, and generate real-time anti-tampering alerts.",
+      badge: "Fuel Security",
       color: "text-amber-600 bg-amber-50 border-amber-200"
     },
     {
       icon: Lock,
-      title: "Remote Engine Cut-Off",
-      hindiDesc: "Mobile phone se gaadi ka engine band karein",
-      desc: "Single tap immobilizer cuts fuel injection during emergencies or unauthorized usage directly from your Android/iOS app.",
+      title: "Remote Engine Immobilization",
+      highlight: "Single-Tap Emergency Cut-Off",
+      desc: "Remotely disable fuel injection and engine ignition during unauthorized movement or emergency hijack scenarios directly from mobile applications.",
       badge: "Safety Lock",
       color: "text-rose-600 bg-rose-50 border-rose-200"
     },
     {
       icon: ShieldAlert,
-      title: "Geofence & Over-Speed Alerts",
-      hindiDesc: "Seema se bahar jane par instant alarm",
-      desc: "Set virtual boundaries around warehouses, schools, or mining areas. Receive instant SMS & App notifications when vehicles exit.",
-      badge: "Instant Siren",
+      title: "Geofencing & Speed Compliance",
+      highlight: "Automated Perimeter & Speed Alarms",
+      desc: "Establish virtual geofences around warehouses, yards, and delivery hubs. Receive instant push notifications and SMS alerts on perimeter breach.",
+      badge: "Instant Alerts",
       color: "text-indigo-600 bg-indigo-50 border-indigo-200"
     },
     {
       icon: FileSpreadsheet,
       title: "Automated Daily MIS Reports",
-      hindiDesc: "Excel aur PDF me daily running hisaab",
-      desc: "Detailed trips, idle hours, AC runtime, driver behavior scorecards, and maintenance reminders generated automatically.",
+      highlight: "Executive PDF & Excel Running Logs",
+      desc: "Comprehensive trip audits, engine idling logs, AC run-time metrics, driver safety scorecards, and automated maintenance schedules.",
       badge: "PDF / Excel",
       color: "text-emerald-600 bg-emerald-50 border-emerald-200"
     },
     {
       icon: Cpu,
-      title: "AIS 140 RTO Compliance",
-      hindiDesc: "Commercial & school buses ke liye RTO pass",
-      desc: "Govt. certified AIS 140 devices with dual SIM eSIM, panic emergency SOS button, and direct integration with Bihar RTO portal.",
-      badge: "Govt Approved",
+      title: "AIS 140 MoRTH Compliance",
+      highlight: "Govt. Vahan Portal Integrated",
+      desc: "Certified AIS 140 hardware featuring integrated 112 ERSS Police SOS panic emergency, dual eSIM fallback, and direct RTO approval integration.",
+      badge: "Govt. Approved",
       color: "text-purple-600 bg-purple-50 border-purple-200"
     }
   ];
@@ -61,13 +61,13 @@ export default function FeaturesSection() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-xs font-bold text-amber-900 uppercase tracking-wider mb-4 shadow-sm">
             <Activity className="w-3.5 h-3.5 text-amber-700" />
-            <span>Comprehensive Telematics</span>
+            <span>Comprehensive Telematics Capabilities</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Hamare GPS Se <span className="text-amber-600">Kya Fayda Hoga?</span>
+            Enterprise Fleet <span className="text-amber-600">Intelligence</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Bihar aur poore Bharat ke fleet owners, truck transport, taxi operators aur school buses ke liye sabse bharosemand smart GPS system.
+            Purpose-built IoT telematics engineered to protect commercial fleets, minimize operational expenditure, eliminate diesel pilferage, and ensure 100% statutory compliance.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export default function FeaturesSection() {
                   </h3>
                   
                   <div className="text-xs font-bold text-amber-700 mt-1 mb-3">
-                    {f.hindiDesc}
+                    {f.highlight}
                   </div>
 
                   <p className="text-sm text-slate-600 leading-relaxed">

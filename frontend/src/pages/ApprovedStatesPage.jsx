@@ -61,7 +61,7 @@ export default function ApprovedStatesPage() {
   });
 
   const handleInquiry = (stateName, stateCode) => {
-    const text = `Namaste Arshi Enterprises! Mujhe ${stateName} (${stateCode}) ke liye AIS 140 GPS RTO passing certificate aur bulk quote chahiye.`;
+    const text = `Hello Arshi Enterprises! I would like to request an AIS 140 GPS RTO passing certificate consultation and bulk quote for ${stateName} (${stateCode}).`;
     window.open(`https://wa.me/917782808063?text=${encodeURIComponent(text)}`, '_blank');
   };
 

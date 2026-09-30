@@ -78,7 +78,7 @@ export default function HardwareCatalog() {
     : products.filter(p => p.category === activeTab);
 
   const handleInquiry = (productName, price) => {
-    const text = `Namaste Arshi Enterprises! Mujhe ${productName} (${price}) ke baare me inquiry karni hai. Kripya pricing aur installation details bhejein.`;
+    const text = `Hello Arshi Enterprises! I would like to inquire about ${productName} (${price}). Please share detailed pricing, technical specifications, and doorstep installation options.`;
     window.open(`https://wa.me/917782808063?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -93,10 +93,10 @@ export default function HardwareCatalog() {
             <span>Direct Manufacturer Pricing</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Best-Selling <span className="text-amber-600">GPS Trackers</span>
+            Best-Selling <span className="text-amber-600">Hardware Portfolio</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600">
-            1 Year Replacement Warranty • 1 Year Free Pan-India SIM Recharge • Doorstep Installation Support in Bihar
+            1-Year Zero-Downtime Replacement Guarantee • 1-Year Pan-India Connectivity Included • On-Site Deployment Across India
           </p>
         </div>
 

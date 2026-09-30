@@ -62,7 +62,7 @@ export default function AboutUsPage() {
             </p>
             <div className="pt-2">
               <a
-                href="https://wa.me/917782808063?text=Namaste%20Arshi%20Enterprises!%20Mujhe%20GPS%20demo%20chahiye."
+                href="https://wa.me/917782808063?text=Hello%20Arshi%20Enterprises!%20I%20would%20like%20to%20request%20a%20GPS%20telematics%20consultation%20and%20demo."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-500/25 hover:shadow-xl hover:scale-[1.02] transition-all"

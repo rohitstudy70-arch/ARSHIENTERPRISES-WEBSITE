@@ -140,7 +140,7 @@ export default function EventsPage() {
     setFormSubmitted(true);
     // WhatsApp auto-redirect after short timeout
     setTimeout(() => {
-      const msg = `Namaste! Maine ${selectedEventName} ke liye pass request submit ki hai.%0A%0AName: ${formData.name}%0APhone: ${formData.phone}%0ACity: ${formData.city}%0AFleet Size: ${formData.fleetSize}%0AVehicle: ${formData.vehicleType}`;
+      const msg = `Hello Arshi Enterprises! I would like to request a delegate pass for ${selectedEventName}.%0A%0AName: ${formData.name}%0APhone: ${formData.phone}%0ACity: ${formData.city}%0AFleet Size: ${formData.fleetSize}%0AVehicle: ${formData.vehicleType}`;
       window.open(`https://wa.me/917782808063?text=${msg}`, '_blank');
     }, 1200);
   };
@@ -405,7 +405,7 @@ export default function EventsPage() {
               <span>Call Event Desk: {phoneDisplay}</span>
             </a>
             <a
-              href="https://wa.me/917782808063?text=Namaste!%20Humare%20transport%20yard%20me%20GPS%20demo%20workshop%20organize%20karna%20hai."
+              href="https://wa.me/917782808063?text=Hello%20Arshi%20Enterprises!%20We%20would%20like%20to%20organize%20a%20GPS%20telematics%20demo%20workshop%20at%20our%20transport%20yard."
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 transition shadow-lg shadow-amber-500/25"
