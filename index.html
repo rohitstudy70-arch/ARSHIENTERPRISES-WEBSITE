@@ -115,10 +115,10 @@
   #mini { display: block; border-radius: 6px; cursor: pointer; }
 
   #boot {
-    position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px;
-    background: var(--bg); color: #e9eefb; font-size: 16px; z-index: 5; transition: opacity .5s;
+    position: absolute; inset: 0; display: none; place-items: center; text-align: center; padding: 24px;
+    background: var(--bg); color: #e9eefb; font-size: 16px; z-index: 5; pointer-events: none;
   }
-  #boot.gone { opacity: 0; pointer-events: none; }
+  #boot.gone { opacity: 0; pointer-events: none; display: none; }
 
   @media (max-width: 760px) {
     #bar { top: 8px; left: 8px; right: 8px; flex-direction: column; gap: 6px; }
@@ -415,7 +415,7 @@
     <a id="hint" href="#kaam">Scroll Down &darr;</a>
     <div id="miniWrap" class="panel"><canvas id="mini" aria-label="GPS map of all vehicles"></canvas></div>
   </div>
-  <div id="boot">Loading 3D scene…</div>
+  <div id="boot" style="display:none;" aria-hidden="true"></div>
 </div>
 <main class="site">
   <!-- ==================== LIVE METRICS STATS BANNER ==================== -->
