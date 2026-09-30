@@ -131,7 +131,7 @@ export default function AboutUsPage() {
                 Managing Director
               </div>
               <blockquote className="text-sm italic text-slate-600 leading-relaxed border-l-2 border-amber-500 pl-4 my-0">
-                "Great leadership creates trust and security. At Arshi Enterprises, we don't just provide GPS devices; we engineer peace of mind for every fleet owner and driver across India."
+                "Behind every moving vehicle is our relentless 24/7 support. At Arshi Enterprises, we ensure that no fleet owner ever feels alone on the road — delivering instant backend assistance, unwavering care, and absolute trust across India."
               </blockquote>
             </div>
           </div>
