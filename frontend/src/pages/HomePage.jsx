@@ -329,37 +329,34 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          STRATEGIC TECHNOLOGY & HARDWARE PARTNERS (CLEAN ENTERPRISE THEME)
+          OUR TECHNOLOGY PARTNERS (CLEAN ENTERPRISE THEME)
           ========================================================================= */}
       <section id="partners" className="py-20 bg-white border-t border-slate-200 text-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 border border-blue-300 text-xs font-extrabold text-blue-900 uppercase tracking-wider mb-3 shadow-sm">
               <ShieldCheck className="w-3.5 h-3.5 text-blue-700" />
-              <span>Ecosystem & Technology Alliance</span>
+              <span>Technology Alliance</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-              Strategic Technology & <span className="text-amber-600">Hardware Partners</span>
+              Our <span className="text-amber-600">Technology Partners</span>
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-600">
-              Arshi Enterprises collaborates with tier-1 global hardware OEMs, MoRTH accredited testing agencies, and enterprise IoT cloud providers.
+              Arshi Enterprises is proud to partner with leading automotive IoT and telematics innovators:
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10 justify-center">
             {[
-              { name: 'iTriangle Telematics', desc: "India's Leading AIS 140 OEM", icon: '🛰️' },
-              { name: 'Teltonika Telematics', desc: 'European IoT Hardware Leader', icon: '🌐' },
-              { name: 'Accolade Telematics', desc: 'Ultrasonic Fuel & CANbus Tech', icon: '⚡' },
-              { name: 'MARKON Tech', desc: 'Heavy Mining & Dumper IoT', icon: '🛡️' },
-              { name: 'ACUTE Solutions', desc: 'Ultra-Low Latency Telemetry', icon: '📡' },
-              { name: 'RDM Controls', desc: 'Industrial Engine Immobilizers', icon: '⚙️' },
-              { name: 'Concox / Jimi IoT', desc: 'Wireless Asset & Magnetic GPS', icon: '🔋' },
-              { name: 'AWS Mumbai Cloud', desc: '99.99% Telemetry SLA Uptime', icon: '☁️' }
+              { name: 'iTriangle', desc: 'AIS 140 Certified OEM Partner', icon: '🛰️' },
+              { name: 'Accolade', desc: 'Fuel Telemetry & Sensor Solutions', icon: '⚡' },
+              { name: 'MARKON', desc: 'Heavy Mining & Dumper Telematics', icon: '🛡️' },
+              { name: 'ACUTE', desc: 'High Precision Vehicle Trackers', icon: '📡' },
+              { name: 'RDM', desc: 'Engine Controls & Immobilization', icon: '⚙️' }
             ].map((p, i) => (
-              <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition">
-                <div className="text-2xl mb-2">{p.icon}</div>
-                <div className="font-bold text-sm text-slate-900">{p.name}</div>
+              <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition flex flex-col items-center">
+                <div className="text-3xl mb-2">{p.icon}</div>
+                <div className="font-extrabold text-base text-slate-900">{p.name}</div>
                 <div className="text-[11px] text-slate-500 mt-1">{p.desc}</div>
               </div>
             ))}
