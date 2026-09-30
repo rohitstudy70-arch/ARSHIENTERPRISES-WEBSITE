@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Zap, Battery, CheckCircle, MessageSquare, Tag } from 'lucide-react';
+import { ShieldCheck, Zap, Battery, CheckCircle, MessageSquare, Tag, Award } from 'lucide-react';
 
 export default function HardwareCatalog() {
   const [activeTab, setActiveTab] = useState('all');
@@ -83,19 +83,19 @@ export default function HardwareCatalog() {
   };
 
   return (
-    <section id="hardware" className="py-24 bg-[#0a0630] relative overflow-hidden">
+    <section id="hardware" className="py-24 bg-white relative overflow-hidden border-t border-slate-200 text-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#140d5c] border border-[#3a2f9a] text-xs font-bold text-[#4bc0ff] uppercase tracking-wider mb-4">
-            <Tag className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-800 uppercase tracking-wider mb-4 shadow-sm">
+            <Tag className="w-3.5 h-3.5 text-blue-600" />
             <span>Direct Manufacturer Pricing</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Best-Selling <span className="text-[#e3ab84]">GPS Trackers</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Best-Selling <span className="text-amber-600">GPS Trackers</span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#b3aee0]">
+          <p className="mt-4 text-base sm:text-lg text-slate-600">
             1 Year Replacement Warranty • 1 Year Free Pan-India SIM Recharge • Doorstep Installation Support in Bihar
           </p>
         </div>
@@ -113,10 +113,10 @@ export default function HardwareCatalog() {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeTab === tab.key
-                  ? 'bg-gradient-to-r from-[#f3c39a] to-[#d98f5e] text-[#1a0f40] shadow-neonAmber'
-                  : 'bg-[#140d5c]/60 text-[#b3aee0] border border-[#3a2f9a] hover:border-[#e3ab84] hover:text-white'
+                  ? 'bg-amber-500 text-white shadow-md shadow-amber-500/25'
+                  : 'bg-slate-100 text-slate-700 border border-slate-200 hover:border-amber-400 hover:text-slate-900'
               }`}
             >
               {tab.label}
@@ -129,54 +129,47 @@ export default function HardwareCatalog() {
           {filteredProducts.map(product => (
             <div
               key={product.id}
-              className="glass-panel glass-panel-hover rounded-2xl p-7 flex flex-col justify-between relative border border-[#3a2f9a] group"
+              className="bg-slate-50 rounded-2xl p-7 flex flex-col justify-between relative border border-slate-200 hover:border-amber-500 hover:bg-white hover:shadow-xl transition-all duration-300 group"
             >
               {product.popular && (
-                <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-gradient-to-r from-[#e3ab84] to-[#ff79e0] text-[#1a0f40] text-[10px] font-black uppercase tracking-wider shadow-md">
+                <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-amber-500 text-white text-[10px] font-black uppercase tracking-wider shadow-sm">
                   Most Popular
                 </div>
               )}
 
               <div>
-                <span className="text-xs font-semibold text-[#4bc0ff] uppercase tracking-wider">
-                  {product.bestFor}
-                </span>
-                
-                <h3 className="text-2xl font-black text-white mt-1 mb-4 group-hover:text-[#e3ab84] transition-colors">
-                  {product.name}
-                </h3>
-
-                {/* Price Display */}
-                <div className="flex items-baseline gap-3 mb-6">
-                  <span className="text-3xl font-extrabold text-white font-outfit">
-                    {product.price}
-                  </span>
-                  <span className="text-base text-[#a9a4d6] line-through">
-                    {product.originalPrice}
-                  </span>
-                  <span className="px-2 py-0.5 rounded text-xs font-bold bg-[#e3ab84]/20 text-[#e3ab84] border border-[#e3ab84]/40">
-                    {product.discount}
+                <div className="mb-4">
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-700 bg-amber-100 px-2.5 py-1 rounded-md">
+                    {product.bestFor}
                   </span>
                 </div>
 
-                {/* Specs List */}
-                <div className="space-y-2.5 mb-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">
+                  {product.name}
+                </h3>
+
+                <div className="flex items-baseline gap-2 mb-5">
+                  <span className="text-3xl font-black text-slate-900">{product.price}</span>
+                  <span className="text-sm text-slate-400 line-through">{product.originalPrice}</span>
+                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">{product.discount}</span>
+                </div>
+
+                <div className="space-y-2.5 mb-6">
                   {product.specs.map((spec, i) => (
-                    <div key={i} className="flex items-center gap-2.5 text-xs text-[#b3aee0]">
-                      <CheckCircle className="w-4 h-4 text-[#4bc0ff] shrink-0" />
+                    <div key={i} className="flex items-center gap-2 text-xs font-medium text-slate-600">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
                       <span>{spec}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Action Button */}
               <button
                 onClick={() => handleInquiry(product.name, product.price)}
-                className="w-full py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-[#f3c39a] to-[#d98f5e] text-[#1a0f40] hover:shadow-neonAmber hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider bg-amber-500 hover:bg-amber-600 text-white shadow-md shadow-amber-500/20 transition-all flex items-center justify-center gap-2 group-hover:scale-[1.01]"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
-                <span>Get WhatsApp Quote & Demo</span>
+                <span>Inquire on WhatsApp</span>
               </button>
             </div>
           ))}

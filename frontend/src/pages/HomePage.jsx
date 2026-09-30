@@ -51,9 +51,9 @@ export default function HomePage() {
       </a>
 
       {/* =========================================================================
-          HERO & 3D NEON CITY SECTION
+          HERO & 3D NEON CITY SECTION (ICONIC DARK 3D HERO)
           ========================================================================= */}
-      <section id="hero" className="pt-32 pb-20 relative overflow-hidden">
+      <section id="hero" className="pt-32 pb-20 relative overflow-hidden bg-[#0a0630]">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#3f6bff]/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute top-1/3 left-10 w-[400px] h-[400px] bg-[#e3ab84]/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -68,7 +68,7 @@ export default function HomePage() {
                 <span>24/7 Smart Telematics & Fleet Control</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
                 Track every <span className="text-[#e3ab84]">vehicle.</span><br />
                 Save every <span className="text-[#4bc0ff]">rupee.</span>
               </h1>
@@ -126,56 +126,56 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          CAPABILITIES / WHAT WE DO
+          CAPABILITIES / WHAT WE DO (CLEAN WHITE THEME)
           ========================================================================= */}
       <FeaturesSection />
 
       {/* =========================================================================
-          HARDWARE & PRODUCTS CATALOG
+          HARDWARE & PRODUCTS CATALOG (CLEAN WHITE THEME)
           ========================================================================= */}
       <HardwareCatalog />
 
       {/* =========================================================================
-          HOW IT WORKS (3 SIMPLE STEPS)
+          HOW IT WORKS (3 SIMPLE STEPS - CLEAN WHITE THEME)
           ========================================================================= */}
-      <section id="kaise" className="py-20 bg-[#140d5c]/20 border-t border-[#3a2f9a]/50">
+      <section id="kaise" className="py-24 bg-slate-50 border-t border-slate-200 text-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black text-white">
-              Kaise Kaam <span className="text-[#e3ab84]">Karta Hai?</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+              Kaise Kaam <span className="text-amber-600">Karta Hai?</span>
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-[#b3aee0]">
+            <p className="mt-3 text-sm sm:text-base text-slate-600">
               Sirf 3 aasan steps me aapki poori fleet aapke phone par live track hogi.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="glass-panel p-8 rounded-2xl border border-[#3a2f9a] text-center relative group hover:border-[#e3ab84] transition">
-              <div className="w-14 h-14 rounded-2xl bg-[#e3ab84] text-[#1a0f40] font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#e3ab84]/20">
+            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition text-center relative group">
+              <div className="w-14 h-14 rounded-2xl bg-amber-500 text-white font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-md shadow-amber-500/20">
                 1
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Device Lagwayein</h3>
-              <p className="text-xs sm:text-sm text-[#b3aee0]">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Device Lagwayein</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 Hamari certified technical team aapke location par aakar gaadi me GPS device install karti hai.
               </p>
             </div>
 
-            <div className="glass-panel p-8 rounded-2xl border border-[#3a2f9a] text-center relative group hover:border-[#4bc0ff] transition">
-              <div className="w-14 h-14 rounded-2xl bg-[#4bc0ff] text-[#1a0f40] font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#4bc0ff]/20">
+            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition text-center relative group">
+              <div className="w-14 h-14 rounded-2xl bg-blue-600 text-white font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-md shadow-blue-600/20">
                 2
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">App Se Jodein</h3>
-              <p className="text-xs sm:text-sm text-[#b3aee0]">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">App Se Jodein</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 Aapke Android / iPhone par secure mobile application aur login credentials milte hain.
               </p>
             </div>
 
-            <div className="glass-panel p-8 rounded-2xl border border-[#3a2f9a] text-center relative group hover:border-[#ff79e0] transition">
-              <div className="w-14 h-14 rounded-2xl bg-[#ff79e0] text-[#1a0f40] font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#ff79e0]/20">
+            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition text-center relative group">
+              <div className="w-14 h-14 rounded-2xl bg-rose-500 text-white font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-md shadow-rose-500/20">
                 3
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">24/7 Live Dekhein</h3>
-              <p className="text-xs sm:text-sm text-[#b3aee0]">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">24/7 Live Dekhein</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 Har gaadi ki live speed, exact location, diesel mileage aur trip reports kabhi bhi check karein.
               </p>
             </div>
@@ -184,16 +184,16 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          TECHNOLOGY PARTNERS
+          TECHNOLOGY PARTNERS (CLEAN WHITE THEME)
           ========================================================================= */}
-      <section id="partners" className="py-16 bg-[#0a0630] border-t border-[#3a2f9a]/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#a9a4d6] mb-8">
+      <section id="partners" className="py-16 bg-white border-t border-slate-200 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-8">
             Trusted Platform & Hardware Partners
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-80 hover:opacity-100 transition-opacity">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
             {['iTriangle', 'Accolade Telematics', 'MARKON Tech', 'ACUTE Solutions', 'RDM Controls', 'Teltonika'].map((partner, i) => (
-              <div key={i} className="px-6 py-3 rounded-xl bg-[#140d5c]/60 border border-[#3a2f9a] text-sm font-bold text-[#b3aee0]">
+              <div key={i} className="px-6 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm font-bold text-slate-700 shadow-sm hover:border-amber-400 transition">
                 {partner}
               </div>
             ))}
@@ -202,61 +202,61 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          CONTACT & LEAD CAPTURE FORM (CONNECTED TO MERN API)
+          CONTACT & LEAD CAPTURE FORM (CLEAN WHITE THEME)
           ========================================================================= */}
-      <section id="contact" className="py-24 bg-[#140d5c]/30 relative overflow-hidden border-t border-[#3a2f9a]/60">
+      <section id="contact" className="py-24 bg-slate-50 relative overflow-hidden border-t border-slate-200 text-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Info Column */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#140d5c] border border-[#3a2f9a] text-xs font-bold text-[#e3ab84] uppercase tracking-wider">
-                <ShieldCheck className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-xs font-bold text-amber-900 uppercase tracking-wider shadow-sm">
+                <ShieldCheck className="w-3.5 h-3.5 text-amber-700" />
                 <span>Doorstep Installation Bihar</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
                 Free Demo Ke Liye <br />
-                <span className="text-[#e3ab84]">Sampark Karein</span>
+                <span className="text-amber-600">Sampark Karein</span>
               </h2>
 
-              <p className="text-base text-[#b3aee0] leading-relaxed">
+              <p className="text-base text-slate-600 leading-relaxed">
                 Purnea, Bihar se poore India ke liye service. Form bharein, details seedha hamare WhatsApp aur database me submit ho jayengi.
               </p>
 
               <div className="space-y-4 pt-4">
                 <a 
                   href="tel:+917782808063" 
-                  className="flex items-start gap-4 p-4 rounded-xl bg-[#0a0630]/60 border border-[#3a2f9a] hover:border-[#e3ab84] transition group"
+                  className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200 hover:border-amber-500 shadow-sm hover:shadow-md transition group"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#140d5c] flex items-center justify-center text-[#e3ab84] group-hover:scale-110 transition">
-                    <Phone className="w-5 h-5" />
+                  <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 group-hover:scale-110 transition">
+                    <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-xs text-[#a9a4d6] font-semibold">Direct Helpline</div>
-                    <div className="text-base font-bold text-white">{phoneDisplay}</div>
+                    <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Direct Helpline</div>
+                    <div className="text-base font-bold text-slate-900">{phoneDisplay}</div>
                   </div>
                 </a>
 
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-[#0a0630]/60 border border-[#3a2f9a]">
-                  <div className="w-10 h-10 rounded-lg bg-[#140d5c] flex items-center justify-center text-[#4bc0ff]">
-                    <MapPin className="w-5 h-5" />
+                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 shrink-0">
+                    <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-xs text-[#a9a4d6] font-semibold">Office Address</div>
-                    <div className="text-sm font-medium text-white/90">
+                    <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Office Address</div>
+                    <div className="text-sm font-medium text-slate-700 mt-0.5">
                       Hanuman Mandir, NH31, Maranga, near Vidya Vihar Institute Of Technology, Purnia - 854303, Bihar, India
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-[#0a0630]/60 border border-[#3a2f9a]">
-                  <div className="w-10 h-10 rounded-lg bg-[#140d5c] flex items-center justify-center text-[#ff79e0]">
-                    <Mail className="w-5 h-5" />
+                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                  <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-600 shrink-0">
+                    <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-xs text-[#a9a4d6] font-semibold">Email Inquiry</div>
-                    <div className="text-sm font-medium text-white/90">
+                    <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Email Inquiry</div>
+                    <div className="text-sm font-medium text-slate-700 mt-0.5">
                       arshiranjeet133@gmail.com
                     </div>
                   </div>
@@ -266,17 +266,17 @@ export default function HomePage() {
 
             {/* Right Form Column */}
             <div className="lg:col-span-6">
-              <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-[#3a2f9a] shadow-2xl relative">
-                <h3 className="text-2xl font-bold text-white mb-2">
+              <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-xl relative">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">
                   Instant WhatsApp Quotation
                 </h3>
-                <p className="text-xs sm:text-sm text-[#b3aee0] mb-6">
+                <p className="text-xs sm:text-sm text-slate-600 mb-6">
                   Form bhariye, details seedha hamare WhatsApp par receive hongi aur aapko instant quotation mil jayega.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#b3aee0] uppercase mb-1.5">
+                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
                       Aapka Naam (Full Name)
                     </label>
                     <input
@@ -285,12 +285,12 @@ export default function HomePage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full px-4 py-3.5 rounded-xl bg-[#0a0630] border border-[#3a2f9a] text-white text-sm focus:outline-none focus:border-[#e3ab84] transition"
+                      className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500 focus:bg-white transition"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#b3aee0] uppercase mb-1.5">
+                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
                       Phone Number
                     </label>
                     <input
@@ -299,18 +299,18 @@ export default function HomePage() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="e.g. 9876543210"
-                      className="w-full px-4 py-3.5 rounded-xl bg-[#0a0630] border border-[#3a2f9a] text-white text-sm focus:outline-none focus:border-[#e3ab84] transition"
+                      className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500 focus:bg-white transition"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#b3aee0] uppercase mb-1.5">
+                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
                       Fleet Size
                     </label>
                     <select
                       value={fleetSize}
                       onChange={(e) => setFleetSize(e.target.value)}
-                      className="w-full px-4 py-3.5 rounded-xl bg-[#0a0630] border border-[#3a2f9a] text-white text-sm focus:outline-none focus:border-[#e3ab84] transition"
+                      className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500 focus:bg-white transition"
                     >
                       <option value="1 to 5 vehicles">1 se 5 Gaadiyan</option>
                       <option value="6 to 20 vehicles">6 se 20 Gaadiyan</option>
@@ -320,19 +320,19 @@ export default function HomePage() {
 
                   <button
                     type="submit"
-                    className="w-full py-4 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-[#f3c39a] to-[#d98f5e] text-[#1a0f40] hover:shadow-neonAmber hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 mt-2"
+                    className="w-full py-4 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-500/25 hover:shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 mt-2"
                   >
                     <Send className="w-4 h-4" />
                     <span>WhatsApp Par Bhejein</span>
                   </button>
                 </form>
 
-                <div className="mt-6 flex items-center justify-center gap-4 text-xs text-[#a9a4d6] border-t border-[#3a2f9a]/60 pt-4">
+                <div className="mt-6 flex items-center justify-center gap-4 text-xs text-slate-500 border-t border-slate-100 pt-4">
                   <span className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-[#4bc0ff]" /> 100% Data Privacy
+                    <Check className="w-3.5 h-3.5 text-emerald-600" /> 100% Data Privacy
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-[#4bc0ff]" /> Instant Reply
+                    <Check className="w-3.5 h-3.5 text-emerald-600" /> Instant Reply
                   </span>
                 </div>
               </div>
