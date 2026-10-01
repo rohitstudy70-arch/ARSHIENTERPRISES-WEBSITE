@@ -922,17 +922,17 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
   const V3 = (x, z) => new THREE.Vector3(x, 0, z);
   const routes = {
     ring: {
-      name: 'Ring road', closed: true, half: 7.2, y: 0.05, my: 0.15,
+      name: 'Ring road (Ground)', closed: true, half: 7.2, y: 0.05, my: 0.15,
       curve: new THREE.CatmullRomCurve3([[110,0],[85,70],[20,105],[-60,90],[-110,25],[-95,-55],[-30,-100],[45,-90],[100,-45]].map(p => V3(p[0], p[1])), true, 'centripetal')
     },
     cross: {
-      name: 'Cross avenue', closed: true, half: 6.2, y: 0.10, my: 0.20,
+      name: 'Cross expressway (Flyover)', closed: true, half: 6.2, y: 8.5, my: 0.15,
       curve: new THREE.CatmullRomCurve3([[-190,20],[-120,-75],[0,-38],[120,-85],[195,10],[110,92],[0,62],[-110,98]].map(p => V3(p[0], p[1])), true, 'centripetal')
     }
   };
   Object.values(routes).forEach(r => { r.len = r.curve.getLength(); });
 
-  function ribbon(route, centerOff, halfW, y, mat, opts) {
+  function ribbon(route, centerOff, halfW, yOffset, mat, opts) {
     opts = opts || {};
     const N = opts.samples || 700, dash = opts.dash || null;
     const pos = [], idx = []; let v = 0;
@@ -942,7 +942,8 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
         const uu = Math.min(u, 0.99999);
         const p = route.curve.getPointAt(uu), t = route.curve.getTangentAt(uu);
         const rx = -t.z, rz = t.x, a = centerOff - halfW, b = centerOff + halfW;
-        pos.push(p.x + rx * a, y, p.z + rz * a, p.x + rx * b, y, p.z + rz * b);
+        const py = (p.y || 0) + (route.y || 0) + (yOffset || 0);
+        pos.push(p.x + rx * a, py, p.z + rz * a, p.x + rx * b, py, p.z + rz * b);
       }
       idx.push(v, v + 1, v + 2, v + 1, v + 3, v + 2); v += 4;
     }
@@ -954,19 +955,37 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
   const asphalt = new THREE.MeshLambertMaterial({ color: 0x3d4552 });
   const white = new THREE.MeshBasicMaterial({ color: 0xe9e4d0 });
   const yellow = new THREE.MeshBasicMaterial({ color: 0xf2b84b });
+  const bridgeMat = new THREE.MeshLambertMaterial({ color: 0x1f2736 });
 
-  // ring: one-way, three lanes
-  ribbon(routes.ring, 0, routes.ring.half, routes.ring.y, asphalt);
+  // ring: one-way, three lanes (Ground Level)
+  ribbon(routes.ring, 0, routes.ring.half, 0, asphalt);
   ribbon(routes.ring, -routes.ring.half + 0.5, 0.11, routes.ring.my, white);
   ribbon(routes.ring, routes.ring.half - 0.5, 0.11, routes.ring.my, white);
   ribbon(routes.ring, -1.75, 0.1, routes.ring.my, white, { dash: [10, 5] });
   ribbon(routes.ring, 1.75, 0.1, routes.ring.my, white, { dash: [10, 5] });
-  // cross avenue: two-way
-  ribbon(routes.cross, 0, routes.cross.half, routes.cross.y, asphalt);
+
+  // cross avenue: two-way elevated flyover bridge
+  ribbon(routes.cross, 0, routes.cross.half, 0, asphalt);
+  ribbon(routes.cross, 0, routes.cross.half + 0.5, -0.25, bridgeMat); // bridge underside
   ribbon(routes.cross, -routes.cross.half + 0.5, 0.11, routes.cross.my, white);
   ribbon(routes.cross, routes.cross.half - 0.5, 0.11, routes.cross.my, white);
   ribbon(routes.cross, -0.2, 0.08, routes.cross.my, yellow);
   ribbon(routes.cross, 0.2, 0.08, routes.cross.my, yellow);
+  // bridge safety guardrails
+  ribbon(routes.cross, -routes.cross.half - 0.2, 0.25, 0.55, bridgeMat);
+  ribbon(routes.cross, routes.cross.half + 0.2, 0.25, 0.55, bridgeMat);
+
+  // Elevated Bridge Support Pillars
+  const pillarGeo = new THREE.CylinderGeometry(0.9, 1.2, 8.5, 12);
+  const nPillars = Math.round(routes.cross.len / 28);
+  for (let i = 0; i < nPillars; i++) {
+    const u = i / nPillars;
+    const p = routes.cross.curve.getPointAt(u);
+    const pil = new THREE.Mesh(pillarGeo, bridgeMat);
+    pil.position.set(p.x, 4.25, p.z);
+    pil.castShadow = true; pil.receiveShadow = true;
+    scene.add(pil);
+  }
 
   // sampled points, used to keep buildings and trees off the road
   const roadPts = [];
@@ -1044,9 +1063,10 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
         const u = i / n, p = r.curve.getPointAt(u), t = r.curve.getTangentAt(u);
         const side = (i % 2 ? 1 : -1) * (r.half + 1.4);
         const x = p.x - t.z * side, z = p.z + t.x * side;
-        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 7, 6), poleMat); pole.position.set(x, 3.5, z); scene.add(pole);
-        const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.42, 8, 6), bulbMat); bulb.position.set(x, 7.1, z); scene.add(bulb);
-        const glow = new THREE.Mesh(glowGeo, glowMat); glow.position.set(x - (-t.z * Math.sign(side)) * 3.5, 0.24, z - (t.x * Math.sign(side)) * 3.5); scene.add(glow);
+        const py = (p.y || 0) + (r.y || 0);
+        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 7, 6), poleMat); pole.position.set(x, py + 3.5, z); scene.add(pole);
+        const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.42, 8, 6), bulbMat); bulb.position.set(x, py + 7.1, z); scene.add(bulb);
+        const glow = new THREE.Mesh(glowGeo, glowMat); glow.position.set(x - (-t.z * Math.sign(side)) * 3.5, py + 0.24, z - (t.x * Math.sign(side)) * 3.5); scene.add(glow);
       }
     });
   })();
@@ -1189,9 +1209,11 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
     const len = v.route.len;
     const u = (((v.s % len) + len) % len) / len;
     const p = v.route.curve.getPointAt(u), t = v.route.curve.getTangentAt(u);
-    v.x = p.x - t.z * v.off; v.z = p.z + t.x * v.off;
+    v.x = p.x - t.z * v.off;
+    v.y = (p.y || 0) + (v.route.y || 0.05) + 0.08;
+    v.z = p.z + t.x * v.off;
     v.hx = t.x * v.dir; v.hz = t.z * v.dir;
-    v.group.position.set(v.x, 0.12, v.z);
+    v.group.position.set(v.x, v.y, v.z);
     v.group.rotation.y = Math.atan2(v.hx, v.hz);
   }
   function step(dt) {
@@ -1233,12 +1255,12 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
         v.rec = 0;
         const a = v.tp;
         a.copyWithin(3, 0, (TR - 1) * 3);
-        a[0] = v.x; a[1] = 0.35; a[2] = v.z;
+        a[0] = v.x; a[1] = v.y + 0.25; a[2] = v.z;
         v.trail.geometry.attributes.position.needsUpdate = true;
       }
     }
   }
-  vehicles.forEach(v => { positionVehicle(v); for (let i = 0; i < TR; i++) { v.tp[i*3] = v.x; v.tp[i*3+1] = 0.35; v.tp[i*3+2] = v.z; } });
+  vehicles.forEach(v => { positionVehicle(v); for (let i = 0; i < TR; i++) { v.tp[i*3] = v.x; v.tp[i*3+1] = v.y + 0.25; v.tp[i*3+2] = v.z; } });
   for (let i = 0; i < 40; i++) step(0.05);   // Smooth initial settlement
 
   /* ---------- geo mapping ---------- */
@@ -1257,7 +1279,7 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
   function updateCamera(rdt) {
     const k = 1 - Math.exp(-rdt * 6);
     cam.az += (cam.azG - cam.az) * k; cam.pol += (cam.polG - cam.pol) * k; cam.dist += (cam.distG - cam.dist) * k;
-    const goal = selected ? new THREE.Vector3(selected.x, 1, selected.z) : new THREE.Vector3(0, 0, 0);
+    const goal = selected ? new THREE.Vector3(selected.x, (selected.y || 0) + 1, selected.z) : new THREE.Vector3(0, 0, 0);
     cam.target.lerp(goal, 1 - Math.exp(-rdt * (selected ? 5 : 3)));
     const sp = Math.sin(cam.pol), cp = Math.cos(cam.pol);
     const dd = cam.dist * cam.sD * cam.iD, aa = cam.az + cam.sAz;
@@ -1292,7 +1314,7 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
     const r = dom.getBoundingClientRect(); let best = null, bd = 38; const v3 = new THREE.Vector3();
     for (const v of vehicles) {
       if (!v.match) continue;
-      v3.set(v.x, v.height * 0.7, v.z).project(camera);
+      v3.set(v.x, (v.y || 0) + v.height * 0.7, v.z).project(camera);
       if (v3.z > 1) continue;
       const sx = (v3.x * 0.5 + 0.5) * r.width + r.left, sy = (-v3.y * 0.5 + 0.5) * r.height + r.top;
       const d = Math.hypot(sx - cx, sy - cy); if (d < bd) { bd = d; best = v; }
