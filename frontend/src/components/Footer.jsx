@@ -45,7 +45,7 @@ export default function Footer() {
               Technology Partners
             </h4>
             <div className="flex flex-wrap gap-2 text-xs">
-              {['iTriangle', 'Accolade', 'MARKON', 'ACUTE', 'RDM', 'Teltonika', 'Concox'].map((partner, i) => (
+              {['iTriangle', 'Accolade', 'MARKON', 'ACUTE', 'RDM', 'Rychle Transwheels'].map((partner, i) => (
                 <span key={i} className="px-2.5 py-1 rounded-md bg-[#140d5c] border border-[#3a2f9a] text-[#b3aee0]">
                   {partner}
                 </span>

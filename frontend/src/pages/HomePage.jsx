@@ -8,6 +8,7 @@ import accoladeLogo from '../assets/accolade-logo.png';
 import markonLogo from '../assets/markon-logo.png';
 import acuteLogo from '../assets/acute-logo.png';
 import rdmLogo from '../assets/rdm-logo.png';
+import rychleLogo from '../assets/rychle-logo.png';
 import { submitLead } from '../services/api';
 import { 
   ShieldCheck, 
@@ -351,20 +352,21 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10 justify-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10 justify-center">
             {[
               { name: 'iTriangle', desc: 'AIS 140 Certified OEM Partner', logo: itriangleLogo },
               { name: 'Accolade', desc: 'Fuel Telemetry & Sensor Solutions', logo: accoladeLogo },
               { name: 'MARKON', desc: 'Heavy Mining & Dumper Telematics', logo: markonLogo },
               { name: 'ACUTE', desc: 'High Precision Vehicle Trackers', logo: acuteLogo },
-              { name: 'RDM', desc: 'Engine Controls & Immobilization', logo: rdmLogo }
+              { name: 'RDM', desc: 'Engine Controls & Immobilization', logo: rdmLogo },
+              { name: 'Rychle Transwheels', desc: 'Fleet Logistics & Transport IoT', logo: rychleLogo }
             ].map((p, i) => (
               <div key={i} className="p-5 rounded-2xl bg-white border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition flex flex-col items-center justify-center">
                 <div className="h-11 flex items-center justify-center mb-2">
                   <img src={p.logo} alt={`${p.name} Logo`} className="max-h-10 max-w-[130px] object-contain" />
                 </div>
-                <div className="font-extrabold text-base text-slate-900">{p.name}</div>
-                <div className="text-[11px] text-slate-500 mt-1">{p.desc}</div>
+                <div className="font-extrabold text-sm sm:text-base text-slate-900 leading-tight">{p.name}</div>
+                <div className="text-[11px] text-slate-500 mt-1 leading-snug">{p.desc}</div>
               </div>
             ))}
           </div>
