@@ -1054,38 +1054,142 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
   /* ---------- vehicle models ---------- */
   const matCache = {};
   const lam = c => matCache[c] || (matCache[c] = new THREE.MeshLambertMaterial({ color: c }));
-  const glassMat = new THREE.MeshLambertMaterial({ color: 0x1b2638 });
-  const tireMat = new THREE.MeshLambertMaterial({ color: 0x0f1218 });
-  const headMat = new THREE.MeshBasicMaterial({ color: 0xfff2b0 });
-  const tailMat = new THREE.MeshBasicMaterial({ color: 0xff3b30 });
-  const beamGeo = new THREE.ConeGeometry(2.4, 10, 16, 1, true); beamGeo.rotateX(-Math.PI / 2); beamGeo.translate(0, 0, 5);
-  const beamMat = new THREE.MeshBasicMaterial({ color: 0xffe9a8, transparent: true, opacity: .03, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
-  const wheelGeoCar = new THREE.CylinderGeometry(0.38, 0.38, 0.3, 14); wheelGeoCar.rotateZ(Math.PI / 2);
-  const wheelGeoTruck = new THREE.CylinderGeometry(0.58, 0.58, 0.4, 14); wheelGeoTruck.rotateZ(Math.PI / 2);
+  const glassMat = new THREE.MeshLambertMaterial({ color: 0x08101e, transparent: true, opacity: 0.92 });
+  const trimMat = new THREE.MeshLambertMaterial({ color: 0x121722 });
+  const tireMat = new THREE.MeshLambertMaterial({ color: 0x0a0c10 });
+  const rimMat = new THREE.MeshLambertMaterial({ color: 0xc8d6e5 });
+  const headMat = new THREE.MeshBasicMaterial({ color: 0xe0f7ff });
+  const headGlowMat = new THREE.MeshBasicMaterial({ color: 0x4bc0ff });
+  const tailMat = new THREE.MeshBasicMaterial({ color: 0xff1e40 });
+  const beamGeo = new THREE.ConeGeometry(2.4, 11, 16, 1, true); beamGeo.rotateX(-Math.PI / 2); beamGeo.translate(0, 0, 5.5);
+  const beamMat = new THREE.MeshBasicMaterial({ color: 0xe0f7ff, transparent: true, opacity: .035, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
+  
+  const wheelGeoCar = new THREE.CylinderGeometry(0.38, 0.38, 0.28, 16); wheelGeoCar.rotateZ(Math.PI / 2);
+  const rimGeoCar = new THREE.CylinderGeometry(0.24, 0.24, 0.29, 10); rimGeoCar.rotateZ(Math.PI / 2);
+  const wheelGeoTruck = new THREE.CylinderGeometry(0.58, 0.58, 0.4, 16); wheelGeoTruck.rotateZ(Math.PI / 2);
+  const rimGeoTruck = new THREE.CylinderGeometry(0.36, 0.36, 0.42, 12); rimGeoTruck.rotateZ(Math.PI / 2);
 
   function add(g, geo, mat, x, y, z, shadow) {
     const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); if (shadow !== false) m.castShadow = true; g.add(m); return m;
   }
   function makeCar(color) {
     const g = new THREE.Group();
-    add(g, new THREE.BoxGeometry(1.9, 0.75, 4.3), lam(color), 0, 0.78, 0);
-    add(g, new THREE.BoxGeometry(1.66, 0.62, 2.2), glassMat, 0, 1.44, -0.25);
-    add(g, new THREE.BoxGeometry(1.5, 0.06, 1.9), lam(color), 0, 1.78, -0.25);
-    [[-.95, 1.4], [.95, 1.4], [-.95, -1.4], [.95, -1.4]].forEach(p => add(g, wheelGeoCar, tireMat, p[0], 0.38, p[1]));
-    [-0.62, 0.62].forEach(x => { add(g, new THREE.BoxGeometry(0.4, 0.18, 0.1), headMat, x, 0.9, 2.17, false); add(g, new THREE.BoxGeometry(0.42, 0.16, 0.1), tailMat, x, 0.9, -2.17, false); });
-    const beam = new THREE.Mesh(beamGeo, beamMat); beam.position.set(0, 0.85, 2.2); g.add(beam);
-    g.userData.height = 1.9; g.userData.len = 4.3; return g;
+    const bodyMat = lam(color);
+    
+    // 1. Lower chassis / carbon aerodynamic underbody diffuser
+    add(g, new THREE.BoxGeometry(1.82, 0.22, 4.4), trimMat, 0, 0.36, 0);
+    // Front sport splitter
+    add(g, new THREE.BoxGeometry(1.78, 0.12, 0.6), trimMat, 0, 0.28, 2.1);
+    // Rear aerodynamic diffuser fins
+    add(g, new THREE.BoxGeometry(1.78, 0.14, 0.5), trimMat, 0, 0.32, -2.1);
+    
+    // 2. Sculpted lower main body & side skirts
+    add(g, new THREE.BoxGeometry(1.88, 0.42, 3.8), bodyMat, 0, 0.62, -0.05);
+    [-0.96, 0.96].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.08, 0.24, 2.2), bodyMat, x, 0.52, 0);
+    });
+
+    // 3. Sloping Hood / Front Nose (Aero front taper)
+    const hood = add(g, new THREE.BoxGeometry(1.72, 0.24, 1.45), bodyMat, 0, 0.72, 1.18);
+    hood.rotation.x = -0.09;
+    add(g, new THREE.BoxGeometry(1.74, 0.32, 0.55), bodyMat, 0, 0.56, 1.98);
+
+    // 4. Sleek Aerodynamic Cabin & Windshield
+    const frontGlass = add(g, new THREE.BoxGeometry(1.5, 0.08, 1.15), glassMat, 0, 1.12, 0.58, false);
+    frontGlass.rotation.x = -0.64;
+    add(g, new THREE.BoxGeometry(1.42, 0.06, 1.35), glassMat, 0, 1.39, -0.22, false);
+    const rearGlass = add(g, new THREE.BoxGeometry(1.44, 0.08, 1.1), glassMat, 0, 1.14, -1.02, false);
+    rearGlass.rotation.x = 0.54;
+    add(g, new THREE.BoxGeometry(1.46, 0.52, 2.1), glassMat, 0, 1.1, -0.22, false);
+    [-0.72, 0.72].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.06, 0.05, 1.3), bodyMat, x, 1.4, -0.22);
+    });
+
+    // 5. Rear Trunk Deck & Integrated Aero Ducktail Lip
+    add(g, new THREE.BoxGeometry(1.7, 0.3, 0.95), bodyMat, 0, 0.76, -1.62);
+    const spoiler = add(g, new THREE.BoxGeometry(1.72, 0.08, 0.22), trimMat, 0, 0.92, -2.12);
+    spoiler.rotation.x = -0.12;
+
+    // 6. Modern GPS Shark-Fin Antenna
+    const fin = add(g, new THREE.BoxGeometry(0.06, 0.16, 0.32), trimMat, 0, 1.48, -0.65);
+    fin.rotation.x = 0.2;
+
+    // 7. Sleek Aero Side Mirrors
+    [-0.98, 0.98].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.2, 0.08, 0.14), bodyMat, x, 0.94, 0.65);
+    });
+
+    // 8. Wheels: Low Profile Sport Tires with Alloy Rim Accents
+    [[-0.96, 1.38], [0.96, 1.38], [-0.96, -1.38], [0.96, -1.38]].forEach(p => {
+      add(g, wheelGeoCar, tireMat, p[0], 0.38, p[1]);
+      add(g, rimGeoCar, rimMat, p[0] + (p[0] > 0 ? 0.01 : -0.01), 0.38, p[1], false);
+    });
+
+    // 9. Modern Cyber LED Horizon Lighting
+    add(g, new THREE.BoxGeometry(1.68, 0.05, 0.06), headMat, 0, 0.64, 2.27, false);
+    [-0.64, 0.64].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.38, 0.12, 0.08), headMat, x, 0.6, 2.26, false);
+      add(g, new THREE.BoxGeometry(0.4, 0.04, 0.04), headGlowMat, x, 0.54, 2.28, false);
+    });
+    add(g, new THREE.BoxGeometry(1.68, 0.06, 0.06), tailMat, 0, 0.78, -2.18, false);
+    [-0.65, 0.65].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.34, 0.12, 0.06), tailMat, x, 0.76, -2.17, false);
+    });
+
+    const beam = new THREE.Mesh(beamGeo, beamMat);
+    beam.position.set(0, 0.6, 2.3);
+    g.add(beam);
+
+    g.userData.height = 1.7; g.userData.len = 4.5;
+    return g;
   }
   function makeTruck(cab, trailer) {
     const g = new THREE.Group();
-    add(g, new THREE.BoxGeometry(2.3, 0.5, 11.2), lam(0x1a1f2a), 0, 0.85, 0);
+    add(g, new THREE.BoxGeometry(2.3, 0.45, 11.2), trimMat, 0, 0.85, 0);
+    [-1.15, 1.15].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.1, 0.7, 5.2), lam(0x2a3040), x, 0.85, -1.2);
+    });
+    
+    // Modern Aero Cab
     add(g, new THREE.BoxGeometry(2.4, 2.3, 2.4), lam(cab), 0, 2.1, 4.3);
-    add(g, new THREE.BoxGeometry(2.0, 0.8, 0.06), glassMat, 0, 2.6, 5.52, false);
+    const fairing = add(g, new THREE.BoxGeometry(2.36, 0.8, 1.6), lam(cab), 0, 3.4, 3.8);
+    fairing.rotation.x = -0.32;
+    add(g, new THREE.BoxGeometry(2.1, 0.85, 0.08), glassMat, 0, 2.58, 5.54, false);
+    [-1.21, 1.21].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.06, 0.75, 1.2), glassMat, x, 2.58, 4.4, false);
+    });
+
+    // High Capacity Telematics Trailer
     add(g, new THREE.BoxGeometry(2.6, 3.0, 7.8), lam(trailer), 0, 2.6, -1.3);
-    [[4.3], [-2.8], [-4.2]].forEach(z => { add(g, wheelGeoTruck, tireMat, -1.2, 0.58, z[0]); add(g, wheelGeoTruck, tireMat, 1.2, 0.58, z[0]); });
-    [-0.75, 0.75].forEach(x => { add(g, new THREE.BoxGeometry(0.4, 0.22, 0.1), headMat, x, 1.3, 5.52, false); add(g, new THREE.BoxGeometry(0.4, 0.2, 0.1), tailMat, x, 1.4, -5.22, false); });
-    const beam = new THREE.Mesh(beamGeo, beamMat); beam.position.set(0, 1.3, 5.55); beam.scale.set(1.2, 1.2, 1.2); g.add(beam);
-    g.userData.height = 4.2; g.userData.len = 11.2; return g;
+    add(g, new THREE.BoxGeometry(2.64, 0.1, 7.84), trimMat, 0, 4.15, -1.3);
+
+    // Wheels with Alloy Rim Hubs
+    [[4.3], [-2.8], [-4.2]].forEach(z => {
+      [-1.2, 1.2].forEach(x => {
+        add(g, wheelGeoTruck, tireMat, x, 0.58, z[0]);
+        add(g, rimGeoTruck, rimMat, x + (x > 0 ? 0.01 : -0.01), 0.58, z[0], false);
+      });
+    });
+
+    // Modern Truck Lighting
+    add(g, new THREE.BoxGeometry(2.1, 0.06, 0.06), headMat, 0, 1.3, 5.56, false);
+    [-0.8, 0.8].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.42, 0.22, 0.1), headMat, x, 1.24, 5.54, false);
+    });
+    [-0.9, -0.45, 0, 0.45, 0.9].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.12, 0.06, 0.06), headGlowMat, x, 3.25, 5.2, false);
+    });
+    [-0.85, 0.85].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.48, 0.2, 0.1), tailMat, x, 1.3, -5.24, false);
+    });
+
+    const beam = new THREE.Mesh(beamGeo, beamMat);
+    beam.position.set(0, 1.24, 5.56);
+    beam.scale.set(1.3, 1.3, 1.3);
+    g.add(beam);
+
+    g.userData.height = 4.2; g.userData.len = 11.2;
+    return g;
   }
 
   function labelSprite(text, color) {
