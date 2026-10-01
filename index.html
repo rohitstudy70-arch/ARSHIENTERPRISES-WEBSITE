@@ -975,12 +975,27 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
   ribbon(routes.cross, -routes.cross.half - 0.2, 0.25, 0.55, bridgeMat);
   ribbon(routes.cross, routes.cross.half + 0.2, 0.25, 0.55, bridgeMat);
 
-  // Elevated Bridge Support Pillars
-  const pillarGeo = new THREE.CylinderGeometry(0.9, 1.2, 8.5, 12);
-  const nPillars = Math.round(routes.cross.len / 28);
+  // Elevated Bridge Support Pillars (Clean Underpass Spans - 100% Off Ground Road)
+  const pillarGeo = new THREE.CylinderGeometry(0.85, 1.15, 8.5, 14);
+  const nPillars = Math.round(routes.cross.len / 24);
+
+  function distToRingRoad(x, z) {
+    let best = Infinity;
+    for (let i = 0; i < 360; i++) {
+      const p = routes.ring.curve.getPointAt(i / 360);
+      const d = Math.hypot(p.x - x, p.z - z);
+      if (d < best) best = d;
+    }
+    return best;
+  }
+
   for (let i = 0; i < nPillars; i++) {
     const u = i / nPillars;
     const p = routes.cross.curve.getPointAt(u);
+    // If close to the ground Ring Road (underpass crossing), NEVER place a pillar on the road!
+    if (distToRingRoad(p.x, p.z) < (routes.ring.half + 4.5)) {
+      continue; // Underpass span is completely open and unobstructed!
+    }
     const pil = new THREE.Mesh(pillarGeo, bridgeMat);
     pil.position.set(p.x, 4.25, p.z);
     pil.castShadow = true; pil.receiveShadow = true;
