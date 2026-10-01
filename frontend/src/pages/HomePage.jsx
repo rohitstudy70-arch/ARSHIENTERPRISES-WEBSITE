@@ -4,6 +4,7 @@ import NeonCity3D from '../components/NeonCity3D';
 import FeaturesSection from '../components/FeaturesSection';
 import HardwareCatalog from '../components/HardwareCatalog';
 import itriangleLogo from '../assets/itriangle-logo.png';
+import acuteLogo from '../assets/acute-logo.png';
 import { submitLead } from '../services/api';
 import { 
   ShieldCheck, 
@@ -352,7 +353,7 @@ export default function HomePage() {
               { name: 'iTriangle', desc: 'AIS 140 Certified OEM Partner', logo: itriangleLogo },
               { name: 'Accolade', desc: 'Fuel Telemetry & Sensor Solutions', icon: '⚡' },
               { name: 'MARKON', desc: 'Heavy Mining & Dumper Telematics', icon: '🛡️' },
-              { name: 'ACUTE', desc: 'High Precision Vehicle Trackers', icon: '📡' },
+              { name: 'ACUTE', desc: 'High Precision Vehicle Trackers', logo: acuteLogo },
               { name: 'RDM', desc: 'Engine Controls & Immobilization', icon: '⚙️' }
             ].map((p, i) => (
               <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition flex flex-col items-center justify-center">
