@@ -1356,20 +1356,24 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
     vehicles.push(v); return v;
   }
 
-  function lanePack(route, off, dir, count, trucks, cruiseRange) {
+  function lanePack(route, off, dir, count, trucks, fixedSpeed, forceType) {
     const gap = route.len / count;
-    const startOffset = ((Math.abs(off) + 2) * 47) % route.len;
+    const phaseOffset = ((Math.abs(off) * 73 + (dir < 0 ? 110 : 0)) % route.len);
     for (let i = 0; i < count; i++) {
       const isTruck = (i < trucks);
-      const c = isTruck ? rand(12, 14) : rand(cruiseRange[0], cruiseRange[1]);
-      spawn(route, off, dir, isTruck ? 'truck' : 'car', (startOffset + i * gap) % route.len, c);
+      const vehicleType = isTruck ? 'truck' : (forceType || 'car');
+      spawn(route, off, dir, vehicleType, (phaseOffset + i * gap) % route.len, fixedSpeed);
     }
   }
-  lanePack(routes.ring, -3.6, 1, 4, 2, [14, 16]); // Left lane (trucks & heavy transport)
-  lanePack(routes.ring, 0, 1, 4, 0, [17, 20]);    // Middle lane (Swift sport cars)
-  lanePack(routes.ring, 3.6, 1, 4, 0, [22, 25]);  // Fast lane (Lamborghini supercars)
-  lanePack(routes.cross, 2.9, 1, 4, 1, [16, 19]); // Eastbound cross
-  lanePack(routes.cross, -2.9, -1, 4, 1, [16, 19]);// Westbound cross
+
+  // Ring Road (3 Distinct Lanes with synchronized speeds):
+  lanePack(routes.ring, -3.6, 1, 3, 3, 14.5, 'truck'); // Outer lane: AIS-140 Semi-Trucks (~52 km/h)
+  lanePack(routes.ring, 0.0, 1, 4, 0, 18.5, 'car');   // Middle lane: Swift Sport Hatchbacks (~67 km/h)
+  lanePack(routes.ring, 3.6, 1, 4, 0, 23.5, 'car');   // Fast lane: Lamborghini Supercars (~85 km/h)
+
+  // Cross Avenue (Two-way expressway):
+  lanePack(routes.cross, 2.9, 1, 3, 1, 17.0, 'car');  // Eastbound (~61 km/h)
+  lanePack(routes.cross, -2.9, -1, 3, 1, 17.0, 'car'); // Westbound (~61 km/h)
 
   /* ---------- simulation ---------- */
   function positionVehicle(v) {
@@ -1384,9 +1388,11 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
   function step(dt) {
     for (const v of vehicles) {
       const len = v.route.len;
-      let target = v.cruise, minGap = Infinity, leader = null;
+      let target = v.cruise;
+      let minGap = Infinity;
+      let leader = null;
 
-      // 1. Same-Lane Leader Tracking
+      // Same-Lane Safe Spacing
       for (const o of vehicles) {
         if (o === v || o.route !== v.route || o.off !== v.off || o.dir !== v.dir) continue;
         let d = (o.s - v.s) * v.dir; d = ((d % len) + len) % len;
@@ -1394,63 +1400,37 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
         if (gap < minGap) { minGap = gap; leader = o; }
       }
 
-      // Safe Adaptive Following Distance
-      const minHardGap = 9.0;
-      const safeGap = minHardGap + v.speed * 1.8 + (v.type === 'truck' || (leader && leader.type === 'truck') ? 6.0 : 0);
-
-      if (leader) {
-        if (minGap < safeGap) {
-          if (minGap <= minHardGap) {
-            target = 0;
-          } else {
-            const factor = Math.max(0, (minGap - minHardGap) / (safeGap - minHardGap));
-            target = Math.min(target, leader.speed * factor);
-          }
-        }
+      // Fluid non-stopping adaptive headway regulation (Zero jams)
+      const safeDistance = 16.0;
+      if (leader && minGap < safeDistance) {
+        const ratio = Math.max(0.75, minGap / safeDistance);
+        target = Math.min(v.cruise, leader.speed * ratio);
       }
 
-      // 2. Cross-Route 2D Proximity Anti-Collision Yielding
-      for (const o of vehicles) {
-        if (o === v) continue;
-        if (o.route === v.route && o.off === v.off && o.dir === v.dir) continue;
-        const dist2D = Math.hypot(v.x - o.x, v.z - o.z);
-        const collisionRadius = (v.len + o.len) / 2 + 5.5;
-        if (dist2D < collisionRadius) {
-          const vHasPriority = (v.route === routes.ring && o.route !== routes.ring) || (v.route === o.route && v.id < o.id);
-          if (!vHasPriority) {
-            target = Math.min(target, Math.max(0, o.speed * 0.3));
-          }
-        }
-      }
+      // Smooth acceleration / braking transition
+      v.speed += clamp(target - v.speed, -8.0 * dt, 4.0 * dt);
+      v.speed = Math.max(8.0, v.speed); // Guaranteed continuous motion without stalling
 
-      // Acceleration / Braking Physics
-      const isBraking = target < v.speed;
-      const acc = isBraking ? 18.0 : 4.0;
-      v.speed += clamp(target - v.speed, -acc * dt, acc * dt);
-      v.speed = Math.max(0, v.speed);
+      const ds = v.speed * dt;
+      v.s += v.dir * ds;
+      v.trip += ds;
+      if (v.s < 0) v.s += len;
+      if (v.s >= len) v.s -= len;
 
-      // Hard Collision Prevention Clamp
-      let maxStep = v.speed * dt;
-      if (leader) {
-        const absoluteClearance = Math.max(0, minGap - minHardGap);
-        maxStep = Math.min(maxStep, absoluteClearance);
-      }
-
-      v.s += v.dir * maxStep;
-      v.trip += maxStep;
-      if (v.s < 0) v.s += len; if (v.s >= len) v.s -= len;
       positionVehicle(v);
 
       v.rec += dt;
       if (v.rec > 0.15) {
-        v.rec = 0; const a = v.tp;
-        a.copyWithin(3, 0, (TR - 1) * 3); a[0] = v.x; a[1] = 0.35; a[2] = v.z;
+        v.rec = 0;
+        const a = v.tp;
+        a.copyWithin(3, 0, (TR - 1) * 3);
+        a[0] = v.x; a[1] = 0.35; a[2] = v.z;
         v.trail.geometry.attributes.position.needsUpdate = true;
       }
     }
   }
   vehicles.forEach(v => { positionVehicle(v); for (let i = 0; i < TR; i++) { v.tp[i*3] = v.x; v.tp[i*3+1] = 0.35; v.tp[i*3+2] = v.z; } });
-  for (let i = 0; i < 80; i++) step(0.05);   // let traffic fully settle into smooth spacing
+  for (let i = 0; i < 40; i++) step(0.05);   // Smooth initial settlement
 
   /* ---------- geo mapping ---------- */
   const LAT0 = 25.7771, LNG0 = 87.4753;
