@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import NeonCity3D from '../components/NeonCity3D';
 import FeaturesSection from '../components/FeaturesSection';
 import HardwareCatalog from '../components/HardwareCatalog';
+import itriangleLogo from '../assets/itriangle-logo.png';
 import { submitLead } from '../services/api';
 import { 
   ShieldCheck, 
@@ -348,14 +349,20 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10 justify-center">
             {[
-              { name: 'iTriangle', desc: 'AIS 140 Certified OEM Partner', icon: '🛰️' },
+              { name: 'iTriangle', desc: 'AIS 140 Certified OEM Partner', logo: itriangleLogo },
               { name: 'Accolade', desc: 'Fuel Telemetry & Sensor Solutions', icon: '⚡' },
               { name: 'MARKON', desc: 'Heavy Mining & Dumper Telematics', icon: '🛡️' },
               { name: 'ACUTE', desc: 'High Precision Vehicle Trackers', icon: '📡' },
               { name: 'RDM', desc: 'Engine Controls & Immobilization', icon: '⚙️' }
             ].map((p, i) => (
-              <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition flex flex-col items-center">
-                <div className="text-3xl mb-2">{p.icon}</div>
+              <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 text-center hover:border-amber-400 hover:shadow-md transition flex flex-col items-center justify-center">
+                <div className="h-10 flex items-center justify-center mb-2">
+                  {p.logo ? (
+                    <img src={p.logo} alt={`${p.name} Logo`} className="max-h-9 max-w-[130px] object-contain" />
+                  ) : (
+                    <div className="text-3xl">{p.icon}</div>
+                  )}
+                </div>
                 <div className="font-extrabold text-base text-slate-900">{p.name}</div>
                 <div className="text-[11px] text-slate-500 mt-1">{p.desc}</div>
               </div>
