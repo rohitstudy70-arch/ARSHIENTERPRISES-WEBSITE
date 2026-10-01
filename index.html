@@ -1054,19 +1054,53 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
     gr.addColorStop(0, 'rgba(255,200,120,.55)'); gr.addColorStop(1, 'rgba(255,200,120,0)');
     gg.fillStyle = gr; gg.fillRect(0, 0, 64, 64);
     glowMat = new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(gc), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0 });
-    const glowGeo = new THREE.PlaneGeometry(22, 22); glowGeo.rotateX(-Math.PI / 2);
+    const glowGeo = new THREE.PlaneGeometry(24, 24); glowGeo.rotateX(-Math.PI / 2);
     const poleMat = new THREE.MeshLambertMaterial({ color: 0x3a4152 });
     const bulbMat = new THREE.MeshBasicMaterial({ color: 0xffd28a });
+
     Object.values(routes).forEach(r => {
-      const n = Math.round(r.len / 26);
+      const isElevated = (r.y > 1.0);
+      const poleDist = r.half + (isElevated ? 1.6 : 3.4);
+      const n = Math.round(r.len / 32);
+
       for (let i = 0; i < n; i++) {
-        const u = i / n, p = r.curve.getPointAt(u), t = r.curve.getTangentAt(u);
-        const side = (i % 2 ? 1 : -1) * (r.half + 1.4);
-        const x = p.x - t.z * side, z = p.z + t.x * side;
+        const u = i / n;
+        const p = r.curve.getPointAt(u);
+        const t = r.curve.getTangentAt(u);
+        const rx = -t.z, rz = t.x;
+        const s = (i % 2 === 0 ? 1 : -1);
+        const sideOffset = s * poleDist;
+        
+        const px = p.x + rx * sideOffset;
+        const pz = p.z + rz * sideOffset;
         const py = (p.y || 0) + (r.y || 0);
-        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 7, 6), poleMat); pole.position.set(x, py + 3.5, z); scene.add(pole);
-        const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.42, 8, 6), bulbMat); bulb.position.set(x, py + 7.1, z); scene.add(bulb);
-        const glow = new THREE.Mesh(glowGeo, glowMat); glow.position.set(x - (-t.z * Math.sign(side)) * 3.5, py + 0.24, z - (t.x * Math.sign(side)) * 3.5); scene.add(glow);
+
+        // Mast placed completely outside the road
+        const mastHeight = 7.5;
+        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.18, mastHeight, 8), poleMat);
+        pole.position.set(px, py + mastHeight / 2, pz);
+        pole.castShadow = true;
+        scene.add(pole);
+
+        // Overhang arm
+        const bulbX = px - rx * s * 1.5;
+        const bulbZ = pz - rz * s * 1.5;
+        const bulbY = py + mastHeight + 0.3;
+
+        const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.0, 6), poleMat);
+        arm.position.set((px + bulbX) / 2, py + mastHeight, (pz + bulbZ) / 2);
+        arm.rotation.z = -s * Math.PI / 4;
+        scene.add(arm);
+
+        // Light bulb
+        const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.38, 8, 6), bulbMat);
+        bulb.position.set(bulbX, bulbY, bulbZ);
+        scene.add(bulb);
+
+        // Light pool on road
+        const glow = new THREE.Mesh(glowGeo, glowMat);
+        glow.position.set(bulbX, py + 0.22, bulbZ);
+        scene.add(glow);
       }
     });
   })();
