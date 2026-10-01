@@ -1072,77 +1072,159 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
   function add(g, geo, mat, x, y, z, shadow) {
     const m = new THREE.Mesh(geo, mat); m.position.set(x, y, z); if (shadow !== false) m.castShadow = true; g.add(m); return m;
   }
-  function makeCar(color) {
+
+  // 1. Lamborghini Supercar / Hypercar
+  function makeLamborghini(color) {
     const g = new THREE.Group();
     const bodyMat = lam(color);
     
-    // 1. Lower chassis / carbon aerodynamic underbody diffuser
-    add(g, new THREE.BoxGeometry(1.82, 0.22, 4.4), trimMat, 0, 0.36, 0);
-    // Front sport splitter
-    add(g, new THREE.BoxGeometry(1.78, 0.12, 0.6), trimMat, 0, 0.28, 2.1);
-    // Rear aerodynamic diffuser fins
-    add(g, new THREE.BoxGeometry(1.78, 0.14, 0.5), trimMat, 0, 0.32, -2.1);
+    // Low carbon chassis & aero underbody
+    add(g, new THREE.BoxGeometry(1.98, 0.16, 4.6), trimMat, 0, 0.26, 0);
+    add(g, new THREE.BoxGeometry(1.94, 0.08, 0.7), trimMat, 0, 0.2, 2.25);
+    [-0.85, 0.85].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.18, 0.18, 0.5), trimMat, x, 0.26, 2.3);
+    });
+
+    // Sharp Wedge Front Hood & Nose Cone (Lamborghini slope)
+    const nose = add(g, new THREE.BoxGeometry(1.82, 0.22, 1.6), bodyMat, 0, 0.54, 1.25);
+    nose.rotation.x = -0.16;
+    add(g, new THREE.BoxGeometry(1.86, 0.28, 0.6), bodyMat, 0, 0.42, 2.15);
+    [-0.55, 0.55].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.55, 0.18, 0.1), trimMat, x, 0.36, 2.44, false);
+    });
+
+    // Wide Mid-Engine Body & Side Air Scoops
+    add(g, new THREE.BoxGeometry(1.94, 0.38, 2.2), bodyMat, 0, 0.52, -0.2);
+    [-1.02, 1.02].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.16, 0.28, 1.4), trimMat, x, 0.56, -0.3);
+      add(g, new THREE.BoxGeometry(0.12, 0.34, 1.2), bodyMat, x, 0.6, -0.25);
+    });
+
+    // Ultra-Low Fighter-Jet Glass Cockpit
+    const frontCanopy = add(g, new THREE.BoxGeometry(1.4, 0.08, 1.3), glassMat, 0, 0.94, 0.45, false);
+    frontCanopy.rotation.x = -0.74;
+    add(g, new THREE.BoxGeometry(1.3, 0.06, 1.1), glassMat, 0, 1.18, -0.25, false);
+    const rearLouvers = add(g, new THREE.BoxGeometry(1.36, 0.08, 1.4), glassMat, 0, 0.92, -1.05, false);
+    rearLouvers.rotation.x = 0.48;
+    add(g, new THREE.BoxGeometry(1.34, 0.4, 1.7), glassMat, 0, 0.92, -0.25, false);
+    [-0.64, 0.64].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.06, 0.04, 1.1), bodyMat, x, 1.19, -0.25);
+    });
+
+    // Rear Muscular Haunches & Deck
+    add(g, new THREE.BoxGeometry(1.94, 0.34, 1.3), bodyMat, 0, 0.68, -1.55);
     
-    // 2. Sculpted lower main body & side skirts
-    add(g, new THREE.BoxGeometry(1.88, 0.42, 3.8), bodyMat, 0, 0.62, -0.05);
-    [-0.96, 0.96].forEach(x => {
-      add(g, new THREE.BoxGeometry(0.08, 0.24, 2.2), bodyMat, x, 0.52, 0);
+    // High-Mount Carbon GT Supercar Wing
+    [-0.55, 0.55].forEach(x => {
+      const pylon = add(g, new THREE.BoxGeometry(0.05, 0.38, 0.18), trimMat, x, 0.95, -2.15);
+      pylon.rotation.x = -0.2;
+    });
+    const gtWing = add(g, new THREE.BoxGeometry(2.02, 0.06, 0.42), trimMat, 0, 1.18, -2.18);
+    gtWing.rotation.x = -0.08;
+    [-1.02, 1.02].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.04, 0.22, 0.46), bodyMat, x, 1.2, -2.18);
     });
 
-    // 3. Sloping Hood / Front Nose (Aero front taper)
-    const hood = add(g, new THREE.BoxGeometry(1.72, 0.24, 1.45), bodyMat, 0, 0.72, 1.18);
-    hood.rotation.x = -0.09;
-    add(g, new THREE.BoxGeometry(1.74, 0.32, 0.55), bodyMat, 0, 0.56, 1.98);
-
-    // 4. Sleek Aerodynamic Cabin & Windshield
-    const frontGlass = add(g, new THREE.BoxGeometry(1.5, 0.08, 1.15), glassMat, 0, 1.12, 0.58, false);
-    frontGlass.rotation.x = -0.64;
-    add(g, new THREE.BoxGeometry(1.42, 0.06, 1.35), glassMat, 0, 1.39, -0.22, false);
-    const rearGlass = add(g, new THREE.BoxGeometry(1.44, 0.08, 1.1), glassMat, 0, 1.14, -1.02, false);
-    rearGlass.rotation.x = 0.54;
-    add(g, new THREE.BoxGeometry(1.46, 0.52, 2.1), glassMat, 0, 1.1, -0.22, false);
-    [-0.72, 0.72].forEach(x => {
-      add(g, new THREE.BoxGeometry(0.06, 0.05, 1.3), bodyMat, x, 1.4, -0.22);
+    // Rear Carbon Diffuser & Central Exhaust
+    add(g, new THREE.BoxGeometry(1.92, 0.2, 0.5), trimMat, 0, 0.32, -2.25);
+    add(g, new THREE.BoxGeometry(0.48, 0.12, 0.1), lam(0x050505), 0, 0.55, -2.36, false);
+    [-0.12, 0.12].forEach(x => {
+      add(g, new THREE.CylinderGeometry(0.07, 0.07, 0.08, 10), rimMat, x, 0.55, -2.37, false).rotateX(Math.PI / 2);
     });
 
-    // 5. Rear Trunk Deck & Integrated Aero Ducktail Lip
-    add(g, new THREE.BoxGeometry(1.7, 0.3, 0.95), bodyMat, 0, 0.76, -1.62);
-    const spoiler = add(g, new THREE.BoxGeometry(1.72, 0.08, 0.22), trimMat, 0, 0.92, -2.12);
-    spoiler.rotation.x = -0.12;
-
-    // 6. Modern GPS Shark-Fin Antenna
-    const fin = add(g, new THREE.BoxGeometry(0.06, 0.16, 0.32), trimMat, 0, 1.48, -0.65);
-    fin.rotation.x = 0.2;
-
-    // 7. Sleek Aero Side Mirrors
-    [-0.98, 0.98].forEach(x => {
-      add(g, new THREE.BoxGeometry(0.2, 0.08, 0.14), bodyMat, x, 0.94, 0.65);
+    // Wheels
+    [[-1.02, 1.42], [1.02, 1.42]].forEach(p => {
+      add(g, wheelGeoCar, tireMat, p[0], 0.34, p[1]);
+      add(g, rimGeoCar, rimMat, p[0] + (p[0] > 0 ? 0.01 : -0.01), 0.34, p[1], false);
+    });
+    [[-1.04, -1.35], [1.04, -1.35]].forEach(p => {
+      add(g, wheelGeoCar, tireMat, p[0], 0.36, p[1]).scale.set(1.15, 1, 1);
+      add(g, rimGeoCar, rimMat, p[0] + (p[0] > 0 ? 0.01 : -0.01), 0.36, p[1], false);
     });
 
-    // 8. Wheels: Low Profile Sport Tires with Alloy Rim Accents
-    [[-0.96, 1.38], [0.96, 1.38], [-0.96, -1.38], [0.96, -1.38]].forEach(p => {
+    // Y-Shaped LED Supercar Headlights & Rear Razor Strips
+    [-0.68, 0.68].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.38, 0.08, 0.14), headMat, x, 0.52, 2.38, false);
+      add(g, new THREE.BoxGeometry(0.2, 0.04, 0.1), headGlowMat, x + (x > 0 ? -0.08 : 0.08), 0.48, 2.4, false);
+    });
+    [-0.66, 0.66].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.46, 0.06, 0.06), tailMat, x, 0.68, -2.34, false);
+      add(g, new THREE.BoxGeometry(0.06, 0.14, 0.06), tailMat, x + (x > 0 ? 0.2 : -0.2), 0.64, -2.34, false);
+    });
+
+    const beam = new THREE.Mesh(beamGeo, beamMat);
+    beam.position.set(0, 0.52, 2.4);
+    g.add(beam);
+
+    g.userData.height = 1.35; g.userData.len = 4.6;
+    return g;
+  }
+
+  // 2. Sport Modern Hatchback (Swift Style)
+  function makeSwift(color) {
+    const g = new THREE.Group();
+    const bodyMat = lam(color);
+    const isDark = (color === 0x140d5c || color === 0x2563eb || color === 0x0a0c10);
+    const roofColor = isDark ? 0xffffff : 0x121722;
+    const roofMat = lam(roofColor);
+    
+    // Compact City Chassis & Honeycomb Grille
+    add(g, new THREE.BoxGeometry(1.72, 0.22, 3.65), trimMat, 0, 0.36, 0);
+    add(g, new THREE.BoxGeometry(1.7, 0.38, 0.6), bodyMat, 0, 0.56, 1.55);
+    add(g, new THREE.BoxGeometry(1.1, 0.24, 0.06), trimMat, 0, 0.48, 1.88, false);
+    add(g, new THREE.BoxGeometry(0.25, 0.04, 0.02), rimMat, 0, 0.52, 1.91, false);
+
+    // Compact Hatchback Body & Hood
+    add(g, new THREE.BoxGeometry(1.74, 0.46, 3.2), bodyMat, 0, 0.68, -0.1);
+    const hood = add(g, new THREE.BoxGeometry(1.62, 0.22, 1.1), bodyMat, 0, 0.8, 0.95);
+    hood.rotation.x = -0.12;
+
+    // Swift Signature Floating Contrast Roof & Cabin Glass
+    const windshield = add(g, new THREE.BoxGeometry(1.48, 0.08, 0.95), glassMat, 0, 1.18, 0.38, false);
+    windshield.rotation.x = -0.52;
+    add(g, new THREE.BoxGeometry(1.44, 0.56, 1.9), glassMat, 0, 1.2, -0.22, false);
+    add(g, new THREE.BoxGeometry(1.48, 0.07, 1.7), roofMat, 0, 1.48, -0.2);
+    const rearHatch = add(g, new THREE.BoxGeometry(1.44, 0.08, 0.85), glassMat, 0, 1.2, -1.22, false);
+    rearHatch.rotation.x = 0.58;
+
+    // Roof Lip Spoiler & Rear Bumper
+    const spoiler = add(g, new THREE.BoxGeometry(1.5, 0.08, 0.28), roofMat, 0, 1.51, -1.1);
+    spoiler.rotation.x = 0.1;
+    add(g, new THREE.BoxGeometry(1.7, 0.42, 0.5), bodyMat, 0, 0.58, -1.58);
+    add(g, new THREE.BoxGeometry(1.54, 0.14, 0.2), trimMat, 0, 0.38, -1.75);
+
+    // GPS Antenna & Side Mirrors
+    const ant = add(g, new THREE.CylinderGeometry(0.02, 0.03, 0.35, 6), trimMat, 0, 1.62, -0.8);
+    ant.rotation.x = -0.35;
+    [-0.92, 0.92].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.18, 0.12, 0.15), roofMat, x, 1.02, 0.4);
+    });
+
+    // Wheels
+    [[-0.88, 1.05], [0.88, 1.05], [-0.88, -1.05], [0.88, -1.05]].forEach(p => {
       add(g, wheelGeoCar, tireMat, p[0], 0.38, p[1]);
       add(g, rimGeoCar, rimMat, p[0] + (p[0] > 0 ? 0.01 : -0.01), 0.38, p[1], false);
     });
 
-    // 9. Modern Cyber LED Horizon Lighting
-    add(g, new THREE.BoxGeometry(1.68, 0.05, 0.06), headMat, 0, 0.64, 2.27, false);
-    [-0.64, 0.64].forEach(x => {
-      add(g, new THREE.BoxGeometry(0.38, 0.12, 0.08), headMat, x, 0.6, 2.26, false);
-      add(g, new THREE.BoxGeometry(0.4, 0.04, 0.04), headGlowMat, x, 0.54, 2.28, false);
+    // Swept-Back Sport Headlights & C-Shaped Tail Lamps
+    [-0.62, 0.62].forEach(x => {
+      const h = add(g, new THREE.BoxGeometry(0.36, 0.16, 0.2), headMat, x, 0.72, 1.68, false);
+      h.rotation.y = x > 0 ? -0.15 : 0.15;
     });
-    add(g, new THREE.BoxGeometry(1.68, 0.06, 0.06), tailMat, 0, 0.78, -2.18, false);
-    [-0.65, 0.65].forEach(x => {
-      add(g, new THREE.BoxGeometry(0.34, 0.12, 0.06), tailMat, x, 0.76, -2.17, false);
+    [-0.64, 0.64].forEach(x => {
+      add(g, new THREE.BoxGeometry(0.28, 0.32, 0.1), tailMat, x, 0.82, -1.74, false);
     });
 
     const beam = new THREE.Mesh(beamGeo, beamMat);
-    beam.position.set(0, 0.6, 2.3);
+    beam.position.set(0, 0.7, 1.75);
+    beam.scale.set(0.9, 0.9, 0.9);
     g.add(beam);
 
-    g.userData.height = 1.7; g.userData.len = 4.5;
+    g.userData.height = 1.55; g.userData.len = 3.65;
     return g;
   }
+
+  // 3. Heavy AIS-140 Certified Semi-Truck
   function makeTruck(cab, trailer) {
     const g = new THREE.Group();
     add(g, new THREE.BoxGeometry(2.3, 0.45, 11.2), trimMat, 0, 0.85, 0);
@@ -1206,7 +1288,7 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
 
   /* ---------- fleet ---------- */
   const CAR_COL = 0x4bc0ff, TRUCK_COL = 0xe3ab84, SEL_COL = 0xff79e0, VLTD_CAR_COL = 0xffd35c;
-  const carColors = [0xff79e0, 0xa78bff, 0xffd35c, 0x5fb4ff, 0xffffff, 0xb04bff, 0x4bc0ff, 0xffb020];
+  const carColors = [0x39ff14, 0xffd35c, 0xff5900, 0x00d4ff, 0xef4444, 0xa855f7, 0xffffff, 0x3b82f6];
   const cabColors = [0xffb020, 0xff79e0, 0x5fb4ff, 0xb04bff];
   const trailerColors = [0x6b4bff, 0x3f6bff, 0xb04bff, 0x2fb8a8, 0x9db4ff];
   const TR = 90;
@@ -1226,7 +1308,12 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
     } else {
       carN++;
       const carColor = pick(carColors);
-      const isYellowCar = (carColor === 0xffd35c || carColor === 0xffb020);
+      const isYellowCar = (carColor === 0xffd35c || carColor === 0xff5900);
+      
+      // Alternate between Lamborghini Supercar and Swift Sport Hatchback
+      const isLambo = (carN % 2 === 1);
+      group = isLambo ? makeLamborghini(carColor) : makeSwift(carColor);
+
       if (isYellowCar) {
         vltdN++;
         id = 'VLTD-' + String(vltdN).padStart(2, '0');
@@ -1236,7 +1323,6 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
         id = 'GPS-' + String(gpsN).padStart(2, '0');
         hex = CAR_COL;
       }
-      group = makeCar(carColor);
     }
     const SC = 1.4; group.scale.setScalar(SC);
     const height = group.userData.height, len = group.userData.len * SC;
