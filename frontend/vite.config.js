@@ -18,7 +18,6 @@ export default defineConfig({
         about: resolve(rootDir, 'about-us.html'),
         approvedStates: resolve(rootDir, 'approved-states.html'),
         events: resolve(rootDir, 'events.html'),
-        blogs: resolve(rootDir, 'blogs.html'),
       },
     },
   },

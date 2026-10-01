@@ -137,19 +137,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Insight */}
-          <div className="relative group" onMouseLeave={() => setActiveDropdown(null)}>
-            <button 
-              onClick={() => toggleDropdown('insight')}
-              className="flex items-center gap-1 px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-[#b3aee0] hover:text-[#e3ab84] transition"
-            >
-              Insight <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
-            </button>
-            <div className="absolute top-full left-0 w-56 py-2 bg-[#0f0945] border border-[#4a3cb5] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <a href="blogs.html" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Blog & Articles</a>
-              <a href="blogs.html#insights" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Industry News</a>
-            </div>
-          </div>
         </nav>
 
         {/* Right Actions */}
@@ -194,7 +181,6 @@ export default function Navbar() {
           <Link to="/events" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Events & Expos</Link>
           <Link to="/approved-states" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-[#e3ab84] py-2 border-b border-[#3a2f9a]/40">Approved States 🇮🇳</Link>
           <Link to="/#hardware" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">GPS Hardware</Link>
-          <a href="blogs.html" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-[#f3c39a] py-2 border-b border-[#3a2f9a]/40">Blogs & Articles 📚</a>
           <Link to="/#features" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Features & Telematics</Link>
           <Link to="/#contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Contact Us</Link>
           <div className="pt-2 flex flex-col gap-2">
