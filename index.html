@@ -341,7 +341,7 @@
         <div class="hl-num">+91 77828 08063</div>
       </div>
     </a>
-    <a href="https://caronline.live/authentication/create" target="_blank" rel="noopener noreferrer" class="nav-login">Login <span class="arrow-up">↗</span></a>
+    <a href="javascript:void(0)" class="nav-login" onclick="event.preventDefault()">Login <span class="arrow-up">↗</span></a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
   </div>
 </nav>
@@ -349,7 +349,7 @@
 <!-- Mobile Drawer -->
 <div class="mobile-drawer" id="mobileDrawer">
   <a href="index.html" style="color: #e3ab84; font-weight: 700;">🏠 Home</a>
-  <a href="https://caronline.live/authentication/create" target="_blank" rel="noopener noreferrer" style="color: #f3c39a; font-weight: 700;">🔐 Login to GPS Server ↗</a>
+  <a href="javascript:void(0)" style="color: #f3c39a; font-weight: 700;" onclick="event.preventDefault()">🔐 Login to GPS Server</a>
   <details><summary>Company ▾</summary>
     <a href="about-us.html">About Us</a>
     <a href="about-us.html#leadership">Leadership</a>
@@ -428,28 +428,28 @@
 </div>
 <main class="site">
   <!-- ==================== LIVE METRICS STATS BANNER ==================== -->
-  <section style="padding: 50px 6vw 40px; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
+  <section id="kaam" style="padding: 50px 6vw 40px; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px; max-width: 1140px; margin: 0 auto;">
       <div style="padding: 28px 20px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
-        <div style="font-size: 38px; font-weight: 900; color: #1d4ed8; line-height: 1; margin-bottom: 8px;">10,000+</div>
+        <div class="stat-counter" data-target="10000" data-suffix="+" data-decimals="0" style="font-size: 38px; font-weight: 900; color: #1d4ed8; line-height: 1; margin-bottom: 8px;">0+</div>
         <div style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">Commercial Assets Monitored</div>
         <div style="font-size: 13px; color: #64748b; font-weight: 500;">Deployed Across 28+ Indian States & UTs</div>
       </div>
       
       <div style="padding: 28px 20px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
-        <div style="font-size: 38px; font-weight: 900; color: #d97706; line-height: 1; margin-bottom: 8px;">500+</div>
+        <div class="stat-counter" data-target="500" data-suffix="+" data-decimals="0" style="font-size: 38px; font-weight: 900; color: #d97706; line-height: 1; margin-bottom: 8px;">0+</div>
         <div style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">Enterprise Fleet Clients</div>
         <div style="font-size: 13px; color: #64748b; font-weight: 500;">Logistics, Mining, Transit & Heavy Fleets</div>
       </div>
 
       <div style="padding: 28px 20px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
-        <div style="font-size: 38px; font-weight: 900; color: #10b981; line-height: 1; margin-bottom: 8px;">100%</div>
+        <div class="stat-counter" data-target="100" data-suffix="%" data-decimals="0" style="font-size: 38px; font-weight: 900; color: #10b981; line-height: 1; margin-bottom: 8px;">0%</div>
         <div style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">MoRTH AIS 140 Compliance</div>
         <div style="font-size: 13px; color: #64748b; font-weight: 500;">ARAI & CDAC Certified Vahan Integration</div>
       </div>
 
       <div style="padding: 28px 20px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
-        <div style="font-size: 38px; font-weight: 900; color: #7c3aed; line-height: 1; margin-bottom: 8px;">99.99%</div>
+        <div class="stat-counter" data-target="99.99" data-suffix="%" data-decimals="2" style="font-size: 38px; font-weight: 900; color: #7c3aed; line-height: 1; margin-bottom: 8px;">0.00%</div>
         <div style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">Enterprise Cloud SLA</div>
         <div style="font-size: 13px; color: #64748b; font-weight: 500;">High-Throughput AWS Infrastructure</div>
       </div>
@@ -1720,7 +1720,69 @@ new IntersectionObserver(e=>{document.getElementById("fab").style.display=e[0].i
     b.addEventListener("mouseleave", () => gsap.to(b, { scale: 1, duration: 0.2 }));
   });
 
-  window.addEventListener("load", () => ScrollTrigger.refresh());
+  /* ==================== 0 to TARGET STAT COUNTERS ==================== */
+  function initStatCounters() {
+    const counters = document.querySelectorAll('.stat-counter');
+    if (!counters.length) return;
+
+    const animate = (el) => {
+      if (el.dataset.animated === 'true') return;
+      el.dataset.animated = 'true';
+
+      const target = parseFloat(el.getAttribute('data-target') || '0');
+      const suffix = el.getAttribute('data-suffix') || '';
+      const prefix = el.getAttribute('data-prefix') || '';
+      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      const duration = 2200;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 4);
+        const currentVal = target * ease;
+
+        const formatted = decimals > 0
+          ? currentVal.toFixed(decimals)
+          : Math.floor(currentVal).toLocaleString('en-IN');
+
+        el.textContent = `${prefix}${formatted}${suffix}`;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          const finalVal = decimals > 0
+            ? target.toFixed(decimals)
+            : Math.round(target).toLocaleString('en-IN');
+          el.textContent = `${prefix}${finalVal}${suffix}`;
+        }
+      }
+
+      requestAnimationFrame(update);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animate(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      counters.forEach(c => observer.observe(c));
+    } else {
+      counters.forEach(animate);
+    }
+  }
+
+  initStatCounters();
+
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+    initStatCounters();
+  });
 })();
 </script>
 </body>

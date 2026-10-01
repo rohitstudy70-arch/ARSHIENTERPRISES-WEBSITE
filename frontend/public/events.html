@@ -45,27 +45,29 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 50;
-      height: 70px;
+      z-index: 100;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 4vw;
-      background: rgba(10, 6, 48, 0.96);
+      background: rgba(10, 6, 48, 0.95);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(58, 47, 154, 0.7);
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
       color: #fff;
+      flex-shrink: 0;
     }
     .nav-logo-icon {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 10px;
       background: linear-gradient(135deg, #f3c39a, #d98f5e);
       color: #1a0f40;
@@ -73,7 +75,7 @@
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 18px;
+      font-size: 17px;
       font-family: 'Outfit', sans-serif;
     }
     .nav-logo span {
@@ -144,7 +146,7 @@
       padding-left: 22px;
     }
 
-    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .nav-helpline {
       display: flex;
       align-items: center;
@@ -156,10 +158,10 @@
       text-decoration: none;
       color: #fff;
     }
-    .nav-helpline .hl-label { font-size: 9px; font-weight: 800; color: #4bc0ff; text-transform: uppercase; }
+    .nav-helpline .hl-label { font-size: 8.5px; font-weight: 800; color: #4bc0ff; text-transform: uppercase; }
     .nav-helpline .hl-num { font-size: 12px; font-weight: 700; }
     .nav-login {
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 10px;
       background: linear-gradient(135deg, #f3c39a, #d98f5e);
       color: #1a0f40;
@@ -168,7 +170,20 @@
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: .5px;
+      white-space: nowrap;
     }
+
+    .nav-toggle { display: none; background: rgba(20,12,80,.6); border: 1px solid #3a2f9a; border-radius: 8px; padding: 6px 10px; color: #fff; font-size: 20px; cursor: pointer; line-height: 1; min-height: 38px; min-width: 38px; }
+
+    /* Mobile Drawer */
+    .mobile-drawer { display: none; position: fixed; top: 56px; left: 0; right: 0; bottom: 0; background: rgba(10,6,48,.98); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); z-index: 99; padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 0px)); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .mobile-drawer.open { display: block; }
+    .mobile-drawer a, .mobile-drawer summary { display: block; padding: 13px 0; color: #b3aee0; font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #3a2f9a30; }
+    .mobile-drawer a:hover { color: #e3ab84; }
+    .mobile-drawer details { border-bottom: 1px solid #3a2f9a30; }
+    .mobile-drawer details summary { cursor: pointer; list-style: none; }
+    .mobile-drawer details summary::marker, .mobile-drawer details summary::-webkit-details-marker { display: none; }
+    .mobile-drawer details a { padding: 10px 0 10px 16px; font-size: 14px; font-weight: 500; border: none; }
 
     /* ===== HERO SECTION ===== */
     .events-hero {
@@ -522,10 +537,41 @@
     }
     footer a { color: var(--amber); text-decoration: none; font-weight: 600; }
 
+    /* ===== RESPONSIVE MEDIA QUERIES ===== */
+    @media (max-width: 960px) {
+      .nav-menu { display: none; }
+      .nav-helpline .hl-label { display: none; }
+      .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    }
+
     @media (max-width: 860px) {
       .spotlight-card { grid-template-columns: 1fr; }
-      .nav-menu { display: none; }
-      .events-hero { padding-top: 90px; }
+      .events-hero { padding-top: 86px; }
+      .spotlight-content { padding: 32px 24px; }
+      .section-wrap { margin-bottom: 50px; }
+    }
+
+    @media (max-width: 640px) {
+      .events-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); }
+      .metrics-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 14px; }
+      .cta-banner { padding: 36px 20px; border-radius: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .topnav { padding: 0 12px; height: 56px; }
+      .nav-logo span { font-size: 17px; }
+      .nav-logo-icon { width: 32px; height: 32px; font-size: 15px; }
+      .nav-helpline { padding: 5px 8px; gap: 4px; }
+      .nav-helpline .hl-num { font-size: 11px; }
+      .nav-login { padding: 6px 10px; font-size: 11px; }
+    }
+
+    @media (max-width: 380px) {
+      .nav-helpline .hl-num { display: none; }
+      .nav-helpline { padding: 6px 8px; }
+      .nav-logo span small { display: none !important; }
+      .event-body { padding: 20px 16px; }
     }
   </style>
 </head>
@@ -535,10 +581,13 @@
   <nav class="topnav">
     <a href="index.html" class="nav-logo">
       <div class="nav-logo-icon">A</div>
-      <span>Arshi <i>Enterprises</i></span>
+      <span>Arshi <i>Enterprises</i> <small style="font-size: 10px; opacity: 0.9; font-weight: 700; color: #e3ab84; margin-left: 4px; padding: 2px 6px; border-radius: 4px; background: rgba(227,171,132,0.15); border: 1px solid rgba(227,171,132,0.3);">EST. 2016</small></span>
     </a>
 
     <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">Home</a>
+      </li>
       <li class="nav-item">
         <a href="about-us.html" class="nav-link active">Company ▾</a>
         <div class="nav-dropdown">
@@ -581,9 +630,6 @@
           <a href="https://wa.me/917782808063" target="_blank">WhatsApp Chat</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a href="index.html#" class="nav-link">Insight ▾</a>
-      </li>
     </ul>
 
     <div class="nav-actions">
@@ -594,20 +640,53 @@
           <div class="hl-num">+91 77828 08063</div>
         </div>
       </a>
-      <a href="index.html#contact" class="nav-login">Login ↗</a>
+      <a href="javascript:void(0)" class="nav-login" onclick="event.preventDefault()">Login ↗</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
     </div>
   </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">🏠 Home</a>
+    <a href="javascript:void(0)" style="color: #f3c39a; font-weight: 700;" onclick="event.preventDefault()">🔐 Login to GPS Server</a>
+    <details open><summary style="color: #e3ab84; font-weight: 700;">Company ▾</summary>
+      <a href="about-us.html">• About Us</a>
+      <a href="about-us.html#leadership">• Leadership Council</a>
+      <a href="events.html" style="color: #e3ab84; font-weight: 700;">• Events & Expos</a>
+      <a href="about-us.html#awards">• Awards & Recognitions</a>
+      <a href="about-us.html#timeline">• Our Journey</a>
+      <a href="about-us.html#mission">• Mission, Vision & Values</a>
+    </details>
+    <details><summary>Product ▾</summary>
+      <a href="index.html#kaam">AGT365N Pro GPS Tracker</a>
+      <a href="index.html#kaam">PRO-365N Fleet Master</a>
+      <a href="index.html#kaam">AIS 140 Govt. Certified GPS</a>
+      <a href="index.html#kaam">Portable Magnetic GPS</a>
+    </details>
+    <a href="approved-states.html">Approved States 🇮🇳</a>
+    <details><summary>Services ▾</summary>
+      <a href="index.html#kaam">Live GPS Tracking</a>
+      <a href="index.html#kaam">Fuel & Diesel Monitoring</a>
+      <a href="index.html#kaam">Remote Engine Cut-Off</a>
+      <a href="index.html#kaam">AIS 140 RTO Compliance</a>
+    </details>
+    <details><summary>Contact ▾</summary>
+      <a href="index.html#contact">Get Free Demo</a>
+      <a href="tel:+917782808063">Call Helpline</a>
+      <a href="https://wa.me/917782808063" target="_blank">WhatsApp Chat</a>
+    </details>
+  </div>
 
   <!-- ==================== HERO SECTION ==================== -->
   <section class="events-hero">
     <div class="badge-pill">
-      <span>🎪</span> Corporate Conclaves, Expos & Transporter Meets
+      <span>🎪</span> Corporate Conclaves, Expos & Transporter Meets • Innovating Since 2016
     </div>
     <h1 class="hero-heading">
       Connecting India's Transport Community <br />Through <span>Technology & Innovation</span>
     </h1>
     <p class="hero-sub">
-      From high-level government telematics expos in Patna to ground-level transporter fuel workshops in Purnea — explore how Arshi Enterprises leads Eastern India's smart mobility transformation.
+      Since 2016, from high-level government telematics expos in Patna to ground-level transporter fuel workshops in Purnea — explore how Arshi Enterprises leads Eastern India's smart mobility transformation.
     </p>
 
     <!-- Metrics Grid -->
@@ -861,12 +940,22 @@
   </section>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer>
-    <div>
-      © <span id="year"></span> <b>Arshi Enterprises</b>. All rights reserved. Purnea, Bihar.
+  <footer style="padding: 44px 6vw; background: #070a1a; color: #94a3b8; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 14px; border-top: 1px solid #1e293b; font-size: 14px;">
+    <div style="font-size: 16px; font-weight: 900; color: #ffffff; letter-spacing: 0.5px;">ARSHI ENTERPRISES</div>
+    <div style="max-width: 680px; color: #94a3b8; font-size: 13px; line-height: 1.6;">Leading GPS Telematics, Fleet Automation & AIS 140 Certified Hardware Supplier Since 2016 across Bihar & India.</div>
+    <div style="display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin: 4px 0;">
+      <a href="index.html" style="color: #f59e0b; text-decoration: none; font-weight: 700;">Home</a>
+      <span style="color: #475569;">•</span>
+      <a href="approved-states.html" style="color: #f59e0b; text-decoration: none; font-weight: 700;">Approved States</a>
+      <span style="color: #475569;">•</span>
+      <a href="events.html" style="color: #f59e0b; text-decoration: none; font-weight: 700;">Events & Expos</a>
+      <span style="color: #475569;">•</span>
+      <a href="about-us.html" style="color: #f59e0b; text-decoration: none; font-weight: 700;">About Us</a>
+      <span style="color: #475569;">•</span>
+      <a href="index.html#contact" style="color: #f59e0b; text-decoration: none; font-weight: 700;">Contact</a>
     </div>
-    <div>
-      Helpline: <a href="tel:+917782808063">+91 77828 08063</a> | WhatsApp: <a href="https://wa.me/917782808063" target="_blank">Chat Now</a>
+    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">
+      &copy; <span id="year"></span> <b>Arshi Enterprises</b>. All rights reserved. | 24/7 Fleet Helpline: <a href="tel:+917782808063" style="color: #38bdf8; text-decoration: none; font-weight: 700;">+91 77828 08063</a>
     </div>
   </footer>
 
@@ -890,6 +979,30 @@
     document.addEventListener('click', () => {
       document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
     });
+
+    // Mobile drawer toggle
+    (function(){
+      const btn = document.getElementById("navToggle");
+      const drawer = document.getElementById("mobileDrawer");
+      if (!btn || !drawer) return;
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        drawer.classList.toggle("open");
+        btn.textContent = drawer.classList.contains("open") ? "✕" : "☰";
+      });
+      drawer.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", () => {
+          drawer.classList.remove("open");
+          btn.textContent = "☰";
+        });
+      });
+      document.addEventListener("click", (e) => {
+        if (!drawer.contains(e.target) && !btn.contains(e.target)) {
+          drawer.classList.remove("open");
+          btn.textContent = "☰";
+        }
+      });
+    })();
   </script>
 </body>
 </html>
