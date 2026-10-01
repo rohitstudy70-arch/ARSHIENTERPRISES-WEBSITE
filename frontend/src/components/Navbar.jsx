@@ -190,6 +190,8 @@ export default function Navbar() {
         <div className="lg:hidden bg-[#0a0630]/98 border-b border-[#3a2f9a] px-6 py-6 flex flex-col gap-3 max-h-[85vh] overflow-y-auto">
           <Link to="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white py-2 border-b border-[#3a2f9a]/40">Home</Link>
           <a href="https://caronline.live/authentication/create" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-[#f3c39a] py-2 border-b border-[#3a2f9a]/40">🔐 Login to GPS Server ↗</a>
+          <Link to="/about-us" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">About Us</Link>
+          <Link to="/events" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Events & Expos</Link>
           <Link to="/approved-states" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-[#e3ab84] py-2 border-b border-[#3a2f9a]/40">Approved States 🇮🇳</Link>
           <Link to="/#hardware" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">GPS Hardware</Link>
           <Link to="/#features" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Features & Telematics</Link>

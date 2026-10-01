@@ -141,23 +141,23 @@
   #hint { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); pointer-events: auto; padding: 8px 16px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); color: var(--text); text-decoration: none; font-weight: 600; backdrop-filter: blur(10px); }
   @media (max-width: 760px) { #hint { display: none; } }
   /* ===== CLEAN WHITE THEME FOR SITE CONTENT ===== */
-  .site { background: #f8fafc; color: #0f172a; position: relative; }
-  .site section { padding: 90px 6vw; border-bottom: 1px solid #e2e8f0; }
-  .site h2 { font-size: clamp(30px,3.8vw,46px); margin: 0 0 12px; color: #0f172a; font-weight: 800; letter-spacing: -0.5px; }
-  .site .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 24px; margin: 36px auto 0; max-width: 1200px; width: 100%; justify-content: center; }
-  .site .card { border: 1px solid #e2e8f0; border-radius: 18px; padding: 32px 28px; background: #ffffff; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02); transition: all .3s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+  .site { background: #f8fafc; color: #0f172a; position: relative; width: 100%; overflow-x: hidden; }
+  .site section { padding: 90px 6vw; border-bottom: 1px solid #e2e8f0; width: 100%; box-sizing: border-box; }
+  .site h2 { font-size: clamp(26px,3.8vw,46px); margin: 0 0 12px; color: #0f172a; font-weight: 800; letter-spacing: -0.5px; }
+  .site .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; margin: 36px auto 0; max-width: 1200px; width: 100%; justify-content: center; box-sizing: border-box; }
+  .site .card { border: 1px solid #e2e8f0; border-radius: 18px; padding: 32px 24px; background: #ffffff; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02); transition: all .3s cubic-bezier(0.16, 1, 0.3, 1); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; box-sizing: border-box; width: 100%; }
   .site .card:hover { transform: translateY(-6px); border-color: #d97706; box-shadow: 0 20px 35px -8px rgba(217, 119, 6, 0.15), 0 8px 16px -4px rgba(0,0,0,0.06); }
-  .site .card h3 { margin: 0 0 10px; font-size: 22px; font-weight: 800; color: #0f172a; text-align: center; }
-  .site .card p { font-size: 15px; color: #475569; line-height: 1.6; text-align: center; margin: 0 auto; }
+  .site .card h3 { margin: 0 0 10px; font-size: 21px; font-weight: 800; color: #0f172a; text-align: center; }
+  .site .card p { font-size: 14.5px; color: #475569; line-height: 1.6; text-align: center; margin: 0 auto; }
   .site .card b { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, #fef3c7, #fde68a); color: #b45309; font-size: 22px; font-weight: 900; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2); }
-  .site .pills { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
-  .site .pills span { padding: 12px 28px; border: 1px solid #e2e8f0; border-radius: 999px; background: #ffffff; color: #1e293b; font-weight: 700; font-size: 15px; box-shadow: 0 4px 14px rgba(0,0,0,0.04); transition: all .2s; }
+  .site .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; justify-content: center; }
+  .site .pills span { padding: 10px 22px; border: 1px solid #e2e8f0; border-radius: 999px; background: #ffffff; color: #1e293b; font-weight: 700; font-size: 14px; box-shadow: 0 4px 14px rgba(0,0,0,0.04); transition: all .2s; }
   .site .pills span:hover { border-color: #d97706; color: #b45309; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(217, 119, 6, 0.15); }
-  .site form { display: grid; gap: 16px; max-width: 480px; margin-top: 30px; background: #ffffff; padding: 36px 32px; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 14px 40px rgba(0,0,0,0.06); }
-  .site input, .site select { font: inherit; padding: 14px 18px; border-radius: 12px; border: 1.5px solid #cbd5e1; background: #f8fafc; color: #0f172a; font-size: 15px; font-weight: 500; transition: all .2s; }
+  .site form { display: grid; gap: 16px; max-width: 480px; width: 100%; margin-top: 30px; background: #ffffff; padding: 36px 28px; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 14px 40px rgba(0,0,0,0.06); box-sizing: border-box; }
+  .site input, .site select { font: inherit; padding: 14px 16px; border-radius: 12px; border: 1.5px solid #cbd5e1; background: #f8fafc; color: #0f172a; font-size: 16px; font-weight: 500; transition: all .2s; width: 100%; box-sizing: border-box; }
   .site input:focus, .site select:focus { outline: none; border-color: #d97706; background: #ffffff; box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.15); }
-  .site .send { padding: 16px 26px; background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; border: 0; border-radius: 12px; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 20px rgba(217, 119, 6, 0.3); transition: all .25s; }
-  .site footer { padding: 44px 6vw; background: #070a1a; color: #94a3b8; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 14px; border-top: 1px solid #1e293b; font-size: 14px; }
+  .site .send { padding: 16px 24px; background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; border: 0; border-radius: 12px; font-size: 15px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 20px rgba(217, 119, 6, 0.3); transition: all .25s; min-height: 48px; }
+  .site footer { padding: 44px 6vw; background: #070a1a; color: #94a3b8; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 14px; border-top: 1px solid #1e293b; font-size: 14px; box-sizing: border-box; }
   .site footer span b { color: #f8fafc; }
   .site footer a { color: #f59e0b; text-decoration: none; font-weight: 600; }
   .site footer a:hover { text-decoration: underline; color: #fbbf24; }
@@ -166,12 +166,26 @@
 :root:root:root { --bg:#0a0630; --panel:rgba(20,12,80,.62); --panel-solid:#140d5c; --line:#3a2f9a; --text:#ffffff; --muted:#a9a4d6; --car:#4bc0ff; --truck:#e3ab84; --sel:#ff79e0; --btn-on:#e3ab84; --btn-on-text:#1a0f40; }
   .controls a.btn-cta { color:#1a0f40; }
   .heroText { position:absolute; left:6vw; top:24%; max-width:min(560px,40vw); pointer-events:none; transition:opacity .35s; text-shadow:0 2px 24px rgba(10,6,48,.9); }
-  .heroText .hl { margin:0 0 18px; font-size:clamp(38px,5.6vw,78px); line-height:1.05; font-weight:700; }
+  .heroText .hl { margin:0 0 18px; font-size:clamp(34px,5.6vw,78px); line-height:1.08; font-weight:700; }
   .heroText .hl em { font-style:normal; color:#e3ab84; }
-  .heroText p { margin:0; color:#c4c0ea; line-height:1.6; font-size:17px; max-width:30em; }
+  .heroText p { margin:0; color:#c4c0ea; line-height:1.6; font-size:16px; max-width:30em; }
   #app.sel .heroText { opacity:0; }
   @media (max-width:900px){ .heroText{ max-width:none; } }
-  @media (max-width:760px){ .heroText{ top:132px; left:14px; right:14px; } .heroText .hl{ font-size:clamp(30px,9vw,44px); } .heroText p{ display:none; } }
+  @media (max-width:760px){ 
+    .heroText { top: 96px; left: 16px; right: 16px; } 
+    .heroText .hl { font-size: clamp(26px, 7.5vw, 38px); line-height: 1.15; margin-bottom: 12px; } 
+    .heroText p { display: none; } 
+    .heroBtns { gap: 10px; margin-top: 16px; }
+    .hb { padding: 11px 20px; font-size: 13.5px; }
+  }
+  @media (max-width:480px){
+    .heroText { top: 80px; left: 12px; right: 12px; }
+    .heroText .hl { font-size: 25px; line-height: 1.18; }
+    .heroBtns { flex-direction: column; width: 100%; gap: 8px; }
+    .hb { width: 100%; justify-content: center; text-align: center; padding: 12px 16px; font-size: 13px; }
+    .site section { padding: 50px 4vw !important; }
+    .site form { padding: 24px 16px !important; }
+  }
 #bar, #fleet, #detail, #miniWrap { display: none !important; }
   /* ===== MEGA NAVBAR ===== */
   .topnav { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 40; display: flex; justify-content: space-between; align-items: center; padding: 0 4vw; height: 64px; background: linear-gradient(#0a0630ee, #0a0630cc); transition: background .3s, backdrop-filter .3s; }
@@ -179,9 +193,9 @@
   .topnav .prog { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: linear-gradient(90deg,#e3ab84,#ff79e0,#4bc0ff); transform-origin: 0 50%; transform: scaleX(0); }
 
   /* Logo */
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-  .nav-logo-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, #e3ab84, #d98f5e); display: flex; align-items: center; justify-content: center; font-size: 18px; color: #1a0f40; font-weight: 800; box-shadow: 0 4px 16px rgba(227,171,132,.25); }
-  .nav-logo span { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: .3px; }
+  .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
+  .nav-logo-icon { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #e3ab84, #d98f5e); display: flex; align-items: center; justify-content: center; font-size: 17px; color: #1a0f40; font-weight: 800; box-shadow: 0 4px 16px rgba(227,171,132,.25); }
+  .nav-logo span { font-size: 19px; font-weight: 800; color: #fff; letter-spacing: .3px; }
   .nav-logo span i { font-style: normal; color: #e3ab84; }
 
   /* Center Menu */
@@ -200,24 +214,24 @@
   .nav-dropdown .dd-divider { height: 1px; background: #3a2f9a; margin: 6px 14px; }
 
   /* Right Actions */
-  .nav-actions { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-  .nav-helpline { display: flex; align-items: center; gap: 8px; padding: 7px 16px; border-radius: 10px; background: rgba(75,192,255,.08); border: 1px solid rgba(75,192,255,.25); text-decoration: none; transition: all .25s; }
+  .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .nav-helpline { display: flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 10px; background: rgba(75,192,255,.08); border: 1px solid rgba(75,192,255,.25); text-decoration: none; transition: all .25s; }
   .nav-helpline:hover { background: rgba(75,192,255,.15); border-color: #4bc0ff; }
-  .nav-helpline .hl-icon { font-size: 15px; }
-  .nav-helpline .hl-label { font-size: 9px; font-weight: 700; color: #4bc0ff; text-transform: uppercase; letter-spacing: .8px; line-height: 1.2; }
-  .nav-helpline .hl-num { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.2; }
-  .nav-login { display: inline-flex; align-items: center; gap: 5px; padding: 8px 18px; border-radius: 10px; background: linear-gradient(135deg, #f3c39a, #d98f5e); color: #1a0f40; font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: .5px; transition: all .25s; box-shadow: 0 4px 16px rgba(227,171,132,.2); }
+  .nav-helpline .hl-icon { font-size: 14px; }
+  .nav-helpline .hl-label { font-size: 8.5px; font-weight: 700; color: #4bc0ff; text-transform: uppercase; letter-spacing: .8px; line-height: 1.2; }
+  .nav-helpline .hl-num { font-size: 12px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .nav-login { display: inline-flex; align-items: center; gap: 4px; padding: 8px 16px; border-radius: 10px; background: linear-gradient(135deg, #f3c39a, #d98f5e); color: #1a0f40; font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: .5px; transition: all .25s; box-shadow: 0 4px 16px rgba(227,171,132,.2); white-space: nowrap; }
   .nav-login:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(227,171,132,.4); }
-  .nav-login .arrow-up { font-size: 13px; }
+  .nav-login .arrow-up { font-size: 12px; }
 
   /* Mobile Toggle */
-  .nav-toggle { display: none; background: none; border: 1px solid #3a2f9a; border-radius: 8px; padding: 8px 10px; color: #fff; font-size: 20px; cursor: pointer; }
+  .nav-toggle { display: none; background: rgba(20,12,80,.6); border: 1px solid #3a2f9a; border-radius: 8px; padding: 6px 10px; color: #fff; font-size: 20px; cursor: pointer; line-height: 1; min-height: 38px; min-width: 38px; }
 
   /* Hero Buttons (keep existing) */
-  .heroBtns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; pointer-events: auto; }
-  .hb { display: inline-flex; align-items: center; padding: 13px 26px; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none; color: #fff; border: 1px solid #e3ab84; transition: box-shadow .25s, transform .25s; }
+  .heroBtns { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; pointer-events: auto; }
+  .hb { display: inline-flex; align-items: center; padding: 12px 24px; border-radius: 999px; font-weight: 600; font-size: 14px; text-decoration: none; color: #fff; border: 1px solid #e3ab84; transition: box-shadow .25s, transform .25s; min-height: 44px; }
   .hb:hover { box-shadow: 0 0 24px rgba(227,171,132,.45); }
-  .hb.p { background: linear-gradient(135deg,#f3c39a,#d98f5e); color: #1a0f40; border-color: transparent; }
+  .hb.p { background: linear-gradient(135deg,#f3c39a,#d98f5e); color: #1a0f40; border-color: transparent; font-weight: 700; }
   .hb:focus-visible { outline: 2px solid #e3ab84; outline-offset: 2px; }
   .heroText .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
   .heroText .wi { display: inline-block; }
@@ -226,20 +240,26 @@
   @media (max-width: 960px) {
     .nav-menu { display: none; }
     .nav-helpline .hl-label { display: none; }
-    .nav-toggle { display: block; }
-    .heroText { top: 110px !important; }
+    .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   }
   @media (max-width: 600px) {
-    .topnav { padding: 0 14px; height: 56px; }
-    .nav-helpline { padding: 6px 10px; }
+    .topnav { padding: 0 12px; height: 56px; }
+    .nav-logo span { font-size: 17px; }
+    .nav-logo-icon { width: 32px; height: 32px; font-size: 15px; }
+    .nav-helpline { padding: 5px 8px; gap: 4px; }
     .nav-helpline .hl-num { font-size: 11px; }
-    .nav-login { padding: 7px 12px; font-size: 11px; }
+    .nav-login { padding: 6px 10px; font-size: 11px; }
+  }
+  @media (max-width: 380px) {
+    .nav-helpline .hl-num { display: none; }
+    .nav-helpline { padding: 6px 8px; }
+    .nav-logo span small { display: none !important; }
   }
 
   /* Mobile Menu Drawer */
-  .mobile-drawer { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: rgba(10,6,48,.98); backdrop-filter: blur(14px); z-index: 39; padding: 20px 24px; overflow-y: auto; }
+  .mobile-drawer { display: none; position: fixed; top: 56px; left: 0; right: 0; bottom: 0; background: rgba(10,6,48,.98); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); z-index: 39; padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 0px)); overflow-y: auto; -webkit-overflow-scrolling: touch; }
   .mobile-drawer.open { display: block; }
-  .mobile-drawer a, .mobile-drawer summary { display: block; padding: 14px 0; color: #b3aee0; font-size: 16px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #3a2f9a30; }
+  .mobile-drawer a, .mobile-drawer summary { display: block; padding: 13px 0; color: #b3aee0; font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #3a2f9a30; }
   .mobile-drawer a:hover { color: #e3ab84; }
   .mobile-drawer details { border-bottom: 1px solid #3a2f9a30; }
   .mobile-drawer details summary { cursor: pointer; list-style: none; }
@@ -421,28 +441,28 @@
 <main class="site">
   <!-- ==================== LIVE METRICS STATS BANNER ==================== -->
   <section style="padding: 50px 6vw 40px; background: #ffffff; border-bottom: 1px solid #e2e8f0;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; max-width: 1140px; margin: 0 auto;">
-      <div style="padding: 28px 24px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
-        <div style="font-size: 40px; font-weight: 900; color: #1d4ed8; line-height: 1; margin-bottom: 8px;">10,000+</div>
-        <div style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">Commercial Assets Monitored</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px; max-width: 1140px; margin: 0 auto;">
+      <div style="padding: 28px 20px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
+        <div style="font-size: 38px; font-weight: 900; color: #1d4ed8; line-height: 1; margin-bottom: 8px;">10,000+</div>
+        <div style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">Commercial Assets Monitored</div>
         <div style="font-size: 13px; color: #64748b; font-weight: 500;">Deployed Across 28+ Indian States & UTs</div>
       </div>
       
-      <div style="padding: 28px 24px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
-        <div style="font-size: 40px; font-weight: 900; color: #d97706; line-height: 1; margin-bottom: 8px;">500+</div>
-        <div style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">Enterprise Fleet Clients</div>
+      <div style="padding: 28px 20px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
+        <div style="font-size: 38px; font-weight: 900; color: #d97706; line-height: 1; margin-bottom: 8px;">500+</div>
+        <div style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">Enterprise Fleet Clients</div>
         <div style="font-size: 13px; color: #64748b; font-weight: 500;">Logistics, Mining, Transit & Heavy Fleets</div>
       </div>
 
-      <div style="padding: 28px 24px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
-        <div style="font-size: 40px; font-weight: 900; color: #10b981; line-height: 1; margin-bottom: 8px;">100%</div>
-        <div style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">MoRTH AIS 140 Compliance</div>
+      <div style="padding: 28px 20px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
+        <div style="font-size: 38px; font-weight: 900; color: #10b981; line-height: 1; margin-bottom: 8px;">100%</div>
+        <div style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">MoRTH AIS 140 Compliance</div>
         <div style="font-size: 13px; color: #64748b; font-weight: 500;">ARAI & CDAC Certified Vahan Integration</div>
       </div>
 
-      <div style="padding: 28px 24px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
-        <div style="font-size: 40px; font-weight: 900; color: #7c3aed; line-height: 1; margin-bottom: 8px;">99.99%</div>
-        <div style="font-size: 14px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">Enterprise Cloud SLA</div>
+      <div style="padding: 28px 20px; border-radius: 20px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
+        <div style="font-size: 38px; font-weight: 900; color: #7c3aed; line-height: 1; margin-bottom: 8px;">99.99%</div>
+        <div style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px;">Enterprise Cloud SLA</div>
         <div style="font-size: 13px; color: #64748b; font-weight: 500;">High-Throughput AWS Infrastructure</div>
       </div>
     </div>
@@ -454,15 +474,15 @@
       <span style="display: inline-block; padding: 5px 16px; border-radius: 999px; background: #eff6ff; border: 1.5px solid #bfdbfe; color: #1d4ed8; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
         Tailored Industry Solutions
       </span>
-      <h2 style="font-size: 34px; font-weight: 900; color: #0f172a; line-height: 1.2;">
+      <h2 style="font-size: clamp(26px, 3.8vw, 34px); font-weight: 900; color: #0f172a; line-height: 1.2;">
         Enterprise Telematics for <span style="color: #d97706;">Mission-Critical Operations</span>
       </h2>
-      <p style="margin: 12px auto 0; color: #64748b; font-size: 16px; line-height: 1.6;">
+      <p style="margin: 12px auto 0; color: #64748b; font-size: 15px; line-height: 1.6;">
         Purpose-built telematics hardware and intelligent cloud software tailored to the stringent operational demands of major commercial sectors across India.
       </p>
     </div>
 
-    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1200px; margin: 36px auto 0; justify-content: center;">
+    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; max-width: 1200px; margin: 36px auto 0; justify-content: center;">
       <div class="card" style="border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; background: #ffffff; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
         <div style="font-size: 38px; margin-bottom: 14px; text-align: center;">🚚</div>
         <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 8px; text-align: center;">Logistics & Long-Haul Freight</h3>
@@ -712,7 +732,7 @@
     </div>
 
     <!-- 5 Technology Partners Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto 40px; justify-content: center;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto 40px; justify-content: center;">
       <div style="padding: 26px 20px; border-radius: 18px; background: #f8fafc; border: 1.5px solid #e2e8f0; text-align: center; transition: all .3s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center;">
         <div style="font-size: 32px; margin-bottom: 10px;">🛰️</div>
         <div style="font-weight: 900; font-size: 18px; color: #0f172a; margin-bottom: 4px;">iTriangle</div>
