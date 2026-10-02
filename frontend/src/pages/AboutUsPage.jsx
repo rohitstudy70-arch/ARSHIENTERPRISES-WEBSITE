@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
 import { ShieldCheck, CheckCircle2, Zap, Radio, Phone, Mail, MapPin, Award, Trophy, FileCheck, Calendar, Sparkles, ChevronRight } from 'lucide-react';
+import bwAwardImg from '../assets/award-bw-businessworld-2021.jpg';
+import trophyMsmeImg from '../assets/trophy-india-5000-msme-2020.jpg';
+import isoQroImg from '../assets/certificate-iso-9001-qro-2024.jpg';
+import msmeCertImg from '../assets/award-india-5000-msme-2020.jpg';
 
 export default function AboutUsPage() {
   useEffect(() => {
@@ -176,52 +180,68 @@ export default function AboutUsPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Award 1 */}
-          <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group flex flex-col">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-extrabold uppercase tracking-wider mb-4 w-fit">
-              <Trophy className="w-3.5 h-3.5 text-amber-600" />
-              Regional Leader
-            </span>
-            <div className="text-3xl mb-3">🏆</div>
-            <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition">Best Emerging Telematics Brand</h3>
-            <div className="text-xs font-bold text-blue-700 mb-3">Eastern India Transport Forum (2024)</div>
-            <p className="text-xs text-slate-600 leading-relaxed mt-auto">Awarded for fastest commercial fleet deployment, sub-second GPS precision, and rapid expansion across Bihar and Eastern India.</p>
+          {/* Award 1: BW Businessworld */}
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+            <div className="w-full h-52 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+              <img src={bwAwardImg} alt="BW Businessworld Emerging Businesses Award 2021" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
+                <Trophy className="w-3.5 h-3.5 text-amber-600" />
+                Winner 2021 • Special Mention
+              </span>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">Best Service by Emerging Enterprise</h3>
+              <div className="text-xs font-bold text-blue-700 mb-3">BW Businessworld & BWSME World</div>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Conferred by a jury led by former SEBI Chairman U.K. Sinha, honoring Arshi Enterprises for reliable GPS telematics field service across Eastern India.</p>
+            </div>
           </div>
 
-          {/* Award 2 */}
-          <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group flex flex-col">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-extrabold uppercase tracking-wider mb-4 w-fit">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              Govt. Certified
-            </span>
-            <div className="text-3xl mb-3">🛡️</div>
-            <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition">AIS 140 RTO Compliance Excellence</h3>
-            <div className="text-xs font-bold text-blue-700 mb-3">State Transport Telematics Board (2023)</div>
-            <p className="text-xs text-slate-600 leading-relaxed mt-auto">Recognized for flawless 100% passing success on National Vahan Portal and CDAC-certified VLTD integration across 28+ states.</p>
+          {/* Award 2: India 5000 MSME Golden Trophy */}
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+            <div className="w-full h-52 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+              <img src={trophyMsmeImg} alt="India 5000 Best MSME Awards 2020 Winner Golden Trophy" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
+                <Award className="w-3.5 h-3.5 text-amber-600" />
+                Winner 2020 • Gold Trophy
+              </span>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">India 5000 Best MSME Quality Award</h3>
+              <div className="text-xs font-bold text-blue-700 mb-3">Benchmark Trust & TQV Audit Partner</div>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Awarded the national Golden Trophy for outstanding quality management and boosting logistics profitability for commercial fleets.</p>
+            </div>
           </div>
 
-          {/* Award 3 */}
-          <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group flex flex-col">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-800 text-[11px] font-extrabold uppercase tracking-wider mb-4 w-fit">
-              <Award className="w-3.5 h-3.5 text-purple-600" />
-              Service Assurance
-            </span>
-            <div className="text-3xl mb-3">🎖️</div>
-            <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition">Customer Trust & 24/7 Service Leadership</h3>
-            <div className="text-xs font-bold text-blue-700 mb-3">Commercial Transporters Association (2024)</div>
-            <p className="text-xs text-slate-600 leading-relaxed mt-auto">Honored for exceptional customer satisfaction, 99.8% fleet client retention, instant 24/7 backend support, and doorstep device replacement.</p>
+          {/* Award 3: ISO 9001:2015 QRO */}
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+            <div className="w-full h-52 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+              <img src={isoQroImg} alt="ISO 9001:2015 Quality Management System Certification" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                ISO 9001:2015 Certified
+              </span>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">Quality Management System Standard</h3>
+              <div className="text-xs font-bold text-blue-700 mb-3">QRO & UKAF Accredited (2024–2027)</div>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Certified for standardized supply, testing, and zero-defect installation of AIS 140 VLTD trackers, smart fuel sensors, and CCTV systems.</p>
+            </div>
           </div>
 
-          {/* Award 4 */}
-          <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group flex flex-col">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-[11px] font-extrabold uppercase tracking-wider mb-4 w-fit">
-              <FileCheck className="w-3.5 h-3.5 text-blue-600" />
-              Certified Partner
-            </span>
-            <div className="text-3xl mb-3">📜</div>
-            <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-amber-600 transition">MoRTH & ARAI Compliant Partner</h3>
-            <div className="text-xs font-bold text-blue-700 mb-3">Automotive Research Association of India</div>
-            <p className="text-xs text-slate-600 leading-relaxed mt-auto">Official recognition for military-grade hardware standards, integrated 112 ERSS Police SOS panic emergency, and fuel theft protection.</p>
+          {/* Award 4: India 5000 Certificate */}
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+            <div className="w-full h-52 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+              <img src={msmeCertImg} alt="India 5000 Best MSME Certificate of Recognition" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
+                <FileCheck className="w-3.5 h-3.5 text-blue-600" />
+                National Recognition
+              </span>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">Customer Trust & Impact on Society</h3>
+              <div className="text-xs font-bold text-blue-700 mb-3">India 5000 Executive Jury Board</div>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Recognized for benchmark client satisfaction, 99.8% fleet retention, and advancing vehicle safety standards across India.</p>
+            </div>
           </div>
         </div>
       </div>
