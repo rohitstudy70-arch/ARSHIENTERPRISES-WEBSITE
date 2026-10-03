@@ -3,159 +3,182 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>India 5000 Best MSME Awards 2020 - Arshi Enterprises (360° Trophy)</title>
+<title>India 5000 Best MSME National Trophy 2020 - Arshi Enterprises</title>
 <style>
-:root {
-  --bg1: #f4f1ea;
-  --bg2: #d9d4c7;
-  --fg: #3a352b;
-  --img: url('assets/images/trophy-360-sprite.webp');
-  box-sizing: border-box;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --bg1: #2a2a31; --bg2: #101014; --fg: #d8d2c2; }
-}
-:root[data-theme="dark"] { --bg1: #2a2a31; --bg2: #101014; --fg: #d8d2c2; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
+  width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  background: transparent;
   overflow: hidden;
-}
-body {
-  color: var(--fg);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: transparent;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-#stage {
-  perspective: 1200px;
+.scene {
+  perspective: 1400px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 96%;
+  max-height: 96%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   touch-action: none;
   cursor: grab;
+  background: transparent;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card:active, .card.active {
+  transition: transform 0.05s linear, box-shadow 0.15s ease;
+  cursor: grabbing;
+}
+.card-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  flex: 1;
-  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  transition: box-shadow 0.3s ease;
   transform: translateZ(0);
 }
-#stage:active { cursor: grabbing; }
-#model {
-  position: relative;
-  transform-style: preserve-3d;
-  will-change: transform;
-  transform: translateZ(0);
+.card:hover .card-inner, .card.active .card-inner {
+  box-shadow: 0 24px 50px -8px rgba(0, 0, 0, 0.28), 0 8px 20px rgba(0, 0, 0, 0.12);
 }
-.L {
-  position: absolute;
-  inset: 0;
-  background-image: var(--img);
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+.card img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-select: none;
   pointer-events: none;
+  /* Crystal Clear 100% HD Rendering */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
-.F, .B { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.M { filter: brightness(.65) saturate(1.05); }
-#shadow {
-  width: 38vmin;
-  height: 2.8vmin;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(0,0,0,.22), transparent 70%);
-  margin-top: -1.5vmin;
-  flex: none;
+/* Subtle golden metallic sheen that NEVER obscures the text */
+.glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
   pointer-events: none;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(251, 191, 36, 0.18) 0%, rgba(255, 255, 255, 0.06) 40%, transparent 70%);
+  opacity: 0.2;
+  transition: opacity 0.3s;
+}
+.card.active .glare, .card:hover .glare {
+  opacity: 0.4;
 }
 </style>
 </head>
 <body>
-<div id="stage"><div id="model"></div></div>
-<div id="shadow"></div>
+<div class="scene" id="scene">
+  <div class="card" id="card">
+    <div class="card-inner">
+      <img
+        alt="India 5000 Best MSME National Trophy 2020 - Arshi Enterprises"
+        src="assets/images/trophy-india-5000-3d.jpg"
+        onerror="if(!this.tried){this.tried=true;this.src='/assets/images/trophy-india-5000-3d.jpg';}"
+        loading="eager"
+        decoding="sync"
+      />
+      <div class="glare"></div>
+    </div>
+  </div>
+</div>
 <script>
 (function(){
-  var model = document.getElementById('model');
-  var stage = document.getElementById('stage');
-  if (!model || !stage) return;
-
-  var RATIO = 1092 / 3200;
-  var N = 18; // Optimized layer count for ultra smooth 60fps rendering
-  var T = 0.045;
-  var layers = [];
-
-  for (var i = 0; i < N; i++) {
-    var d = document.createElement('div');
-    d.className = 'L ' + (i === 0 ? 'B' : (i === N - 1 ? 'F' : 'M'));
-    model.appendChild(d);
-    layers.push(d);
-  }
-
-  function size() {
-    var H = Math.min(stage.clientHeight * 0.90, window.innerWidth * 1.8);
-    var W = H * RATIO;
-    model.style.width = W + 'px';
-    model.style.height = H + 'px';
-    var th = H * T;
-    for (var i = 0; i < N; i++) {
-      var z = (i / (N - 1) - 0.5) * th;
-      layers[i].style.transform = (i === 0) ? 'translate3d(0,0,' + z + 'px) rotateY(180deg)' : 'translate3d(0,0,' + z + 'px)';
+  var c = document.getElementById('card');
+  if(!c) return;
+  var g = c.querySelector('.glare');
+  var MAX = 14;
+  var autoAngle = 0;
+  var isInteracting = false;
+  
+  function move(e) {
+    isInteracting = true;
+    var r = c.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width;
+    var y = (e.clientY - r.top) / r.height;
+    x = Math.max(0, Math.min(1, x));
+    y = Math.max(0, Math.min(1, y));
+    var ry = (x - 0.5) * 2 * MAX;
+    var rx = -(y - 0.5) * 2 * MAX;
+    c.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale3d(1.06, 1.06, 1.06) translateZ(0)';
+    if(g) {
+      g.style.setProperty('--gx', (x * 100) + '%');
+      g.style.setProperty('--gy', (y * 100) + '%');
     }
   }
-
-  size();
-  window.addEventListener('resize', size);
-
-  var ry = -25, rx = -6, vy = 0, auto = true, drag = false, lx = 0, ly = 0;
-
-  function draw() {
-    model.style.transform = 'translateZ(0) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+  
+  function reset() {
+    isInteracting = false;
+    c.classList.remove('active');
+    c.style.transform = 'translateZ(0)';
   }
-
-  stage.addEventListener('pointerdown', function(e) {
-    drag = true;
-    lx = e.clientX;
-    ly = e.clientY;
-    vy = 0;
-    try { stage.setPointerCapture(e.pointerId); } catch(_) {}
+  
+  c.addEventListener('pointerdown', function(e){
+    c.classList.add('active');
+    try { c.setPointerCapture(e.pointerId); } catch(_){}
+    move(e);
+  });
+  c.addEventListener('pointermove', function(e){
+    if(e.pointerType === 'mouse' || c.classList.contains('active')){
+      c.classList.add('active');
+      move(e);
+    }
+  });
+  c.addEventListener('pointerup', reset);
+  c.addEventListener('pointercancel', reset);
+  c.addEventListener('pointerleave', function(e){
+    if(e.pointerType === 'mouse') reset();
   });
 
-  stage.addEventListener('pointermove', function(e) {
-    if (!drag) return;
-    var dx = e.clientX - lx;
-    var dy = e.clientY - ly;
-    lx = e.clientX;
-    ly = e.clientY;
-    vy = dx * 0.55;
-    ry += vy;
-    rx = Math.max(-25, Math.min(25, rx - dy * 0.2));
-  });
-
-  function up() { drag = false; }
-  stage.addEventListener('pointerup', up);
-  stage.addEventListener('pointercancel', up);
-
-  function tick() {
-    if (!drag) {
-      if (Math.abs(vy) > 0.05) {
-        ry += vy;
-        vy *= 0.95;
-      } else if (auto) {
-        ry += 0.45;
+  // Gentle subtle auto float
+  function idleFloat() {
+    if(!isInteracting && !c.classList.contains('active')) {
+      autoAngle += 0.025;
+      var idleRx = Math.sin(autoAngle) * 3.2;
+      var idleRy = Math.cos(autoAngle * 0.8) * 4.5;
+      c.style.transform = 'rotateX(' + idleRx + 'deg) rotateY(' + idleRy + 'deg) scale3d(1, 1, 1) translateZ(0)';
+      if(g) {
+        var gx = 50 + idleRy * 3;
+        var gy = 50 + idleRx * 3;
+        g.style.setProperty('--gx', gx + '%');
+        g.style.setProperty('--gy', gy + '%');
       }
-      rx += (-6 - rx) * 0.02 * (auto ? 1 : 0);
     }
-    draw();
-    requestAnimationFrame(tick);
+    requestAnimationFrame(idleFloat);
   }
-  requestAnimationFrame(tick);
+  idleFloat();
 })();
 </script>
 </body>

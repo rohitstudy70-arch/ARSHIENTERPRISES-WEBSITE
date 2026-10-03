@@ -1,92 +1,185 @@
-<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>India 5000 Best MSME Awards 2020 - Certificate of Recognition</title>
-<style>:root{--a:#f3efe6;--b:#cfc8b8;--fg:#3a352b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--a:#33333b;--b:#0e0e12;--fg:#ddd6c4}}
-:root[data-theme="dark"]{--a:#33333b;--b:#0e0e12;--fg:#ddd6c4}
-html,body{height:100%;margin:0}body{background:transparent;color:var(--fg);font-family:system-ui,-apple-system,sans-serif;overflow:hidden}
-#c{position:absolute;inset:0;touch-action:none;cursor:grab}
-.bar{display:none;}
-button{font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:20px;padding:6px 14px;opacity:.8}
-span{opacity:.65}</style></head><body>
-<div id="c"></div><div class="bar"><span>Zoom: pinch / scroll / double-tap</span><button id="zo">&minus;</button><button id="zi">+</button><button id="t">Halka hilna: ON</button><button id="f">Reset</button></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<title>India 5000 Best MSME Awards 2020 - Certificate of Recognition Plaque</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.scene {
+  perspective: 1400px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 96%;
+  max-height: 96%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  touch-action: none;
+  cursor: grab;
+  background: transparent;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card:active, .card.active {
+  transition: transform 0.05s linear, box-shadow 0.15s ease;
+  cursor: grabbing;
+}
+.card-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  transition: box-shadow 0.3s ease;
+  transform: translateZ(0);
+}
+.card:hover .card-inner, .card.active .card-inner {
+  box-shadow: 0 24px 50px -8px rgba(0, 0, 0, 0.28), 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.card img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+  /* Crystal Clear 100% HD Rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* Subtle golden sheen that NEVER obscures the text */
+.glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(251, 191, 36, 0.18) 0%, rgba(255, 255, 255, 0.06) 40%, transparent 70%);
+  opacity: 0.2;
+  transition: opacity 0.3s;
+}
+.card.active .glare, .card:hover .glare {
+  opacity: 0.4;
+}
+</style>
+</head>
+<body>
+<div class="scene" id="scene">
+  <div class="card" id="card">
+    <div class="card-inner">
+      <img
+        alt="India 5000 Best MSME Awards 2020 - Certificate of Recognition Plaque"
+        src="assets/images/plaque-msme-certificate-hd.jpg"
+        onerror="if(!this.tried){this.tried=true;this.src='/assets/images/plaque-msme-certificate-hd.jpg';}"
+        loading="eager"
+        decoding="sync"
+      />
+      <div class="glare"></div>
+    </div>
+  </div>
+</div>
 <script>
-var TEX = "assets/images/plaque-msme-certificate-hd.jpg";
 (function(){
-var W=1146,H=1600,box=document.getElementById('c');
-var R=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:"high-performance"});R.setPixelRatio(Math.min(window.devicePixelRatio||1,3));R.outputEncoding=THREE.sRGBEncoding;box.appendChild(R.domElement);
-var S=new THREE.Scene(),cam=new THREE.PerspectiveCamera(28,1,100,12000);
-var es=new THREE.Scene(),sg=new THREE.SphereGeometry(50,32,16),cl=[];
-for(var i=0;i<sg.attributes.position.count;i++){var k=.2+.75*(sg.attributes.position.getY(i)/50+1)/2;cl.push(k,k*.97,k*.92);}
-sg.setAttribute('color',new THREE.Float32BufferAttribute(cl,3));
-es.add(new THREE.Mesh(sg,new THREE.MeshBasicMaterial({side:THREE.BackSide,vertexColors:true})));
-[[30,20,30,14],[-32,10,25,10],[0,42,-10,16],[-28,6,-28,10],[30,0,-25,8]].forEach(function(p){var m=new THREE.Mesh(new THREE.PlaneGeometry(p[3],p[3]*1.6),new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));m.material.color.setScalar(5);m.position.set(p[0],p[1],p[2]);m.lookAt(0,0,0);es.add(m);});
-S.environment=new THREE.PMREMGenerator(R).fromScene(es,.02).texture;
-var dl=new THREE.DirectionalLight(0xffffff,.5);dl.position.set(600,1200,1500);S.add(dl);
-var cv=document.createElement('canvas');cv.width=cv.height=128;var cx=cv.getContext('2d'),gr=cx.createRadialGradient(64,64,0,64,64,64);gr.addColorStop(0,'rgba(0,0,0,.45)');gr.addColorStop(1,'rgba(0,0,0,0)');cx.fillStyle=gr;cx.fillRect(0,0,128,128);
-var sh=new THREE.Mesh(new THREE.PlaneGeometry(1300,500),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));sh.rotation.x=-Math.PI/2;sh.position.y=-930;S.add(sh);
-var Rg=new THREE.Group();S.add(Rg);
-function createPlaque(tex){
-  tex.encoding = THREE.sRGBEncoding;
-  tex.generateMipmaps = false;
-  tex.minFilter = THREE.LinearFilter;
-  tex.magFilter = THREE.LinearFilter;
-  if(R.capabilities.getMaxAnisotropy) tex.anisotropy = R.capabilities.getMaxAnisotropy();
-  var face=new THREE.MeshBasicMaterial({map:tex});
-  var side=new THREE.MeshStandardMaterial({color:0x4a4a50,metalness:.9,roughness:.3,envMapIntensity:1.2});
-  var s=new THREE.Shape();s.moveTo(0,0);s.lineTo(W,0);s.lineTo(W,H);s.lineTo(0,H);s.lineTo(0,0);
-  var g=new THREE.ExtrudeGeometry(s,{depth:48,bevelEnabled:true,bevelThickness:6,bevelSize:6,bevelOffset:-6,bevelSegments:3});
-  var ps=g.attributes.position,uv=g.attributes.uv,q=g.groups[0];
-  for(var i=q.start;i<q.start+q.count;i++){ if(ps.getZ(i)>27){uv.setXY(i,ps.getX(i)/W,ps.getY(i)/H);} else {uv.setXY(i,1-ps.getX(i)/W,ps.getY(i)/H);} }
-  g.translate(-W/2,-H/2,-27);Rg.add(new THREE.Mesh(g,[face,side]));
-  go();
-}
-var loader = new THREE.TextureLoader();
-loader.load(TEX, createPlaque, undefined, function(){
-  loader.load('/' + TEX, createPlaque, undefined, function(){
-    loader.load('assets/images/plaque-msme-2020.jpg', createPlaque);
+  var c = document.getElementById('card');
+  if(!c) return;
+  var g = c.querySelector('.glare');
+  var MAX = 14;
+  var autoAngle = 0;
+  var isInteracting = false;
+  
+  function move(e) {
+    isInteracting = true;
+    var r = c.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width;
+    var y = (e.clientY - r.top) / r.height;
+    x = Math.max(0, Math.min(1, x));
+    y = Math.max(0, Math.min(1, y));
+    var ry = (x - 0.5) * 2 * MAX;
+    var rx = -(y - 0.5) * 2 * MAX;
+    c.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale3d(1.06, 1.06, 1.06) translateZ(0)';
+    if(g) {
+      g.style.setProperty('--gx', (x * 100) + '%');
+      g.style.setProperty('--gy', (y * 100) + '%');
+    }
+  }
+  
+  function reset() {
+    isInteracting = false;
+    c.classList.remove('active');
+    c.style.transform = 'translateZ(0)';
+  }
+  
+  c.addEventListener('pointerdown', function(e){
+    c.classList.add('active');
+    try { c.setPointerCapture(e.pointerId); } catch(_){}
+    move(e);
   });
-});
-var D=0,K=Math.tan(14*Math.PI/180);
-function fit(){
-  var w=innerWidth, hh=innerHeight;
-  R.setSize(w,hh);
-  cam.aspect = w/hh;
-  var targetH = H * 1.06;
-  var targetW = W * 1.06;
-  D = Math.max(targetH, targetW / cam.aspect) / (2 * K);
-  cam.updateProjectionMatrix();
-}
-fit();addEventListener('resize',fit);
-var ry=0,rx=0,base=0,vy=0,tt=0,auto=true,z=1,P={},pd=0,lx=0,ly=0,btn=document.getElementById('t');
-function wu(){return 2*D*K/innerHeight;}
-function setZ(n,sx,sy){n=Math.max(1,Math.min(7,n));var u=wu(),o=Rg.position;
-  Rg.position.x=o.x+sx*u*(1/n-1/z);Rg.position.y=o.y-sy*u*(1/n-1/z);z=n;}
-function clampPan(){var m=Math.max(0,z-1)/z,o=Rg.position;o.x=Math.max(-W/2*m*1.05,Math.min(W/2*m*1.05,o.x));o.y=Math.max(-H/2*m*1.05,Math.min(H/2*m*1.05,o.y));if(z<=1.001){o.x=o.y=0;}}
-function ctr(){return [innerWidth/2,innerHeight/2];}
-function reset(){z=1;Rg.position.set(0,0,0);base=0;rx=0;vy=0;}
-btn.onclick=function(){auto=!auto;btn.textContent='Halka hilna: '+(auto?'ON':'OFF');};
-document.getElementById('zi').onclick=function(){setZ(z*1.6,0,0);clampPan();};
-document.getElementById('zo').onclick=function(){setZ(z/1.6,0,0);clampPan();};
-document.getElementById('f').onclick=function(){reset();};
-box.addEventListener('wheel',function(e){e.preventDefault();var c=ctr();setZ(z*Math.exp(-e.deltaY*.0018),e.clientX-c[0],e.clientY-c[1]);clampPan();},{passive:false});
-box.addEventListener('dblclick',function(e){var c=ctr();if(z>1.5){reset();}else{setZ(2.8,e.clientX-c[0],e.clientY-c[1]);clampPan();}});
-function pdist(){var k=Object.keys(P);return Math.hypot(P[k[0]].x-P[k[1]].x,P[k[0]].y-P[k[1]].y);}
-box.addEventListener('pointerdown',function(e){P[e.pointerId]={x:e.clientX,y:e.clientY};lx=e.clientX;ly=e.clientY;vy=0;try{box.setPointerCapture(e.pointerId)}catch(_){}if(Object.keys(P).length==2)pd=pdist();});
-box.addEventListener('pointermove',function(e){
-  if(!P[e.pointerId])return;var n=Object.keys(P).length;P[e.pointerId]={x:e.clientX,y:e.clientY};
-  if(n==2){var d=pdist(),k=Object.keys(P),c=ctr(),mx=(P[k[0]].x+P[k[1]].x)/2-c[0],my=(P[k[0]].y+P[k[1]].y)/2-c[1];setZ(z*d/pd,mx,my);pd=d;clampPan();return;}
-  var dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
-  if(z>1.05){var u=wu()/z;Rg.position.x+=dx*u;Rg.position.y-=dy*u;clampPan();}
-  else{vy=dx*.011;base+=vy;ry=base;rx=Math.max(-.5,Math.min(.5,rx+dy*.005));}
-});
-function up(e){delete P[e.pointerId];pd=0;var k=Object.keys(P);if(k.length==1){lx=P[k[0]].x;ly=P[k[0]].y;}}
-box.addEventListener('pointerup',up);box.addEventListener('pointercancel',up);
-function go(){(function t(){
-  cam.position.z=D/z;
-  if(z>1.05){base+=(0-base)*.15;rx*=.85;ry=base;}
-  else if(Object.keys(P).length==0){if(Math.abs(vy)>.0008){base+=vy;ry=base;vy*=.95;}else if(auto){tt+=.012;ry=base+Math.sin(tt)*.45;}}
-  Rg.rotation.set(rx,ry,0);R.render(S,cam);requestAnimationFrame(t);})();}
+  c.addEventListener('pointermove', function(e){
+    if(e.pointerType === 'mouse' || c.classList.contains('active')){
+      c.classList.add('active');
+      move(e);
+    }
+  });
+  c.addEventListener('pointerup', reset);
+  c.addEventListener('pointercancel', reset);
+  c.addEventListener('pointerleave', function(e){
+    if(e.pointerType === 'mouse') reset();
+  });
+
+  // Gentle subtle auto float
+  function idleFloat() {
+    if(!isInteracting && !c.classList.contains('active')) {
+      autoAngle += 0.025;
+      var idleRx = Math.sin(autoAngle) * 3.2;
+      var idleRy = Math.cos(autoAngle * 0.8) * 4.5;
+      c.style.transform = 'rotateX(' + idleRx + 'deg) rotateY(' + idleRy + 'deg) scale3d(1, 1, 1) translateZ(0)';
+      if(g) {
+        var gx = 50 + idleRy * 3;
+        var gy = 50 + idleRx * 3;
+        g.style.setProperty('--gx', gx + '%');
+        g.style.setProperty('--gy', gy + '%');
+      }
+    }
+    requestAnimationFrame(idleFloat);
+  }
+  idleFloat();
 })();
-</script></body></html>
+</script>
+</body>
+</html>

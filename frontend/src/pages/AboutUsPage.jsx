@@ -218,7 +218,7 @@ export default function AboutUsPage() {
                     Winner 2021 • Special Mention
                   </span>
                   <span className="text-[11px] font-black text-amber-600 uppercase tracking-wide flex items-center gap-1">
-                    <Sparkles className="w-3.5 h-3.5" /> 3D Hologram Tilt
+                    <Sparkles className="w-3.5 h-3.5" /> 3D Tilt View
                   </span>
                 </div>
               </div>
@@ -260,7 +260,7 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* Large 3D Card 2: 360° Rotating 3D Golden Trophy */}
+          {/* Large 3D Card 2: 3D Golden Trophy */}
           <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
             <div className="flex flex-col bg-gradient-to-br from-[#faf7f2] to-[#f3ede2] border-b border-slate-200">
               <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
@@ -270,7 +270,7 @@ export default function AboutUsPage() {
                     Winner 2020 • 3D Gold Trophy
                   </span>
                   <span className="text-[11px] font-black text-amber-700 uppercase tracking-wide flex items-center gap-1">
-                    <RotateCcw className="w-3.5 h-3.5" /> 360° Auto-Rotate
+                    <Sparkles className="w-3.5 h-3.5" /> 3D Tilt View
                   </span>
                 </div>
               </div>
@@ -278,7 +278,7 @@ export default function AboutUsPage() {
               <div className="w-full h-72 sm:h-[310px] relative bg-[#faf7f2]/50">
                 <iframe
                   src="/trophy-360.html"
-                  title="360 Interactive 3D Trophy"
+                  title="3D Interactive Trophy"
                   className="w-full h-full border-0 block"
                   loading="eager"
                 />
@@ -322,7 +322,7 @@ export default function AboutUsPage() {
                     Winner 2020 • Gold Seal Plaque
                   </span>
                   <span className="text-[11px] font-black text-amber-700 uppercase tracking-wide flex items-center gap-1">
-                    <Sparkles className="w-3.5 h-3.5" /> 3D Metallic Plaque
+                    <Sparkles className="w-3.5 h-3.5" /> 3D Tilt View
                   </span>
                 </div>
               </div>
