@@ -198,17 +198,9 @@ export default function AboutUsPage() {
                     <Sparkles className="w-3.5 h-3.5" /> 3D Hologram Tilt
                   </span>
                 </div>
-                <a
-                  href="/certificate-3d.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-black text-sky-700 hover:text-sky-800 px-3 py-1 rounded-lg bg-sky-50 border border-sky-200 hover:bg-sky-100 transition inline-flex items-center gap-1"
-                >
-                  ⛶ Fullscreen ↗
-                </a>
               </div>
 
-              <div className="w-full h-80 sm:h-96 relative bg-slate-50/50">
+              <div className="w-full h-96 sm:h-[420px] relative bg-slate-50/50">
                 <iframe
                   src="/certificate-3d.html"
                   title="3D Interactive Holographic Certificate"
@@ -258,17 +250,9 @@ export default function AboutUsPage() {
                     <RotateCcw className="w-3.5 h-3.5" /> 360° Auto-Rotate
                   </span>
                 </div>
-                <a
-                  href="/trophy-360.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-black text-amber-900 hover:text-amber-950 px-3 py-1 rounded-lg bg-amber-50 border border-amber-200 hover:bg-amber-100 transition inline-flex items-center gap-1"
-                >
-                  ⛶ Fullscreen ↗
-                </a>
               </div>
 
-              <div className="w-full h-80 sm:h-96 relative bg-[#faf7f2]/50">
+              <div className="w-full h-96 sm:h-[420px] relative bg-[#faf7f2]/50">
                 <iframe
                   src="/trophy-360.html"
                   title="360 Interactive 3D Trophy"

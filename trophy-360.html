@@ -38,15 +38,20 @@ function size(){
   }
 }
 size();window.addEventListener('resize',size);
-var ry=-25,rx=-6,vy=0,auto=true,drag=false,lx=0,ly=0;
-function draw(){model.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg)';}
-stage.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;vy=0;try{stage.setPointerCapture(e.pointerId)}catch(_){}});
+var ry=-25,rx=-6,vy=0,auto=true,drag=false,lx=0,ly=0,isHovered=false,currScale=1,targetScale=1;
+stage.addEventListener('pointerenter',function(){isHovered=true;targetScale=1.14;});
+stage.addEventListener('pointerleave',function(){isHovered=false;targetScale=1;});
+function draw(){
+  currScale+=(targetScale-currScale)*0.1;
+  model.style.transform='scale3d('+currScale.toFixed(3)+','+currScale.toFixed(3)+','+currScale.toFixed(3)+') rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg)';
+}
+stage.addEventListener('pointerdown',function(e){drag=true;isHovered=true;targetScale=1.16;lx=e.clientX;ly=e.clientY;vy=0;try{stage.setPointerCapture(e.pointerId)}catch(_){}});
 stage.addEventListener('pointermove',function(e){
   if(!drag)return;
   var dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
   vy=dx*0.6;ry+=vy;rx=Math.max(-25,Math.min(25,rx-dy*0.2));
 });
-function up(){drag=false;}
+function up(){drag=false;if(!isHovered)targetScale=1;}
 stage.addEventListener('pointerup',up);stage.addEventListener('pointercancel',up);
 function tick(){
   if(!drag){
