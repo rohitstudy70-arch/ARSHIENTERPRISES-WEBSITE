@@ -27,7 +27,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: 10px;
 }
 .card {
   position: relative;
@@ -36,6 +36,7 @@ html, body {
   justify-content: center;
   max-width: 96%;
   max-height: 96%;
+  height: 94%;
   transform-style: preserve-3d;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   touch-action: none;
@@ -54,48 +55,49 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   max-width: 100%;
-  max-height: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   background: #ffffff;
+  padding: 8px 16px;
   transition: box-shadow 0.3s ease;
   transform: translateZ(0);
 }
 .card:hover .card-inner, .card.active .card-inner {
-  box-shadow: 0 24px 50px -8px rgba(0, 0, 0, 0.28), 0 8px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 24px 50px -8px rgba(217, 119, 6, 0.25), 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 .card img {
   max-width: 100%;
-  max-height: 90vh;
+  max-height: 100%;
+  height: 100%;
   width: auto;
-  height: auto;
   display: block;
   object-fit: contain;
   -webkit-user-drag: none;
   user-select: none;
   pointer-events: none;
-  /* Crystal Clear 100% HD Rendering */
+  /* Crystal Clear 100% Full HD Rendering */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-/* Subtle golden metallic sheen that NEVER obscures the text */
+/* Subtle golden sheen on hover / tilt */
 .glare {
   position: absolute;
   inset: 0;
-  border-radius: 12px;
+  border-radius: 14px;
   pointer-events: none;
-  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(251, 191, 36, 0.18) 0%, rgba(255, 255, 255, 0.06) 40%, transparent 70%);
-  opacity: 0.2;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(251, 191, 36, 0.22) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 70%);
+  opacity: 0.25;
   transition: opacity 0.3s;
 }
 .card.active .glare, .card:hover .glare {
-  opacity: 0.4;
+  opacity: 0.45;
 }
 </style>
 </head>
@@ -105,8 +107,8 @@ html, body {
     <div class="card-inner">
       <img
         alt="India 5000 Best MSME National Trophy 2020 - Arshi Enterprises"
-        src="assets/images/trophy-india-5000-3d.jpg"
-        onerror="if(!this.tried){this.tried=true;this.src='/assets/images/trophy-india-5000-3d.jpg';}"
+        src="assets/images/trophy-india-5000-hd.jpg"
+        onerror="if(!this.tried){this.tried=true;this.src='/assets/images/trophy-india-5000-hd.jpg';}"
         loading="eager"
         decoding="sync"
       />
