@@ -4,9 +4,9 @@
 <style>:root{--a:#f3efe6;--b:#cfc8b8;--fg:#3a352b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--a:#33333b;--b:#0e0e12;--fg:#ddd6c4}}
 :root[data-theme="dark"]{--a:#33333b;--b:#0e0e12;--fg:#ddd6c4}
-html,body{height:100%;margin:0}body{background:transparent;color:var(--fg);font-family:system-ui,-apple-system,sans-serif;overflow:hidden}
+html,body{height:100%;margin:0}body{background:radial-gradient(ellipse at 50% 40%,var(--a),var(--b));color:var(--fg);font-family:system-ui,-apple-system,sans-serif;overflow:hidden}
 #c{position:absolute;inset:0;touch-action:none;cursor:grab}
-.bar{display:none;}
+.bar{flex-wrap:wrap;position:absolute;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;justify-content:center;align-items:center;font-size:13px}
 button{font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:20px;padding:6px 14px;opacity:.8}
 span{opacity:.65}</style></head><body>
 <div id="c"></div><div class="bar"><span>Zoom: pinch / scroll / double-tap</span><button id="zo">&minus;</button><button id="zi">+</button><button id="t">Halka hilna: ON</button><button id="f">Reset</button></div>
