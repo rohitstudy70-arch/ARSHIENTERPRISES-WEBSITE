@@ -8,11 +8,34 @@ import isoOtabuImg from '../assets/certificate-iso-9001-otabu.jpg';
 import msmeDocImg from '../assets/award-india-5000-certificate-doc.jpg';
 
 export default function AboutUsPage() {
-  const [view3D, setView3D] = useState('trophy');
+  const [fullscreenItem, setFullscreenItem] = useState(null);
+  const [hoverTimeout, setHoverTimeout] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setFullscreenItem(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  const handleMouseEnter = (item) => {
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    const t = setTimeout(() => {
+      setFullscreenItem(item);
+    }, 260);
+    setHoverTimeout(t);
+  };
+
+  const handleMouseLeave = () => {
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+  };
+
+  const handleClick = (item) => {
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    setFullscreenItem(item);
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 pt-28 pb-20">
@@ -186,7 +209,12 @@ export default function AboutUsPage() {
         {/* 2 Large Dedicated 3D Showcase Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
           {/* Large 3D Card 1: 3D Holographic Certificate */}
-          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
+          <div
+            className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1 cursor-pointer"
+            onMouseEnter={() => handleMouseEnter({ type: 'iframe', src: '/certificate-3d.html', title: 'BW Businessworld Emerging Businesses Award 2021', badge: '🏆 Winner 2021 • Special Mention' })}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick({ type: 'iframe', src: '/certificate-3d.html', title: 'BW Businessworld Emerging Businesses Award 2021', badge: '🏆 Winner 2021 • Special Mention' })}
+          >
             <div className="flex flex-col bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-200">
               <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-slate-200 flex-wrap gap-2 text-slate-900">
                 <div className="flex items-center gap-2.5">
@@ -198,6 +226,9 @@ export default function AboutUsPage() {
                     <Sparkles className="w-3.5 h-3.5" /> 3D Hologram Tilt
                   </span>
                 </div>
+                <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-sky-700 bg-sky-50 border border-sky-200 px-2.5 py-1 rounded-md">
+                  ⛶ Hover for Fullscreen
+                </span>
               </div>
 
               <div className="w-full h-96 sm:h-[420px] relative bg-slate-50/50">
@@ -238,7 +269,12 @@ export default function AboutUsPage() {
           </div>
 
           {/* Large 3D Card 2: 360° Rotating 3D Golden Trophy */}
-          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
+          <div
+            className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1 cursor-pointer"
+            onMouseEnter={() => handleMouseEnter({ type: 'iframe', src: '/trophy-360.html', title: 'India 5000 Best MSME National Trophy 2020', badge: '🥇 Winner 2020 • 3D Gold Trophy' })}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick({ type: 'iframe', src: '/trophy-360.html', title: 'India 5000 Best MSME National Trophy 2020', badge: '🥇 Winner 2020 • 3D Gold Trophy' })}
+          >
             <div className="flex flex-col bg-gradient-to-br from-[#faf7f2] to-[#f3ede2] border-b border-slate-200">
               <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
                 <div className="flex items-center gap-2.5">
@@ -250,6 +286,9 @@ export default function AboutUsPage() {
                     <RotateCcw className="w-3.5 h-3.5" /> 360° Auto-Rotate
                   </span>
                 </div>
+                <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-md">
+                  ⛶ Hover for Fullscreen
+                </span>
               </div>
 
               <div className="w-full h-96 sm:h-[420px] relative bg-[#faf7f2]/50">
@@ -303,7 +342,12 @@ export default function AboutUsPage() {
         {/* 4 Accredited Certificates Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Award 1: ISO 9001:2015 QRO & UKAF Accredited */}
-          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+          <div
+            className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col cursor-pointer"
+            onMouseEnter={() => handleMouseEnter({ type: 'image', src: isoQroImg, title: 'ISO 9001:2015 Quality Management System Certification (QRO & UKAF)', badge: '🛡️ ISO 9001:2015 Certified' })}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick({ type: 'image', src: isoQroImg, title: 'ISO 9001:2015 Quality Management System Certification (QRO & UKAF)', badge: '🛡️ ISO 9001:2015 Certified' })}
+          >
             <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
               <img src={isoQroImg} alt="ISO 9001:2015 Quality Management System Certification QRO UKAF" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
@@ -319,7 +363,12 @@ export default function AboutUsPage() {
           </div>
 
           {/* Award 2: India 5000 Gold Laurel Wreath Medal */}
-          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+          <div
+            className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col cursor-pointer"
+            onMouseEnter={() => handleMouseEnter({ type: 'image', src: msmeCertImg, title: 'India 5000 Quality Excellence Gold Seal Winner 2020', badge: '📜 National Quality Honor' })}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick({ type: 'image', src: msmeCertImg, title: 'India 5000 Quality Excellence Gold Seal Winner 2020', badge: '📜 National Quality Honor' })}
+          >
             <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
               <img src={msmeCertImg} alt="India 5000 Best MSME Awards for Quality Excellence Winner 2020 Gold Seal" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
@@ -335,7 +384,12 @@ export default function AboutUsPage() {
           </div>
 
           {/* Award 3: ISO 9001:2015 Otabu IAF Accredited */}
-          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+          <div
+            className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col cursor-pointer"
+            onMouseEnter={() => handleMouseEnter({ type: 'image', src: isoOtabuImg, title: 'International Quality Registration (Otabu Certification & IAF)', badge: '✅ ISO 9001:2015 IAF Certified' })}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick({ type: 'image', src: isoOtabuImg, title: 'International Quality Registration (Otabu Certification & IAF)', badge: '✅ ISO 9001:2015 IAF Certified' })}
+          >
             <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
               <img src={isoOtabuImg} alt="ISO 9001:2015 Quality Registration Certificate Otabu IAF" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
@@ -351,7 +405,12 @@ export default function AboutUsPage() {
           </div>
 
           {/* Award 4: India 5000 Certificate of Recognition Document */}
-          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+          <div
+            className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col cursor-pointer"
+            onMouseEnter={() => handleMouseEnter({ type: 'image', src: msmeDocImg, title: 'India 5000 Best MSME Official Certificate of Recognition', badge: '🏅 Certificate of Recognition' })}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick({ type: 'image', src: msmeDocImg, title: 'India 5000 Best MSME Official Certificate of Recognition', badge: '🏅 Certificate of Recognition' })}
+          >
             <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
               <img src={msmeDocImg} alt="India 5000 Best MSME Official Certificate of Recognition" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
@@ -429,6 +488,58 @@ export default function AboutUsPage() {
           </div>
         </div>
       </div>
+
+      {/* Fullscreen Hover Modal Overlay */}
+      {fullscreenItem && (
+        <div
+          className="fixed inset-0 z-[999999] bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 transition-all duration-300"
+          onClick={() => setFullscreenItem(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl h-[88vh] bg-white rounded-3xl overflow-hidden shadow-2xl border border-white/20 flex flex-col transform transition-all duration-300 scale-100"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-6 py-4 bg-white border-b border-slate-200 flex-wrap gap-2">
+              <div className="flex items-center gap-3">
+                <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
+                  {fullscreenItem.badge}
+                </span>
+                <span className="text-sm font-black text-slate-900">
+                  {fullscreenItem.title}
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-slate-500 font-semibold hidden sm:inline">
+                  (Press ESC or click ✕ to close)
+                </span>
+                <button
+                  onClick={() => setFullscreenItem(null)}
+                  className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-black transition"
+                  title="Close Fullscreen"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            <div className="flex-1 w-full h-full relative bg-slate-50 flex items-center justify-center overflow-hidden p-4">
+              {fullscreenItem.type === 'iframe' ? (
+                <iframe
+                  src={fullscreenItem.src}
+                  title={fullscreenItem.title}
+                  className="w-full h-full border-0 block"
+                />
+              ) : (
+                <img
+                  src={fullscreenItem.src}
+                  alt={fullscreenItem.title}
+                  className="max-h-[82vh] max-w-full object-contain rounded-xl shadow-lg"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

@@ -205,6 +205,108 @@
       .nav-logo span small { display: none !important; }
     }
 
+    /* ===== HOVER FULLSCREEN MODAL OVERLAY ===== */
+    .fs-hover-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 999999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    }
+    .fs-hover-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .fs-hover-container {
+      position: relative;
+      width: 100%;
+      max-width: 1020px;
+      max-height: 92vh;
+      height: 88vh;
+      background: #ffffff;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.92);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fs-hover-overlay.active .fs-hover-container {
+      transform: scale(1);
+    }
+    .fs-hover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 22px;
+      background: #ffffff;
+      border-bottom: 1.5px solid #e2e8f0;
+      z-index: 10;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .fs-hover-content {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .fs-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+    .fs-close-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+      transform: scale(1.08);
+    }
+    .hover-expand-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #0284c7;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      padding: 3px 9px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .hover-expand-hint:hover {
+      background: #e0f2fe;
+    }
+
     /* ===== FOOTER ===== */
     footer { padding: 40px 6vw; background: #0f172a; color: #94a3b8; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 14px; border-top: 1px solid #1e293b; box-sizing: border-box; }
     footer a { color: var(--amber); text-decoration: none; font-weight: 600; }
@@ -445,13 +547,14 @@
     <!-- ==================== 2 LARGE DEDICATED 3D CARDS ==================== -->
     <div class="dual-3d-grid">
       <!-- 3D Card 1: 3D Holographic Certificate -->
-      <div class="big-3d-card">
+      <div class="big-3d-card" style="cursor: pointer;" data-fs-type="iframe" data-fs-src="certificate-3d.html" data-fs-title="BW Businessworld Emerging Businesses Award 2021" data-fs-badge="🏆 Winner 2021 • Special Mention">
         <div class="big-3d-viewer-wrap" style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); height: 410px;">
           <div class="big-3d-viewer-header" style="background: #ffffff; border-bottom: 1.5px solid #e2e8f0; padding: 12px 20px;">
             <div style="display: flex; align-items: center; gap: 10px;">
               <span class="award-badge-pill" style="background: #fef3c7; color: #92400e; font-weight: 800; font-size: 11.5px;">🏆 Winner 2021 • Special Mention</span>
               <span style="font-size: 11px; font-weight: 800; color: #d97706; text-transform: uppercase; letter-spacing: 0.5px;">✨ 3D Hologram Tilt</span>
             </div>
+            <span class="hover-expand-hint">⛶ Hover for Fullscreen</span>
           </div>
           <div class="big-3d-viewer-body" style="background: #f8fafc;">
             <iframe src="certificate-3d.html" title="3D Interactive Holographic Certificate" loading="lazy"></iframe>
@@ -468,13 +571,14 @@
       </div>
 
       <!-- 3D Card 2: 360° Rotating 3D Golden Trophy -->
-      <div class="big-3d-card">
+      <div class="big-3d-card" style="cursor: pointer;" data-fs-type="iframe" data-fs-src="trophy-360.html" data-fs-title="India 5000 Best MSME National Trophy 2020" data-fs-badge="🥇 Winner 2020 • 3D Gold Trophy">
         <div class="big-3d-viewer-wrap" style="background: linear-gradient(135deg, #faf7f2 0%, #f3ede2 100%); height: 410px;">
           <div class="big-3d-viewer-header" style="background: #ffffff; border-bottom: 1.5px solid #e7dfd1; padding: 12px 20px;">
             <div style="display: flex; align-items: center; gap: 10px;">
               <span class="award-badge-pill" style="background: #fef3c7; color: #92400e; font-weight: 800; font-size: 11.5px;">🥇 Winner 2020 • 3D Gold Trophy</span>
               <span style="font-size: 11px; font-weight: 800; color: #b45309; text-transform: uppercase; letter-spacing: 0.5px;">🔄 360° Auto-Rotate</span>
             </div>
+            <span class="hover-expand-hint">⛶ Hover for Fullscreen</span>
           </div>
           <div class="big-3d-viewer-body" style="background: #faf7f2;">
             <iframe src="trophy-360.html" title="360 Interactive 3D Trophy" loading="lazy"></iframe>
@@ -499,7 +603,7 @@
 
     <div class="awards-grid">
       <!-- Award 3: ISO 9001:2015 QRO & UKAF Accredited -->
-      <div class="award-card">
+      <div class="award-card" style="cursor: pointer;" data-fs-type="image" data-fs-src="assets/images/certificate-iso-9001-qro-2024.jpg" data-fs-title="ISO 9001:2015 Quality Management System Certification" data-fs-badge="🛡️ ISO 9001:2015 Certified">
         <div class="award-thumb-box">
           <img src="assets/images/certificate-iso-9001-qro-2024.jpg" alt="ISO 9001:2015 Quality Management System Certification QRO UKAF" loading="lazy" />
         </div>
@@ -512,7 +616,7 @@
       </div>
 
       <!-- Award 4: India 5000 Gold Laurel Wreath Medal -->
-      <div class="award-card">
+      <div class="award-card" style="cursor: pointer;" data-fs-type="image" data-fs-src="assets/images/award-india-5000-msme-2020.jpg" data-fs-title="India 5000 Quality Excellence Gold Seal" data-fs-badge="📜 National Quality Honor">
         <div class="award-thumb-box">
           <img src="assets/images/award-india-5000-msme-2020.jpg" alt="India 5000 Best MSME Awards for Quality Excellence Winner 2020 Gold Seal" loading="lazy" />
         </div>
@@ -525,7 +629,7 @@
       </div>
 
       <!-- Award 5: ISO 9001:2015 Otabu IAF Accredited -->
-      <div class="award-card">
+      <div class="award-card" style="cursor: pointer;" data-fs-type="image" data-fs-src="assets/images/certificate-iso-9001-otabu.jpg" data-fs-title="International Quality Assurance Standard" data-fs-badge="✅ ISO 9001:2015 IAF Certified">
         <div class="award-thumb-box">
           <img src="assets/images/certificate-iso-9001-otabu.jpg" alt="ISO 9001:2015 Quality Registration Certificate Otabu IAF" loading="lazy" />
         </div>
@@ -538,7 +642,7 @@
       </div>
 
       <!-- Award 6: India 5000 Certificate of Recognition Document -->
-      <div class="award-card">
+      <div class="award-card" style="cursor: pointer;" data-fs-type="image" data-fs-src="assets/images/award-india-5000-certificate-doc.jpg" data-fs-title="India 5000 Best MSME Winner Document" data-fs-badge="🏅 Certificate of Recognition">
         <div class="award-thumb-box">
           <img src="assets/images/award-india-5000-certificate-doc.jpg" alt="India 5000 Best MSME Official Certificate of Recognition" loading="lazy" />
         </div>
@@ -657,6 +761,23 @@
     </div>
   </section>
 
+  <!-- ==================== HOVER FULLSCREEN MODAL OVERLAY ==================== -->
+  <div id="fsHoverOverlay" class="fs-hover-overlay">
+    <div id="fsHoverContainer" class="fs-hover-container">
+      <div class="fs-hover-header">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <span id="fsModalBadge" class="award-badge-pill" style="background: #fef3c7; color: #92400e; font-weight: 800; font-size: 11.5px;">🏆 Winner Distinction</span>
+          <span id="fsModalTitle" style="font-size: 14px; font-weight: 900; color: #0f172a;">Official Award & Recognition</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 11px; color: #64748b; font-weight: 700;">Hover / Full Screen Mode (Press ESC or ✕ to close)</span>
+          <button id="fsCloseBtn" class="fs-close-btn" title="Close Fullscreen View">✕</button>
+        </div>
+      </div>
+      <div id="fsModalContent" class="fs-hover-content"></div>
+    </div>
+  </div>
+
   <!-- ==================== FOOTER ==================== -->
   <footer style="padding: 44px 6vw; background: #070a1a; color: #94a3b8; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 14px; border-top: 1px solid #1e293b; font-size: 14px;">
     <div style="font-size: 16px; font-weight: 900; color: #ffffff; letter-spacing: 0.5px;">ARSHI ENTERPRISES</div>
@@ -680,25 +801,79 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // 3D View Switcher (Trophy vs Certificate)
-    function switch3DView(type) {
-      const iframe = document.getElementById('interactive3dIframe');
-      const btnTrophy = document.getElementById('btnShow3dTrophy');
-      const btnCert = document.getElementById('btnShow3dCert');
-      const fsLink = document.getElementById('trophyFullscreenLink');
-      if (!iframe) return;
-      if (type === 'trophy') {
-        iframe.src = 'trophy-360.html';
-        if (btnTrophy) btnTrophy.classList.add('active');
-        if (btnCert) btnCert.classList.remove('active');
-        if (fsLink) fsLink.href = 'trophy-360.html';
-      } else {
-        iframe.src = 'certificate-3d.html';
-        if (btnCert) btnCert.classList.add('active');
-        if (btnTrophy) btnTrophy.classList.remove('active');
-        if (fsLink) fsLink.href = 'certificate-3d.html';
+    // ===== HOVER FULLSCREEN MODAL CONTROLLER =====
+    (function(){
+      const overlay = document.getElementById('fsHoverOverlay');
+      const container = document.getElementById('fsHoverContainer');
+      const headerTitle = document.getElementById('fsModalTitle');
+      const headerBadge = document.getElementById('fsModalBadge');
+      const content = document.getElementById('fsModalContent');
+      const closeBtn = document.getElementById('fsCloseBtn');
+      if (!overlay || !content) return;
+
+      let hoverTimer = null;
+      let isModalOpen = false;
+
+      function openModal(data) {
+        if (!data || isModalOpen) return;
+        headerTitle.textContent = data.title || 'Official Recognition';
+        headerBadge.textContent = data.badge || '✨ Full Screen View';
+        
+        if (data.type === 'iframe') {
+          content.innerHTML = '<iframe src="' + data.src + '" title="' + data.title + '" style="width:100%;height:100%;border:none;background:transparent;"></iframe>';
+        } else if (data.type === 'image') {
+          content.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:16px;"><img src="' + data.src + '" alt="' + data.title + '" style="max-width:92%;max-height:86vh;object-fit:contain;border-radius:12px;box-shadow:0 12px 36px rgba(0,0,0,0.25);" /></div>';
+        }
+        overlay.classList.add('active');
+        isModalOpen = true;
       }
-    }
+
+      function closeModal() {
+        if (!isModalOpen) return;
+        overlay.classList.remove('active');
+        isModalOpen = false;
+        setTimeout(() => {
+          if (!isModalOpen) content.innerHTML = '';
+        }, 300);
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // Attach hover listeners to all elements with data-fs-src
+      document.querySelectorAll('[data-fs-src]').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          clearTimeout(hoverTimer);
+          hoverTimer = setTimeout(() => {
+            openModal({
+              type: el.dataset.fsType || 'image',
+              src: el.dataset.fsSrc,
+              title: el.dataset.fsTitle,
+              badge: el.dataset.fsBadge
+            });
+          }, 260); // 260ms smooth hover trigger
+        });
+
+        el.addEventListener('mouseleave', () => {
+          clearTimeout(hoverTimer);
+        });
+
+        el.addEventListener('click', () => {
+          clearTimeout(hoverTimer);
+          openModal({
+            type: el.dataset.fsType || 'image',
+            src: el.dataset.fsSrc,
+            title: el.dataset.fsTitle,
+            badge: el.dataset.fsBadge
+          });
+        });
+      });
+    })();
 
     // Dropdown toggle on click
     document.querySelectorAll('.nav-item').forEach(item => {
