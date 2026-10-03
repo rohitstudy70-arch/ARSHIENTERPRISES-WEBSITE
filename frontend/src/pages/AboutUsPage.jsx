@@ -228,7 +228,7 @@ export default function AboutUsPage() {
                   src="/certificate-3d.html"
                   title="3D Interactive Holographic Certificate"
                   className="w-full h-full border-0 block"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             </div>
@@ -280,7 +280,7 @@ export default function AboutUsPage() {
                   src="/trophy-360.html"
                   title="360 Interactive 3D Trophy"
                   className="w-full h-full border-0 block"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             </div>
@@ -332,7 +332,7 @@ export default function AboutUsPage() {
                   src="/plaque-3d.html"
                   title="3D Interactive Gold Plaque"
                   className="w-full h-full border-0 block"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
             </div>
