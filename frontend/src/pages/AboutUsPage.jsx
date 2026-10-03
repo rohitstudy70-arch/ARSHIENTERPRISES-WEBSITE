@@ -209,12 +209,7 @@ export default function AboutUsPage() {
         {/* 2 Large Dedicated 3D Showcase Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
           {/* Large 3D Card 1: 3D Holographic Certificate */}
-          <div
-            className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1 cursor-pointer"
-            onMouseEnter={() => handleMouseEnter({ type: 'iframe', src: '/certificate-3d.html', title: 'BW Businessworld Emerging Businesses Award 2021', badge: '🏆 Winner 2021 • Special Mention' })}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick({ type: 'iframe', src: '/certificate-3d.html', title: 'BW Businessworld Emerging Businesses Award 2021', badge: '🏆 Winner 2021 • Special Mention' })}
-          >
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
             <div className="flex flex-col bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-200">
               <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-slate-200 flex-wrap gap-2 text-slate-900">
                 <div className="flex items-center gap-2.5">
@@ -226,9 +221,6 @@ export default function AboutUsPage() {
                     <Sparkles className="w-3.5 h-3.5" /> 3D Hologram Tilt
                   </span>
                 </div>
-                <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-sky-700 bg-sky-50 border border-sky-200 px-2.5 py-1 rounded-md">
-                  ⛶ Hover for Fullscreen
-                </span>
               </div>
 
               <div className="w-full h-96 sm:h-[420px] relative bg-slate-50/50">
@@ -269,12 +261,7 @@ export default function AboutUsPage() {
           </div>
 
           {/* Large 3D Card 2: 360° Rotating 3D Golden Trophy */}
-          <div
-            className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1 cursor-pointer"
-            onMouseEnter={() => handleMouseEnter({ type: 'iframe', src: '/trophy-360.html', title: 'India 5000 Best MSME National Trophy 2020', badge: '🥇 Winner 2020 • 3D Gold Trophy' })}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick({ type: 'iframe', src: '/trophy-360.html', title: 'India 5000 Best MSME National Trophy 2020', badge: '🥇 Winner 2020 • 3D Gold Trophy' })}
-          >
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
             <div className="flex flex-col bg-gradient-to-br from-[#faf7f2] to-[#f3ede2] border-b border-slate-200">
               <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
                 <div className="flex items-center gap-2.5">
@@ -286,9 +273,6 @@ export default function AboutUsPage() {
                     <RotateCcw className="w-3.5 h-3.5" /> 360° Auto-Rotate
                   </span>
                 </div>
-                <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-md">
-                  ⛶ Hover for Fullscreen
-                </span>
               </div>
 
               <div className="w-full h-96 sm:h-[420px] relative bg-[#faf7f2]/50">
