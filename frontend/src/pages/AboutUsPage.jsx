@@ -206,24 +206,24 @@ export default function AboutUsPage() {
           </p>
         </div>
 
-        {/* 3 Large Dedicated 3D Showcase Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
+        {/* 3 Compact Dedicated 3D Showcase Cards (1 Row) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-12">
           {/* Large 3D Card 1: 3D Holographic Certificate */}
-          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
             <div className="flex flex-col bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-200">
-              <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-slate-200 flex-wrap gap-2 text-slate-900">
-                <div className="flex items-center gap-2.5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
+              <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-slate-200 flex-wrap gap-2 text-slate-900">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[11px] font-black uppercase tracking-wider">
                     <Trophy className="w-3.5 h-3.5 text-amber-600" />
                     Winner 2021 • Special Mention
                   </span>
-                  <span className="text-xs font-black text-amber-600 uppercase tracking-wide flex items-center gap-1">
+                  <span className="text-[11px] font-black text-amber-600 uppercase tracking-wide flex items-center gap-1">
                     <Sparkles className="w-3.5 h-3.5" /> 3D Hologram Tilt
                   </span>
                 </div>
               </div>
 
-              <div className="w-full h-96 sm:h-[420px] relative bg-slate-50/50">
+              <div className="w-full h-72 sm:h-[310px] relative bg-slate-50/50">
                 <iframe
                   src="/certificate-3d.html"
                   title="3D Interactive Holographic Certificate"
@@ -233,27 +233,27 @@ export default function AboutUsPage() {
               </div>
             </div>
 
-            <div className="p-7 sm:p-8 flex flex-col flex-1">
-              <div className="text-xs font-black uppercase tracking-wider text-amber-700 mb-2">
+            <div className="p-5 sm:p-6 flex flex-col flex-1">
+              <div className="text-[11px] font-black uppercase tracking-wider text-amber-700 mb-1.5">
                 National Emerging Business Honor
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-2 group-hover:text-amber-600 transition leading-snug">
+              <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-1.5 group-hover:text-amber-600 transition leading-snug">
                 Best Service by Emerging Enterprise
               </h3>
-              <div className="text-xs sm:text-sm font-bold text-blue-700 mb-4">
+              <div className="text-xs font-bold text-blue-700 mb-3">
                 BW Businessworld & BWSME World (Jury Chair: Former SEBI Chairman U.K. Sinha • Supported by NSIC)
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
+              <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-4">
                 Conferred by a high-level national jury chaired by U.K. Sinha (Former Chairman, SEBI) & supported by NSIC, celebrating Arshi GPS 3D emblem innovation, 24/7 client-first GPS fleet management, fast field engineering resolution, and benchmark customer trust across Eastern India.
               </p>
 
-              <div className="mt-auto space-y-2.5">
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <Award className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+              <div className="mt-auto space-y-2">
+                <div className="flex items-start gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <Award className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
                   <span className="text-xs text-slate-700 font-medium">Jury Chaired by Former SEBI Chairman U.K. Sinha</span>
                 </div>
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                   <span className="text-xs text-slate-700 font-medium">Supported by National Small Industries Corporation (NSIC)</span>
                 </div>
               </div>
@@ -261,21 +261,21 @@ export default function AboutUsPage() {
           </div>
 
           {/* Large 3D Card 2: 360° Rotating 3D Golden Trophy */}
-          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
             <div className="flex flex-col bg-gradient-to-br from-[#faf7f2] to-[#f3ede2] border-b border-slate-200">
-              <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
-                <div className="flex items-center gap-2.5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
+              <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[11px] font-black uppercase tracking-wider">
                     <Award className="w-3.5 h-3.5 text-amber-600" />
                     Winner 2020 • 3D Gold Trophy
                   </span>
-                  <span className="text-xs font-black text-amber-700 uppercase tracking-wide flex items-center gap-1">
+                  <span className="text-[11px] font-black text-amber-700 uppercase tracking-wide flex items-center gap-1">
                     <RotateCcw className="w-3.5 h-3.5" /> 360° Auto-Rotate
                   </span>
                 </div>
               </div>
 
-              <div className="w-full h-96 sm:h-[420px] relative bg-[#faf7f2]/50">
+              <div className="w-full h-72 sm:h-[310px] relative bg-[#faf7f2]/50">
                 <iframe
                   src="/trophy-360.html"
                   title="360 Interactive 3D Trophy"
@@ -285,27 +285,27 @@ export default function AboutUsPage() {
               </div>
             </div>
 
-            <div className="p-7 sm:p-8 flex flex-col flex-1">
-              <div className="text-xs font-black uppercase tracking-wider text-amber-700 mb-2">
+            <div className="p-5 sm:p-6 flex flex-col flex-1">
+              <div className="text-[11px] font-black uppercase tracking-wider text-amber-700 mb-1.5">
                 National Quality Excellence Trophy
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-2 group-hover:text-amber-600 transition leading-snug">
+              <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-1.5 group-hover:text-amber-600 transition leading-snug">
                 India 5000 Best MSME National Trophy
               </h3>
-              <div className="text-xs sm:text-sm font-bold text-blue-700 mb-4">
+              <div className="text-xs font-bold text-blue-700 mb-3">
                 Benchmark Trust & TQV Audit Partner (Winner 2020 • Arshi Enterprises)
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
+              <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-4">
                 Honored with the official physical 3D Golden MSME Trophy for outstanding business leadership, zero-failure telematics hardware deployments, high-precision satellite telemetry, and boosting operational logistics profitability for commercial fleets across India.
               </p>
 
-              <div className="mt-auto space-y-2.5">
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <div className="mt-auto space-y-2">
+                <div className="flex items-start gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                   <span className="text-xs text-slate-700 font-medium">Audited & Verified by Benchmark Trust & TQV Certification</span>
                 </div>
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <Sparkles className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <Sparkles className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
                   <span className="text-xs text-slate-700 font-medium">Pan-India Recognition for Quality Excellence in GPS Telematics</span>
                 </div>
               </div>
@@ -313,21 +313,21 @@ export default function AboutUsPage() {
           </div>
 
           {/* Large 3D Card 3: 3D Interactive Gold Plaque */}
-          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
             <div className="flex flex-col bg-gradient-to-br from-[#faf7f2] to-[#f3ede2] border-b border-slate-200">
-              <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
-                <div className="flex items-center gap-2.5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
+              <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[11px] font-black uppercase tracking-wider">
                     <Award className="w-3.5 h-3.5 text-amber-600" />
                     Winner 2020 • Gold Seal Plaque
                   </span>
-                  <span className="text-xs font-black text-amber-700 uppercase tracking-wide flex items-center gap-1">
+                  <span className="text-[11px] font-black text-amber-700 uppercase tracking-wide flex items-center gap-1">
                     <Sparkles className="w-3.5 h-3.5" /> 3D Metallic Plaque
                   </span>
                 </div>
               </div>
 
-              <div className="w-full h-96 sm:h-[420px] relative bg-[#faf7f2]/50">
+              <div className="w-full h-72 sm:h-[310px] relative bg-[#faf7f2]/50">
                 <iframe
                   src="/plaque-3d.html"
                   title="3D Interactive Gold Plaque"
@@ -337,27 +337,27 @@ export default function AboutUsPage() {
               </div>
             </div>
 
-            <div className="p-7 sm:p-8 flex flex-col flex-1">
-              <div className="text-xs font-black uppercase tracking-wider text-amber-700 mb-2">
+            <div className="p-5 sm:p-6 flex flex-col flex-1">
+              <div className="text-[11px] font-black uppercase tracking-wider text-amber-700 mb-1.5">
                 National Excellence Honor
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-2 group-hover:text-amber-600 transition leading-snug">
+              <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-1.5 group-hover:text-amber-600 transition leading-snug">
                 India 5000 Gold Laurel Wreath Plaque
               </h3>
-              <div className="text-xs sm:text-sm font-bold text-blue-700 mb-4">
+              <div className="text-xs font-bold text-blue-700 mb-3">
                 Benchmark Trust & National MSME Jury (Winner 2020)
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
+              <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-4">
                 Conferred with the prestigious Golden Laurel Wreath Plaque for outstanding telematics service quality, setting new logistics safety benchmarks, and high-precision GPS tracking across India.
               </p>
 
-              <div className="mt-auto space-y-2.5">
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <div className="mt-auto space-y-2">
+                <div className="flex items-start gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                   <span className="text-xs text-slate-700 font-medium">Physical Commemorative Hardwood & Brass Gold Plaque</span>
                 </div>
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <Sparkles className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+                  <Sparkles className="w-3.5 h-3.5 text-indigo-600 shrink-0 mt-0.5" />
                   <span className="text-xs text-slate-700 font-medium">Official Benchmark Trust National Quality Seal</span>
                 </div>
               </div>
