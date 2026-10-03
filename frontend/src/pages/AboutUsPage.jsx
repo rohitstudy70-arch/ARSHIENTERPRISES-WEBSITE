@@ -228,19 +228,19 @@ export default function AboutUsPage() {
             </div>
           </div>
 
-          {/* Award 4: India 5000 Certificate */}
+          {/* Award 4: India 5000 Gold Laurel Wreath Medal */}
           <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
             <div className="w-full h-52 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
-              <img src={msmeCertImg} alt="India 5000 Best MSME Certificate of Recognition" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+              <img src={msmeCertImg} alt="India 5000 Best MSME Awards for Quality Excellence Winner 2020 Gold Seal" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
             <div className="p-6 flex flex-col flex-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
                 <FileCheck className="w-3.5 h-3.5 text-blue-600" />
-                National Recognition
+                National Quality Honor
               </span>
-              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">Customer Trust & Impact on Society</h3>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">National Quality Excellence & Leadership</h3>
               <div className="text-xs font-bold text-blue-700 mb-3">India 5000 Executive Jury Board</div>
-              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Recognized for benchmark client satisfaction, 99.8% fleet retention, and advancing vehicle safety standards across India.</p>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Conferred with the official Golden Laurel Wreath for setting benchmark standards in fleet client satisfaction, zero-failure telematics installations, and advancing road logistics safety across India.</p>
             </div>
           </div>
         </div>
