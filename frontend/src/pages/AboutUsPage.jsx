@@ -188,27 +188,27 @@ export default function AboutUsPage() {
           {/* Large 3D Card 1: 3D Holographic Certificate */}
           <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
             <div className="flex flex-col bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-200">
-              <div className="flex items-center justify-between px-5 py-3.5 bg-slate-50 border-b border-slate-200 flex-wrap gap-2 text-slate-900">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
-                  <Trophy className="w-3.5 h-3.5 text-amber-600" />
-                  Winner 2021 • Special Mention
-                </span>
-                <div className="flex items-center gap-2">
+              <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-slate-200 flex-wrap gap-2 text-slate-900">
+                <div className="flex items-center gap-2.5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
+                    <Trophy className="w-3.5 h-3.5 text-amber-600" />
+                    Winner 2021 • Special Mention
+                  </span>
                   <span className="text-xs font-black text-amber-600 uppercase tracking-wide flex items-center gap-1">
                     <Sparkles className="w-3.5 h-3.5" /> 3D Hologram Tilt
                   </span>
-                  <a
-                    href="/certificate-3d.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold text-sky-600 hover:text-sky-700 hover:underline inline-flex items-center gap-0.5 ml-2"
-                  >
-                    ⛶ Fullscreen ↗
-                  </a>
                 </div>
+                <a
+                  href="/certificate-3d.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-black text-sky-700 hover:text-sky-800 px-3 py-1 rounded-lg bg-sky-50 border border-sky-200 hover:bg-sky-100 transition inline-flex items-center gap-1"
+                >
+                  ⛶ Fullscreen ↗
+                </a>
               </div>
 
-              <div className="w-full h-80 sm:h-96 relative bg-transparent">
+              <div className="w-full h-80 sm:h-96 relative bg-slate-50/50">
                 <iframe
                   src="/certificate-3d.html"
                   title="3D Interactive Holographic Certificate"
@@ -248,27 +248,27 @@ export default function AboutUsPage() {
           {/* Large 3D Card 2: 360° Rotating 3D Golden Trophy */}
           <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
             <div className="flex flex-col bg-gradient-to-br from-[#faf7f2] to-[#f3ede2] border-b border-slate-200">
-              <div className="flex items-center justify-between px-5 py-3.5 bg-[#fdfbf7] border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
-                  <Award className="w-3.5 h-3.5 text-amber-600" />
-                  Winner 2020 • 3D Gold Trophy
-                </span>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-black text-amber-700 uppercase tracking-wide flex items-center gap-1">
-                    <RotateCcw className="w-3.5 h-3.5" /> 360° Spin Model
+              <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
+                <div className="flex items-center gap-2.5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
+                    <Award className="w-3.5 h-3.5 text-amber-600" />
+                    Winner 2020 • 3D Gold Trophy
                   </span>
-                  <a
-                    href="/trophy-360.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold text-amber-800 hover:text-amber-900 hover:underline inline-flex items-center gap-0.5 ml-2"
-                  >
-                    ⛶ Fullscreen ↗
-                  </a>
+                  <span className="text-xs font-black text-amber-700 uppercase tracking-wide flex items-center gap-1">
+                    <RotateCcw className="w-3.5 h-3.5" /> 360° Auto-Rotate
+                  </span>
                 </div>
+                <a
+                  href="/trophy-360.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-black text-amber-900 hover:text-amber-950 px-3 py-1 rounded-lg bg-amber-50 border border-amber-200 hover:bg-amber-100 transition inline-flex items-center gap-1"
+                >
+                  ⛶ Fullscreen ↗
+                </a>
               </div>
 
-              <div className="w-full h-80 sm:h-96 relative bg-transparent">
+              <div className="w-full h-80 sm:h-96 relative bg-[#faf7f2]/50">
                 <iframe
                   src="/trophy-360.html"
                   title="360 Interactive 3D Trophy"
