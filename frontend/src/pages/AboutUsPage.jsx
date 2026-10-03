@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { ShieldCheck, CheckCircle2, Zap, Radio, Phone, Mail, MapPin, Award, Trophy, FileCheck, Calendar, Sparkles, ChevronRight } from 'lucide-react';
 import bwAwardImg from '../assets/award-bw-businessworld-2021.jpg';
-import trophyMsmeImg from '../assets/trophy-india-5000-msme-2020.jpg';
+import trophyMsme3dImg from '../assets/trophy-india-5000-3d.jpg';
 import isoQroImg from '../assets/certificate-iso-9001-qro-2024.jpg';
 import msmeCertImg from '../assets/award-india-5000-msme-2020.jpg';
+import isoOtabuImg from '../assets/certificate-iso-9001-otabu.jpg';
+import msmeDocImg from '../assets/award-india-5000-certificate-doc.jpg';
 
 export default function AboutUsPage() {
   useEffect(() => {
@@ -179,11 +181,11 @@ export default function AboutUsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Award 1: BW Businessworld */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Award 1: BW Businessworld Winner 2021 with 3D Emblem */}
           <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
-            <div className="w-full h-52 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
-              <img src={bwAwardImg} alt="BW Businessworld Emerging Businesses Award 2021" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+              <img src={bwAwardImg} alt="BW Businessworld Emerging Businesses Award 2021 - Arshi GPS" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
             <div className="p-6 flex flex-col flex-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
@@ -191,46 +193,46 @@ export default function AboutUsPage() {
                 Winner 2021 • Special Mention
               </span>
               <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">Best Service by Emerging Enterprise</h3>
-              <div className="text-xs font-bold text-blue-700 mb-3">BW Businessworld & BWSME World</div>
-              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Conferred by a jury led by former SEBI Chairman U.K. Sinha, honoring Arshi Enterprises for reliable GPS telematics field service across Eastern India.</p>
+              <div className="text-xs font-bold text-blue-700 mb-3">BW Businessworld & BWSME World (SEBI Jury)</div>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Conferred by a jury chaired by U.K. Sinha (Former SEBI Chairman) & supported by NSIC, celebrating Arshi GPS 3D emblem innovation and 24/7 telematics support across Eastern India.</p>
             </div>
           </div>
 
-          {/* Award 2: India 5000 MSME Golden Trophy */}
+          {/* Award 2: India 5000 MSME 3D Physical Golden Trophy */}
           <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
-            <div className="w-full h-52 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
-              <img src={trophyMsmeImg} alt="India 5000 Best MSME Awards 2020 Winner Golden Trophy" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+              <img src={trophyMsme3dImg} alt="India 5000 Best MSME Awards 2020 Winner 3D Golden Trophy" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
             <div className="p-6 flex flex-col flex-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
                 <Award className="w-3.5 h-3.5 text-amber-600" />
-                Winner 2020 • Gold Trophy
+                Winner 2020 • 3D Gold Trophy
               </span>
-              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">India 5000 Best MSME Quality Award</h3>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">India 5000 Best MSME National Trophy</h3>
               <div className="text-xs font-bold text-blue-700 mb-3">Benchmark Trust & TQV Audit Partner</div>
-              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Awarded the national Golden Trophy for outstanding quality management and boosting logistics profitability for commercial fleets.</p>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Honored with the physical 3D Golden MSME Trophy for outstanding business leadership, zero-failure telematics hardware, and boosting commercial fleet profitability.</p>
             </div>
           </div>
 
-          {/* Award 3: ISO 9001:2015 QRO */}
+          {/* Award 3: ISO 9001:2015 QRO & UKAF Accredited */}
           <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
-            <div className="w-full h-52 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
-              <img src={isoQroImg} alt="ISO 9001:2015 Quality Management System Certification" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+              <img src={isoQroImg} alt="ISO 9001:2015 Quality Management System Certification QRO UKAF" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
             <div className="p-6 flex flex-col flex-1">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 ISO 9001:2015 Certified
               </span>
-              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">Quality Management System Standard</h3>
-              <div className="text-xs font-bold text-blue-700 mb-3">QRO & UKAF Accredited (2024–2027)</div>
-              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Certified for standardized supply, testing, and zero-defect installation of AIS 140 VLTD trackers, smart fuel sensors, and CCTV systems.</p>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">International Quality Management System</h3>
+              <div className="text-xs font-bold text-blue-700 mb-3">QRO & UKAF Accredited (Valid 2024–2027)</div>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Accredited by UKAF for standardized supply, rigorous quality testing, and zero-defect installation of AIS 140 VLTD trackers, fuel sensors, and CCTV systems.</p>
             </div>
           </div>
 
           {/* Award 4: India 5000 Gold Laurel Wreath Medal */}
           <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
-            <div className="w-full h-52 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+            <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
               <img src={msmeCertImg} alt="India 5000 Best MSME Awards for Quality Excellence Winner 2020 Gold Seal" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
             <div className="p-6 flex flex-col flex-1">
@@ -238,9 +240,41 @@ export default function AboutUsPage() {
                 <FileCheck className="w-3.5 h-3.5 text-blue-600" />
                 National Quality Honor
               </span>
-              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">National Quality Excellence & Leadership</h3>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">India 5000 Quality Excellence Gold Seal</h3>
               <div className="text-xs font-bold text-blue-700 mb-3">India 5000 Executive Jury Board</div>
-              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Conferred with the official Golden Laurel Wreath for setting benchmark standards in fleet client satisfaction, zero-failure telematics installations, and advancing road logistics safety across India.</p>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Conferred with the prestigious Golden Laurel Wreath for setting benchmark standards in fleet customer satisfaction and high-precision satellite telemetry.</p>
+            </div>
+          </div>
+
+          {/* Award 5: ISO 9001:2015 Otabu IAF Accredited */}
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+            <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+              <img src={isoOtabuImg} alt="ISO 9001:2015 Quality Registration Certificate Otabu IAF" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                ISO 9001:2015 IAF Certified
+              </span>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">International Quality Assurance Standard</h3>
+              <div className="text-xs font-bold text-blue-700 mb-3">Otabu Certification & IAF Accredited</div>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Officially certified for quality compliance across GPS vehicle tracking systems, AIS 140 RTO telematics integration, and responsive technical support.</p>
+            </div>
+          </div>
+
+          {/* Award 6: India 5000 Certificate of Recognition Document */}
+          <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
+            <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
+              <img src={msmeDocImg} alt="India 5000 Best MSME Official Certificate of Recognition" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
+                <FileCheck className="w-3.5 h-3.5 text-indigo-600" />
+                Certificate of Recognition
+              </span>
+              <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">India 5000 Best MSME Winner Document</h3>
+              <div className="text-xs font-bold text-blue-700 mb-3">National MSME Selection Council</div>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Recognized for unwavering excellence in telematics service delivery, customer trust, and advancing commercial transport digital enablement across India.</p>
             </div>
           </div>
         </div>
