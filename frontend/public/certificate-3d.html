@@ -17,6 +17,8 @@ html, body {
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .scene {
   perspective: 1400px;
@@ -39,6 +41,9 @@ html, body {
   touch-action: none;
   cursor: grab;
   background: transparent;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .card:active, .card.active {
   transition: transform 0.05s linear, box-shadow 0.15s ease;
@@ -57,6 +62,7 @@ html, body {
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: #ffffff;
   transition: box-shadow 0.3s ease;
+  transform: translateZ(0);
 }
 .card:hover .card-inner, .card.active .card-inner {
   box-shadow: 0 24px 50px -8px rgba(0, 0, 0, 0.28), 0 8px 20px rgba(0, 0, 0, 0.12);
@@ -71,19 +77,25 @@ html, body {
   -webkit-user-drag: none;
   user-select: none;
   pointer-events: none;
+  /* Crystal Clear HD Rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
+/* Subtle edge shine that NEVER obscures or blurs the text */
 .glare {
   position: absolute;
   inset: 0;
   border-radius: 12px;
   pointer-events: none;
-  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 65%);
-  opacity: 0.18;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(251, 191, 36, 0.15) 0%, rgba(255, 255, 255, 0.05) 40%, transparent 70%);
+  opacity: 0.2;
   transition: opacity 0.3s;
-  mix-blend-mode: overlay;
 }
 .card.active .glare, .card:hover .glare {
-  opacity: 0.8;
+  opacity: 0.35;
 }
 </style>
 </head>
@@ -96,6 +108,7 @@ html, body {
         src="assets/images/award-bw-businessworld-2021.jpg"
         onerror="if(!this.tried){this.tried=true;this.src='/assets/images/award-bw-businessworld-2021.jpg';}"
         loading="eager"
+        decoding="sync"
       />
       <div class="glare"></div>
     </div>
@@ -120,7 +133,7 @@ html, body {
     var ry = (x - 0.5) * 2 * MAX;
     var rx = -(y - 0.5) * 2 * MAX;
     // Enhanced hover / cursor full view zoom scale
-    c.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale3d(1.08, 1.08, 1.08)';
+    c.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale3d(1.06, 1.06, 1.06) translateZ(0)';
     if(g) {
       g.style.setProperty('--gx', (x * 100) + '%');
       g.style.setProperty('--gy', (y * 100) + '%');
@@ -130,7 +143,7 @@ html, body {
   function reset() {
     isInteracting = false;
     c.classList.remove('active');
-    c.style.transform = '';
+    c.style.transform = 'translateZ(0)';
   }
   
   c.addEventListener('pointerdown', function(e){
@@ -156,7 +169,7 @@ html, body {
       autoAngle += 0.025;
       var idleRx = Math.sin(autoAngle) * 3.2;
       var idleRy = Math.cos(autoAngle * 0.8) * 4.5;
-      c.style.transform = 'rotateX(' + idleRx + 'deg) rotateY(' + idleRy + 'deg) scale3d(1, 1, 1)';
+      c.style.transform = 'rotateX(' + idleRx + 'deg) rotateY(' + idleRy + 'deg) scale3d(1, 1, 1) translateZ(0)';
       if(g) {
         var gx = 50 + idleRy * 3;
         var gy = 50 + idleRx * 3;
