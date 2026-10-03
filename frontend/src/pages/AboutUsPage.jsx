@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ShieldCheck, CheckCircle2, Zap, Radio, Phone, Mail, MapPin, Award, Trophy, FileCheck, Calendar, Sparkles, ChevronRight, RotateCcw } from 'lucide-react';
 import bwAwardImg from '../assets/award-bw-businessworld-2021.jpg';
 import trophyMsme3dImg from '../assets/trophy-india-5000-3d.jpg';
@@ -8,6 +8,8 @@ import isoOtabuImg from '../assets/certificate-iso-9001-otabu.jpg';
 import msmeDocImg from '../assets/award-india-5000-certificate-doc.jpg';
 
 export default function AboutUsPage() {
+  const [view3D, setView3D] = useState('trophy');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -179,6 +181,100 @@ export default function AboutUsPage() {
           <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
             Celebrating our relentless commitment to telematics innovation, strict government compliance, and 24/7 service trust across India.
           </p>
+        </div>
+
+        {/* 3D Interactive Showcase Spotlight */}
+        <div className="mb-12 bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 sm:p-8 items-center">
+          <div className="lg:col-span-7 flex flex-col bg-[#f4f1ea] border border-[#d9d4c7] rounded-2xl overflow-hidden shadow-inner">
+            <div className="flex items-center justify-between px-4 py-3 bg-[#ece7dc] border-b border-[#d9d4c7] flex-wrap gap-2">
+              <div className="inline-flex items-center gap-2 text-xs font-black text-amber-900 uppercase tracking-wider">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Live 3D Interactive Showcase</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setView3D('trophy')}
+                  className={`px-3 py-1 rounded-full text-xs font-extrabold transition-all cursor-pointer ${
+                    view3D === 'trophy'
+                      ? 'bg-amber-500 text-white shadow-sm'
+                      : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-300'
+                  }`}
+                >
+                  🏆 360° 3D Trophy
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setView3D('cert')}
+                  className={`px-3 py-1 rounded-full text-xs font-extrabold transition-all cursor-pointer ${
+                    view3D === 'cert'
+                      ? 'bg-amber-500 text-white shadow-sm'
+                      : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-300'
+                  }`}
+                >
+                  📜 3D Certificate
+                </button>
+              </div>
+            </div>
+
+            <div className="w-full h-80 sm:h-96 relative bg-[#f4f1ea]">
+              <iframe
+                src={view3D === 'trophy' ? '/trophy-360.html' : '/certificate-3d.html'}
+                title="3D Interactive Viewer"
+                className="w-full h-full border-0 block"
+                loading="lazy"
+              />
+            </div>
+
+            <div className="flex items-center justify-between px-4 py-2.5 bg-[#ece7dc] border-t border-[#d9d4c7] text-xs text-slate-600 flex-wrap gap-2">
+              <span>👆 <b>Touch / Mouse se 360° ghumayein</b> • Drag to inspect 3D model</span>
+              <a
+                href={view3D === 'trophy' ? '/trophy-360.html' : '/certificate-3d.html'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-700 font-bold hover:underline inline-flex items-center gap-1"
+              >
+                ⛶ Fullscreen ↗
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 flex flex-col justify-center">
+            <span className="text-xs font-black uppercase text-blue-600 tracking-widest block mb-2">
+              National MSME Honor
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mb-3 leading-tight">
+              India 5000 Best MSME <br />
+              <span className="text-amber-600">3D Golden Trophy</span>
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed mb-6">
+              Audited & presented by <b>Benchmark Trust & TQV</b>, this official 3D Golden Trophy honors Arshi Enterprises for engineering excellence, reliable 24/7 telematics support, and digital fleet transformation across 10,000+ vehicles in India.
+            </p>
+
+            <div className="space-y-3">
+              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <Award className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="text-xs font-bold text-slate-900">National Quality Excellence</h4>
+                  <p className="text-xs text-slate-600">Zero-failure AIS 140 VLTD tracking and customer trust.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="text-xs font-bold text-slate-900">Jury & Audit Verified</h4>
+                  <p className="text-xs text-slate-600">Vetted by national audit partners and engineering councils.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <Sparkles className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="text-xs font-bold text-slate-900">SEBI & NSIC Recognition</h4>
+                  <p className="text-xs text-slate-600">BW Businessworld Winner 2021 special mention honor.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
