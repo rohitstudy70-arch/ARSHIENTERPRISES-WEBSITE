@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ShieldCheck, CheckCircle2, Zap, Radio, Phone, Mail, MapPin, Award, Trophy, FileCheck, Calendar, Sparkles, ChevronRight } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, Zap, Radio, Phone, Mail, MapPin, Award, Trophy, FileCheck, Calendar, Sparkles, ChevronRight, RotateCcw } from 'lucide-react';
 import bwAwardImg from '../assets/award-bw-businessworld-2021.jpg';
 import trophyMsme3dImg from '../assets/trophy-india-5000-3d.jpg';
 import isoQroImg from '../assets/certificate-iso-9001-qro-2024.jpg';
@@ -188,10 +188,22 @@ export default function AboutUsPage() {
               <img src={bwAwardImg} alt="BW Businessworld Emerging Businesses Award 2021 - Arshi GPS" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
             <div className="p-6 flex flex-col flex-1">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
-                <Trophy className="w-3.5 h-3.5 text-amber-600" />
-                Winner 2021 • Special Mention
-              </span>
+              <div className="flex items-center gap-2 flex-wrap mb-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-extrabold uppercase tracking-wider w-fit">
+                  <Trophy className="w-3.5 h-3.5 text-amber-600" />
+                  Winner 2021 • Special Mention
+                </span>
+                <a
+                  href="/certificate-3d.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white text-[11px] font-extrabold tracking-wide hover:from-amber-600 hover:to-amber-700 shadow-sm transition hover:scale-105"
+                  title="View interactive 3D certificate with holographic tilt"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  3D Certificate ↗
+                </a>
+              </div>
               <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">Best Service by Emerging Enterprise</h3>
               <div className="text-xs font-bold text-blue-700 mb-3">BW Businessworld & BWSME World (SEBI Jury)</div>
               <p className="text-xs text-slate-600 leading-relaxed mt-auto">Conferred by a jury chaired by U.K. Sinha (Former SEBI Chairman) & supported by NSIC, celebrating Arshi GPS 3D emblem innovation and 24/7 telematics support across Eastern India.</p>
@@ -204,10 +216,22 @@ export default function AboutUsPage() {
               <img src={trophyMsme3dImg} alt="India 5000 Best MSME Awards 2020 Winner 3D Golden Trophy" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
             </div>
             <div className="p-6 flex flex-col flex-1">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-extrabold uppercase tracking-wider mb-3 w-fit">
-                <Award className="w-3.5 h-3.5 text-amber-600" />
-                Winner 2020 • 3D Gold Trophy
-              </span>
+              <div className="flex items-center gap-2 flex-wrap mb-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-[11px] font-extrabold uppercase tracking-wider w-fit">
+                  <Award className="w-3.5 h-3.5 text-amber-600" />
+                  Winner 2020 • 3D Gold Trophy
+                </span>
+                <a
+                  href="/trophy-360.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-white text-[11px] font-extrabold tracking-wide hover:from-amber-600 hover:to-amber-700 shadow-sm transition hover:scale-105"
+                  title="Spin and rotate 3D golden trophy 360°"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  360° 3D Trophy Spin ↗
+                </a>
+              </div>
               <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">India 5000 Best MSME National Trophy</h3>
               <div className="text-xs font-bold text-blue-700 mb-3">Benchmark Trust & TQV Audit Partner</div>
               <p className="text-xs text-slate-600 leading-relaxed mt-auto">Honored with the physical 3D Golden MSME Trophy for outstanding business leadership, zero-failure telematics hardware, and boosting commercial fleet profitability.</p>

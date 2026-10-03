@@ -7,6 +7,10 @@
     { "source": "/about-us", "destination": "/about-us.html" },
     { "source": "/events.html", "destination": "/events.html" },
     { "source": "/events", "destination": "/events.html" },
+    { "source": "/trophy-360.html", "destination": "/trophy-360.html" },
+    { "source": "/trophy-360", "destination": "/trophy-360.html" },
+    { "source": "/certificate-3d.html", "destination": "/certificate-3d.html" },
+    { "source": "/certificate-3d", "destination": "/certificate-3d.html" },
     { "source": "/((?!assets|images|favicon|.*\\..*).*)", "destination": "/index.html" }
   ]
 }
