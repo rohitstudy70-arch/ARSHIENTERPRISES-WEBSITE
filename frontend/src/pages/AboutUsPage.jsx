@@ -280,8 +280,13 @@ export default function AboutUsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Award 1: BW Businessworld Winner 2021 with 3D Emblem */}
           <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
-            <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
-              <img src={bwAwardImg} alt="BW Businessworld Emerging Businesses Award 2021 - Arshi GPS" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            <div className="w-full h-56 bg-slate-900 flex items-center justify-center border-b border-slate-200 overflow-hidden relative">
+              <iframe
+                src="/certificate-3d.html"
+                title="3D Certificate Preview"
+                className="w-full h-full border-0 block"
+                loading="lazy"
+              />
             </div>
             <div className="p-6 flex flex-col flex-1">
               <div className="flex items-center gap-2 flex-wrap mb-3">
@@ -297,7 +302,7 @@ export default function AboutUsPage() {
                   title="View interactive 3D certificate with holographic tilt"
                 >
                   <Sparkles className="w-3 h-3" />
-                  3D Certificate ↗
+                  3D View ↗
                 </a>
               </div>
               <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">Best Service by Emerging Enterprise</h3>
@@ -308,8 +313,13 @@ export default function AboutUsPage() {
 
           {/* Award 2: India 5000 MSME 3D Physical Golden Trophy */}
           <div className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition group overflow-hidden flex flex-col">
-            <div className="w-full h-56 bg-slate-100 flex items-center justify-center p-3 border-b border-slate-200">
-              <img src={trophyMsme3dImg} alt="India 5000 Best MSME Awards 2020 Winner 3D Golden Trophy" className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition duration-300" />
+            <div className="w-full h-56 bg-[#f4f1ea] flex items-center justify-center border-b border-slate-200 overflow-hidden relative">
+              <iframe
+                src="/trophy-360.html"
+                title="360 Interactive 3D Trophy Preview"
+                className="w-full h-full border-0 block"
+                loading="lazy"
+              />
             </div>
             <div className="p-6 flex flex-col flex-1">
               <div className="flex items-center gap-2 flex-wrap mb-3">
@@ -325,12 +335,12 @@ export default function AboutUsPage() {
                   title="Spin and rotate 3D golden trophy 360°"
                 >
                   <RotateCcw className="w-3 h-3" />
-                  360° 3D Trophy Spin ↗
+                  360° Spin ↗
                 </a>
               </div>
               <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-amber-600 transition leading-snug">India 5000 Best MSME National Trophy</h3>
               <div className="text-xs font-bold text-blue-700 mb-3">Benchmark Trust & TQV Audit Partner</div>
-              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Honored with the physical 3D Golden MSME Trophy for outstanding business leadership, zero-failure telematics hardware, and boosting commercial fleet profitability.</p>
+              <p className="text-xs text-slate-600 leading-relaxed mt-auto">Honored with the official 3D Golden MSME Trophy (Winner 2020 • Arshi Enterprises) for outstanding business leadership, zero-failure telematics hardware deployments, and boosting logistics profitability across India.</p>
             </div>
           </div>
 
