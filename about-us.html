@@ -137,31 +137,24 @@
     .award-presenter { font-size: 12px; font-weight: 700; color: var(--blue); margin-bottom: 12px; }
     .award-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; margin-top: auto; }
 
-    /* ===== 3D INTERACTIVE SHOWCASE SPOTLIGHT ===== */
-    .trophy-3d-spotlight { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; background: linear-gradient(145deg, #ffffff, #f8fafc); border: 1.5px solid #e2e8f0; border-radius: 28px; padding: 28px; margin: 32px 0 36px 0; box-shadow: 0 16px 40px -10px rgba(0,0,0,0.06); align-items: center; }
-    .trophy-3d-frame-container { display: flex; flex-direction: column; background: #f4f1ea; border: 1.5px solid #d9d4c7; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
-    .trophy-3d-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #ece7dc; border-bottom: 1px solid #d9d4c7; flex-wrap: wrap; gap: 10px; }
-    .trophy-3d-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 900; letter-spacing: 0.8px; color: #78350f; text-transform: uppercase; }
-    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981; animation: pulse 1.8s infinite; }
-    @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-    .trophy-switch-tabs { display: flex; gap: 6px; }
-    .tab-btn { padding: 6px 12px; border-radius: 999px; border: 1px solid #cbd5e1; background: #ffffff; color: #334155; font-size: 11.5px; font-weight: 800; cursor: pointer; transition: all 0.2s ease; }
-    .tab-btn.active { background: #f59e0b; border-color: #d97706; color: #ffffff; box-shadow: 0 2px 8px rgba(217, 119, 6, 0.35); }
-    .trophy-iframe-wrapper { width: 100%; height: 420px; position: relative; background: #f4f1ea; }
-    .trophy-iframe-wrapper iframe { width: 100%; height: 100%; border: none; display: block; }
-    .trophy-3d-hint { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: #ece7dc; border-top: 1px solid #d9d4c7; font-size: 12px; color: #64748b; flex-wrap: wrap; gap: 8px; }
-    .fullscreen-link { color: #b45309; text-decoration: none; font-weight: 800; font-size: 11.5px; }
-    .fullscreen-link:hover { text-decoration: underline; }
-    .trophy-3d-details { padding: 8px 12px; }
-    .trophy-feature-list { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
-    .trophy-feature-item { display: flex; gap: 12px; align-items: flex-start; background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 14px; border-radius: 14px; }
-    .feature-icon { font-size: 20px; line-height: 1; }
-    .trophy-feature-item strong { display: block; font-size: 13.5px; color: var(--text-main); margin-bottom: 2px; }
-    .trophy-feature-item p { margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+    /* ===== 2 LARGE DEDICATED 3D SHOWCASE CARDS ===== */
+    .dual-3d-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 28px; margin-top: 32px; margin-bottom: 40px; }
+    .big-3d-card { background: var(--card-bg); border: 2px solid #e2e8f0; border-radius: 26px; overflow: hidden; box-shadow: 0 16px 40px -10px rgba(0,0,0,0.06); transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
+    .big-3d-card:hover { border-color: var(--amber); transform: translateY(-6px); box-shadow: 0 24px 50px -12px rgba(217, 119, 6, 0.18); }
+    .big-3d-viewer-wrap { width: 100%; height: 380px; position: relative; background: #f4f1ea; border-bottom: 2px solid #e2e8f0; display: flex; flex-direction: column; }
+    .big-3d-viewer-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background: #ece7dc; border-bottom: 1px solid #d9d4c7; flex-wrap: wrap; gap: 8px; }
+    .big-3d-viewer-body { width: 100%; flex: 1; position: relative; overflow: hidden; }
+    .big-3d-viewer-body iframe { width: 100%; height: 100%; border: none; display: block; }
+    .big-3d-viewer-footer { display: flex; justify-content: space-between; align-items: center; padding: 10px 18px; background: #ece7dc; border-top: 1px solid #d9d4c7; font-size: 12px; color: #64748b; flex-wrap: wrap; gap: 8px; }
+    .big-3d-card-body { padding: 26px 24px; display: flex; flex-direction: column; flex: 1; }
+    .big-3d-title { font-size: 22px; font-weight: 900; color: var(--text-main); margin-bottom: 6px; line-height: 1.35; }
+    .big-3d-presenter { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 12px; line-height: 1.5; }
+    .big-3d-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-top: auto; }
 
-    @media (max-width: 960px) {
-      .trophy-3d-spotlight { grid-template-columns: 1fr; }
-      .trophy-iframe-wrapper { height: 360px; }
+    @media (max-width: 768px) {
+      .dual-3d-grid { grid-template-columns: 1fr; }
+      .big-3d-viewer-wrap { height: 320px; }
+      .big-3d-card-body { padding: 20px 16px; }
     }
 
     /* ===== EVENTS & FLEET MEETS ===== */
@@ -449,96 +442,72 @@
       </p>
     </div>
 
-    <!-- ==================== 3D INTERACTIVE SHOWCASE SPOTLIGHT ==================== -->
-    <div class="trophy-3d-spotlight">
-      <div class="trophy-3d-frame-container">
-        <div class="trophy-3d-header">
-          <div class="trophy-3d-pill">
-            <span class="pulse-dot"></span>
-            <span>LIVE 3D INTERACTIVE SHOWCASE</span>
+    <!-- ==================== 2 LARGE DEDICATED 3D CARDS ==================== -->
+    <div class="dual-3d-grid">
+      <!-- 3D Card 1: 3D Holographic Certificate -->
+      <div class="big-3d-card">
+        <div class="big-3d-viewer-wrap" style="background: #15181d;">
+          <div class="big-3d-viewer-header" style="background: #1e2229; border-bottom: 1px solid #2d333f; color: #fff;">
+            <span class="award-badge-pill" style="background: #fef3c7; color: #92400e;">🏆 Winner 2021 • Special Mention</span>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span style="font-size: 11px; font-weight: 800; color: #f59e0b; text-transform: uppercase;">✨ 3D Hologram Tilt</span>
+              <a href="certificate-3d.html" target="_blank" class="fullscreen-link" style="color: #38bdf8;">⛶ Fullscreen ↗</a>
+            </div>
           </div>
-          <div class="trophy-switch-tabs">
-            <button id="btnShow3dTrophy" class="tab-btn active" onclick="switch3DView('trophy')">🏆 360° 3D Trophy</button>
-            <button id="btnShow3dCert" class="tab-btn" onclick="switch3DView('cert')">📜 3D Certificate</button>
+          <div class="big-3d-viewer-body">
+            <iframe src="certificate-3d.html" title="3D Interactive Holographic Certificate" loading="lazy"></iframe>
+          </div>
+          <div class="big-3d-viewer-footer" style="background: #1e2229; border-top: 1px solid #2d333f; color: #94a3b8;">
+            <span>👆 <b>Mouse / Touch move karein</b> • 3D Gyro tilt aur light glare live dekhein</span>
+            <span style="font-weight: 700; color: #cbd5e1;">BW Businessworld & BWSME</span>
           </div>
         </div>
-        <div class="trophy-iframe-wrapper">
-          <iframe id="interactive3dIframe" src="trophy-360.html" title="360 Interactive 3D Trophy" loading="lazy"></iframe>
-        </div>
-        <div class="trophy-3d-hint">
-          <span>👆 <b>Touch / Mouse se 360° ghumayein</b> • Drag in any direction</span>
-          <a id="trophyFullscreenLink" href="trophy-360.html" target="_blank" class="fullscreen-link">⛶ Fullscreen ↗</a>
+        <div class="big-3d-card-body">
+          <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 11px; font-weight: 900; color: #b45309; text-transform: uppercase; letter-spacing: 1px;">National Emerging Business Honor</span>
+          </div>
+          <h3 class="big-3d-title">Best Service by Emerging Enterprise</h3>
+          <div class="big-3d-presenter">BW Businessworld & BWSME World (Jury Chair: Former SEBI Chairman U.K. Sinha • Supported by NSIC)</div>
+          <p class="big-3d-desc">Conferred by a high-level national jury chaired by U.K. Sinha (Former Chairman, SEBI) & supported by NSIC, celebrating Arshi GPS 3D emblem innovation, 24/7 client-first GPS fleet management, fast field engineering resolution, and benchmark customer trust across Eastern India.</p>
         </div>
       </div>
 
-      <div class="trophy-3d-details">
-        <span class="council-tag">National MSME Honor</span>
-        <h3 style="font-size: 26px; font-weight: 900; color: var(--text-main); margin-bottom: 12px; line-height: 1.3;">
-          India 5000 Best MSME <span style="color: var(--amber);">3D Gold Trophy</span>
-        </h3>
-        <p style="color: var(--text-muted); font-size: 14.5px; line-height: 1.7; margin-bottom: 18px;">
-          Audited and presented by <b>Benchmark Trust & TQV</b>, this official 3D Golden Trophy honors Arshi Enterprises for engineering excellence, reliable 24/7 telematics support, and digital fleet transformation across 10,000+ vehicles in India.
-        </p>
-
-        <div class="trophy-feature-list">
-          <div class="trophy-feature-item">
-            <span class="feature-icon">🥇</span>
-            <div>
-              <strong>National Quality Excellence</strong>
-              <p>Conferred for zero-failure AIS 140 VLTD tracking, high-precision GPS sensors, and exceptional client satisfaction.</p>
+      <!-- 3D Card 2: 360° Rotating 3D Golden Trophy -->
+      <div class="big-3d-card">
+        <div class="big-3d-viewer-wrap" style="background: #f4f1ea;">
+          <div class="big-3d-viewer-header" style="background: #ece7dc; border-bottom: 1px solid #d9d4c7; color: #334155;">
+            <span class="award-badge-pill" style="background: #fef3c7; color: #92400e;">🥇 Winner 2020 • 3D Gold Trophy</span>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span style="font-size: 11px; font-weight: 800; color: #b45309; text-transform: uppercase;">🔄 360° Spin Model</span>
+              <a href="trophy-360.html" target="_blank" class="fullscreen-link" style="color: #b45309;">⛶ Fullscreen ↗</a>
             </div>
           </div>
-          <div class="trophy-feature-item">
-            <span class="feature-icon">🛡️</span>
-            <div>
-              <strong>Jury & Audit Verified</strong>
-              <p>Rigorous quality vetting by top national auditors, engineering juries, and MSME benchmarks.</p>
-            </div>
+          <div class="big-3d-viewer-body">
+            <iframe src="trophy-360.html" title="360 Interactive 3D Trophy" loading="lazy"></iframe>
           </div>
-          <div class="trophy-feature-item">
-            <span class="feature-icon">✨</span>
-            <div>
-              <strong>SEBI & NSIC Recognition</strong>
-              <p>BW Businessworld Winner 2021 for Eastern India's best fleet telematics service provider.</p>
-            </div>
+          <div class="big-3d-viewer-footer" style="background: #ece7dc; border-top: 1px solid #d9d4c7; color: #64748b;">
+            <span>👆 <b>Touch / Mouse se 360° ghumayein</b> • Auto-rotate switch available</span>
+            <span style="font-weight: 700; color: #475569;">India 5000 Executive Board</span>
           </div>
+        </div>
+        <div class="big-3d-card-body">
+          <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 11px; font-weight: 900; color: #b45309; text-transform: uppercase; letter-spacing: 1px;">National Quality Excellence Trophy</span>
+          </div>
+          <h3 class="big-3d-title">India 5000 Best MSME National Trophy</h3>
+          <div class="big-3d-presenter">Benchmark Trust & TQV Audit Partner (Winner 2020 • Arshi Enterprises)</div>
+          <p class="big-3d-desc">Honored with the official physical 3D Golden MSME Trophy for outstanding business leadership, zero-failure telematics hardware deployments, high-precision satellite telemetry, and boosting operational logistics profitability for commercial fleets across India.</p>
         </div>
       </div>
     </div>
 
+    <!-- ==================== ACCREDITED CERTIFICATIONS & HONORS ==================== -->
+    <div style="text-align: center; margin: 40px 0 20px 0;">
+      <span class="council-tag">Accreditations & Compliance</span>
+      <h3 style="font-size: 26px; font-weight: 900; color: var(--text-main);">Certified Quality & Official Recognitions</h3>
+    </div>
+
     <div class="awards-grid">
-      <!-- Award 1: BW Businessworld Winner 2021 with 3D Emblem -->
-      <div class="award-card">
-        <div class="award-thumb-box" style="padding: 0; background: #15181d; height: 240px; position: relative;">
-          <iframe src="certificate-3d.html" style="width: 100%; height: 100%; border: none; display: block;" title="3D Certificate" loading="lazy"></iframe>
-        </div>
-        <div class="award-body">
-          <div class="award-badges-row">
-            <span class="award-badge-pill">🏆 Winner 2021 • Special Mention</span>
-            <a href="certificate-3d.html" target="_blank" class="award-3d-btn" title="View interactive 3D certificate with holographic tilt">✨ 3D View ↗</a>
-          </div>
-          <h3 class="award-title">Best Service by Emerging Enterprise</h3>
-          <div class="award-presenter">BW Businessworld & BWSME World (Jury Chair: Former SEBI Chairman)</div>
-          <p class="award-desc">Conferred by a high-level jury chaired by U.K. Sinha (Former Chairman, SEBI) and supported by NSIC, celebrating Arshi GPS 3D emblem innovation, 24/7 client-first GPS fleet management, and exceptional telematics service across Eastern India.</p>
-        </div>
-      </div>
-
-      <!-- Award 2: India 5000 Best MSME 3D Physical Golden Trophy -->
-      <div class="award-card">
-        <div class="award-thumb-box" style="padding: 0; background: #f4f1ea; height: 240px; position: relative;">
-          <iframe src="trophy-360.html" style="width: 100%; height: 100%; border: none; display: block;" title="360 Interactive 3D Trophy" loading="lazy"></iframe>
-        </div>
-        <div class="award-body">
-          <div class="award-badges-row">
-            <span class="award-badge-pill">🥇 Winner 2020 • 3D Gold Trophy</span>
-            <a href="trophy-360.html" target="_blank" class="award-3d-btn" title="Spin and rotate 3D golden trophy 360°">🔄 360° Spin ↗</a>
-          </div>
-          <h3 class="award-title">India 5000 Best MSME National Trophy</h3>
-          <div class="award-presenter">Benchmark Trust & TQV Audit Partner</div>
-          <p class="award-desc">Honored with the official 3D Golden MSME Trophy (Winner 2020 • Arshi Enterprises) for outstanding business leadership, zero-failure telematics hardware deployments, and boosting logistics profitability across India.</p>
-        </div>
-      </div>
-
       <!-- Award 3: ISO 9001:2015 QRO & UKAF Accredited -->
       <div class="award-card">
         <div class="award-thumb-box">
