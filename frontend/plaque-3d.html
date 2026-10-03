@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>India 5000 Best MSME 2020 - 3D Golden Plaque</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.scene {
+  perspective: 1400px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 96%;
+  max-height: 96%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  touch-action: none;
+  cursor: grab;
+  background: transparent;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card:active, .card.active {
+  transition: transform 0.05s linear, box-shadow 0.15s ease;
+  cursor: grabbing;
+}
+.card-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -6px rgba(180, 83, 9, 0.22), 0 4px 14px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid rgba(217, 119, 6, 0.25);
+  background: #ffffff;
+  transition: box-shadow 0.3s ease;
+  transform: translateZ(0);
+}
+.card:hover .card-inner, .card.active .card-inner {
+  box-shadow: 0 26px 55px -8px rgba(180, 83, 9, 0.32), 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+.card img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(245, 158, 11, 0.22) 0%, rgba(255, 255, 255, 0.08) 45%, transparent 70%);
+  opacity: 0.25;
+  transition: opacity 0.3s;
+}
+.card.active .glare, .card:hover .glare {
+  opacity: 0.45;
+}
+</style>
+</head>
+<body>
+<div class="scene" id="scene">
+  <div class="card" id="card">
+    <div class="card-inner">
+      <img
+        alt="India 5000 Best MSME 2020 Winner 3D Gold Plaque - Arshi Enterprises"
+        src="assets/images/plaque-msme-2020.jpg"
+        onerror="if(!this.tried){this.tried=true;this.src='/assets/images/plaque-msme-2020.jpg';}"
+        loading="eager"
+        decoding="sync"
+      />
+      <div class="glare"></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c = document.getElementById('card');
+  if(!c) return;
+  var g = c.querySelector('.glare');
+  var MAX = 14;
+  var autoAngle = 0;
+  var isInteracting = false;
+  
+  function move(e) {
+    isInteracting = true;
+    var r = c.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width;
+    var y = (e.clientY - r.top) / r.height;
+    x = Math.max(0, Math.min(1, x));
+    y = Math.max(0, Math.min(1, y));
+    var ry = (x - 0.5) * 2 * MAX;
+    var rx = -(y - 0.5) * 2 * MAX;
+    c.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale3d(1.05, 1.05, 1.05) translateZ(0)';
+    if(g) {
+      g.style.setProperty('--gx', (x * 100) + '%');
+      g.style.setProperty('--gy', (y * 100) + '%');
+    }
+  }
+  
+  function reset() {
+    isInteracting = false;
+    c.classList.remove('active');
+    c.style.transform = 'translateZ(0)';
+  }
+  
+  c.addEventListener('pointerdown', function(e){
+    c.classList.add('active');
+    try { c.setPointerCapture(e.pointerId); } catch(_){}
+    move(e);
+  });
+  c.addEventListener('pointermove', function(e){
+    if(e.pointerType === 'mouse' || c.classList.contains('active')){
+      c.classList.add('active');
+      move(e);
+    }
+  });
+  c.addEventListener('pointerup', reset);
+  c.addEventListener('pointercancel', reset);
+  c.addEventListener('pointerleave', function(e){
+    if(e.pointerType === 'mouse') reset();
+  });
+
+  function idleFloat() {
+    if(!isInteracting && !c.classList.contains('active')) {
+      autoAngle += 0.022;
+      var idleRx = Math.sin(autoAngle) * 3.0;
+      var idleRy = Math.cos(autoAngle * 0.8) * 4.2;
+      c.style.transform = 'rotateX(' + idleRx + 'deg) rotateY(' + idleRy + 'deg) scale3d(1, 1, 1) translateZ(0)';
+      if(g) {
+        var gx = 50 + idleRy * 3;
+        var gy = 50 + idleRx * 3;
+        g.style.setProperty('--gx', gx + '%');
+        g.style.setProperty('--gy', gy + '%');
+      }
+    }
+    requestAnimationFrame(idleFloat);
+  }
+  idleFloat();
+})();
+</script>
+</body>
+</html>

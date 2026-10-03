@@ -206,8 +206,8 @@ export default function AboutUsPage() {
           </p>
         </div>
 
-        {/* 2 Large Dedicated 3D Showcase Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
+        {/* 3 Large Dedicated 3D Showcase Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
           {/* Large 3D Card 1: 3D Holographic Certificate */}
           <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
             <div className="flex flex-col bg-gradient-to-br from-slate-50 to-slate-100 border-b border-slate-200">
@@ -307,6 +307,58 @@ export default function AboutUsPage() {
                 <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <Sparkles className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
                   <span className="text-xs text-slate-700 font-medium">Pan-India Recognition for Quality Excellence in GPS Telematics</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Large 3D Card 3: 3D Interactive Gold Plaque */}
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
+            <div className="flex flex-col bg-gradient-to-br from-[#faf7f2] to-[#f3ede2] border-b border-slate-200">
+              <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
+                <div className="flex items-center gap-2.5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-black uppercase tracking-wider">
+                    <Award className="w-3.5 h-3.5 text-amber-600" />
+                    Winner 2020 • Gold Seal Plaque
+                  </span>
+                  <span className="text-xs font-black text-amber-700 uppercase tracking-wide flex items-center gap-1">
+                    <Sparkles className="w-3.5 h-3.5" /> 3D Metallic Plaque
+                  </span>
+                </div>
+              </div>
+
+              <div className="w-full h-96 sm:h-[420px] relative bg-[#faf7f2]/50">
+                <iframe
+                  src="/plaque-3d.html"
+                  title="3D Interactive Gold Plaque"
+                  className="w-full h-full border-0 block"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <div className="p-7 sm:p-8 flex flex-col flex-1">
+              <div className="text-xs font-black uppercase tracking-wider text-amber-700 mb-2">
+                National Excellence Honor
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-2 group-hover:text-amber-600 transition leading-snug">
+                India 5000 Gold Laurel Wreath Plaque
+              </h3>
+              <div className="text-xs sm:text-sm font-bold text-blue-700 mb-4">
+                Benchmark Trust & National MSME Jury (Winner 2020)
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                Conferred with the prestigious Golden Laurel Wreath Plaque for outstanding telematics service quality, setting new logistics safety benchmarks, and high-precision GPS tracking across India.
+              </p>
+
+              <div className="mt-auto space-y-2.5">
+                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="text-xs text-slate-700 font-medium">Physical Commemorative Hardwood & Brass Gold Plaque</span>
+                </div>
+                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <Sparkles className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                  <span className="text-xs text-slate-700 font-medium">Official Benchmark Trust National Quality Seal</span>
                 </div>
               </div>
             </div>
