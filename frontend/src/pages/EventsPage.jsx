@@ -313,11 +313,14 @@ export default function EventsPage() {
               key={ev.id}
               className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all duration-300 flex flex-col group"
             >
-              <div className="h-60 bg-slate-800 relative overflow-hidden shrink-0">
+              <div 
+                className={`${ev.id === 0 ? 'h-80 sm:h-96' : 'h-60'} bg-slate-800 relative overflow-hidden shrink-0 cursor-pointer`}
+                onClick={() => setSelectedImage({ src: ev.image, title: ev.title })}
+              >
                 <img
                   src={ev.image}
                   alt={ev.title}
-                  className="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500"
+                  className={`w-full h-full object-cover ${ev.id === 0 ? 'object-[center_42%]' : 'object-center'} group-hover:scale-105 transition-transform duration-500`}
                   loading="lazy"
                 />
                 <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/20">

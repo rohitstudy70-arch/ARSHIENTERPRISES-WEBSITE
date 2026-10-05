@@ -753,8 +753,8 @@
       
       <!-- Card: Team Sports & Annual Champions Meet -->
       <div class="event-card">
-        <div class="event-thumb">
-          <img src="assets/images/team-sports-event-2024.jpg" alt="Arshi Enterprises Annual Team Sports & Excellence Meet" loading="lazy" style="object-position: center 20%;">
+        <div class="event-thumb" style="height: 380px;">
+          <img src="assets/images/team-sports-event-2024.jpg" alt="Arshi Enterprises Annual Team Sports & Excellence Meet" loading="lazy" style="object-position: center 42%; object-fit: cover; cursor: pointer;" onclick="openLightbox(this.src, 'Arshi Team Sports & Annual Champions Meet 🏆')">
           <span class="event-badge">🏆 Team Champions</span>
         </div>
         <div class="event-body">
@@ -925,23 +925,23 @@
     </div>
 
     <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="assets/images/team-sports-event-2024.jpg" alt="Arshi Team Sports & Champions Meet" loading="lazy">
+      <div class="gallery-item" style="cursor: pointer;" onclick="openLightbox('assets/images/team-sports-event-2024.jpg', 'Arshi Team Sports & Champions Meet 🏆')">
+        <img src="assets/images/team-sports-event-2024.jpg" alt="Arshi Team Sports & Champions Meet" loading="lazy" style="object-position: center 40%;">
         <div class="gallery-overlay">Team Champions Sports Meet 🏆</div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" style="cursor: pointer;" onclick="openLightbox('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop', 'Keynote Presentation 2025')">
         <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=600&auto=format&fit=crop" alt="Keynote Presentation" loading="lazy">
         <div class="gallery-overlay">Keynote Presentation 2025</div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" style="cursor: pointer;" onclick="openLightbox('https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop', 'Live Expo Hardware Showcase')">
         <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=600&auto=format&fit=crop" alt="Expo Hardware Showcase" loading="lazy">
         <div class="gallery-overlay">Live Expo Hardware Showcase</div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" style="cursor: pointer;" onclick="openLightbox('https://images.unsplash.com/photo-1582192732943-e15e5ec18844?q=80&w=1200&auto=format&fit=crop', 'Transporters Meetup Purnea')">
         <img src="https://images.unsplash.com/photo-1582192732943-e15e5ec18844?q=80&w=600&auto=format&fit=crop" alt="Transporters Meetup Purnea" loading="lazy">
         <div class="gallery-overlay">Transporters Meetup Purnea</div>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" style="cursor: pointer;" onclick="openLightbox('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop', 'Driver SOS Emergency Training')">
         <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=600&auto=format&fit=crop" alt="Driver SOS Training" loading="lazy">
         <div class="gallery-overlay">Driver SOS Emergency Training</div>
       </div>
@@ -986,8 +986,39 @@
     </div>
   </footer>
 
+  <!-- Lightbox Modal -->
+  <div id="imageLightbox" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(5, 8, 22, 0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); justify-content: center; align-items: center; padding: 20px;" onclick="closeLightbox(event)">
+    <div style="position: relative; max-width: 900px; width: 100%; max-height: 92vh; display: flex; flex-direction: column; align-items: center;" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox(event)" style="position: absolute; top: -45px; right: 0; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-size: 20px; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s;">✕</button>
+      <img id="lightboxImg" src="" alt="Full view" style="max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 16px; box-shadow: 0 25px 60px rgba(0,0,0,0.85); border: 1px solid rgba(255,255,255,0.15);">
+      <div id="lightboxCaption" style="color: #f8fafc; font-size: 15px; font-weight: 800; margin-top: 14px; text-align: center; letter-spacing: .3px;"></div>
+    </div>
+  </div>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Lightbox functions
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('imageLightbox');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      if (!modal || !img) return;
+      img.src = src;
+      cap.textContent = caption || '';
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      const modal = document.getElementById('imageLightbox');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox(e);
+    });
 
     // Dropdown toggle on click
     document.querySelectorAll('.nav-item').forEach(item => {
