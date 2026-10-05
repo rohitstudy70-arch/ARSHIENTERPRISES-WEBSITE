@@ -19,6 +19,7 @@ export default function App() {
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/approved-states" element={<ApprovedStatesPage />} />
             <Route path="/events" element={<EventsPage />} />
+            <Route path="/gallery" element={<EventsPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </main>

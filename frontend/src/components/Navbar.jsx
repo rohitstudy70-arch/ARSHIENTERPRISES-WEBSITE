@@ -68,7 +68,7 @@ export default function Navbar() {
             <div className="absolute top-full left-0 w-64 py-2 bg-[#0f0945] border border-[#4a3cb5] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <Link to="/about-us" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">About Us</Link>
               <Link to="/about-us#leadership" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Leadership</Link>
-              <Link to="/events" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Events</Link>
+              <Link to="/gallery" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Gallery</Link>
               <Link to="/about-us#awards" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Awards & Recognitions</Link>
               <Link to="/about-us#timeline" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Our Journey</Link>
               <Link to="/about-us#mission" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Mission, Vision & Values</Link>
@@ -176,7 +176,7 @@ export default function Navbar() {
           <Link to="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white py-2 border-b border-[#3a2f9a]/40">Home</Link>
           <div className="text-sm font-bold text-[#f3c39a] py-2 border-b border-[#3a2f9a]/40 cursor-default">🔐 Login to GPS Server</div>
           <Link to="/about-us" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">About Us</Link>
-          <Link to="/events" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Events & Expos</Link>
+          <Link to="/gallery" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Gallery</Link>
           <Link to="/approved-states" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-[#e3ab84] py-2 border-b border-[#3a2f9a]/40">Approved States 🇮🇳</Link>
           <Link to="/#hardware" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">GPS Hardware</Link>
           <Link to="/#features" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Features & Telematics</Link>
