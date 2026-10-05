@@ -135,6 +135,7 @@ export default function EventsPage() {
   ];
 
   const galleryImages = [
+    { src: teamSportsImg, title: 'Arshi Team Sports & Champions Meet 🏆' },
     { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop', title: 'Keynote Presentation & AI Dashcam Launch' },
     { src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop', title: 'State Logistics Expo Hardware Pavilion' },
     { src: 'https://images.unsplash.com/photo-1582192732943-e15e5ec18844?q=80&w=800&auto=format&fit=crop', title: 'Transporters Meetup & Diesel Anti-Theft Testing' },
