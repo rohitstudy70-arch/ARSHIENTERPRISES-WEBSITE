@@ -313,11 +313,11 @@ export default function EventsPage() {
               key={ev.id}
               className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all duration-300 flex flex-col group"
             >
-              <div className="h-52 bg-slate-800 relative overflow-hidden shrink-0">
+              <div className="h-60 bg-slate-800 relative overflow-hidden shrink-0">
                 <img
                   src={ev.image}
                   alt={ev.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
                 <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/20">
