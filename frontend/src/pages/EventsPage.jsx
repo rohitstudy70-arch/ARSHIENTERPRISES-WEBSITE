@@ -5,6 +5,8 @@ import {
   Filter, X, Clock, Download, Tag, ArrowRight, Share2, Check
 } from 'lucide-react';
 
+import teamSportsImg from '../assets/team-sports-event-2024.jpg';
+
 export default function EventsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [modalOpen, setModalOpen] = useState(false);
@@ -29,7 +31,8 @@ export default function EventsPage() {
   const phoneDisplay = "+91 77828 08063";
 
   const categories = [
-    { id: 'all', label: 'All Events (6)' },
+    { id: 'all', label: 'All Events & Gallery (7)' },
+    { id: 'team', label: '🏆 Team & Culture' },
     { id: 'expo', label: '🏛️ Industry Expos' },
     { id: 'fleet', label: '🚛 Transporter Meets' },
     { id: 'safety', label: '🛡️ Driver Safety' },
@@ -38,6 +41,19 @@ export default function EventsPage() {
   ];
 
   const eventsList = [
+    {
+      id: 0,
+      category: 'team',
+      badge: '🏆 Annual Champions Meet',
+      status: 'Completed',
+      date: 'Annual Meet 2024',
+      location: 'Purnea Sports Ground, Bihar',
+      title: 'Arshi Team Sports & Annual Champions Meet',
+      image: teamSportsImg,
+      description: 'Celebrating team unity, operational excellence, and sportsmanship. Arshi Enterprises field engineers, telemetry technicians, and support team celebrate annual tournament victory.',
+      highlights: ['Annual Sports Championship', 'Team Excellence Awards', 'Field & NOC Staff Meet'],
+      attendees: 'Full Arshi Team & Staff'
+    },
     {
       id: 1,
       category: 'expo',
