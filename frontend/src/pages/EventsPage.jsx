@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 
 import teamSportsImg from '../assets/team-sports-event-2024.jpg';
+import installationTeamImg from '../assets/lok-sabha-election-installation-team-2024.jpg';
 
 export default function EventsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -31,7 +32,7 @@ export default function EventsPage() {
   const phoneDisplay = "+91 77828 08063";
 
   const categories = [
-    { id: 'all', label: 'All Events & Gallery (7)' },
+    { id: 'all', label: 'All Events & Gallery (8)' },
     { id: 'team', label: '🏆 Team & Culture' },
     { id: 'expo', label: '🏛️ Industry Expos' },
     { id: 'fleet', label: '🚛 Transporter Meets' },
@@ -53,6 +54,19 @@ export default function EventsPage() {
       description: 'Celebrating team unity, operational excellence, and sportsmanship. Arshi Enterprises field engineers, telemetry technicians, and support team celebrate annual tournament victory.',
       highlights: ['Annual Sports Championship', 'Team Excellence Awards', 'Field & NOC Staff Meet'],
       attendees: 'Full Arshi Team & Staff'
+    },
+    {
+      id: 101,
+      category: 'team',
+      badge: '🛠️ Installation Team',
+      status: 'Completed',
+      date: 'May 2024',
+      location: 'Araria Parliamentary Constituency, Bihar',
+      title: 'Lok Sabha Election 2024 • EVM GPS Installation Team',
+      image: installationTeamImg,
+      description: 'Arshi Enterprises specialized field telemetry engineers deployed on official Lok Sabha Election 2024 duty for live AIS 140 GPS tracking, secure fleet monitoring, and real-time transit telemetry of Polled EVM & VVPAT transport convoys.',
+      highlights: ['Lok Sabha Election 2024', 'Polled EVM & VVPAT Security', 'Field Telemetry Engineers'],
+      attendees: 'Arshi Field Deployment Unit'
     },
     {
       id: 1,
@@ -136,6 +150,7 @@ export default function EventsPage() {
 
   const galleryImages = [
     { src: teamSportsImg, title: 'Arshi Team Sports & Champions Meet 🏆' },
+    { src: installationTeamImg, title: 'Lok Sabha Election 2024 • EVM GPS Installation Team 🗳️' },
     { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop', title: 'Keynote Presentation & AI Dashcam Launch' },
     { src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop', title: 'State Logistics Expo Hardware Pavilion' },
     { src: 'https://images.unsplash.com/photo-1582192732943-e15e5ec18844?q=80&w=800&auto=format&fit=crop', title: 'Transporters Meetup & Diesel Anti-Theft Testing' },
