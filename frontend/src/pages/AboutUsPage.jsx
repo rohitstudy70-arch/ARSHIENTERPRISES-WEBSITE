@@ -262,7 +262,7 @@ export default function AboutUsPage() {
 
           {/* Large 3D Card 2: 3D Golden Trophy */}
           <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group hover:-translate-y-1">
-            <div className="flex flex-col bg-gradient-to-br from-[#faf7f2] to-[#f3ede2] border-b border-slate-200">
+            <div className="flex flex-col bg-white border-b border-slate-200">
               <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-[#e7dfd1] flex-wrap gap-2 text-slate-800">
                 <div className="flex items-center gap-2">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[11px] font-black uppercase tracking-wider">
@@ -275,7 +275,7 @@ export default function AboutUsPage() {
                 </div>
               </div>
 
-              <div className="w-full h-72 sm:h-[310px] relative bg-[#faf7f2]/50">
+              <div className="w-full h-72 sm:h-[310px] relative bg-white">
                 <iframe
                   src="/trophy-360.html"
                   title="3D Interactive Trophy"
