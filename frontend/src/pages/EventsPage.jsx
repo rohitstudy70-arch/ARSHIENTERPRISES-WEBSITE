@@ -7,6 +7,7 @@ import {
 
 import teamSportsImg from '../assets/team-sports-event-2024.jpg';
 import installationTeamImg from '../assets/lok-sabha-election-installation-team-2024.jpg';
+import fieldEngineersImg from '../assets/arshi-field-engineers-operations-team.jpg';
 import biharSummitImg from '../assets/bihar-business-connect-summit-2024.jpg';
 import hardwareExpoImg from '../assets/telematics-hardware-expo-pavilion.jpg';
 
@@ -34,7 +35,7 @@ export default function EventsPage() {
   const phoneDisplay = "+91 77828 08063";
 
   const categories = [
-    { id: 'all', label: 'All Events & Gallery (10)' },
+    { id: 'all', label: 'All Events & Gallery (11)' },
     { id: 'expo', label: '🏛️ Industry Expos & Summits' },
     { id: 'team', label: '🏆 Team & Duty' },
     { id: 'fleet', label: '🚛 Transporter Meets' },
@@ -69,6 +70,19 @@ export default function EventsPage() {
       description: 'Arshi Enterprises specialized field telemetry engineers deployed on official Lok Sabha Election 2024 duty for live AIS 140 GPS tracking, secure fleet monitoring, and real-time transit telemetry of Polled EVM & VVPAT transport convoys.',
       highlights: ['Lok Sabha Election 2024', 'Polled EVM & VVPAT Security', 'Field Telemetry Engineers'],
       attendees: 'Arshi Field Deployment Unit'
+    },
+    {
+      id: 104,
+      category: 'team',
+      badge: '⚡ Field Engineering Unit',
+      status: 'Completed',
+      date: 'Operations & Field Meet',
+      location: 'Bihar & Eastern Region Hub',
+      title: 'Arshi On-Ground Telemetry & Rapid Installation Team',
+      image: fieldEngineersImg,
+      description: 'Dedicated field service engineers and telemetry installation specialists delivering 24/7 commercial fleet GPS fitments, ultrasonic fuel sensor calibration, AIS 140 emergency testing, and doorstep transporter service across Bihar and Bengal.',
+      highlights: ['24/7 Field Rapid Response', 'Doorstep Fleet GPS Fitments', 'Fuel & AIS 140 Sensor Calibration'],
+      attendees: 'Full Engineering Deployment Unit'
     },
     {
       id: 102,
@@ -177,6 +191,7 @@ export default function EventsPage() {
   ];
 
   const galleryImages = [
+    { src: fieldEngineersImg, title: 'Arshi On-Ground Field Engineering & Installation Unit ⚡' },
     { src: biharSummitImg, title: 'Bihar Business Connect 2024 • Global Investors Summit 🏛️' },
     { src: hardwareExpoImg, title: 'Live Telematics & AIS 140 Hardware Demo Pavilion 🔬' },
     { src: teamSportsImg, title: 'Arshi Team Sports & Champions Meet 🏆' },
