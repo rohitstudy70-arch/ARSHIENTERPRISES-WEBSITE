@@ -7,6 +7,8 @@ import {
 
 import teamSportsImg from '../assets/team-sports-event-2024.jpg';
 import installationTeamImg from '../assets/lok-sabha-election-installation-team-2024.jpg';
+import biharSummitImg from '../assets/bihar-business-connect-summit-2024.jpg';
+import hardwareExpoImg from '../assets/telematics-hardware-expo-pavilion.jpg';
 
 export default function EventsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -32,9 +34,9 @@ export default function EventsPage() {
   const phoneDisplay = "+91 77828 08063";
 
   const categories = [
-    { id: 'all', label: 'All Events & Gallery (8)' },
-    { id: 'team', label: '🏆 Team & Culture' },
-    { id: 'expo', label: '🏛️ Industry Expos' },
+    { id: 'all', label: 'All Events & Gallery (10)' },
+    { id: 'expo', label: '🏛️ Industry Expos & Summits' },
+    { id: 'team', label: '🏆 Team & Duty' },
     { id: 'fleet', label: '🚛 Transporter Meets' },
     { id: 'safety', label: '🛡️ Driver Safety' },
     { id: 'agri', label: '🚜 Agri-IoT' },
@@ -67,6 +69,32 @@ export default function EventsPage() {
       description: 'Arshi Enterprises specialized field telemetry engineers deployed on official Lok Sabha Election 2024 duty for live AIS 140 GPS tracking, secure fleet monitoring, and real-time transit telemetry of Polled EVM & VVPAT transport convoys.',
       highlights: ['Lok Sabha Election 2024', 'Polled EVM & VVPAT Security', 'Field Telemetry Engineers'],
       attendees: 'Arshi Field Deployment Unit'
+    },
+    {
+      id: 102,
+      category: 'expo',
+      badge: '🏛️ Global Investors Summit',
+      status: 'Completed',
+      date: '19 - 20 Dec 2024',
+      location: 'Patna, Bihar',
+      title: 'Bihar Business Connect 2024 • Global Investors Summit',
+      image: biharSummitImg,
+      description: 'Organized by Invest Bihar, Dept. of Industries (Govt. of Bihar) & BIADA. Arshi Enterprises represented Eastern India smart telematics and fleet automation sector, engaging with state leadership, enterprise partners, and global investors.',
+      highlights: ['Invest Bihar & BIADA Conclave', 'Govt. of Bihar Flagship Summit', 'Enterprise Telematics Growth'],
+      attendees: 'Global Investors & Leaders'
+    },
+    {
+      id: 103,
+      category: 'expo',
+      badge: '🔬 Live Hardware Pavilion',
+      status: 'Completed',
+      date: 'Annual Conclave',
+      location: 'Tech Pavilion, Bihar',
+      title: 'Live Telematics & AIS 140 Hardware Demo Pavilion',
+      image: hardwareExpoImg,
+      description: 'Hands-on technical showcase demonstrating ARAI-approved AIS 140 GPS trackers, ultrasonic fuel sensors, wireless engine immobilizers, and multi-vehicle diagnostic hardware with live telemetry dashboards.',
+      highlights: ['Live AIS 140 Hardware Demos', 'Ultrasonic Diesel Sensor Tests', 'Fleet Software Integration'],
+      attendees: 'Transporters & Distributors'
     },
     {
       id: 1,
@@ -149,6 +177,8 @@ export default function EventsPage() {
   ];
 
   const galleryImages = [
+    { src: biharSummitImg, title: 'Bihar Business Connect 2024 • Global Investors Summit 🏛️' },
+    { src: hardwareExpoImg, title: 'Live Telematics & AIS 140 Hardware Demo Pavilion 🔬' },
     { src: teamSportsImg, title: 'Arshi Team Sports & Champions Meet 🏆' },
     { src: installationTeamImg, title: 'Lok Sabha Election 2024 • EVM GPS Installation Team 🗳️' },
     { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop', title: 'Keynote Presentation & AI Dashcam Launch' },
