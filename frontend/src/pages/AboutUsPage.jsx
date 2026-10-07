@@ -417,49 +417,49 @@ export default function AboutUsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
               <div className="text-3xl mb-3">💰</div>
-              <h3 className="text-base font-black text-slate-900 mb-1.5">Attractive Compensation</h3>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Attractive Salary & Daily TA/DA</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Industry-leading salaries with transparent semi-annual performance reviews, project milestones, and tech allowances.
+                Guaranteed on-time monthly salary payout with generous daily on-field travel allowances (TA/DA) for every field installation and service visit.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
               <div className="text-3xl mb-3">🛡️</div>
-              <h3 className="text-base font-black text-slate-900 mb-1.5">Healthy Living & Safety</h3>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Field Safety & Insurance</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Comprehensive medical coverage, field accident insurance, safe travel allowances, and active work-life balance.
+                ₹5 Lakh on-field accidental insurance coverage, certified safety gear protocols, and direct medical support for all technicians and engineers.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
-              <div className="text-3xl mb-3">📈</div>
-              <h3 className="text-base font-black text-slate-900 mb-1.5">ESOPs & Equity Option</h3>
+              <div className="text-3xl mb-3">🚀</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Fast-Track Career Growth</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Opportunity to own equity and performance profit-shares in the company as we expand telematics across India.
+                Clear, structured promotion pathway to grow from Junior Field Installer to Senior Hardware Specialist, City Lead, and Regional Operations Head.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
               <div className="text-3xl mb-3">🎓</div>
-              <h3 className="text-base font-black text-slate-900 mb-1.5">Professional IoT Training</h3>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Certified AIS-140 Training</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Continuous technical training on ARAI AIS 140, CAN-bus integration, ultrasonic fuel sensors, and AI dashcams.
+                Complete hands-on training on 4G VLTD systems, CAN-Bus decoding, ultrasonic fuel level sensors, Speed Governors (SLD), and AI dashcams.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
               <div className="text-3xl mb-3">🏆</div>
-              <h3 className="text-base font-black text-slate-900 mb-1.5">Performance Incentives</h3>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Performance Cash Bonuses</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Direct monthly cash bonuses recognizing fast device installations, uptime records, and zero-defect RTO passings.
+                Direct per-device installation incentives, monthly target bonuses, and instant spot rewards for zero-defect RTO passing and fast turnarounds.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
-              <div className="text-3xl mb-3">🤝</div>
-              <h3 className="text-base font-black text-slate-900 mb-1.5">Efficient Teams & HR Growth</h3>
+              <div className="text-3xl mb-3">🧰</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Smart Diagnostic Toolkits</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Zero bureaucracy, rapid execution culture, and tailored leadership pathways to evolve from technician to regional manager.
+                High-grade official crimping tools, digital multimeters, OBD/CAN scanners, SIM programmers, and Android configuration tablets provided to every team.
               </p>
             </div>
           </div>
