@@ -29,26 +29,26 @@ export default function Navbar() {
         ? 'bg-[#0a0630]/95 backdrop-blur-xl border-b border-[#3a2f9a]/70 py-3 shadow-2xl' 
         : 'bg-gradient-to-b from-[#0a0630]/95 via-[#0a0630]/60 to-transparent py-4'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
         
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group">
+        <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#e3ab84] to-[#d98f5e] flex items-center justify-center text-[#1a0f40] shadow-lg shadow-[#e3ab84]/20 group-hover:scale-105 transition-transform font-black text-xl font-outfit">
             A
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-black tracking-tight text-white font-outfit">
+            <span className="text-xl font-black tracking-tight text-white font-outfit whitespace-nowrap">
               Arshi <span className="text-[#e3ab84] italic font-serif">Enterprises</span>
             </span>
           </div>
         </Link>
 
         {/* Center Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden xl:flex items-center gap-0.5 2xl:gap-1">
           {/* Home */}
           <Link 
             to="/"
-            className={`px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition ${
+            className={`px-2.5 2xl:px-3 py-1.5 rounded-lg text-[11.5px] 2xl:text-xs font-bold uppercase tracking-wider transition whitespace-nowrap ${
               location.pathname === '/'
                 ? 'text-[#e3ab84] bg-[#e3ab84]/15 border border-[#e3ab84]/40 shadow-sm'
                 : 'text-[#b3aee0] hover:text-[#e3ab84]'
@@ -61,7 +61,7 @@ export default function Navbar() {
           <div className="relative group" onMouseLeave={() => setActiveDropdown(null)}>
             <button 
               onClick={() => toggleDropdown('company')}
-              className="flex items-center gap-1 px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-[#b3aee0] hover:text-[#e3ab84] transition"
+              className="flex items-center gap-1 px-2.5 2xl:px-3 py-1.5 rounded-lg text-[11.5px] 2xl:text-xs font-bold uppercase tracking-wider text-[#b3aee0] hover:text-[#e3ab84] transition whitespace-nowrap"
             >
               Company <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
             </button>
@@ -80,7 +80,7 @@ export default function Navbar() {
           <div className="relative group" onMouseLeave={() => setActiveDropdown(null)}>
             <button 
               onClick={() => toggleDropdown('products')}
-              className="flex items-center gap-1 px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-[#b3aee0] hover:text-[#e3ab84] transition"
+              className="flex items-center gap-1 px-2.5 2xl:px-3 py-1.5 rounded-lg text-[11.5px] 2xl:text-xs font-bold uppercase tracking-wider text-[#b3aee0] hover:text-[#e3ab84] transition whitespace-nowrap"
             >
               Products <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
             </button>
@@ -99,7 +99,7 @@ export default function Navbar() {
           {/* Solutions Hub */}
           <Link 
             to="/solutions-hub"
-            className={`px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition ${
+            className={`px-2.5 2xl:px-3 py-1.5 rounded-lg text-[11.5px] 2xl:text-xs font-bold uppercase tracking-wider transition whitespace-nowrap ${
               location.pathname === '/solutions-hub'
                 ? 'text-[#e3ab84] bg-[#e3ab84]/15 border border-[#e3ab84]/40 shadow-sm'
                 : 'text-[#b3aee0] hover:text-[#e3ab84]'
@@ -111,7 +111,7 @@ export default function Navbar() {
           {/* Support Hub */}
           <Link 
             to="/support-hub"
-            className={`px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition ${
+            className={`px-2.5 2xl:px-3 py-1.5 rounded-lg text-[11.5px] 2xl:text-xs font-bold uppercase tracking-wider transition whitespace-nowrap ${
               location.pathname === '/support-hub'
                 ? 'text-[#e3ab84] bg-[#e3ab84]/15 border border-[#e3ab84]/40 shadow-sm'
                 : 'text-[#b3aee0] hover:text-[#e3ab84]'
@@ -123,7 +123,7 @@ export default function Navbar() {
           {/* Approved States Direct Link */}
           <Link 
             to="/approved-states"
-            className={`px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition ${
+            className={`px-2.5 2xl:px-3 py-1.5 rounded-lg text-[11.5px] 2xl:text-xs font-bold uppercase tracking-wider transition whitespace-nowrap ${
               location.pathname === '/approved-states'
                 ? 'text-[#e3ab84] bg-[#e3ab84]/15 border border-[#e3ab84]/40 shadow-sm'
                 : 'text-[#b3aee0] hover:text-[#e3ab84]'
@@ -136,7 +136,7 @@ export default function Navbar() {
           <div className="relative group" onMouseLeave={() => setActiveDropdown(null)}>
             <button 
               onClick={() => toggleDropdown('contact')}
-              className="flex items-center gap-1 px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-[#b3aee0] hover:text-[#e3ab84] transition"
+              className="flex items-center gap-1 px-2.5 2xl:px-3 py-1.5 rounded-lg text-[11.5px] 2xl:text-xs font-bold uppercase tracking-wider text-[#b3aee0] hover:text-[#e3ab84] transition whitespace-nowrap"
             >
               Contact <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
             </button>
@@ -150,21 +150,21 @@ export default function Navbar() {
         </nav>
 
         {/* Right Actions */}
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-2 2xl:gap-3 flex-shrink-0">
           <a
             href={`tel:${helplinePhone}`}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold text-white border border-[#4bc0ff]/40 bg-[#4bc0ff]/10 hover:bg-[#4bc0ff]/20 transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-white border border-[#4bc0ff]/40 bg-[#4bc0ff]/10 hover:bg-[#4bc0ff]/20 transition-all shadow-sm whitespace-nowrap"
           >
             <Phone className="w-3.5 h-3.5 text-[#4bc0ff]" />
             <div className="text-left leading-tight">
-              <span className="block text-[8px] text-[#4bc0ff] font-extrabold uppercase tracking-wider">Helpline 24/7</span>
-              <span>{phoneDisplay}</span>
+              <span className="hidden lg:block text-[8px] text-[#4bc0ff] font-extrabold uppercase tracking-wider">Helpline 24/7</span>
+              <span className="text-[11.5px] 2xl:text-xs">{phoneDisplay}</span>
             </div>
           </a>
           
           <button
             type="button"
-            className="px-4 py-2.5 rounded-xl text-xs font-extrabold text-[#1a0f40] bg-gradient-to-r from-[#f3c39a] to-[#d98f5e] hover:shadow-neonAmber hover:scale-[1.02] active:scale-[0.98] transition-all uppercase tracking-wider"
+            className="px-3.5 2xl:px-4 py-2 rounded-xl text-[11px] 2xl:text-xs font-extrabold text-[#1a0f40] bg-gradient-to-r from-[#f3c39a] to-[#d98f5e] hover:shadow-neonAmber hover:scale-[1.02] active:scale-[0.98] transition-all uppercase tracking-wider whitespace-nowrap"
           >
             Login ↗
           </button>
@@ -173,7 +173,7 @@ export default function Navbar() {
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-lg bg-[#140d5c] border border-[#3a2f9a] text-white"
+          className="xl:hidden p-2 rounded-lg bg-[#140d5c] border border-[#3a2f9a] text-white"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
