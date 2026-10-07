@@ -12,7 +12,6 @@ import biharSummitImg from '../assets/bihar-business-connect-summit-2024.jpg';
 import hardwareExpoImg from '../assets/telematics-hardware-expo-pavilion.jpg';
 
 export default function EventsPage() {
-  const [activeCategory, setActiveCategory] = useState('all');
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedEventName, setSelectedEventName] = useState('Annual Telematics & AI Fleet Summit 2025');
   const [selectedImage, setSelectedImage] = useState(null);
@@ -34,177 +33,17 @@ export default function EventsPage() {
   const helplinePhone = "+917782808063";
   const phoneDisplay = "+91 77828 08063";
 
-  const categories = [
-    { id: 'all', label: 'All Events & Gallery (11)' },
-    { id: 'expo', label: '🏛️ Industry Expos & Summits' },
-    { id: 'team', label: '🏆 Team & Duty' },
-    { id: 'fleet', label: '🚛 Transporter Meets' },
-    { id: 'safety', label: '🛡️ Driver Safety' },
-    { id: 'agri', label: '🚜 Agri-IoT' },
-    { id: 'partner', label: '🤝 Partner Conclaves' },
-  ];
-
-  const eventsList = [
-    {
-      id: 0,
-      category: 'team',
-      badge: '🏆 Annual Champions Meet',
-      status: 'Completed',
-      date: 'Annual Meet 2024',
-      location: 'Purnea Sports Ground, Bihar',
-      title: 'Arshi Team Sports & Annual Champions Meet',
-      image: teamSportsImg,
-      description: 'Celebrating team unity, operational excellence, and sportsmanship. Arshi Enterprises field engineers, telemetry technicians, and support team celebrate annual tournament victory.',
-      highlights: ['Annual Sports Championship', 'Team Excellence Awards', 'Field & NOC Staff Meet'],
-      attendees: 'Full Arshi Team & Staff'
-    },
-    {
-      id: 101,
-      category: 'team',
-      badge: '🛠️ Installation Team',
-      status: 'Completed',
-      date: 'May 2024',
-      location: 'Araria Parliamentary Constituency, Bihar',
-      title: 'Lok Sabha Election 2024 • EVM GPS Installation Team',
-      image: installationTeamImg,
-      description: 'Arshi Enterprises specialized field telemetry engineers deployed on official Lok Sabha Election 2024 duty for live AIS 140 GPS tracking, secure fleet monitoring, and real-time transit telemetry of Polled EVM & VVPAT transport convoys.',
-      highlights: ['Lok Sabha Election 2024', 'Polled EVM & VVPAT Security', 'Field Telemetry Engineers'],
-      attendees: 'Arshi Field Deployment Unit'
-    },
-    {
-      id: 104,
-      category: 'team',
-      badge: '⚡ Field Engineering Unit',
-      status: 'Completed',
-      date: 'Operations & Field Meet',
-      location: 'Bihar & Eastern Region Hub',
-      title: 'Arshi On-Ground Telemetry & Rapid Installation Team',
-      image: fieldEngineersImg,
-      description: 'Dedicated field service engineers and telemetry installation specialists delivering 24/7 commercial fleet GPS fitments, ultrasonic fuel sensor calibration, AIS 140 emergency testing, and doorstep transporter service across Bihar and Bengal.',
-      highlights: ['24/7 Field Rapid Response', 'Doorstep Fleet GPS Fitments', 'Fuel & AIS 140 Sensor Calibration'],
-      attendees: 'Full Engineering Deployment Unit'
-    },
-    {
-      id: 102,
-      category: 'expo',
-      badge: '🏛️ Global Investors Summit',
-      status: 'Completed',
-      date: '19 - 20 Dec 2024',
-      location: 'Patna, Bihar',
-      title: 'Bihar Business Connect 2024 • Global Investors Summit',
-      image: biharSummitImg,
-      description: 'Organized by Invest Bihar, Dept. of Industries (Govt. of Bihar) & BIADA. Arshi Enterprises represented Eastern India smart telematics and fleet automation sector, engaging with state leadership, enterprise partners, and global investors.',
-      highlights: ['Invest Bihar & BIADA Conclave', 'Govt. of Bihar Flagship Summit', 'Enterprise Telematics Growth'],
-      attendees: 'Global Investors & Leaders'
-    },
-    {
-      id: 103,
-      category: 'expo',
-      badge: '🔬 Live Hardware Pavilion',
-      status: 'Completed',
-      date: 'Annual Conclave',
-      location: 'Tech Pavilion, Bihar',
-      title: 'Live Telematics & AIS 140 Hardware Demo Pavilion',
-      image: hardwareExpoImg,
-      description: 'Hands-on technical showcase demonstrating ARAI-approved AIS 140 GPS trackers, ultrasonic fuel sensors, wireless engine immobilizers, and multi-vehicle diagnostic hardware with live telemetry dashboards.',
-      highlights: ['Live AIS 140 Hardware Demos', 'Ultrasonic Diesel Sensor Tests', 'Fleet Software Integration'],
-      attendees: 'Transporters & Distributors'
-    },
-    {
-      id: 1,
-      category: 'expo',
-      badge: '🏛️ State Expo',
-      status: 'Completed',
-      date: 'August 2024',
-      location: 'Gyan Bhawan, Patna',
-      title: 'Bihar State Logistics & Telematics Expo',
-      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop',
-      description: 'Official government technology pavilion showcasing ARAI-certified AIS 140 devices, Emergency 112 ERSS police alert integration, and wireless cold-chain telemetry.',
-      highlights: ['ARAI & MoRTH Demo', '112 Emergency SOS', '150+ Fleet Delegates'],
-      attendees: '350+ Visitors'
-    },
-    {
-      id: 2,
-      category: 'fleet',
-      badge: '🚛 Transporter Meet',
-      status: 'Completed',
-      date: 'October 2024',
-      location: 'Maranga Hub, Purnea',
-      title: 'Transporters Fuel Theft & Security Meetup',
-      image: 'https://images.unsplash.com/photo-1582192732943-e15e5ec18844?q=80&w=800&auto=format&fit=crop',
-      description: '100+ commercial truck and mining dumper owners participated in live anti-theft fuel drain detection tests with real-time phone alerts and instant engine shut-off.',
-      highlights: ['Live Fuel Drain Sensor Test', 'Remote Engine Immobilizer', 'Diesel Calibration Masterclass'],
-      attendees: '120+ Fleet Owners'
-    },
-    {
-      id: 3,
-      category: 'safety',
-      badge: '🛡️ Driver Safety',
-      status: 'Completed',
-      date: 'May 2024',
-      location: 'NH-31 Highway Terminal',
-      title: 'Eastern India Driver Safety & SOS Workshop',
-      image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop',
-      description: 'Direct on-ground training for long-haul commercial drivers on emergency SOS panic button protocols, anti-sleep fatigue alerts, and overspeeding control.',
-      highlights: ['SOS Panic Button Drills', 'Fatigue Detection Alerts', 'Police ERSS Protocol'],
-      attendees: '200+ Drivers Trained'
-    },
-    {
-      id: 4,
-      category: 'partner',
-      badge: '🤝 Partner Summit',
-      status: 'Completed',
-      date: 'July 2024',
-      location: 'Regional NOC, Purnia',
-      title: 'Arshi Authorized Dealer & Technician Conclave',
-      image: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?q=80&w=800&auto=format&fit=crop',
-      description: 'Empowering 50+ regional field engineers and sales partners across Bihar and Bengal with advanced diagnostic tools, bypass harness fitting, and fast warranty processing.',
-      highlights: ['Fast Fitting Standards', 'Diagnostic Toolkit Training', '1-Year Swap Guarantee Process'],
-      attendees: '60+ Field Techs'
-    },
-    {
-      id: 5,
-      category: 'agri',
-      badge: '🚜 Agri IoT',
-      status: 'Completed',
-      date: 'March 2024',
-      location: 'KVK Grounds, Saharsa',
-      title: 'Agri-Tech & Tractor Telematics Demonstration',
-      image: 'https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?q=80&w=800&auto=format&fit=crop',
-      description: 'Live field demo of agricultural tractor hour meters, acreage calculation sensors, and geo-fence anti-theft immobilization for farmers and machinery contractors.',
-      highlights: ['Tractor Acreage Meter', 'Engine Hour Counter', 'Machinery Anti-Theft Guard'],
-      attendees: '180+ Farmers & Contractors'
-    },
-    {
-      id: 6,
-      category: 'fleet',
-      badge: '🚚 Regional Round Table',
-      status: 'Completed',
-      date: 'January 2024',
-      location: 'Dhanbad - Bengal Border',
-      title: 'Interstate Mining & Coal Fleet Round Table',
-      image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800&auto=format&fit=crop',
-      description: 'Resolving inter-state permit tracking challenges, Vahan portal integration rules, and diesel leakage tracking for heavy dumper and tipper truck operators.',
-      highlights: ['Interstate RTO Permits', 'National Vahan Portal Passing', 'Mining Dumpers Telemetry'],
-      attendees: '80+ Mining Transporters'
-    }
-  ];
-
   const galleryImages = [
+    { src: teamSportsImg, title: 'Arshi Team Sports & Champions Meet 🏆' },
+    { src: installationTeamImg, title: 'Lok Sabha Election 2024 • EVM GPS Installation Team 🗳️' },
     { src: fieldEngineersImg, title: 'Arshi On-Ground Field Engineering & Installation Unit ⚡' },
     { src: biharSummitImg, title: 'Bihar Business Connect 2024 • Global Investors Summit 🏛️' },
     { src: hardwareExpoImg, title: 'Live Telematics & AIS 140 Hardware Demo Pavilion 🔬' },
-    { src: teamSportsImg, title: 'Arshi Team Sports & Champions Meet 🏆' },
-    { src: installationTeamImg, title: 'Lok Sabha Election 2024 • EVM GPS Installation Team 🗳️' },
     { src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop', title: 'Keynote Presentation & AI Dashcam Launch' },
     { src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop', title: 'State Logistics Expo Hardware Pavilion' },
     { src: 'https://images.unsplash.com/photo-1582192732943-e15e5ec18844?q=80&w=800&auto=format&fit=crop', title: 'Transporters Meetup & Diesel Anti-Theft Testing' },
     { src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop', title: 'Driver 112 SOS Panic Drill & Safety Briefing' }
   ];
-
-  const filteredEvents = activeCategory === 'all' 
-    ? eventsList 
-    : eventsList.filter(ev => ev.category === activeCategory);
 
   const openRsvpModal = (eventName) => {
     setSelectedEventName(eventName);
@@ -334,125 +173,26 @@ export default function EventsPage() {
         </div>
       </div>
 
-      {/* Interactive Filter Tabs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
-          <div>
-            <span className="text-xs font-black uppercase text-blue-600 tracking-widest block mb-1">
-              Proven Track Record
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-              Major Expos, Meets & <span className="text-amber-600">Workshops</span>
-            </h2>
-          </div>
-
-          {/* Filter Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 w-full sm:w-auto scrollbar-none">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
-                  activeCategory === cat.id
-                    ? 'bg-amber-600 text-white shadow-md shadow-amber-500/25'
-                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-100'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Filtered Events Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredEvents.map((ev) => (
-            <div 
-              key={ev.id}
-              className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all duration-300 flex flex-col group"
-            >
-              <div 
-                className={`${ev.id === 0 ? 'h-80 sm:h-96' : 'h-60'} bg-slate-800 relative overflow-hidden shrink-0 cursor-pointer`}
-                onClick={() => setSelectedImage({ src: ev.image, title: ev.title })}
-              >
-                <img
-                  src={ev.image}
-                  alt={ev.title}
-                  className={`w-full h-full object-cover ${ev.id === 0 ? 'object-[center_42%]' : 'object-center'} group-hover:scale-105 transition-transform duration-500`}
-                  loading="lazy"
-                />
-                <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider border border-white/20">
-                  {ev.badge}
-                </span>
-                <span className="absolute top-3.5 right-3.5 px-2.5 py-0.5 rounded-full bg-slate-900/70 text-slate-300 text-[10px] font-bold">
-                  {ev.attendees}
-                </span>
-              </div>
-              
-              <div className="p-7 flex flex-col flex-1">
-                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-600 mb-2">
-                  <span>📅 {ev.date}</span>
-                  <span>•</span>
-                  <span>📍 {ev.location}</span>
-                </div>
-                
-                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition">
-                  {ev.title}
-                </h3>
-                
-                <p className="text-xs text-slate-600 leading-relaxed mb-4 flex-1">
-                  {ev.description}
-                </p>
-
-                {/* Highlights tags */}
-                <div className="flex flex-wrap gap-1.5 mb-6">
-                  {ev.highlights.map((hl, i) => (
-                    <span key={i} className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[10px] font-bold">
-                      ✓ {hl}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs font-bold text-blue-700">
-                  <button
-                    onClick={() => openRsvpModal(ev.title)}
-                    className="hover:underline flex items-center gap-1"
-                  >
-                    <span>Request Event Summary / Video</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                  <span className="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
-                    Completed ✓
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Photo Highlights Section */}
+      {/* Photo Highlights Section (Moved to Top) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-black uppercase text-blue-600 tracking-widest block mb-1">
-            Visual Memories
+            Visual Memories & Operations
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900">
-            Event <span className="text-amber-600">Photo Highlights</span>
+            Event & Operations <span className="text-amber-600">Photo Gallery</span>
           </h2>
           <p className="mt-2 text-sm text-slate-600">
-            Moments captured across conferences, live demos, and transporter felicitations
+            Moments captured across field operations, election duties, conferences, live hardware expos, and transporter meets
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {galleryImages.map((img, i) => (
             <div 
               key={i}
               onClick={() => setSelectedImage(img)}
-              className="h-52 rounded-2xl overflow-hidden relative border border-slate-200 cursor-pointer group shadow-sm hover:shadow-md"
+              className="h-56 rounded-2xl overflow-hidden relative border border-slate-200 cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <img 
                 src={img.src} 
@@ -460,8 +200,8 @@ export default function EventsPage() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition" />
-              <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-bold leading-tight">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-90 group-hover:opacity-100 transition" />
+              <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-bold leading-tight drop-shadow">
                 {img.title}
               </div>
             </div>
