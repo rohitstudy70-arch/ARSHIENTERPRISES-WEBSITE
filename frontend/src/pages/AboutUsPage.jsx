@@ -463,17 +463,6 @@ export default function AboutUsPage() {
               </p>
             </div>
           </div>
-
-          <div className="text-center mt-8">
-            <a
-              href="https://wa.me/917782808063?text=Namaste%20Arshi%20Enterprises!%20I%20am%20interested%20in%20career%20opportunities%20with%20your%20field%20and%20engineering%20team."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-slate-900 hover:bg-slate-800 text-white shadow-lg transition-all"
-            >
-              <span>💼 Join Our Team — Send Resume on WhatsApp ↗</span>
-            </a>
-          </div>
         </div>
       </div>
 
