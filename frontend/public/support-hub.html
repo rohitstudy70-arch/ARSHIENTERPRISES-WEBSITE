@@ -430,117 +430,6 @@
     .icon-indigo { background: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe; }
     .icon-teal { background: #ccfbf1; color: #0d9488; border: 1px solid #99f6e4; }
 
-    /* ===== INTERACTIVE DIAGNOSTIC PLAYGROUND (MODERN SLEEK WHITE / CODE BLOCK) ===== */
-    .section-playground {
-      padding: 80px 4vw;
-      background: #ffffff;
-      border-top: 1.5px solid #e2e8f0;
-      border-bottom: 1.5px solid #e2e8f0;
-    }
-    .playground-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
-    }
-    .terminal-header {
-      background: #1e293b;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #334155;
-    }
-    .terminal-dots {
-      display: flex;
-      gap: 6px;
-    }
-    .terminal-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #eab308; }
-    .dot-green { background: #22c55e; }
-    .terminal-title {
-      font-size: 13px;
-      font-family: 'JetBrains Mono', monospace;
-      color: #94a3b8;
-    }
-
-    .terminal-body {
-      padding: 30px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-    }
-    @media (max-width: 850px) {
-      .terminal-body { grid-template-columns: 1fr; }
-    }
-    .terminal-input-col {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .terminal-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #38bdf8;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-    }
-    .terminal-select, .terminal-input {
-      background: #090d16;
-      border: 1px solid #334155;
-      color: #f1f5f9;
-      padding: 12px 16px;
-      border-radius: 10px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
-      width: 100%;
-      outline: none;
-    }
-    .terminal-select:focus, .terminal-input:focus {
-      border-color: #38bdf8;
-    }
-    .terminal-btn-run {
-      background: linear-gradient(135deg, #0284c7, #2563eb);
-      color: #fff;
-      font-weight: 700;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13.5px;
-      transition: all .2s;
-    }
-    .terminal-btn-run:hover {
-      filter: brightness(1.15);
-    }
-
-    .terminal-output-box {
-      background: #040711;
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      border-radius: 12px;
-      padding: 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #a7f3d0;
-      min-height: 220px;
-      max-height: 280px;
-      overflow-y: auto;
-      line-height: 1.7;
-    }
-    .terminal-log-dim { color: #64748b; }
-    .terminal-log-info { color: #38bdf8; }
-    .terminal-log-success { color: #34d399; }
-    .terminal-log-warn { color: #fbbf24; }
-
     /* ===== TICKETING & ESCALATION CTA (CLEAN DARK INDIGO BANNER) ===== */
     .section-ticket-cta {
       padding: 90px 4vw;
@@ -796,8 +685,8 @@
         Explore 8 Support Tools
         <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
       </a>
-      <a href="#packetTester" class="btn-hub-secondary">
-        Interactive Packet Simulator
+      <a href="https://wa.me/917782808063?text=Namaste%20Arshi%20Support!%20I%20need%20technical%20assistance%20for%20GPS%20telematics." target="_blank" rel="noopener" class="btn-hub-secondary">
+        Direct WhatsApp Support ↗
       </a>
     </div>
 
@@ -1018,61 +907,6 @@
     </div>
   </section>
 
-  <!-- Interactive Packet Simulator / Diagnostic Playground -->
-  <section class="section-playground" id="packetTester">
-    <div class="section-header">
-      <span class="section-tag" style="color: var(--blue);">Interactive Debugger</span>
-      <h2 class="section-heading">Live Telematics Packet & Diagnostic Simulator</h2>
-    </div>
-
-    <div class="playground-container">
-      <div class="terminal-header">
-        <div class="terminal-dots">
-          <div class="terminal-dot dot-red"></div>
-          <div class="terminal-dot dot-yellow"></div>
-          <div class="terminal-dot dot-green"></div>
-        </div>
-        <div class="terminal-title">arshi-telematics-diagnostics-v2.4.sh</div>
-        <div style="font-size: 11px; color: #34d399; font-family: 'JetBrains Mono', monospace;">● SOCKET_ONLINE</div>
-      </div>
-
-      <div class="terminal-body">
-        <div class="terminal-input-col">
-          <div>
-            <label class="terminal-label">Select Diagnostic Profile</label>
-            <select class="terminal-select" id="diagProfileSelect" onchange="loadProfileTemplate()">
-              <option value="ais140">AIS-140 Standard Telematics String</option>
-              <option value="sos">Emergency SOS Panic Button Trigger</option>
-              <option value="can">CAN Bus Fuel & Engine Telemetry</option>
-              <option value="ble">BLE Health & Internal Battery Diagnostic</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="terminal-label">Raw Telemetry / Command String</label>
-            <input type="text" class="terminal-input" id="diagInputString" value="$ARSHI,AIS140,868749041234567,1,25.6123,N,85.1456,E,48.2,180.5,071026,065000,IGN_ON,SOS_OFF,BAT_4.12V*4A" />
-          </div>
-
-          <button class="terminal-btn-run" onclick="runDiagnosticSimulation()">
-            ▶ Execute Packet Parse & Validate CRC
-          </button>
-        </div>
-
-        <div>
-          <label class="terminal-label" style="display: flex; justify-content: space-between;">
-            <span>Real-Time Parser Output</span>
-            <span style="color: #64748b; font-size: 11px;">BUFFER: ACTIVE</span>
-          </label>
-          <div class="terminal-output-box" id="diagOutputBox">
-            <div class="terminal-log-dim">// Arshi Telematics Diagnostic Engine ready.</div>
-            <div class="terminal-log-info">[INFO] Listening on Virtual Diagnostic Port 5001...</div>
-            <div class="terminal-log-success">[STATUS] Select a profile and click 'Execute Packet Parse'.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 24/7 Technician Escalation Banner -->
   <section class="section-ticket-cta">
     <div class="ticket-box">
@@ -1154,38 +988,6 @@
       if (e.target.id === 'toolModal') {
         closeModalDirect();
       }
-    }
-
-    // Diagnostic Playground Scripts
-    const profiles = {
-      ais140: "$ARSHI,AIS140,868749041234567,1,25.6123,N,85.1456,E,48.2,180.5,071026,065000,IGN_ON,SOS_OFF,BAT_4.12V*4A",
-      sos: "$ARSHI,EMERGENCY_SOS,868749041234567,1,25.5940,N,85.1376,E,00.0,000.0,071026,065115,IGN_ON,SOS_ACTIVE_TRIGGERED,BAT_4.05V*9F",
-      can: "CAN_BUS:PGN_65262(TEMP:84C),PGN_65276(FUEL:86.4%),PGN_65248(TOTAL_KM:142589),RPM:1850,SPEED:54km/h",
-      ble: "BLE_DIAG_UUID:6E400001-B5A3-F393-E0A9-E50E24DCCA9E | GSM_CSQ:28(EXCELLENT) | GNSS_SATS:18 | HDOP:0.82 | CRC:PASS"
-    };
-
-    function loadProfileTemplate() {
-      const select = document.getElementById('diagProfileSelect');
-      const input = document.getElementById('diagInputString');
-      if (profiles[select.value]) {
-        input.value = profiles[select.value];
-      }
-    }
-
-    function runDiagnosticSimulation() {
-      const inputVal = document.getElementById('diagInputString').value;
-      const out = document.getElementById('diagOutputBox');
-      const now = new Date().toLocaleTimeString();
-
-      out.innerHTML = `
-        <div class="terminal-log-dim">// Initializing Parser at ${now}...</div>
-        <div class="terminal-log-info">[RAW RECEIVE] ${inputVal}</div>
-        <div class="terminal-log-warn">[PARSING HEADER] Identifier matched Arshi AIS Telematics standard</div>
-        <div class="terminal-log-success">[CHECKSUM] CRC-16 Validated (0x0000 OK)</div>
-        <div class="terminal-log-info">[GEO PARSER] Lat: Validated | Lon: Validated | Satellites: Fixed (3D Lock)</div>
-        <div class="terminal-log-success">[STATE ERSS 112] Ready for Indian State Police Emergency Routing</div>
-        <div class="terminal-log-info">[RESULT] Device Transmitting at Nominal Parameters (Health 100%)</div>
-      `;
     }
   </script>
 </body>

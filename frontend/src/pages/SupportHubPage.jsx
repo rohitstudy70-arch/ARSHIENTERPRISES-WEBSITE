@@ -8,8 +8,6 @@ import {
   BookOpen, 
   Zap, 
   Activity, 
-  CheckCircle2, 
-  Terminal, 
   Phone, 
   MessageSquare, 
   ArrowRight, 
@@ -19,13 +17,6 @@ import {
 
 export default function SupportHubPage() {
   const [selectedTool, setSelectedTool] = useState(null);
-  const [selectedProfile, setSelectedProfile] = useState('ais140');
-  const [inputString, setInputString] = useState('$ARSHI,AIS140,868749041234567,1,25.6123,N,85.1456,E,48.2,180.5,071026,065000,IGN_ON,SOS_OFF,BAT_4.12V*4A');
-  const [terminalLogs, setTerminalLogs] = useState([
-    { type: 'dim', text: '// Arshi Telematics Diagnostic Engine ready.' },
-    { type: 'info', text: '[INFO] Listening on Virtual Diagnostic Port 5001...' },
-    { type: 'success', text: '[STATUS] Select a profile and click "Execute Packet Parse".' }
-  ]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,31 +24,6 @@ export default function SupportHubPage() {
 
   const helplinePhone = "+917782808063";
   const phoneDisplay = "+91 77828 08063";
-
-  const profiles = {
-    ais140: "$ARSHI,AIS140,868749041234567,1,25.6123,N,85.1456,E,48.2,180.5,071026,065000,IGN_ON,SOS_OFF,BAT_4.12V*4A",
-    sos: "$ARSHI,EMERGENCY_SOS,868749041234567,1,25.5940,N,85.1376,E,00.0,000.0,071026,065115,IGN_ON,SOS_ACTIVE_TRIGGERED,BAT_4.05V*9F",
-    can: "CAN_BUS:PGN_65262(TEMP:84C),PGN_65276(FUEL:86.4%),PGN_65248(TOTAL_KM:142589),RPM:1850,SPEED:54km/h",
-    ble: "BLE_DIAG_UUID:6E400001-B5A3-F393-E0A9-E50E24DCCA9E | GSM_CSQ:28(EXCELLENT) | GNSS_SATS:18 | HDOP:0.82 | CRC:PASS"
-  };
-
-  const handleProfileChange = (key) => {
-    setSelectedProfile(key);
-    setInputString(profiles[key] || '');
-  };
-
-  const runSimulation = () => {
-    const now = new Date().toLocaleTimeString();
-    setTerminalLogs([
-      { type: 'dim', text: `// Initializing Parser at ${now}...` },
-      { type: 'info', text: `[RAW RECEIVE] ${inputString}` },
-      { type: 'warn', text: '[PARSING HEADER] Identifier matched Arshi AIS Telematics standard' },
-      { type: 'success', text: '[CHECKSUM] CRC-16 Validated (0x0000 OK)' },
-      { type: 'info', text: '[GEO PARSER] Lat: Validated | Lon: Validated | Satellites: Fixed (3D Lock)' },
-      { type: 'success', text: '[STATE ERSS 112] Ready for Indian State Police Emergency Routing' },
-      { type: 'info', text: '[RESULT] Device Transmitting at Nominal Parameters (Health 100%)' }
-    ]);
-  };
 
   const tools = [
     {
@@ -229,85 +195,6 @@ export default function SupportHubPage() {
               </button>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Interactive Terminal / Packet Simulator (Clean Dark IDE inside White page) */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <div className="rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden">
-          <div className="px-6 py-4 bg-slate-800/80 border-b border-slate-700 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-amber-500" />
-              <div className="w-3 h-3 rounded-full bg-emerald-500" />
-              <span className="ml-3 font-mono text-xs text-slate-400">arshi-telematics-diagnostics-v2.4.sh</span>
-            </div>
-            <span className="font-mono text-[11px] text-emerald-400 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              SOCKET_ONLINE
-            </span>
-          </div>
-
-          <div className="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-sky-400 mb-2">
-                  Select Diagnostic Profile
-                </label>
-                <select
-                  value={selectedProfile}
-                  onChange={(e) => handleProfileChange(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 text-slate-200 text-xs rounded-xl p-3 outline-none font-mono focus:border-sky-400"
-                >
-                  <option value="ais140">AIS-140 Standard Telematics String</option>
-                  <option value="sos">Emergency SOS Panic Button Trigger</option>
-                  <option value="can">CAN Bus Fuel & Engine Telemetry</option>
-                  <option value="ble">BLE Health & Internal Battery Diagnostic</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-sky-400 mb-2">
-                  Raw Telemetry / Command String
-                </label>
-                <input
-                  type="text"
-                  value={inputString}
-                  onChange={(e) => setInputString(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 text-slate-200 text-xs rounded-xl p-3 outline-none font-mono focus:border-sky-400"
-                />
-              </div>
-
-              <button
-                onClick={runSimulation}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-sky-600/30 transition-all"
-              >
-                ▶ Execute Packet Parse & Validate CRC
-              </button>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-sky-400">Real-Time Parser Output</span>
-                <span className="text-[10px] font-mono text-slate-500">BUFFER: ACTIVE</span>
-              </div>
-              <div className="bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-300 min-h-[200px] max-h-[260px] overflow-y-auto space-y-1.5">
-                {terminalLogs.map((log, idx) => (
-                  <div 
-                    key={idx} 
-                    className={
-                      log.type === 'dim' ? 'text-slate-500' :
-                      log.type === 'info' ? 'text-sky-400' :
-                      log.type === 'warn' ? 'text-amber-400' :
-                      log.type === 'success' ? 'text-emerald-400' : 'text-slate-300'
-                    }
-                  >
-                    {log.text}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
