@@ -417,17 +417,17 @@ export default function AboutUsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
               <div className="text-3xl mb-3">💰</div>
-              <h3 className="text-base font-black text-slate-900 mb-1.5">Attractive Salary & Daily TA/DA</h3>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Timely Salary & Assured Payouts</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Guaranteed on-time monthly salary payout with generous daily on-field travel allowances (TA/DA) for every field installation and service visit.
+                Guaranteed on-time monthly salary credited directly to your bank account with complete transparency and zero payment delays.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
-              <div className="text-3xl mb-3">🛡️</div>
-              <h3 className="text-base font-black text-slate-900 mb-1.5">Field Safety & Insurance</h3>
+              <div className="text-3xl mb-3">⛽</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Daily Fuel & Mobile Allowance</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                ₹5 Lakh on-field accidental insurance coverage, certified safety gear protocols, and direct medical support for all technicians and engineers.
+                100% daily bike petrol reimbursement, monthly high-speed 4G mobile recharge, and outstation travel/food support for all client visits.
               </p>
             </div>
 
