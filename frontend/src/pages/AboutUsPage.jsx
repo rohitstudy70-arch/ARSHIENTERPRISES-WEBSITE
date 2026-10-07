@@ -416,10 +416,10 @@ export default function AboutUsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
-              <div className="text-3xl mb-3">💰</div>
-              <h3 className="text-base font-black text-slate-900 mb-1.5">Timely Salary & Assured Payouts</h3>
+              <div className="text-3xl mb-3">🏡</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Local District & Home Posting</h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Guaranteed on-time monthly salary credited directly to your bank account with complete transparency and zero payment delays.
+                Opportunity to work within or near your preferred home district across Bihar, Jharkhand, and West Bengal with flexible field scheduling.
               </p>
             </div>
 
