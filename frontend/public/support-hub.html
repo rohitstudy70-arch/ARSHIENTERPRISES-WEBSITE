@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support Hub & Technician Diagnostics | Arshi Enterprises</title>
+  <meta name="description" content="Complete diagnostic tools, FOTA firmware management, BLE mobile flasher, ticketing system, and knowledge base for Arshi Enterprises telematics devices." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #0a0630;
+      --navy-light: #140d5c;
+      --navy-card: #0f0945;
+      --border: #3a2f9a;
+      --amber: #d97706;
+      --amber-light: #f59e0b;
+      --blue: #2563eb;
+      --blue-light: #38bdf8;
+      --cyan: #06b6d4;
+      --green: #10b981;
+      --purple: #8b5cf6;
+      --bg-page: #070420;
+      --card-bg: rgba(18, 12, 64, 0.7);
+      --card-border: rgba(99, 102, 241, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .font-outfit { font-family: 'Outfit', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ===== NAVBAR ===== */
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4vw;
+      background: rgba(10, 6, 48, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(58, 47, 154, 0.7);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f3c39a, #d98f5e);
+      color: #1a0f40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 17px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .nav-logo span {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+    }
+    .nav-logo span i {
+      color: #e3ab84;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: #b3aee0;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all .2s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+    }
+    
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #0f0945;
+      border: 1px solid #3a2f9a;
+      border-radius: 12px;
+      padding: 8px;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all .2s;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .nav-item:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav-dropdown a {
+      display: block;
+      padding: 8px 12px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all .15s;
+    }
+    .nav-dropdown a:hover {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+    }
+
+    .nav-btn-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #0ea5e9, #2563eb);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+      transition: all .2s;
+    }
+    .nav-btn-call:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-support {
+      padding: 140px 4vw 80px;
+      position: relative;
+      background: radial-gradient(circle at 50% 20%, #1e1160 0%, #070420 70%);
+      border-bottom: 1px solid rgba(58, 47, 154, 0.4);
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(58, 47, 154, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58, 47, 154, 0.15) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      border-radius: 99px;
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-size: clamp(32px, 5.5vw, 58px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: #ffffff;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: #94a3b8;
+      max-width: 840px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-hub-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4);
+      transition: all .25s;
+    }
+    .btn-hub-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(2, 132, 199, 0.6);
+    }
+    .btn-hub-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f1f5f9;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all .25s;
+    }
+    .btn-hub-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Live Stat Bar */
+    .stat-ribbon {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 50px auto 0;
+      background: rgba(15, 9, 69, 0.8);
+      border: 1px solid rgba(58, 47, 154, 0.8);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-val {
+      font-size: 28px;
+      font-weight: 900;
+      color: #38bdf8;
+      font-family: 'Outfit', sans-serif;
+    }
+    .stat-lbl {
+      font-size: 12px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: .5px;
+      margin-top: 4px;
+    }
+
+    /* ===== 8 SUPPORT TOOLS GRID ===== */
+    .section-tools {
+      padding: 90px 4vw;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-tag {
+      color: #38bdf8;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section-heading {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -.5px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .tool-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tool-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.2);
+    }
+    .tool-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0284c7, #8b5cf6);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .tool-card:hover::before { opacity: 1; }
+
+    .tool-icon-wrap {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .tool-num {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-size: 13px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: #64748b;
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .tool-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .tool-desc {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .tool-tag-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 6px;
+      color: #7dd3fc;
+    }
+
+    .tool-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      color: #f1f5f9;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .tool-btn:hover {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      border-color: transparent;
+      color: #ffffff;
+    }
+
+    /* Specific icon background colors */
+    .icon-cyan { background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(2, 132, 199, 0.4)); color: #38bdf8; }
+    .icon-purple { background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(126, 34, 206, 0.4)); color: #c084fc; }
+    .icon-green { background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(21, 128, 61, 0.4)); color: #4ade80; }
+    .icon-amber { background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(180, 83, 9, 0.4)); color: #fbbf24; }
+    .icon-blue { background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(29, 78, 216, 0.4)); color: #60a5fa; }
+    .icon-rose { background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(190, 18, 60, 0.4)); color: #fb7185; }
+    .icon-indigo { background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(67, 56, 202, 0.4)); color: #818cf8; }
+    .icon-teal { background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(15, 118, 110, 0.4)); color: #2dd4bf; }
+
+    /* ===== INTERACTIVE DIAGNOSTIC PLAYGROUND ===== */
+    .section-playground {
+      padding: 80px 4vw;
+      background: #0b0736;
+      border-top: 1px solid rgba(58, 47, 154, 0.4);
+      border-bottom: 1px solid rgba(58, 47, 154, 0.4);
+    }
+    .playground-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #06031b;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    }
+    .terminal-header {
+      background: #0f093d;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #eab308; }
+    .dot-green { background: #22c55e; }
+    .terminal-title {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #94a3b8;
+    }
+
+    .terminal-body {
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    @media (max-width: 850px) {
+      .terminal-body { grid-template-columns: 1fr; }
+    }
+    .terminal-input-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .terminal-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .terminal-select, .terminal-input {
+      background: #110c42;
+      border: 1px solid #3a2f9a;
+      color: #f1f5f9;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      width: 100%;
+      outline: none;
+    }
+    .terminal-select:focus, .terminal-input:focus {
+      border-color: #38bdf8;
+    }
+    .terminal-btn-run {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      transition: all .2s;
+    }
+    .terminal-btn-run:hover {
+      filter: brightness(1.15);
+    }
+
+    .terminal-output-box {
+      background: #030112;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #a7f3d0;
+      min-height: 220px;
+      max-height: 280px;
+      overflow-y: auto;
+      line-height: 1.7;
+    }
+    .terminal-log-dim { color: #64748b; }
+    .terminal-log-info { color: #38bdf8; }
+    .terminal-log-success { color: #34d399; }
+    .terminal-log-warn { color: #fbbf24; }
+
+    /* ===== TICKETING & ESCALATION CTA ===== */
+    .section-ticket-cta {
+      padding: 100px 4vw;
+      text-align: center;
+      background: radial-gradient(circle at 50% 50%, #170f4d 0%, #070420 80%);
+    }
+    .ticket-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(18, 12, 64, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 24px;
+      padding: 50px 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .ticket-title {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+    .ticket-desc {
+      font-size: 16px;
+      color: #cbd5e1;
+      max-width: 650px;
+      margin: 0 auto 32px;
+    }
+    .ticket-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-wa-support {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25d366;
+      color: #0b2e13;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 15px;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+      transition: all .2s;
+    }
+    .btn-wa-support:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5);
+    }
+
+    /* ===== FOOTER ===== */
+    .hub-footer {
+      background: #040212;
+      border-top: 1px solid rgba(58, 47, 154, 0.4);
+      padding: 50px 4vw 30px;
+      font-size: 13px;
+      color: #64748b;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: #38bdf8; }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 25px auto 0;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: #0f0945;
+      border: 1px solid #3a2f9a;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      animation: modalIn .25s ease-out;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .modal-body {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .modal-code-block {
+      background: #05021a;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #38bdf8;
+      margin-bottom: 20px;
+      word-break: break-all;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #0a0630;
+      z-index: 99;
+      padding: 24px;
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      border-top: 1px solid #3a2f9a;
+      overflow-y: auto;
+    }
+    .mobile-drawer.active { display: flex; }
+    .mobile-drawer a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    @media (max-width: 991px) {
+      .nav-menu, .nav-btn-call { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topnav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">AE</div>
+      <span>ARSHI <i>Enterprises</i></span>
+    </a>
+    
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="about-us.html" class="nav-link">About Us</a></li>
+      <li class="nav-item"><a href="solutions-hub.html" class="nav-link">Solutions Hub</a></li>
+      <li class="nav-item"><a href="support-hub.html" class="nav-link active">Support Hub</a></li>
+      <li class="nav-item"><a href="approved-states.html" class="nav-link">Approved States</a></li>
+      <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+      <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+      <li class="nav-item">
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <a href="tel:+917782808063" class="nav-btn-call">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      +91 77828 08063
+    </a>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">☰</button>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="about-us.html">About Us</a>
+    <a href="solutions-hub.html">Solutions Hub</a>
+    <a href="support-hub.html" style="color: #38bdf8;">Support Hub</a>
+    <a href="approved-states.html">Approved States</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="events.html">Events</a>
+    <a href="index.html#contact">Contact Us</a>
+    <a href="tel:+917782808063" style="color: #38bdf8;">📞 Helpline: +91 77828 08063</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-support">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+
+    <div class="hero-badge">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      Technician & Engineering Diagnostics
+    </div>
+
+    <h1 class="hero-title">
+      Arshi <span>Support Hub & Diagnostics</span>
+    </h1>
+    
+    <p class="hero-desc">
+      Empowering certified installers, system integrators, and fleet engineers with enterprise-grade firmware flashers, live packet analyzers, CAN decoders, and 24/7 escalation tools.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#toolsGrid" class="btn-hub-primary">
+        Explore 8 Support Tools
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+      </a>
+      <a href="#packetTester" class="btn-hub-secondary">
+        Interactive Packet Simulator
+      </a>
+    </div>
+
+    <!-- Live Stat Ribbon -->
+    <div class="stat-ribbon">
+      <div class="stat-item">
+        <div class="stat-val">8+ Tools</div>
+        <div class="stat-lbl">Built-in Engineering Utilities</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">99.98%</div>
+        <div class="stat-lbl">FOTA Upgrade Success Rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">&lt; 15 Mins</div>
+        <div class="stat-lbl">Tier-1 Ticket SLA Response</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">100%</div>
+        <div class="stat-lbl">AIS 140 / VLTD Compliance</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 Diagnostic Tools Grid -->
+  <section class="section-tools" id="toolsGrid">
+    <div class="section-header">
+      <span class="section-tag">Diagnostic Ecosystem</span>
+      <h2 class="section-heading">8 Advanced Tools for Seamless Fleet Operations</h2>
+    </div>
+
+    <div class="tools-grid">
+      
+      <!-- Tool 1: Device Configuration Tool -->
+      <div class="tool-card">
+        <div>
+          <span class="tool-num">TOOL 01</span>
+          <div class="tool-icon-wrap icon-cyan">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="tool-title">Device Configuration Tool</h3>
+          <p class="tool-desc">
+            Direct USB, RS-232 & SMS configuration tool for setting IP, Port, APN, ping intervals, sleep mode, and digital sensor I/O thresholds across all Arshi AIS-140 and standard trackers.
+          </p>
+          <div class="tool-tags">
+            <span class="tool-tag-pill">USB / Serial</span>
+            <span class="tool-tag-pill">SMS OTA Commands</span>
+            <span class="tool-tag-pill">Baud Rate 115200</span>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="openToolModal('Device Configuration Tool', 'Supports batch command generation, port mapping, and automatic APN detection for Airtel, Vi, Jio, and BSNL IoT M2M SIMs.', 'SET,IP:13.235.120.45,PORT:5001,APN:airteliot.com#')">
+          <span>View Configuration Specs</span>
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </button>
+      </div>
+
+      <!-- Tool 2: 24/7 Ticketing & Resolution Tool -->
+      <div class="tool-card">
+        <div>
+          <span class="tool-num">TOOL 02</span>
+          <div class="tool-icon-wrap icon-purple">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <h3 class="tool-title">24/7 Ticketing & Resolution Tool</h3>
+          <p class="tool-desc">
+            Enterprise incident tracking system connecting field technicians directly with L2/L3 hardware and server engineers with guaranteed SLA turnaround under 15 minutes.
+          </p>
+          <div class="tool-tags">
+            <span class="tool-tag-pill">Real-time SLA</span>
+            <span class="tool-tag-pill">Technician Dispatch</span>
+            <span class="tool-tag-pill">Automated Updates</span>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="openToolModal('24/7 Ticketing & Resolution Tool', 'Integrated ticketing with WhatsApp notification hooks, voice-dispatch escalation, and auto-generated diagnostic reports.', 'TICKET_PRIORITY: HIGH | SLA_RESPONSE: <15 MIN | RESOLUTION: ESCALATED_L3')">
+          <span>Explore Resolution Flow</span>
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </button>
+      </div>
+
+      <!-- Tool 3: Arshi BlueSync Android App -->
+      <div class="tool-card">
+        <div>
+          <span class="tool-num">TOOL 03</span>
+          <div class="tool-icon-wrap icon-blue">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="tool-title">Arshi BlueSync Android App</h3>
+          <p class="tool-desc">
+            Wireless BLE field configuration app for Android. Installers can sync device parameters, test SOS panic buttons, verify GPS/GSM signal, and flash firmware wire-free in under 45 seconds.
+          </p>
+          <div class="tool-tags">
+            <span class="tool-tag-pill">Bluetooth 5.0 BLE</span>
+            <span class="tool-tag-pill">Zero Wire Flashing</span>
+            <span class="tool-tag-pill">Instant SOS Audit</span>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="openToolModal('Arshi BlueSync App', 'Android installer utility for field technicians. Eliminates laptop cable setups by linking with devices over Bluetooth Low Energy.', 'BLE_STATUS: CONNECTED | RSSI: -42dBm | SOS_STATE: VERIFIED_OK')">
+          <span>View Mobile App Specs</span>
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </button>
+      </div>
+
+      <!-- Tool 4: Config 360 V2 Platform -->
+      <div class="tool-card">
+        <div>
+          <span class="tool-num">TOOL 04</span>
+          <div class="tool-icon-wrap icon-green">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="tool-title">Config 360 V2 Platform</h3>
+          <p class="tool-desc">
+            Next-generation web console for multi-device batch provisioning, primary & secondary server routing, geofence radius uploads, and automatic state VAHAN/112 ERSS endpoint validation.
+          </p>
+          <div class="tool-tags">
+            <span class="tool-tag-pill">Bulk Provisioning</span>
+            <span class="tool-tag-pill">Dual Server Relay</span>
+            <span class="tool-tag-pill">State ERSS 112 Sync</span>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="openToolModal('Config 360 V2 Platform', 'Centralized provisioning dashboard for large fleet deployments with automatic state transport backend mapping.', 'SERVER_1: ARSHI_PRIMARY_CLOUD | SERVER_2: STATE_VAHAN_BACKEND | STATUS: LIVE')">
+          <span>Launch Web Configurator</span>
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </button>
+      </div>
+
+      <!-- Tool 5: Device Management Server (DMS) -->
+      <div class="tool-card">
+        <div>
+          <span class="tool-num">TOOL 05</span>
+          <div class="tool-icon-wrap icon-amber">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+          </div>
+          <h3 class="tool-title">Device Management Server (DMS)</h3>
+          <p class="tool-desc">
+            Carrier-grade FOTA server managing firmware upgrades, automated health checks, internal battery voltage tracking, SIM ICCID audits, and remote hardware reboot controls.
+          </p>
+          <div class="tool-tags">
+            <span class="tool-tag-pill">FOTA Upgrades</span>
+            <span class="tool-tag-pill">Battery Health Monitor</span>
+            <span class="tool-tag-pill">Remote Reboot/Reset</span>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="openToolModal('Device Management Server (DMS)', 'Orchestrates over-the-air binary updates without disrupting live tracking, preserving cryptographic certificates and state signatures.', 'FIRMWARE_VER: v4.8.2-SECURE | ROLLOUT_STATUS: 10,000+ DEVICES ACTIVE')">
+          <span>Explore DMS Controls</span>
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </button>
+      </div>
+
+      <!-- Tool 6: Wiki & Knowledge Base -->
+      <div class="tool-card">
+        <div>
+          <span class="tool-num">TOOL 06</span>
+          <div class="tool-icon-wrap icon-rose">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 class="tool-title">Wiki & Knowledge Base</h3>
+          <p class="tool-desc">
+            Complete documentation library including wiring schematics for 200+ vehicle models (Tata, Ashok Leyland, Mahindra, BharatBenz), pinout diagrams, protocol docs, and state portal setup walkthroughs.
+          </p>
+          <div class="tool-tags">
+            <span class="tool-tag-pill">200+ Wiring Guides</span>
+            <span class="tool-tag-pill">Protocol Specs (HEX)</span>
+            <span class="tool-tag-pill">Video Walkthroughs</span>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="openToolModal('Wiki & Knowledge Base', 'Access wiring harness color codes, ignition wire identification, panic button loop impedance standards, and CAN high/low points.', 'DOC_REF: WIRING_GUIDE_COMMERCIAL_V3 | PINOUT: 1-RED(VCC), 2-BLK(GND), 3-YEL(IGN)')">
+          <span>Browse Wiring Wiki</span>
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </button>
+      </div>
+
+      <!-- Tool 7: OEM Vehicle Integration Tool -->
+      <div class="tool-card">
+        <div>
+          <span class="tool-num">TOOL 07</span>
+          <div class="tool-icon-wrap icon-indigo">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="tool-title">OEM Vehicle Integration Tool</h3>
+          <p class="tool-desc">
+            CAN bus decoder and OBD-II PID mapping suite. Decodes J1939 engine telematics, fuel tank capacitance sensors, coolant temperature, odometer calibration, and digital SOS triggers.
+          </p>
+          <div class="tool-tags">
+            <span class="tool-tag-pill">CAN J1939 / J1708</span>
+            <span class="tool-tag-pill">Fuel Sensor 0-5V/RS485</span>
+            <span class="tool-tag-pill">Engine RPM & Diagnostic PIDs</span>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="openToolModal('OEM Vehicle Integration Tool', 'Calibrate ultrasound and capacitive fuel probes, decode CAN telemetry, and sync digital RPM pulses.', 'J1939_PGN: 65262 (ENG_TEMP) | PGN: 65276 (FUEL_LEVEL_100%) | CAN_SPEED: 250kbps')">
+          <span>View CAN Bus Profiler</span>
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </button>
+      </div>
+
+      <!-- Tool 8: Live Debugging & Signal Suite -->
+      <div class="tool-card">
+        <div>
+          <span class="tool-num">TOOL 08</span>
+          <div class="tool-icon-wrap icon-teal">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="tool-title">Live Debugging & Signal Suite</h3>
+          <p class="tool-desc">
+            Real-time NMEA & raw HEX packet analyzer with GSM dBm signal meters, HDOP satellite fix calculators, panic loop resistance tester, and instant packet echo confirmation.
+          </p>
+          <div class="tool-tags">
+            <span class="tool-tag-pill">NMEA $GPRMC Parser</span>
+            <span class="tool-tag-pill">GSM CSQ dBm Meter</span>
+            <span class="tool-tag-pill">Panic Signal Echo</span>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="openToolModal('Live Debugging & Signal Suite', 'Raw socket tester for field technicians to confirm that the vehicle tracking unit is transmitting clean GPS/GNSS strings and handshake packets.', '$GPRMC,064951.000,A,2537.1234,N,08508.5678,E,042.5,123.4,071026,,,A*6D')">
+          <span>Run Live Packet Audit</span>
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Packet Simulator / Diagnostic Playground -->
+  <section class="section-playground" id="packetTester">
+    <div class="section-header">
+      <span class="section-tag">Interactive Debugger</span>
+      <h2 class="section-heading">Live Telematics Packet & Diagnostic Simulator</h2>
+    </div>
+
+    <div class="playground-container">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-yellow"></div>
+          <div class="terminal-dot dot-green"></div>
+        </div>
+        <div class="terminal-title">arshi-telematics-diagnostics-v2.4.sh</div>
+        <div style="font-size: 11px; color: #34d399; font-family: 'JetBrains Mono', monospace;">● SOCKET_ONLINE</div>
+      </div>
+
+      <div class="terminal-body">
+        <div class="terminal-input-col">
+          <div>
+            <label class="terminal-label">Select Diagnostic Profile</label>
+            <select class="terminal-select" id="diagProfileSelect" onchange="loadProfileTemplate()">
+              <option value="ais140">AIS-140 Standard Telematics String</option>
+              <option value="sos">Emergency SOS Panic Button Trigger</option>
+              <option value="can">CAN Bus Fuel & Engine Telemetry</option>
+              <option value="ble">BLE Health & Internal Battery Diagnostic</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="terminal-label">Raw Telemetry / Command String</label>
+            <input type="text" class="terminal-input" id="diagInputString" value="$ARSHI,AIS140,868749041234567,1,25.6123,N,85.1456,E,48.2,180.5,071026,065000,IGN_ON,SOS_OFF,BAT_4.12V*4A" />
+          </div>
+
+          <button class="terminal-btn-run" onclick="runDiagnosticSimulation()">
+            ▶ Execute Packet Parse & Validate CRC
+          </button>
+        </div>
+
+        <div>
+          <label class="terminal-label" style="display: flex; justify-content: space-between;">
+            <span>Real-Time Parser Output</span>
+            <span style="color: #64748b; font-size: 11px;">BUFFER: ACTIVE</span>
+          </label>
+          <div class="terminal-output-box" id="diagOutputBox">
+            <div class="terminal-log-dim">// Arshi Telematics Diagnostic Engine ready.</div>
+            <div class="terminal-log-info">[INFO] Listening on Virtual Diagnostic Port 5001...</div>
+            <div class="terminal-log-success">[STATUS] Select a profile and click 'Execute Packet Parse'.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 24/7 Technician Escalation Banner -->
+  <section class="section-ticket-cta">
+    <div class="ticket-box">
+      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(37, 211, 102, 0.15); border: 1px solid rgba(37, 211, 102, 0.4); border-radius: 99px; color: #4ade80; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px;">
+        <span style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%; display: inline-block;"></span>
+        Engineers Available On-Call
+      </div>
+      <h2 class="ticket-title">Need Urgent On-Field Assistance?</h2>
+      <p class="ticket-desc">
+        Connect directly with our senior hardware engineers for wiring guidance, custom server port redirects, state transport compliance certificates, or bulk device flashing.
+      </p>
+      <div class="ticket-buttons">
+        <a href="https://wa.me/917782808063?text=Hello%20Arshi%20Support%20Team,%20I%20need%20technician%20assistance%20for%20device%20configuration%20and%20diagnostics." target="_blank" rel="noopener" class="btn-wa-support">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+          Direct Technician WhatsApp Support
+        </a>
+        <a href="tel:+917782808063" class="btn-hub-secondary">
+          📞 Call Dedicated Support Desk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnostic Detail Modal -->
+  <div class="modal-overlay" id="toolModal" onclick="closeToolModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+      <h3 class="modal-title" id="modalToolTitle">Tool Title</h3>
+      <p class="modal-body" id="modalToolDesc">Tool description details will appear here.</p>
+      <div class="modal-code-block" id="modalToolCode">// Code snippet</div>
+      <div style="display: flex; gap: 12px; justify-content: flex-end;">
+        <a id="modalWhatsAppBtn" href="#" target="_blank" rel="noopener" class="btn-hub-primary" style="padding: 10px 20px; font-size: 13px;">
+          Request Direct Tool Access on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="hub-footer">
+    <div class="footer-content">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="nav-logo-icon" style="width: 30px; height: 30px; font-size: 14px;">AE</div>
+        <span style="font-weight: 800; color: #fff; font-size: 16px;">ARSHI Enterprises</span>
+      </div>
+
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="solutions-hub.html">Solutions Hub</a></li>
+        <li><a href="support-hub.html">Support Hub</a></li>
+        <li><a href="approved-states.html">Approved States</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Arshi Enterprises. All rights reserved. Precision Telematics, AIS-140 GPS & Smart Fleet Solutions.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Drawer Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileMenuBtn && mobileDrawer) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('active');
+        mobileMenuBtn.textContent = mobileDrawer.classList.contains('active') ? '✕' : '☰';
+      });
+    }
+
+    // Modal Control
+    function openToolModal(title, desc, code) {
+      document.getElementById('modalToolTitle').textContent = title;
+      document.getElementById('modalToolDesc').textContent = desc;
+      document.getElementById('modalToolCode').textContent = code;
+      const waLink = `https://wa.me/917782808063?text=${encodeURIComponent('Hello Arshi Team, I would like technical documentation & access for: ' + title)}`;
+      document.getElementById('modalWhatsAppBtn').href = waLink;
+      document.getElementById('toolModal').classList.add('active');
+    }
+
+    function closeModalDirect() {
+      document.getElementById('toolModal').classList.remove('active');
+    }
+
+    function closeToolModal(e) {
+      if (e.target.id === 'toolModal') {
+        closeModalDirect();
+      }
+    }
+
+    // Diagnostic Playground Scripts
+    const profiles = {
+      ais140: "$ARSHI,AIS140,868749041234567,1,25.6123,N,85.1456,E,48.2,180.5,071026,065000,IGN_ON,SOS_OFF,BAT_4.12V*4A",
+      sos: "$ARSHI,EMERGENCY_SOS,868749041234567,1,25.5940,N,85.1376,E,00.0,000.0,071026,065115,IGN_ON,SOS_ACTIVE_TRIGGERED,BAT_4.05V*9F",
+      can: "CAN_BUS:PGN_65262(TEMP:84C),PGN_65276(FUEL:86.4%),PGN_65248(TOTAL_KM:142589),RPM:1850,SPEED:54km/h",
+      ble: "BLE_DIAG_UUID:6E400001-B5A3-F393-E0A9-E50E24DCCA9E | GSM_CSQ:28(EXCELLENT) | GNSS_SATS:18 | HDOP:0.82 | CRC:PASS"
+    };
+
+    function loadProfileTemplate() {
+      const select = document.getElementById('diagProfileSelect');
+      const input = document.getElementById('diagInputString');
+      if (profiles[select.value]) {
+        input.value = profiles[select.value];
+      }
+    }
+
+    function runDiagnosticSimulation() {
+      const inputVal = document.getElementById('diagInputString').value;
+      const out = document.getElementById('diagOutputBox');
+      const now = new Date().toLocaleTimeString();
+
+      out.innerHTML = `
+        <div class="terminal-log-dim">// Initializing Parser at ${now}...</div>
+        <div class="terminal-log-info">[RAW RECEIVE] ${inputVal}</div>
+        <div class="terminal-log-warn">[PARSING HEADER] Identifier matched Arshi AIS Telematics standard</div>
+        <div class="terminal-log-success">[CHECKSUM] CRC-16 Validated (0x0000 OK)</div>
+        <div class="terminal-log-info">[GEO PARSER] Lat: Validated | Lon: Validated | Satellites: Fixed (3D Lock)</div>
+        <div class="terminal-log-success">[STATE ERSS 112] Ready for Indian State Police Emergency Routing</div>
+        <div class="terminal-log-info">[RESULT] Device Transmitting at Nominal Parameters (Health 100%)</div>
+      `;
+    }
+  </script>
+</body>
+</html>

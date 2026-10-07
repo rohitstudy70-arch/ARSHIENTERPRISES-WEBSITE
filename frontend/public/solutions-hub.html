@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solutions Hub | Arshi Enterprises - Advanced IoT & Telematics</title>
+  <meta name="description" content="Advanced IoT software solutions for seamless fleet management, AI dashcams, school bus transit safety, and heavy industrial telematics by Arshi Enterprises." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #0a0630;
+      --navy-light: #140d5c;
+      --navy-card: #0f0945;
+      --border: #3a2f9a;
+      --amber: #d97706;
+      --amber-light: #f59e0b;
+      --blue: #1d4ed8;
+      --blue-light: #3b82f6;
+      --green: #10b981;
+      --bg-page: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .font-outfit { font-family: 'Outfit', sans-serif; }
+
+    /* ===== NAVBAR ===== */
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4vw;
+      background: rgba(10, 6, 48, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(58, 47, 154, 0.7);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f3c39a, #d98f5e);
+      color: #1a0f40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 17px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .nav-logo span {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+    }
+    .nav-logo span i {
+      color: #e3ab84;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: #b3aee0;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all .2s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #e3ab84;
+      background: rgba(227, 171, 132, 0.12);
+    }
+    
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 240px;
+      padding: 8px 0;
+      background: #0f0945;
+      border: 1px solid #4a3cb5;
+      border-radius: 12px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+      display: none;
+      z-index: 60;
+    }
+    .nav-item:hover .nav-dropdown, .nav-item.open .nav-dropdown { display: block; }
+    .nav-dropdown a {
+      display: block;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #e9eefb;
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: all .2s;
+    }
+    .nav-dropdown a:hover {
+      background: #1a106e;
+      color: #f3c39a;
+      border-left-color: #f3c39a;
+      padding-left: 22px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-helpline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 10px;
+      background: rgba(75, 192, 255, 0.08);
+      border: 1px solid rgba(75, 192, 255, 0.25);
+      text-decoration: none;
+      color: #fff;
+    }
+    .nav-helpline .hl-label { font-size: 8.5px; font-weight: 800; color: #4bc0ff; text-transform: uppercase; }
+    .nav-helpline .hl-num { font-size: 12px; font-weight: 700; }
+    .nav-login {
+      padding: 8px 16px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f3c39a, #d98f5e);
+      color: #1a0f40;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+
+    .nav-toggle { display: none; background: rgba(20,12,80,.6); border: 1px solid #3a2f9a; border-radius: 8px; padding: 6px 10px; color: #fff; font-size: 20px; cursor: pointer; line-height: 1; min-height: 38px; min-width: 38px; }
+
+    /* Mobile Drawer */
+    .mobile-drawer { display: none; position: fixed; top: 56px; left: 0; right: 0; bottom: 0; background: rgba(10,6,48,.98); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); z-index: 99; padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 0px)); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .mobile-drawer.open { display: block; }
+    .mobile-drawer a, .mobile-drawer summary { display: block; padding: 13px 0; color: #b3aee0; font-size: 15px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #3a2f9a30; }
+    .mobile-drawer a:hover { color: #e3ab84; }
+    .mobile-drawer details { border-bottom: 1px solid #3a2f9a30; }
+    .mobile-drawer details summary { cursor: pointer; list-style: none; }
+    .mobile-drawer details summary::marker, .mobile-drawer details summary::-webkit-details-marker { display: none; }
+    .mobile-drawer details a { padding: 10px 0 10px 16px; font-size: 14px; font-weight: 500; border: none; }
+
+    /* ===== HERO SECTION ===== */
+    .hub-hero {
+      padding: 130px 4vw 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: 20px;
+    }
+    .hero-heading {
+      font-size: clamp(34px, 4.8vw, 56px);
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.15;
+      letter-spacing: -.8px;
+      margin-bottom: 18px;
+    }
+    .hero-heading span { color: var(--amber); }
+    .hero-sub {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: var(--text-muted);
+      max-width: 820px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+
+    /* ===== SECTION CONTAINER ===== */
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto 90px;
+      padding: 0 4vw;
+    }
+
+    /* ===== SOLUTIONS GRID ===== */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 30px;
+    }
+    .solution-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05);
+      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .solution-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--amber);
+      box-shadow: 0 20px 40px -10px rgba(217, 119, 6, 0.15);
+    }
+    .solution-visual {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .solution-visual img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: transform .4s ease;
+    }
+    .solution-card:hover .solution-visual img {
+      transform: scale(1.05);
+    }
+    .solution-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.9);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .solution-body {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .solution-sub {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #64748b;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+    .solution-title {
+      font-size: 21px;
+      font-weight: 900;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .solution-features {
+      list-style: none;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .solution-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .solution-features li span.check {
+      color: var(--green);
+      font-weight: 900;
+      font-size: 15px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 3px;
+    }
+    .btn-solution {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      transition: all .25s;
+      margin-top: auto;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+    }
+    .btn-solution:hover {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, #1e3a8a, #0f172a);
+      border-radius: 28px;
+      padding: 50px 36px;
+      text-align: center;
+      color: #fff;
+      border: 1.5px solid #3b82f6;
+      box-shadow: 0 20px 45px rgba(30, 58, 138, 0.2);
+    }
+    .cta-banner h2 {
+      font-size: clamp(28px, 3.5vw, 38px);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .cta-banner p {
+      font-size: 16px;
+      color: #cbd5e1;
+      max-width: 680px;
+      margin: 0 auto 28px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+      transition: all .25s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(217, 119, 6, 0.6);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: none;
+      transition: all .25s;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.16);
+      border-color: #fff;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 40px 6vw;
+      background: #0f172a;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+      border-top: 1px solid #1e293b;
+    }
+    footer a { color: var(--amber); text-decoration: none; font-weight: 600; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 960px) {
+      .nav-menu { display: none; }
+      .nav-helpline .hl-label { display: none; }
+      .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    }
+    @media (max-width: 600px) {
+      .topnav { padding: 0 12px; height: 56px; }
+      .nav-logo span { font-size: 17px; }
+      .nav-logo-icon { width: 32px; height: 32px; font-size: 15px; }
+      .nav-helpline { padding: 5px 8px; gap: 4px; }
+      .nav-helpline .hl-num { font-size: 11px; }
+      .nav-login { padding: 6px 10px; font-size: 11px; }
+      .hub-hero { padding-top: 86px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== MEGA NAVBAR ==================== -->
+  <nav class="topnav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">A</div>
+      <span>Arshi <i>Enterprises</i> <small style="font-size: 10px; opacity: 0.9; font-weight: 700; color: #e3ab84; margin-left: 4px; padding: 2px 6px; border-radius: 4px; background: rgba(227,171,132,0.15); border: 1px solid rgba(227,171,132,0.3);">EST. 2016</small></span>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="about-us.html" class="nav-link">Company ▾</a>
+        <div class="nav-dropdown">
+          <a href="about-us.html">About Us</a>
+          <a href="about-us.html#leadership">Leadership</a>
+          <a href="about-us.html#careers" style="color: #e3ab84; font-weight: 700;">Why Work With Us</a>
+          <a href="events.html">Gallery</a>
+          <a href="about-us.html#awards">Awards & Recognitions</a>
+          <a href="about-us.html#timeline">Our Journey</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="solutions-hub.html" class="nav-link active">Solutions Hub</a>
+      </li>
+      <li class="nav-item">
+        <a href="support-hub.html" class="nav-link">Support Hub</a>
+      </li>
+      <li class="nav-item">
+        <a href="approved-states.html" class="nav-link">Approved States</a>
+      </li>
+      <li class="nav-item">
+        <a href="index.html#contact" class="nav-link">Contact ▾</a>
+        <div class="nav-dropdown">
+          <a href="index.html#contact">Get Free Demo</a>
+          <a href="tel:+917782808063">Call Helpline</a>
+          <a href="https://wa.me/917782808063" target="_blank">WhatsApp Chat</a>
+        </div>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="tel:+917782808063" class="nav-helpline">
+        <span>☎</span>
+        <div>
+          <div class="hl-label">Helpline 24/7</div>
+          <div class="hl-num">+91 77828 08063</div>
+        </div>
+      </a>
+      <a href="javascript:void(0)" class="nav-login" onclick="event.preventDefault()">Login ↗</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">🏠 Home</a>
+    <a href="javascript:void(0)" style="color: #f3c39a; font-weight: 700;" onclick="event.preventDefault()">🔐 Login to GPS Server</a>
+    <a href="solutions-hub.html" style="color: #e3ab84; font-weight: 700;">🚀 Solutions Hub</a>
+    <a href="support-hub.html" style="color: #e3ab84; font-weight: 700;">🛠️ Support Hub</a>
+    <details><summary>Company ▾</summary>
+      <a href="about-us.html">• About Us</a>
+      <a href="about-us.html#leadership">• Leadership Council</a>
+      <a href="about-us.html#careers">• Why Work With Us</a>
+      <a href="events.html">• Gallery</a>
+      <a href="about-us.html#awards">• Awards & Recognitions</a>
+      <a href="about-us.html#timeline">• Our Journey</a>
+    </details>
+    <a href="approved-states.html">Approved States 🇮🇳</a>
+    <details><summary>Contact ▾</summary>
+      <a href="index.html#contact">Get Free Demo</a>
+      <a href="tel:+917782808063">Call Helpline</a>
+      <a href="https://wa.me/917782808063" target="_blank">WhatsApp Chat</a>
+    </details>
+  </div>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hub-hero">
+    <div class="badge-pill">
+      <span>🚀</span> Enterprise IoT Software & Fleet Intelligence
+    </div>
+    <h1 class="hero-heading">
+      SOLUTIONS <span>HUB</span>
+    </h1>
+    <p class="hero-sub">
+      Advanced IoT software solutions for seamless fleet management and intelligent applications designed to simplify your operations and enhance business efficiency.
+    </p>
+  </section>
+
+  <!-- ==================== SOLUTIONS CARDS ==================== -->
+  <section class="section-wrap">
+    <div class="solutions-grid">
+      
+      <!-- Solution 1: Arshi Mobility -->
+      <div class="solution-card">
+        <div class="solution-visual">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Arshi Mobility Fleet Dashboard" loading="lazy">
+          <span class="solution-tag">Fleet Pro</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-sub">Solutions</div>
+          <h3 class="solution-title">ARSHI MOBILITY</h3>
+          <ul class="solution-features">
+            <li><span class="check">✓</span> <span><b>10-Sec Live Tracking:</b> Real-time GPS pinpoint location with 90-day historical route replay.</span></li>
+            <li><span class="check">✓</span> <span><b>Smart Theft Protection:</b> Instant geofence alerts, ignition state updates, and overspeed alerts.</span></li>
+            <li><span class="check">✓</span> <span><b>Remote Engine Cut-Off:</b> Immobilize unauthorized vehicle movement with one tap from phone.</span></li>
+            <li><span class="check">✓</span> <span><b>Multi-Vehicle Dashboard:</b> Manage commercial trucks, dumpers, buses, and cars in a single portal.</span></li>
+          </ul>
+          <a href="https://wa.me/917782808063?text=Hello%20Arshi%20Enterprises!%20I%20would%20like%20a%20free%20demo%20of%20ARSHI%20MOBILITY%20Fleet%20Platform." target="_blank" class="btn-solution">
+            <span>Request Demo ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Solution 2: Dashcam Connected -->
+      <div class="solution-card">
+        <div class="solution-visual">
+          <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?q=80&w=800&auto=format&fit=crop" alt="AI Video Telematics Dashcam" loading="lazy">
+          <span class="solution-tag">AI Video</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-sub">Solutions</div>
+          <h3 class="solution-title">DASHCAM CONNECTED</h3>
+          <ul class="solution-features">
+            <li><span class="check">✓</span> <span><b>Dual-Lens FHD Streaming:</b> Simultaneous crystal-clear front road view and infrared cabin night vision.</span></li>
+            <li><span class="check">✓</span> <span><b>DMS Anti-Sleep Alarms:</b> AI algorithms detecting driver drowsiness, yawning, and phone distraction.</span></li>
+            <li><span class="check">✓</span> <span><b>ADAS Safety Warning:</b> Real-time forward collision warnings and blindspot lane departure alerts.</span></li>
+            <li><span class="check">✓</span> <span><b>Instant Incident Video:</b> Automated 10-second video uploads to cloud upon harsh braking or impact.</span></li>
+          </ul>
+          <a href="https://wa.me/917782808063?text=Hello%20Arshi%20Enterprises!%20I%20want%20to%20know%20more%20about%20AI%20DASHCAM%20CONNECTED%20Telematics." target="_blank" class="btn-solution">
+            <span>Explore AI Dashcam ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Solution 3: Arshi School -->
+      <div class="solution-card">
+        <div class="solution-visual">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop" alt="Arshi School Bus Tracking" loading="lazy">
+          <span class="solution-tag">School Safe</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-sub">Solutions</div>
+          <h3 class="solution-title">ARSHI SCHOOL</h3>
+          <ul class="solution-features">
+            <li><span class="check">✓</span> <span><b>Student RFID Attendance:</b> Automated instant SMS notification to parents when child boards or exits bus.</span></li>
+            <li><span class="check">✓</span> <span><b>Parent Live Tracking App:</b> Real-time bus location map with accurate arrival countdown and delay alerts.</span></li>
+            <li><span class="check">✓</span> <span><b>112 ERSS Emergency SOS:</b> Instant panic alert linked directly to school administration and police command.</span></li>
+            <li><span class="check">✓</span> <span><b>Driver Speed Regulation:</b> Real-time speed governor monitoring ensuring absolute student transit safety.</span></li>
+          </ul>
+          <a href="https://wa.me/917782808063?text=Hello%20Arshi%20Enterprises!%20I%20want%20to%20integrate%20ARSHI%20SCHOOL%20Bus%20Tracking%20System." target="_blank" class="btn-solution">
+            <span>School Bus Demo ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Solution 4: Arshi Edge IoT -->
+      <div class="solution-card">
+        <div class="solution-visual">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop" alt="Heavy Mining Telematics" loading="lazy">
+          <span class="solution-tag">Heavy IoT</span>
+        </div>
+        <div class="solution-body">
+          <div class="solution-sub">Solutions</div>
+          <h3 class="solution-title">ARSHI EDGE</h3>
+          <ul class="solution-features">
+            <li><span class="check">✓</span> <span><b>99.5% Fuel Theft Detection:</b> Non-intrusive ultrasonic diesel level sensors with instant drain phone alerts.</span></li>
+            <li><span class="check">✓</span> <span><b>Heavy Machinery Telemetry:</b> Engine running hour meters, RPM tracking, and load cycle calculation.</span></li>
+            <li><span class="check">✓</span> <span><b>Mining Tipper Geo-Guard:</b> Automated route lock and unauthorized dumping detection for heavy tippers.</span></li>
+            <li><span class="check">✓</span> <span><b>Govt. Vahan & Mining Pass:</b> Direct compliance with state mining portals and RTO passing protocols.</span></li>
+          </ul>
+          <a href="https://wa.me/917782808063?text=Hello%20Arshi%20Enterprises!%20I%20need%20a%20quote%20for%20ARSHI%20EDGE%20Fuel%20and%20Mining%20Telematics." target="_blank" class="btn-solution">
+            <span>Get Industrial Quote ↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CTA BANNER ==================== -->
+  <section class="section-wrap">
+    <div class="cta-banner">
+      <h2>Transform Your Fleet with Custom IoT Telematics</h2>
+      <p>
+        From commercial logistics and mining dumpers to school buses and agricultural machinery — our engineers deliver end-to-end hardware, software, and 24/7 on-ground support.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+        <a href="tel:+917782808063" class="btn-primary" style="background: #ffffff; color: #1e3a8a;">
+          <span>📞 Call Telematics Specialist: +91 77828 08063</span>
+        </a>
+        <a href="https://wa.me/917782808063?text=Namaste%20Arshi%20Enterprises!%20I%20want%20to%20discuss%20custom%20IoT%20fleet%20software%20solutions." target="_blank" class="btn-secondary">
+          <span>💬 WhatsApp Consultation</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <div style="font-weight: 700; color: #fff;">Arshi Enterprises &copy; <span id="year"></span>. All rights reserved.</div>
+    <div>24/7 Helpline: <a href="tel:+917782808063">+91 77828 08063</a> | Purnia, Bihar, India</div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Dropdown toggle on click
+    document.querySelectorAll('.nav-item').forEach(item => {
+      const link = item.querySelector('.nav-link');
+      const dropdown = item.querySelector('.nav-dropdown');
+      if (link && dropdown) {
+        link.addEventListener('click', (e) => {
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+          if (!isOpen && dropdown) item.classList.add('open');
+        });
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item')) {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+      }
+    });
+
+    // Mobile drawer toggle
+    (function(){
+      const btn = document.getElementById("navToggle");
+      const drawer = document.getElementById("mobileDrawer");
+      if (!btn || !drawer) return;
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        drawer.classList.toggle("open");
+        btn.textContent = drawer.classList.contains("open") ? "✕" : "☰";
+      });
+    })();
+  </script>
+</body>
+</html>

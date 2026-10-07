@@ -401,6 +401,82 @@ export default function AboutUsPage() {
         </div>
       </div>
 
+      {/* Why Work With Us (Careers Circular Hub) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20" id="careers">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200 shadow-xl">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-amber-600 mb-2 block">Career Opportunities</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900">
+              Why Work With <span className="text-amber-600">Arshi Enterprises</span>
+            </h2>
+            <p className="mt-2 text-sm text-slate-600">
+              "Innovate. Impact. Grow — Powered by India's Telematics Leader."
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
+              <div className="text-3xl mb-3">💰</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Attractive Compensation</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Industry-leading salaries with transparent semi-annual performance reviews, project milestones, and tech allowances.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
+              <div className="text-3xl mb-3">🛡️</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Healthy Living & Safety</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Comprehensive medical coverage, field accident insurance, safe travel allowances, and active work-life balance.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
+              <div className="text-3xl mb-3">📈</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">ESOPs & Equity Option</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Opportunity to own equity and performance profit-shares in the company as we expand telematics across India.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
+              <div className="text-3xl mb-3">🎓</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Professional IoT Training</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Continuous technical training on ARAI AIS 140, CAN-bus integration, ultrasonic fuel sensors, and AI dashcams.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
+              <div className="text-3xl mb-3">🏆</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Performance Incentives</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Direct monthly cash bonuses recognizing fast device installations, uptime records, and zero-defect RTO passings.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-white transition-all shadow-sm">
+              <div className="text-3xl mb-3">🤝</div>
+              <h3 className="text-base font-black text-slate-900 mb-1.5">Efficient Teams & HR Growth</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Zero bureaucracy, rapid execution culture, and tailored leadership pathways to evolve from technician to regional manager.
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <a
+              href="https://wa.me/917782808063?text=Namaste%20Arshi%20Enterprises!%20I%20am%20interested%20in%20career%20opportunities%20with%20your%20field%20and%20engineering%20team."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-slate-900 hover:bg-slate-800 text-white shadow-lg transition-all"
+            >
+              <span>💼 Join Our Team — Send Resume on WhatsApp ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Headquarters Address */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-lg">

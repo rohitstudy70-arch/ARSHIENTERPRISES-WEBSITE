@@ -320,7 +320,149 @@
       background: #e0f2fe;
     }
 
-    /* ===== FOOTER ===== */
+    /* ===== WHY WORK WITH US (CIRCULAR CAREERS HUB) ===== */
+    .careers-wrap {
+      position: relative;
+      padding: 50px 24px;
+      margin: 40px auto 70px;
+      max-width: 1150px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border-radius: 32px;
+      border: 1.5px solid #e2e8f0;
+      box-shadow: 0 20px 50px -10px rgba(0,0,0,0.06);
+    }
+    .careers-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
+    }
+    .hub-container {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      min-height: 640px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hub-center {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      box-shadow: 0 0 0 12px rgba(245, 158, 11, 0.15), 0 20px 40px rgba(15, 23, 42, 0.35);
+      border: 3px solid #f59e0b;
+      z-index: 10;
+      position: relative;
+    }
+    .hub-center-icon {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+    .hub-center-title {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+    .hub-center-title span { color: #f59e0b; }
+    .hub-center-sub {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fde047;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .hub-orbit-ring {
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      border-radius: 50%;
+      border: 2px dashed #cbd5e1;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hub-node {
+      position: absolute;
+      width: 250px;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 5;
+    }
+    .hub-node:hover {
+      transform: scale(1.06);
+      border-color: #f59e0b;
+      box-shadow: 0 16px 36px -8px rgba(217, 119, 6, 0.22);
+      z-index: 12;
+    }
+    .hub-node-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .hub-node-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+    .hub-node-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #1e293b;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      line-height: 1.25;
+    }
+    .hub-node-desc {
+      font-size: 11.5px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    @media (max-width: 960px) {
+      .hub-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+        min-height: auto;
+      }
+      .hub-orbit-ring { display: none; }
+      .hub-center {
+        grid-column: 1 / -1;
+        width: 100%;
+        max-width: 360px;
+        height: auto;
+        border-radius: 20px;
+        margin: 0 auto 16px;
+        padding: 24px;
+      }
+      .hub-node {
+        position: static;
+        width: 100%;
+      }
+    }
     footer { padding: 40px 6vw; background: #0f172a; color: #94a3b8; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 14px; border-top: 1px solid #1e293b; box-sizing: border-box; }
     footer a { color: var(--amber); text-decoration: none; font-weight: 600; }
   </style>
@@ -343,6 +485,7 @@
         <div class="nav-dropdown">
           <a href="about-us.html">About Us</a>
           <a href="about-us.html#leadership">Leadership</a>
+          <a href="about-us.html#careers" style="color: #e3ab84; font-weight: 700;">Why Work With Us</a>
           <a href="events.html">Gallery</a>
           <a href="about-us.html#awards">Awards & Recognitions</a>
           <a href="about-us.html#timeline">Our Journey</a>
@@ -350,27 +493,13 @@
         </div>
       </li>
       <li class="nav-item">
-        <a href="index.html#" class="nav-link">Product ▾</a>
-        <div class="nav-dropdown">
-          <a href="index.html#kaam">AGT365N Pro GPS Tracker</a>
-          <a href="index.html#kaam">PRO-365N Fleet Master</a>
-          <a href="index.html#kaam">AIS 140 Govt. Certified GPS</a>
-          <a href="index.html#kaam">Portable Magnetic GPS</a>
-          <a href="index.html#kaam">Micro Bike GPS</a>
-          <a href="index.html#kaam">Tractor & Agri GPS</a>
-        </div>
+        <a href="solutions-hub.html" class="nav-link">Solutions Hub</a>
+      </li>
+      <li class="nav-item">
+        <a href="support-hub.html" class="nav-link">Support Hub</a>
       </li>
       <li class="nav-item">
         <a href="approved-states.html" class="nav-link">Approved States</a>
-      </li>
-      <li class="nav-item">
-        <a href="index.html#" class="nav-link">Services ▾</a>
-        <div class="nav-dropdown">
-          <a href="index.html#kaam">Live GPS Tracking</a>
-          <a href="index.html#kaam">Fuel & Diesel Monitoring</a>
-          <a href="index.html#kaam">Remote Engine Cut-Off</a>
-          <a href="index.html#kaam">AIS 140 RTO Compliance</a>
-        </div>
       </li>
       <li class="nav-item">
         <a href="index.html#contact" class="nav-link">Contact ▾</a>
@@ -399,27 +528,18 @@
   <div class="mobile-drawer" id="mobileDrawer">
     <a href="index.html">🏠 Home</a>
     <a href="javascript:void(0)" style="color: #f3c39a; font-weight: 700;" onclick="event.preventDefault()">🔐 Login to GPS Server</a>
+    <a href="solutions-hub.html" style="color: #e3ab84; font-weight: 700;">🚀 Solutions Hub</a>
+    <a href="support-hub.html" style="color: #e3ab84; font-weight: 700;">🛠️ Support Hub</a>
     <details open><summary style="color: #e3ab84; font-weight: 700;">Company ▾</summary>
       <a href="about-us.html" style="color: #e3ab84; font-weight: 700;">• About Us</a>
       <a href="about-us.html#leadership">• Leadership Council</a>
+      <a href="about-us.html#careers">• Why Work With Us</a>
       <a href="events.html">• Gallery</a>
       <a href="about-us.html#awards">• Awards & Recognitions</a>
       <a href="about-us.html#timeline">• Our Journey</a>
       <a href="about-us.html#mission">• Mission, Vision & Values</a>
     </details>
-    <details><summary>Product ▾</summary>
-      <a href="index.html#kaam">AGT365N Pro GPS Tracker</a>
-      <a href="index.html#kaam">PRO-365N Fleet Master</a>
-      <a href="index.html#kaam">AIS 140 Govt. Certified GPS</a>
-      <a href="index.html#kaam">Portable Magnetic GPS</a>
-    </details>
     <a href="approved-states.html">Approved States 🇮🇳</a>
-    <details><summary>Services ▾</summary>
-      <a href="index.html#kaam">Live GPS Tracking</a>
-      <a href="index.html#kaam">Fuel & Diesel Monitoring</a>
-      <a href="index.html#kaam">Remote Engine Cut-Off</a>
-      <a href="index.html#kaam">AIS 140 RTO Compliance</a>
-    </details>
     <details><summary>Contact ▾</summary>
       <a href="index.html#contact">Get Free Demo</a>
       <a href="tel:+917782808063">Call Helpline</a>
@@ -678,6 +798,100 @@
           To build an interconnected smart transportation ecosystem where every commercial vehicle, school bus, and agricultural machine is equipped with seamless IoT diagnostics and rapid emergency response.
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHY WORK WITH US (CAREERS & CULTURE HUB) ==================== -->
+  <section class="careers-wrap" id="careers">
+    <div class="careers-header">
+      <span class="council-tag">🚀 Careers & Culture</span>
+      <h2 style="font-size: clamp(30px, 3.8vw, 44px); font-weight: 900; color: var(--text-main); margin-bottom: 12px;">
+        Why Work With <span style="color: var(--amber);">Arshi Enterprises</span> ?
+      </h2>
+      <p style="color: var(--text-muted); font-size: 16px; line-height: 1.65; margin: 0 auto;">
+        <b>"Innovate. Impact. Grow — Powered by India's Telematics Leader."</b> Join Eastern India's fastest-growing IoT hardware & fleet automation network.
+      </p>
+    </div>
+
+    <div class="hub-container">
+      <!-- Orbit Ring for visual connection -->
+      <div class="hub-orbit-ring"></div>
+
+      <!-- Center Hub Circle -->
+      <div class="hub-center">
+        <div class="hub-center-icon">⚡</div>
+        <div class="hub-center-title">WHY WORK<br><span>WITH US ?</span></div>
+        <div class="hub-center-sub">10,000+ Fleets • 28+ States</div>
+      </div>
+
+      <!-- Node 1: Attractive Compensation (Top Center) -->
+      <div class="hub-node" style="top: 15px; left: 50%; transform: translateX(-50%);">
+        <div class="hub-node-header">
+          <div class="hub-node-icon" style="background: #ecfdf5; border-color: #a7f3d0;">💰</div>
+          <div class="hub-node-title">Attractive Compensation</div>
+        </div>
+        <div class="hub-node-desc">Competitive fixed compensation packages + daily field allowances designed to reward your telematics expertise.</div>
+      </div>
+
+      <!-- Node 2: Healthy Living & Safety (Top Right) -->
+      <div class="hub-node" style="top: 90px; right: 15px;">
+        <div class="hub-node-header">
+          <div class="hub-node-icon" style="background: #f0fdf4; border-color: #bbf7d0;">🛡️</div>
+          <div class="hub-node-title">Healthy Living & Safety</div>
+        </div>
+        <div class="hub-node-desc">Comprehensive on-field accidental insurance, safety gear protocols, and health checkups for every technician.</div>
+      </div>
+
+      <!-- Node 3: ESOPs & Growth Shares (Mid Right) -->
+      <div class="hub-node" style="top: 300px; right: 0px;">
+        <div class="hub-node-header">
+          <div class="hub-node-icon" style="background: #fefce8; border-color: #fef08a;">📈</div>
+          <div class="hub-node-title">ESOPs & Equity Option</div>
+        </div>
+        <div class="hub-node-desc">Opportunity to own equity and performance profit-shares in the company as we expand telematics across India.</div>
+      </div>
+
+      <!-- Node 4: Professional IoT Development (Bottom Right) -->
+      <div class="hub-node" style="bottom: 30px; right: 25px;">
+        <div class="hub-node-header">
+          <div class="hub-node-icon" style="background: #eff6ff; border-color: #bfdbfe;">🎓</div>
+          <div class="hub-node-title">Professional IoT Training</div>
+        </div>
+        <div class="hub-node-desc">Continuous technical training on ARAI AIS 140, CAN-bus integration, ultrasonic fuel sensors, and AI dashcam video.</div>
+      </div>
+
+      <!-- Node 5: Performance Incentives (Bottom Center) -->
+      <div class="hub-node" style="bottom: 10px; left: 50%; transform: translateX(-50%);">
+        <div class="hub-node-header">
+          <div class="hub-node-icon" style="background: #fffbeb; border-color: #fde68a;">🏆</div>
+          <div class="hub-node-title">Performance Incentives</div>
+        </div>
+        <div class="hub-node-desc">Direct monthly cash incentives and bonuses recognizing fast device installations and zero-defect RTO passings.</div>
+      </div>
+
+      <!-- Node 6: Efficient Teams (Bottom Left) -->
+      <div class="hub-node" style="bottom: 30px; left: 25px;">
+        <div class="hub-node-header">
+          <div class="hub-node-icon" style="background: #faf5ff; border-color: #e9d5ff;">🤝</div>
+          <div class="hub-node-title">Efficient Teams</div>
+        </div>
+        <div class="hub-node-desc">Work in a streamlined, zero-bureaucracy environment that prioritizes collaboration, speed, and engineering precision.</div>
+      </div>
+
+      <!-- Node 7: Holistic HR & Leadership (Top Left) -->
+      <div class="hub-node" style="top: 90px; left: 15px;">
+        <div class="hub-node-header">
+          <div class="hub-node-icon" style="background: #fff7ed; border-color: #fed7aa;">🌟</div>
+          <div class="hub-node-title">Holistic HR Development</div>
+        </div>
+        <div class="hub-node-desc">We empower our technical team to evolve into well-rounded professionals, regional managers, and territory leaders.</div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 36px;">
+      <a href="https://wa.me/917782808063?text=Namaste%20Arshi%20Enterprises!%20I%20am%20interested%20in%20career%20opportunities%20with%20your%20field%20and%20engineering%20team." target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 12px; background: linear-gradient(135deg, #0f172a, #1e3a8a); color: #ffffff; font-weight: 800; font-size: 13.5px; text-decoration: none; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.25);">
+        <span>💼 Join Our Engineering & Field Team — Send Resume on WhatsApp ↗</span>
+      </a>
     </div>
   </section>
 

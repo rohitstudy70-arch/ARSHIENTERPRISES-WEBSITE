@@ -68,6 +68,7 @@ export default function Navbar() {
             <div className="absolute top-full left-0 w-64 py-2 bg-[#0f0945] border border-[#4a3cb5] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <Link to="/about-us" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">About Us</Link>
               <Link to="/about-us#leadership" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Leadership</Link>
+              <Link to="/about-us#careers" className="block px-4 py-2.5 text-xs font-semibold text-[#e3ab84] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Why Work With Us</Link>
               <Link to="/gallery" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Gallery</Link>
               <Link to="/about-us#awards" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Awards & Recognitions</Link>
               <Link to="/about-us#timeline" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Our Journey</Link>
@@ -75,24 +76,29 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Product */}
-          <div className="relative group" onMouseLeave={() => setActiveDropdown(null)}>
-            <button 
-              onClick={() => toggleDropdown('product')}
-              className="flex items-center gap-1 px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-[#b3aee0] hover:text-[#e3ab84] transition"
-            >
-              Product <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
-            </button>
-            <div className="absolute top-full left-0 w-72 py-2 bg-[#0f0945] border border-[#4a3cb5] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <Link to="/#hardware" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">AGT365N Pro GPS Tracker</Link>
-              <Link to="/#hardware" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">PRO-365N Fleet Master</Link>
-              <Link to="/#hardware" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">AIS 140 Govt. Certified GPS</Link>
-              <div className="my-1 border-t border-[#3a2f9a]" />
-              <Link to="/#hardware" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Portable Wireless Magnetic GPS</Link>
-              <Link to="/#hardware" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Micro Bike & Scooter GPS</Link>
-              <Link to="/#hardware" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Agri Tractor & Harvester GPS</Link>
-            </div>
-          </div>
+          {/* Solutions Hub */}
+          <Link 
+            to="/solutions-hub"
+            className={`px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition ${
+              location.pathname === '/solutions-hub'
+                ? 'text-[#e3ab84] bg-[#e3ab84]/15 border border-[#e3ab84]/40 shadow-sm'
+                : 'text-[#b3aee0] hover:text-[#e3ab84]'
+            }`}
+          >
+            Solutions Hub
+          </Link>
+
+          {/* Support Hub */}
+          <Link 
+            to="/support-hub"
+            className={`px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition ${
+              location.pathname === '/support-hub'
+                ? 'text-[#e3ab84] bg-[#e3ab84]/15 border border-[#e3ab84]/40 shadow-sm'
+                : 'text-[#b3aee0] hover:text-[#e3ab84]'
+            }`}
+          >
+            Support Hub
+          </Link>
 
           {/* Approved States Direct Link */}
           <Link 
@@ -105,22 +111,6 @@ export default function Navbar() {
           >
             Approved States
           </Link>
-
-          {/* Services */}
-          <div className="relative group" onMouseLeave={() => setActiveDropdown(null)}>
-            <button 
-              onClick={() => toggleDropdown('services')}
-              className="flex items-center gap-1 px-3.5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-[#b3aee0] hover:text-[#e3ab84] transition"
-            >
-              Services <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
-            </button>
-            <div className="absolute top-full left-0 w-64 py-2 bg-[#0f0945] border border-[#4a3cb5] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <Link to="/#features" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Live GPS Fleet Tracking</Link>
-              <Link to="/#features" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Diesel Theft Monitoring</Link>
-              <Link to="/#features" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">Remote Engine Lock / Cut-Off</Link>
-              <Link to="/#features" className="block px-4 py-2.5 text-xs font-semibold text-[#e9eefb] hover:bg-[#e3ab84]/15 hover:text-white border-l-2 border-transparent hover:border-[#e3ab84]">AIS 140 RTO Compliance</Link>
-            </div>
-          </div>
 
           {/* Contact */}
           <div className="relative group" onMouseLeave={() => setActiveDropdown(null)}>
@@ -175,11 +165,12 @@ export default function Navbar() {
         <div className="lg:hidden bg-[#0a0630]/98 border-b border-[#3a2f9a] px-6 py-6 flex flex-col gap-3 max-h-[85vh] overflow-y-auto">
           <Link to="/" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white py-2 border-b border-[#3a2f9a]/40">Home</Link>
           <div className="text-sm font-bold text-[#f3c39a] py-2 border-b border-[#3a2f9a]/40 cursor-default">🔐 Login to GPS Server</div>
+          <Link to="/solutions-hub" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-[#e3ab84] py-2 border-b border-[#3a2f9a]/40">🚀 Solutions Hub</Link>
+          <Link to="/support-hub" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-[#e3ab84] py-2 border-b border-[#3a2f9a]/40">🛠️ Support Hub</Link>
           <Link to="/about-us" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">About Us</Link>
+          <Link to="/about-us#careers" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">• Why Work With Us</Link>
           <Link to="/gallery" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Gallery</Link>
           <Link to="/approved-states" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-[#e3ab84] py-2 border-b border-[#3a2f9a]/40">Approved States 🇮🇳</Link>
-          <Link to="/#hardware" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">GPS Hardware</Link>
-          <Link to="/#features" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Features & Telematics</Link>
           <Link to="/#contact" onClick={() => setMobileMenuOpen(false)} className="text-sm font-bold text-white/90 py-2 border-b border-[#3a2f9a]/40">Contact Us</Link>
           <div className="pt-2 flex flex-col gap-2">
             <a href={`tel:${helplinePhone}`} className="py-2.5 rounded-xl border border-[#4bc0ff]/40 bg-[#4bc0ff]/10 text-xs font-bold text-center text-white">

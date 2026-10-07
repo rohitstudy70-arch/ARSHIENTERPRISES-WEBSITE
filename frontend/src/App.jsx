@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage';
 import ApprovedStatesPage from './pages/ApprovedStatesPage';
 import AboutUsPage from './pages/AboutUsPage';
 import EventsPage from './pages/EventsPage';
+import SolutionsHubPage from './pages/SolutionsHubPage';
+import SupportHubPage from './pages/SupportHubPage';
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/solutions-hub" element={<SolutionsHubPage />} />
+            <Route path="/support-hub" element={<SupportHubPage />} />
             <Route path="/approved-states" element={<ApprovedStatesPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/gallery" element={<EventsPage />} />
